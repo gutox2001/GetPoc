@@ -7,7 +7,7 @@ Professor: Fabrício Aguiar Silva
 Grupo:  Aroldo Augusto Barbosa Simões - 4250
         Gabriel Ryan dos Santos Oliveira - 4688
         Thiago Cândido Rocha - 4225 
-        João Vitor Lobo -
+        João Vitor Chagas Lobo - 4693
         
 
     GetPoc
