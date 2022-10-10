@@ -4,12 +4,14 @@
  */
 package br.ufv.caf.pessoas;
 
+import br.ufv.caf.interfacePessoas.MenusPessoas;
 
 public class Pessoa {
     private String nome;
     private int matricula;
     private String senha;
     private String tipo;
+    
     private Aluno aluno;
     private Administrador admin;
     private Professor professor;
@@ -94,12 +96,17 @@ public class Pessoa {
         
     }
     
-    public boolean garantePermissao(String cargo){
-        if(this.tipo.compareToIgnoreCase(cargo) == 0){
-            return true;
+    public void garantePermissao(){ //Ainda em processo de desenvolvimento
+        MenusPessoas menus = new MenusPessoas();
+        if(this.tipo == "Aluno"){
+            menus.menuFuncionalidadesAluno();
         }
         
-        return false;
+        else if(this.tipo == "Professor"){
+            menus.menuFuncionalidadesProfessor();
+        }
+        
+        
     }
     
     
