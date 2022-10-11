@@ -1,16 +1,11 @@
 package br.ufv.caf.modelo;
 
 import br.ufv.caf.armazenamento.ListaPocs;
+import br.ufv.caf.modelo.Usuario.TipoUsuario;
 
-public class Professor extends Usuario{
-
+public class Professor {
     public TipoUsuario t = TipoUsuario.PROFESSOR;
-
-    public Professor(String nome, int matricula, String senha, TipoUsuario t) {
-        super(nome, matricula, senha, t);
-    }
-
-    private Usuario prof = new Usuario("NOVO", -1111, "Senha", t);
+    private Usuario prof = new Usuario("NOVO", -1111, -1111, t);
 
     private ListaPocs gPoc = new ListaPocs();
 

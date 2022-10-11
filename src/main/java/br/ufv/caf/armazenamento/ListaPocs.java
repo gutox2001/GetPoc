@@ -8,7 +8,7 @@ import br.ufv.caf.modelo.Poc;
 public class ListaPocs {
     private ArrayList<Poc> listaPocs= new ArrayList<>();
 
-    public ArrayList<Poc> getListaPocs(){
+    protected ArrayList<Poc> getListaPocs(){
         return this.listaPocs;
     }
     
@@ -30,5 +30,4 @@ public class ListaPocs {
         }
         return null;
     }
-    
 }

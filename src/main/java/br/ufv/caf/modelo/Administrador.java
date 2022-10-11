@@ -2,13 +2,11 @@ package br.ufv.caf.modelo;
 
 import br.ufv.caf.armazenamento.ListaPocs;
 import br.ufv.caf.armazenamento.ListaUsuarios;
+import br.ufv.caf.modelo.Usuario.TipoUsuario;
 
-public class Administrador extends Usuario{
-    public Administrador(String nome, int matricula, String senha, TipoUsuario tUsuario) {
-        super(nome, matricula, senha, tUsuario);
-    }
-
+public class Administrador {
     public TipoUsuario t = TipoUsuario.ADMINISTRADOR;
+    private Usuario adminin = new Usuario("NOVO", -1111, -1111, t);
 
     private ListaPocs gPoc = new ListaPocs();
     private ListaUsuarios lUsuarios = new ListaUsuarios();
@@ -26,42 +24,15 @@ public class Administrador extends Usuario{
     }
 
     public void mostrarUsuarioAdminin(){
-        mostraUsuario();
+        adminin.mostraUsuario();
     }
 
-    public void cadastrarUsuario(String nome, int matricula, String senha, TipoUsuario t){
-        switch (t) {
-            case ALUNO:
-                lUsuarios.adicionarAluno(nome, matricula, senha, t);
-                break;
-            case PROFESSOR:
-                lUsuarios.adicionarProfessor(nome, matricula, senha, t);
-                break;
-            case ADMINISTRADOR:
-                lUsuarios.adicionarAdministrador(nome, matricula, senha, t);
-                break;
-            default:
-                break;
-        }
+    public void cadastrarUsuarioAdminin(TipoUsuario t){
+        adminin.cadastraUsuario(t);
+        lUsuarios.adicionarUsuario(adminin);
     }
     
-    public void removerUsuario(TipoUsuario t, int matricula){
-        switch (t) {
-            case ALUNO:
-                lUsuarios.removerAluno(matricula);
-                break;
-            case PROFESSOR:
-                lUsuarios.removerProfessor(matricula);
-                break;
-            case ADMINISTRADOR:
-                lUsuarios.removerAdministrador(matricula);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void mostrarUsuariosAdminin(){
-        lUsuarios.mostraUsuarios();
+    public void removerUsuarioAdminin(Usuario u1){
+        lUsuarios.removerUsuario(u1);
     }
 }
