@@ -6,7 +6,6 @@ package br.ufv.caf.armazenamento;
 
 import br.ufv.caf.modelo.Poc;
 import java.util.ArrayList;
-import br.ufv.caf.visao.MenusListaPoc;
 import java.util.Calendar;
 
 public class ListaPocs {
