@@ -2,42 +2,39 @@ package br.ufv.caf;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import br.ufv.caf.pessoas.Pessoa;
+import br.ufv.caf.armazenamento.ListaPessoas;
 
 public class App {
 
     public static void main(String[] args) {
-        ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
-        Pessoa p;
+        ListaPessoas usuarios;
         String nome;
         String senha;
+        String tipo;
         int matricula;
         int cargo;
+        String op = "";
         
         Scanner input = new Scanner(System.in);
         
-        for(int i = 0; i < 3 ; i++){
-            System.out.println("NOME:");
-            nome = input.nextLine();
+        
+        usuarios = new ListaPessoas();
+        
+        System.out.println("0 - Cadastrar um usuario || 1 - entrar com um existente?");
+        
+        switch(Integer.parseInt(input.next())){
             
-            System.out.println("SENHA:");
-            
-            senha = input.nextLine();
-            
-            System.out.println("MATRICULA:");
-            
-            matricula = Integer.parseInt(input.nextLine());
-            
-            cargo = Integer.parseInt(input.nextLine());
-            
-            p = new Pessoa();
-            pessoas.add(p);
-            
-            pessoas.get(i).cadastrarUsuario(nome, senha, matricula, cargo);
-            
+            case 1:
+                break;
+                
+            case 0:
+            default:
+                usuarios.adiciona("Aroldo", "1234", 4250, 1);
+                usuarios.adiciona("Thiago", "1234", 4225, 1);
+                break;
         }
         
-        pessoas.get(0).garantePermissao();
+        
         
         
     }

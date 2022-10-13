@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.ufv.caf.pessoas;
+package br.ufv.caf.modelo;
 
-import br.ufv.caf.interfacePessoas.MenusPessoas;
+import br.ufv.caf.visao.MenusPessoas;
+import java.util.Scanner;
 
 public class Pessoa {
     private String nome;
@@ -16,31 +17,16 @@ public class Pessoa {
     private Administrador admin;
     private Professor professor;
     
-    /*public Pessoa(int cargo){
-        
-        
-        
-        /*switch(cargo){
-
-            case 2:
-                this.tipo = "Administrador";
-                admin = new Administrador();
-                break;
-            
-            case 3:
-                this.tipo = "Professor";
-                professor = new Professor();
-                break;
-            
-            case 1:
-            default:
-                this.tipo = "Aluno";
-                aluno = new Aluno();
-                break;
-        }
-        
-        
-    }*/
+    private MenusPessoas menus;
+    private Scanner input; //Sujeito a alterações, versão temporária
+    
+    public Pessoa(String nome, String senha, int matricula, int cargo){
+        menus = new MenusPessoas();
+        setNome(nome);
+        setSenha(senha);
+        setMatricula(matricula);
+        cadastraFuncao(cargo);
+    }
     
     private void setNome(String nome){
         this.nome = nome;
@@ -88,6 +74,14 @@ public class Pessoa {
         this.matricula = matricula;
     }
     
+    private String getTipo(){
+        return this.tipo;
+    }
+    
+    public int getMatricula(){
+        return this.matricula;
+    }
+    
     public void cadastrarUsuario(String nome, String senha, int matricula, int cargo){
         setNome(nome);
         setSenha(senha);
@@ -96,18 +90,36 @@ public class Pessoa {
         
     }
     
-    public void garantePermissao(){ //Ainda em processo de desenvolvimento
-        MenusPessoas menus = new MenusPessoas();
+    public String mostraOpcoes(){ //Ainda em processo de desenvolvimento
+        
         if(this.tipo == "Aluno"){
             menus.menuFuncionalidadesAluno();
+            
         }
         
         else if(this.tipo == "Professor"){
             menus.menuFuncionalidadesProfessor();
+            
         }
         
+        return getTipo();
         
     }
+    
+    /*public void garantePermissao(int op){
+        if(this.tipo == "Aluno"){
+            switch(op){
+
+            }
+        }
+        
+        else if(this.tipo == "Professor"){
+            switch(op){
+                case 3:
+                    break;
+            }
+        }
+    }*/
     
     
 }
