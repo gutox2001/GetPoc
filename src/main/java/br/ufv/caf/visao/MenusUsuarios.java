@@ -1,9 +1,17 @@
 package br.ufv.caf.visao;
 
-/**
- *
- * @author thiag
- */
+/*
+*
+*Classe que representa o menu das funcionalidades disponíveis para cada usuário;
+*Métodos:
+*	
+*	
+*
+*
+*@Thiago Cândido Rocha - 4225
+*
+*/
+
 public class MenusUsuarios {
 
     public void menuFuncionalidadesAluno(){

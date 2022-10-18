@@ -5,10 +5,25 @@ import java.util.Objects;
 
 import br.ufv.caf.modelo.Poc;
 
+/*
+*
+*Classe que representa o armazenamento das Pocs cadastradas no sistema;
+*Métodos:
+*	
+*	
+*
+*
+*@Aroldo Augusto Barbosa Simões - 4250
+*@Gabriel Ryan dos Santos Oliveira - 4688
+*@Thiago Cândido Rocha - 4225
+*@João Vitor Chagas Lobo - 4693
+*
+*/
+
 public class ListaPocs {
     private ArrayList<Poc> listaPocs= new ArrayList<>();
 
-    protected ArrayList<Poc> getListaPocs(){
+    public ArrayList<Poc> getListaPocs(){
         return this.listaPocs;
     }
     
@@ -30,4 +45,5 @@ public class ListaPocs {
         }
         return null;
     }
+    
 }
