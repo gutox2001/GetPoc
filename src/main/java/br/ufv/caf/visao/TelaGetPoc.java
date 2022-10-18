@@ -1,6 +1,6 @@
 package br.ufv.caf.visao;
 
-import java.util.Scanner;
+/*import java.util.Scanner;
 
 public class TelaGetPoc {
     Scanner scan = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class TelaGetPoc {
         System.out.println("3- CONSULTAR POC ");
         System.out.println("4- CONSULTAR USUARIO");
         System.out.println("\n\n------------------------------------------------------");
-    }
+    }*/
 
     /*private void mostraPoc(){
         int i=1;
@@ -56,6 +56,6 @@ public class TelaGetPoc {
 
         System.out.println("-    RESUMO:\n"+getResumo());
         System.out.println("\n");
-    }*/
+    }
 
-}
+}*/
