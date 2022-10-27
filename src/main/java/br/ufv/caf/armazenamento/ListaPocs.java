@@ -9,7 +9,8 @@ import br.ufv.caf.modelo.Poc;
 *
 *Classe que representa o armazenamento das Pocs cadastradas no sistema;
 *Métodos:
-*	
+*   public ListaPocs - construtor da classe;
+*	public void adicionar - adiciona nova Poc na ListaPocs;
 *	
 *
 *
@@ -21,7 +22,11 @@ import br.ufv.caf.modelo.Poc;
 */
 
 public class ListaPocs {
-    private ArrayList<Poc> listaPocs= new ArrayList<>();
+    private ArrayList<Poc> listaPocs;
+    
+    public ListaPocs(){
+        listaPocs = new ArrayList<Poc>();
+    }
 
     public ArrayList<Poc> getListaPocs(){
         return this.listaPocs;

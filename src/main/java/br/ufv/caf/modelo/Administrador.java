@@ -7,7 +7,7 @@ import br.ufv.caf.armazenamento.ListaUsuarios;
 *
 *Classe que herda a classe abstrata Usuário e implementa funcionalidades do Administrador;
 *Métodos:
-*	
+*	public Administrador - construtor da classe;
 *	
 *
 *

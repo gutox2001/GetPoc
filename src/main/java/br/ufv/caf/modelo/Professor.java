@@ -6,7 +6,7 @@ import br.ufv.caf.armazenamento.ListaPocs;
 *
 *Classe que herda a classe abstrata Usuário e implementa funcionalidades do Professor;
 *Métodos:
-*	
+*	public Professor - construtor da classe;
 *	
 *
 *

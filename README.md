@@ -27,21 +27,3 @@ algumas como o Visual Studio CODE e o IntelliJ;
 ajudará imensamente na construção de conhecimento sobre a linguagem e sobre programação prientada a objetos;
 -Iniciaremos a construção do código em conjunto, partindo de encontros em reuniões presenciais e online via 
 Google Meet;
-
-Entrega 2 19/10:
--Inclusão das classes modelo:
-    -Usuário;
-    -Aluno;
-    -Administrador;
-    -Professor; 
-    -Poc;
-
--Inclusão das classes armazenamento:
-    -Lista Pocs;
-    -Lista Usuários;
-
--inclusão das classes visão:
-    -Menus usuários;
-    -Tela GetPoc;
-
--Todos os membros participaram da contrução do código.

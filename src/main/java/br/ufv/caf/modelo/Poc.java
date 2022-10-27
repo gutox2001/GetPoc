@@ -4,6 +4,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+/*
+*
+*Classe implementa entidade Poc;
+*Métodos:
+*	public Poc - construtor da classe;
+*	
+*
+*
+*@Aroldo Augusto Barbosa Simões - 4250
+*
+*/
+
 public class Poc {
     public enum Area{
         ENGENHARIA_DE_SOFTWARE, CIENCIA_DE_DADOS, INTERNET_DAS_COISAS;
