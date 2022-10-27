@@ -27,4 +27,3 @@ algumas como o Visual Studio CODE e o IntelliJ;
 ajudará imensamente na construção de conhecimento sobre a linguagem e sobre programação prientada a objetos;
 -Iniciaremos a construção do código em conjunto, partindo de encontros em reuniões presenciais e online via 
 Google Meet;
-

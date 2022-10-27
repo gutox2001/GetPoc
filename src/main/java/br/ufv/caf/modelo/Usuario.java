@@ -8,7 +8,7 @@ import br.ufv.caf.visao.MenusUsuarios;
 *
 *Classe abstrata Usuário que representa os usuários base do sistema;
 *Métodos:
-*	
+*	protected Usuario - construtor da classe;
 *	
 *
 *

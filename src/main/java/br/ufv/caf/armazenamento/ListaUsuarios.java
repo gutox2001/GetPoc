@@ -13,7 +13,8 @@ import br.ufv.caf.modelo.Usuario.TipoUsuario;
 *Classe que representa o armazenamento dos Usuários cadastrados no sistema;
 *Métodos:
 *	
-*	
+*	public void adicionarProfessor - adiciona professor na lista de usuários;
+*   
 *
 *
 *@Aroldo Augusto Barbosa Simões - 4250
