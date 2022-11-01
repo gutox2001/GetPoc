@@ -19,33 +19,28 @@ import br.ufv.caf.armazenamento.ListaUsuarios;
 */
 
 public class Administrador extends Usuario {
+
+    //TODO mudar ordem
     public Administrador(String nome, int matricula, String senha, TipoUsuario tUsuario) {
         super(nome, matricula, senha, tUsuario);
     }
 
+    //TODO mudar o nome dessa variável
     public TipoUsuario t = TipoUsuario.ADMINISTRADOR;
 
-    /*private ListaPocs listaPocs = new ListaPocs();
-    private ListaUsuarios lUsuarios = new ListaUsuarios();*/
-    //Chamar função do controle
-    //Controle controlePocs = new Controle()
-
+    //TODO tirar funções e colocar no controle
     public void adicionarPocAdminin(Poc poc) {
         //controlePocs.adicionar(poc);
     }
-
     public void removerPocAdminin(String tituloPoc) {
         //controlePocs.remover(tituloPoc);
     }
-
     public Poc pesquisarPocAdminin(String tituloPoc) {
         return //controlePocs.pesquisar(tituloPoc);
     }
-
     public void mostrarUsuarioAdminin() {
         mostraUsuario();
     }
-
     public void cadastrarUsuario(String nome, int matricula, String senha, TipoUsuario t) { ////controleUsuario
         switch (t) {
             case ALUNO:
@@ -61,11 +56,9 @@ public class Administrador extends Usuario {
                 break;
         }
     }
-    
     public void removerUsuario(TipoUsuario t, int matricula){
         //controlePocs.removerUsuario(matricula);
     }
-
     public void mostrarUsuariosAdminin(){
         //controleUsuario.mostraUsuarios();
     }

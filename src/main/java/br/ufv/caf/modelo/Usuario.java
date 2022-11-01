@@ -1,7 +1,5 @@
 package br.ufv.caf.modelo;
 
-import java.util.Scanner;
-
 import br.ufv.caf.visao.MenusUsuarios;
 
 /*
@@ -21,34 +19,42 @@ import br.ufv.caf.visao.MenusUsuarios;
 
 
 public abstract class Usuario {
+    //TODO o certo é ele ficar aqui?
+
     public enum TipoUsuario {
         ALUNO, PROFESSOR, ADMINISTRADOR;
     }
+
     private String nome;
     private int matricula;
     private String senha;
     private TipoUsuario tipoUsuario;
 
+    //TODO tirar
     private MenusUsuarios menu;
+
 
     protected Usuario(String nome, int matricula, String senha, TipoUsuario tUsuario) {
         this.menu = new MenusUsuarios();
         this.nome = nome;
         this.matricula = matricula;
         this.senha = senha;
+        //TODO mudar o nome dessa variável
         this.tipoUsuario = tUsuario;
     }
 
+    //TODO ver se precisa de mais gets ou sets
     public int getMatricula() {
         return this.matricula;
     }
 
     public void mostraUsuario() {
-        System.out.println("- NOME USUARIO: "+this.nome);
-        System.out.println("- MATRICULA USUARIO: "+this.matricula);
-        System.out.println("- TIPO USUARIO: "+this.tipoUsuario.name());
+        System.out.println("- NOME USUARIO: " + this.nome);
+        System.out.println("- MATRICULA USUARIO: " + this.matricula);
+        System.out.println("- TIPO USUARIO: " + this.tipoUsuario.name());
     }
 
+    //TODO tirar funções e colocar no controle
     protected void cadastraUsuario(TipoUsuario tUsuario) { //Mudar para receber entrada no controle
         /*Scanner scan = new Scanner(System.in);
         System.out.println("*** NOVO USUARIO ***");
@@ -60,6 +66,7 @@ public abstract class Usuario {
         scan.close();*/
     }
 
+    //TODO tirar funções e colocar na visão
     public void mostraOpcoes() {
         switch(this.tipoUsuario.name()){
             case "ALUNO":
