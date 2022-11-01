@@ -41,6 +41,7 @@ public class Poc {
         this.areaDaPoc = areaDaPoc;
     }
 
+    //TODO deixar gets e sets sob necessidade
     public Area getAreaDaPoc() {
         return this.areaDaPoc;
     }
@@ -96,6 +97,8 @@ public class Poc {
     private void setResumo(String resumo) {
         this.resumo = resumo;
     }
+
+    //TODO refatorar
 
     public void editar() { //Mudar para receber entrada no controle
         /*int resposta=1, i=1;

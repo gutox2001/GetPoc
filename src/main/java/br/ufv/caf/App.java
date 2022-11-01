@@ -16,7 +16,6 @@ public class App
 
         Scanner input = new Scanner(System.in);
 
-
         usuarios = new ListaUsuarios();
 
         System.out.println("0 - Cadastrar um usuario || 1 - entrar com um existente?");

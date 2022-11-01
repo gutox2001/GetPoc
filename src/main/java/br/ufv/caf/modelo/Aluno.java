@@ -18,18 +18,22 @@ import br.ufv.caf.armazenamento.ListaPocs;
 */
 
 public class Aluno extends Usuario {
+
+    //TODO mudar ordem
     public Aluno(String nome, int matricula, String senha, TipoUsuario tUsuario) {
         super(nome, matricula, senha, tUsuario);
     }
 
+    //TODO mudar o nome dessa variável
     public TipoUsuario t = TipoUsuario.ALUNO;
     private ListaPocs listaPocs = new ListaPocs();
 
-    
+    //TODO tirar funções e colocar no controle
     public Poc pesquisarPoc_aluno(String titulo) {
         return listaPocs.pesquisar(titulo);
     }
 
+    //TODO apagar
     public void mostraUsuarioAluno() {
         mostraUsuario();
     }

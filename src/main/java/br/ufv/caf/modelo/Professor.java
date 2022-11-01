@@ -19,29 +19,28 @@ import br.ufv.caf.armazenamento.ListaPocs;
 
 public class Professor extends Usuario{
 
+    //TODO mudar o nome dessa variável
     public TipoUsuario t = TipoUsuario.PROFESSOR;
 
     public Professor(String nome, int matricula, String senha, TipoUsuario t) {
         super(nome, matricula, senha, t);
     }
 
+    //TODO tirar funções e colocar no controle
     private ListaPocs listaPocs = new ListaPocs();
-
     public void adicionarPocProf(Poc poc){
         listaPocs.adicionar(poc);
     }
-
     public void removerPocProf(String tituloPoc){
         listaPocs.remover(tituloPoc);
     }
-
     public Poc pesquisarPocProf(String tituloPoc){
         return listaPocs.pesquisar(tituloPoc);
     }
-
     public void editarPocProf(String tituloPoc){
         Poc temp = new Poc(tituloPoc, null, tituloPoc, tituloPoc, null, tituloPoc, null);
         temp = pesquisarPocProf(tituloPoc);
         temp.editar();
     }
+
 }
