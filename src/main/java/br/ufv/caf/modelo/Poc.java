@@ -17,7 +17,7 @@ import java.util.Scanner;
 */
 
 public class Poc {
-    public enum Area{
+    public enum Area {
         ENGENHARIA_DE_SOFTWARE, CIENCIA_DE_DADOS, INTERNET_DAS_COISAS;
     }
     private String titulo;
@@ -29,7 +29,8 @@ public class Poc {
     private Area areaDaPoc;
 
 
-    public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador, String nomeCo_Orientador, ArrayList<String> palavras_chave, String resumo, Area areaDaPoc){
+    public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador, 
+            String nomeCo_Orientador, ArrayList<String> palavras_chave, String resumo, Area areaDaPoc) {
         this.titulo = titulo;
         this.nomeOrientador = nomeOrientador;
         this.nomeCo_Orientador = nomeCo_Orientador;
@@ -42,27 +43,27 @@ public class Poc {
         return this.areaDaPoc;
     }
 
-    public ArrayList<String> getListaAutores(){
+    public ArrayList<String> getListaAutores() {
         return this.listaAutores;
     }
 
-    public String getNomeCo_Orientador(){
+    public String getNomeCo_Orientador() {
         return this.nomeCo_Orientador;
     }
 
-    public String getNomeOrientador(){
+    public String getNomeOrientador() {
         return this.nomeOrientador;
     }
 
-    public ArrayList<String> getPalavras_chave(){
+    public ArrayList<String> getPalavras_chave() {
         return this.palavras_chave;
     }
 
-    public String getTitulo(){
+    public String getTitulo() {
         return this.titulo;
     }
 
-    public String getResumo(){
+    public String getResumo() {
         return this.resumo;
     }
 
@@ -70,32 +71,32 @@ public class Poc {
         this.areaDaPoc = areaPoc;
     }
 
-    private void setListaAutores(ArrayList<String> listaAutores){
+    private void setListaAutores(ArrayList<String> listaAutores) {
         this.listaAutores = listaAutores;
     }
 
-    private void setNomeCo_Orientador(String nomeCo_Orientador){
+    private void setNomeCo_Orientador(String nomeCo_Orientador) {
         this.nomeCo_Orientador = nomeCo_Orientador;
     }
 
-    private void setNomeOrientador(String nomeOrientador){
+    private void setNomeOrientador(String nomeOrientador) {
         this.nomeOrientador = nomeOrientador;
     }
 
-    private void setPalavras_chave(ArrayList<String> palavras_chave){
+    private void setPalavras_chave(ArrayList<String> palavras_chave) {
         this.palavras_chave = palavras_chave;
     }
 
-    private void setTitulo(String titulo){
+    private void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    private void setResumo(String resumo){
+    private void setResumo(String resumo) {
         this.resumo = resumo;
     }
 
-    public void editar(){
-        int resposta=1, i=1;
+    public void editar() { //Mudar para receber entrada no controle
+        /*int resposta=1, i=1;
         String tituloEditado, nomeOrientadorEditado, nomeCo_OrientadorEditado, resumoEditado;
         String areaPocEditado;
         ArrayList<String> listaAutoresEditado = new ArrayList<>();
@@ -154,7 +155,6 @@ public class Poc {
         resumoEditado = scan.nextLine();
         setResumo(resumoEditado);
 
-        scan.close();
+        scan.close();*/
     }
-
 }
