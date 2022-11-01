@@ -21,7 +21,7 @@ import br.ufv.caf.visao.MenusUsuarios;
 
 
 public abstract class Usuario {
-    public enum TipoUsuario{
+    public enum TipoUsuario {
         ALUNO, PROFESSOR, ADMINISTRADOR;
     }
     private String nome;
@@ -31,7 +31,7 @@ public abstract class Usuario {
 
     private MenusUsuarios menu;
 
-    protected Usuario(String nome, int matricula, String senha, TipoUsuario tUsuario){
+    protected Usuario(String nome, int matricula, String senha, TipoUsuario tUsuario) {
         this.menu = new MenusUsuarios();
         this.nome = nome;
         this.matricula = matricula;
@@ -39,28 +39,28 @@ public abstract class Usuario {
         this.tipoUsuario = tUsuario;
     }
 
-    public int getMatricula(){
+    public int getMatricula() {
         return this.matricula;
     }
 
-    public void mostraUsuario(){
+    public void mostraUsuario() {
         System.out.println("- NOME USUARIO: "+this.nome);
         System.out.println("- MATRICULA USUARIO: "+this.matricula);
         System.out.println("- TIPO USUARIO: "+this.tipoUsuario.name());
     }
 
-    protected void cadastraUsuario(TipoUsuario tUsuario){
-        Scanner scan = new Scanner(System.in);
+    protected void cadastraUsuario(TipoUsuario tUsuario) { //Mudar para receber entrada no controle
+        /*Scanner scan = new Scanner(System.in);
         System.out.println("*** NOVO USUARIO ***");
         System.out.println("- NOME USUARIO: ");
         this.nome = scan.nextLine();
         System.out.println("- SENHA: 4 Digitos INTEIROS");
         this.senha = scan.nextLine();
         scan.nextLine();
-        scan.close();
+        scan.close();*/
     }
 
-    public void mostraOpcoes(){
+    public void mostraOpcoes() {
         switch(this.tipoUsuario.name()){
             case "ALUNO":
                 menu.menuFuncionalidadesAluno();
