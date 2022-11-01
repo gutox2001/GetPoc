@@ -11,7 +11,8 @@ public class ListaPocs {
     protected ArrayList<Poc> getListaPocs(){
         return this.listaPocs;
     }
-    
+
+    //TODO verificar se essas funçẽos vão ficar aqui
     public void adicionar(Poc poc){
         this.listaPocs.add(poc);
     }
