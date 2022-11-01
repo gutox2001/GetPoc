@@ -18,42 +18,44 @@ import br.ufv.caf.armazenamento.ListaUsuarios;
 *
 */
 
-public class Administrador extends Usuario{
+public class Administrador extends Usuario {
     public Administrador(String nome, int matricula, String senha, TipoUsuario tUsuario) {
         super(nome, matricula, senha, tUsuario);
     }
 
     public TipoUsuario t = TipoUsuario.ADMINISTRADOR;
 
-    private ListaPocs gPoc = new ListaPocs();
-    private ListaUsuarios lUsuarios = new ListaUsuarios();
+    /*private ListaPocs listaPocs = new ListaPocs();
+    private ListaUsuarios lUsuarios = new ListaUsuarios();*/
+    //Chamar função do controle
+    //Controle controlePocs = new Controle()
 
-    public void adicionarPocAdminin(Poc poc){
-        gPoc.adicionar(poc);
+    public void adicionarPocAdminin(Poc poc) {
+        //controlePocs.adicionar(poc);
     }
 
-    public void removerPocAdminin(String tituloPoc){
-        gPoc.remover(tituloPoc);
+    public void removerPocAdminin(String tituloPoc) {
+        //controlePocs.remover(tituloPoc);
     }
 
-    public Poc pesquisarPocAdminin(String tituloPoc){
-        return gPoc.pesquisar(tituloPoc);
+    public Poc pesquisarPocAdminin(String tituloPoc) {
+        return //controlePocs.pesquisar(tituloPoc);
     }
 
-    public void mostrarUsuarioAdminin(){
+    public void mostrarUsuarioAdminin() {
         mostraUsuario();
     }
 
-    public void cadastrarUsuario(String nome, int matricula, String senha, TipoUsuario t){
+    public void cadastrarUsuario(String nome, int matricula, String senha, TipoUsuario t) { ////controleUsuario
         switch (t) {
             case ALUNO:
-                lUsuarios.adicionarAluno(nome, matricula, senha, t);
+                //controleUsuario.adicionarAluno(nome, matricula, senha, t);
                 break;
             case PROFESSOR:
-                lUsuarios.adicionarProfessor(nome, matricula, senha, t);
+                //controleUsuario.adicionarProfessor(nome, matricula, senha, t);
                 break;
             case ADMINISTRADOR:
-                lUsuarios.adicionarAdministrador(nome, matricula, senha, t);
+                //controleUsuario.adicionarAdministrador(nome, matricula, senha, t);
                 break;
             default:
                 break;
@@ -61,10 +63,10 @@ public class Administrador extends Usuario{
     }
     
     public void removerUsuario(TipoUsuario t, int matricula){
-        lUsuarios.removerUsuario(matricula);
+        //controlePocs.removerUsuario(matricula);
     }
 
     public void mostrarUsuariosAdminin(){
-        lUsuarios.mostraUsuarios();
+        //controleUsuario.mostraUsuarios();
     }
 }
