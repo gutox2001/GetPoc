@@ -5,52 +5,51 @@ import java.util.ArrayList;
 import br.ufv.caf.modelo.Administrador;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
+import br.ufv.caf.modelo.Usuario;
 import br.ufv.caf.modelo.Usuario.TipoUsuario;
+
+/*
+*
+*Classe que representa o armazenamento dos Usuários cadastrados no sistema;
+*Métodos:
+*	
+*	public void adicionarProfessor - adiciona professor na lista de usuários;
+*   
+*
+*
+*@Aroldo Augusto Barbosa Simões - 4250
+*@Gabriel Ryan dos Santos Oliveira - 4688
+*@Thiago Cândido Rocha - 4225
+*@João Vitor Chagas Lobo - 4693
+*
+*/
 
 
 public class ListaUsuarios {
-    private ArrayList<Professor> Professores = new ArrayList<Professor>();
-    private ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
-    private ArrayList<Administrador> Administradores = new ArrayList<Administrador>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
 
     public void adicionarProfessor(String nome, int matricula, String senha, TipoUsuario t){
         t = TipoUsuario.PROFESSOR;
         Professor p = new Professor(nome, matricula, senha, t);
-        this.Professores.add(p);
+        this.usuarios.add(p);
     }
 
     public void adicionarAluno(String nome, int matricula, String senha, TipoUsuario t){
         t = TipoUsuario.ALUNO;
         Aluno a = new Aluno(nome, matricula, senha, t);
-        this.Alunos.add(a);
+        this.usuarios.add(a);
     }
     
     public void adicionarAdministrador(String nome, int matricula, String senha, TipoUsuario t){
         t = TipoUsuario.ADMINISTRADOR;
         Administrador adminin = new Administrador(nome, matricula, senha, t);
-        this.Administradores.add(adminin);
+        this.usuarios.add(adminin);
     }
 
-    public void removerProfessor(int matricula){
-        for (Professor p : Professores) {
-            if(matricula == p.getMatricula()){
-                this.Professores.remove(p);
-                break;
-            }
-        }
-    }
-    public void removerAluno(int matricula){
-        for (Aluno aluno : Alunos) {
-            if(matricula == aluno.getMatricula()){
-                this.Alunos.remove(aluno);
-                break;
-            }
-        }
-    }
-    public void removerAdministrador(int matricula){
-        for (Administrador adminin : Administradores) {
-            if(matricula == adminin.getMatricula()){
-                this.Administradores.remove(adminin);
+    public void removerUsuario(int matricula){
+        for (Usuario u : usuarios) {
+            if(matricula == u.getMatricula()){
+                this.usuarios.remove(u);
                 break;
             }
         }
@@ -58,44 +57,18 @@ public class ListaUsuarios {
     
     public void mostraUsuarios(){
         System.out.println("\n********************");
-        System.out.println("ADMINISTRADORES:");
-        if (Administradores.isEmpty()) {
+        if (usuarios.isEmpty()) {
             System.out.println("VAZIO");
         }
-        for (Administrador administrador : Administradores) {
-            administrador.mostrarUsuarioAdminin();
-            administrador.mostraOpcoes();
-        }
-        System.out.println("  ----------  ");
-        System.out.println("PROFESSORES:");
-        if (Professores.isEmpty()) {
-            System.out.println("VAZIO");
-        }
-        for (Professor professor : Professores) {
-            professor.mostraUsuario();
-            professor.mostraOpcoes();
-        }
-        System.out.println("  ----------  ");
-        System.out.println("ALUNOS:");
-        if (Alunos.isEmpty()) {
-            System.out.println("VAZIO");
-        }
-        for (Aluno aluno : Alunos) {
-            aluno.mostraUsuarioAluno();
-            aluno.mostraOpcoes();
+        for (Usuario usuario : usuarios) {
+            usuario.mostraUsuario();
+            usuario.mostraOpcoes();
         }
         System.out.println("********************");
     }
 
-    public ArrayList<Professor> getListaProfessores(){
-        return Professores;
+    public ArrayList<Usuario> getListaUsuarios(){
+        return usuarios;
     }
 
-    public ArrayList<Aluno> getListaAlunos(){
-        return Alunos;
-    }
-
-    public ArrayList<Administrador> getListaAdministradores(){
-        return Administradores;
-    }
 }
