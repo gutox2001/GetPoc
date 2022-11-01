@@ -18,11 +18,13 @@ public class ListaUsuarios {
         Professor p = new Professor(nome, matricula, senha, t);
         this.Professores.add(p);
     }
+
     public void adicionarAluno(String nome, int matricula, String senha, TipoUsuario t){
         t = TipoUsuario.ALUNO;
         Aluno a = new Aluno(nome, matricula, senha, t);
         this.Alunos.add(a);
     }
+    
     public void adicionarAdministrador(String nome, int matricula, String senha, TipoUsuario t){
         t = TipoUsuario.ADMINISTRADOR;
         Administrador adminin = new Administrador(nome, matricula, senha, t);
