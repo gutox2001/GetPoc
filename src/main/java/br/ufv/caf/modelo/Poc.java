@@ -10,8 +10,6 @@ import java.util.Scanner;
 *Métodos:
 *	public Poc - construtor da classe;
 *	
-*
-*
 *@Aroldo Augusto Barbosa Simões - 4250
 *
 */
