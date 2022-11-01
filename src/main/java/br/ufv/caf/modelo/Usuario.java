@@ -1,26 +1,22 @@
 package br.ufv.caf.modelo;
 
-import br.ufv.caf.visao.MenusUsuarios;
-
 /*
 *
-*Classe abstrata Usuário que representa os usuários base do sistema;
-*Métodos:
-*	protected Usuario - construtor da classe;
-*	
+* Classe abstrata Usuário que representa os usuários base do sistema;
+* Métodos:
+*   protected Usuario - construtor da classe;
 *
+* @Aroldo Augusto Barbosa Simões - 4250
+* @Gabriel Ryan dos Santos Oliveira - 4688
+* @Thiago Cândido Rocha - 4225
+* @João Vitor Chagas Lobo - 4693
 *
-*@Aroldo Augusto Barbosa Simões - 4250
-*@Gabriel Ryan dos Santos Oliveira - 4688
-*@Thiago Cândido Rocha - 4225
-*@João Vitor Chagas Lobo - 4693
+* @since 01/11/2022 - 20:17
 *
 */
 
-
 public abstract class Usuario {
-    //TODO o certo é ele ficar aqui?
-
+    //TODO o certo é o enum ficar aqui?
     public enum TipoUsuario {
         ALUNO, PROFESSOR, ADMINISTRADOR;
     }
@@ -30,53 +26,26 @@ public abstract class Usuario {
     private String senha;
     private TipoUsuario tipoUsuario;
 
-    //TODO tirar
-    private MenusUsuarios menu;
-
-
-    protected Usuario(String nome, int matricula, String senha, TipoUsuario tUsuario) {
-        this.menu = new MenusUsuarios();
+    protected Usuario(String nome, int matricula, String senha, TipoUsuario tipoUsuario) {
         this.nome = nome;
         this.matricula = matricula;
         this.senha = senha;
-        //TODO mudar o nome dessa variável
-        this.tipoUsuario = tUsuario;
+        this.tipoUsuario = tipoUsuario;
+
     }
 
     //TODO ver se precisa de mais gets ou sets
     public int getMatricula() {
         return this.matricula;
+
     }
 
+    //TODO modar para toString
     public void mostraUsuario() {
         System.out.println("- NOME USUARIO: " + this.nome);
         System.out.println("- MATRICULA USUARIO: " + this.matricula);
         System.out.println("- TIPO USUARIO: " + this.tipoUsuario.name());
+
     }
 
-    //TODO tirar funções e colocar no controle
-    protected void cadastraUsuario(TipoUsuario tUsuario) { //Mudar para receber entrada no controle
-        /*Scanner scan = new Scanner(System.in);
-        System.out.println("*** NOVO USUARIO ***");
-        System.out.println("- NOME USUARIO: ");
-        this.nome = scan.nextLine();
-        System.out.println("- SENHA: 4 Digitos INTEIROS");
-        this.senha = scan.nextLine();
-        scan.nextLine();
-        scan.close();*/
-    }
-
-    //TODO tirar funções e colocar na visão
-    public void mostraOpcoes() {
-        switch(this.tipoUsuario.name()){
-            case "ALUNO":
-                menu.menuFuncionalidadesAluno();
-                break;
-            case "PROFESSOR":
-                menu.menuFuncionalidadesProfessor();
-                break;
-            case "ADMINISTRADOR":
-                menu.menuFuncionalidadesAdministrador();
-        }
-    }
 }
