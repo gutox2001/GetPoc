@@ -20,6 +20,7 @@ public class Poc {
     public enum Area {
         ENGENHARIA_DE_SOFTWARE, CIENCIA_DE_DADOS, INTERNET_DAS_COISAS;
     }
+
     private String titulo;
     private ArrayList<String> listaAutores;
     private String nomeOrientador;
@@ -39,6 +40,7 @@ public class Poc {
         this.titulo = titulo;
         this.areaDaPoc = areaDaPoc;
     }
+
     public Area getAreaDaPoc() {
         return this.areaDaPoc;
     }
@@ -128,7 +130,7 @@ public class Poc {
         }
 
         do {
-            System.out.println("Entre com o "+i+"º nome do(a) autor(a): ");
+            System.out.println("Entre com o " + i + "º nome do(a) autor(a): ");
             String nome = scan.nextLine();
             listaAutoresEditado.add(nome);
             System.out.println("Deseja inserir outro autor? Digite: 0 para NAO / 1 para SIM");

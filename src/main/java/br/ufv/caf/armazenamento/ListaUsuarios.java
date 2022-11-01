@@ -70,4 +70,5 @@ public class ListaUsuarios {
     public ArrayList<Usuario> getListaUsuarios(){
         return usuarios;
     }
+
 }
