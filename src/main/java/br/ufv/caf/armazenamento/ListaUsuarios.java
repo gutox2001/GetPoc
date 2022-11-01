@@ -24,7 +24,7 @@ import br.ufv.caf.modelo.Usuario.TipoUsuario;
 *
 */
 
-
+//TODO verificar o nome das variáveis e padronização
 public class ListaUsuarios {
     private ArrayList<Usuario> usuarios = new ArrayList<>();
 
@@ -46,6 +46,7 @@ public class ListaUsuarios {
         this.usuarios.add(adminin);
     }
 
+    //TODO conferir se vai ficar aqui
     public void removerUsuario(int matricula){
         for (Usuario u : usuarios) {
             if(matricula == u.getMatricula()){
@@ -54,7 +55,8 @@ public class ListaUsuarios {
             }
         }
     }
-    
+
+    //TODO manda pro controle
     public void mostraUsuarios(){
         System.out.println("\n********************");
         if (usuarios.isEmpty()) {
@@ -70,4 +72,5 @@ public class ListaUsuarios {
     public ArrayList<Usuario> getListaUsuarios(){
         return usuarios;
     }
+
 }
