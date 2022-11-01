@@ -146,4 +146,5 @@ public class MenusUsuarios {
             scan.nextLine();
         } while (entrada < 0 && entrada > 8);
     }
+
 }
