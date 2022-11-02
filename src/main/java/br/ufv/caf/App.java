@@ -2,8 +2,8 @@ package br.ufv.caf;
 
 import java.util.Scanner;
 
-import br.ufv.caf.armazenamento.ListaPocs;
-import br.ufv.caf.armazenamento.ListaUsuarios;
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
+import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario.TipoUsuario;
 
@@ -12,11 +12,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        ListaUsuarios usuarios;
+        ArmazenamentoUsuarios usuarios;
 
         Scanner input = new Scanner(System.in);
 
-        usuarios = new ListaUsuarios();
+        usuarios = new ArmazenamentoUsuarios();
 
         System.out.println("0 - Cadastrar um usuario || 1 - entrar com um existente?");
 
@@ -43,10 +43,10 @@ public class App
         System.out.println("TESTE POC e ListaPoc");
         Poc p = new Poc("Eu e ela", null, "Aroldo", "Joao", 
         null, "lindo", null);
-        ListaPocs l = new ListaPocs();
-        l.adicionar(p);
+        ArmazenamentoPocs l = new ArmazenamentoPocs();
+        l.addPoc(p);
         System.out.println(l.pesquisar("Eu e ela"));
-        l.remover("Eu e ela");
+        l.removePoc("Eu e ela");
         System.out.println(p.getTitulo());
     
     }
