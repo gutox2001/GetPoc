@@ -1,11 +1,14 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
 
 //TODO colocar no cabeçalho as descrições das funções
+//TODO fazer modulo de validação
 /*
  *
  * Classe que faz o controle do fluxo de informçãoes do sistema do GetPoc;
@@ -23,10 +26,11 @@ import java.util.ArrayList;
 
 public class ControleGetPoc {
 
-    ArmazenamentoUsuarios armazenamentoUsuarios;
+    ArmazenamentoUsuarios armzUsuarios;
+    ArmazenamentoPocs armzPocs;
 
     public ControleGetPoc() {
-        armazenamentoUsuarios = new ArmazenamentoUsuarios();
+        armzUsuarios = new ArmazenamentoUsuarios();
     }
 
     //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
@@ -37,16 +41,9 @@ public class ControleGetPoc {
 
     public void addUsuario(Usuario usuarioAdm, Usuario novoUsuario) {
 
-        if (!armazenamentoUsuarios.pesquisaUsuario(novoUsuario)){
+        if (!armzUsuarios.pesquisaUsuario(novoUsuario)){
+            armzUsuarios.addUsuario(novoUsuario);
 
-            if (usuarioAdm.getTipoUsuario() == Usuario.TipoUsuario.ADMINISTRADOR) {
-
-                armazenamentoUsuarios.addUsuario(novoUsuario);
-
-            } else {
-                //TODO - TELA fazer e colocar a tela de "usuário não tem acesso"
-
-            }
         } else {
             //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado" mesma da pesquisa
 
@@ -55,26 +52,8 @@ public class ControleGetPoc {
 
     public void removeUsuario(Usuario usuarioAdm, Usuario usuarioARemover) {
 
-        if (armazenamentoUsuarios.pesquisaUsuario(usuarioARemover)) {
-
-            if (usuarioAdm.getTipoUsuario() == Usuario.TipoUsuario.ADMINISTRADOR) {
-
-                armazenamentoUsuarios.removerUsuario(usuarioARemover);
-
-            } else {
-                //TODO - TELA fazer e colocar a tela de "usuário não tem acesso"
-
-            }
-        } else {
-            //TODO - TELA fazer e colocar a tela de "usuário não existe" mesma da pesquisa
-
-        }
-    }
-
-    public void exibeUsuario(Usuario usuarioAPesquisar) {
-
-        if (armazenamentoUsuarios.pesquisaUsuario(usuarioAPesquisar)){
-            //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado" e exibir o usuário
+        if (armzUsuarios.pesquisaUsuario(usuarioARemover)) {
+                armzUsuarios.removeUsuario(usuarioARemover);
 
         } else {
             //TODO - TELA fazer e colocar a tela de "usuário não existe" mesma da pesquisa
@@ -82,21 +61,29 @@ public class ControleGetPoc {
         }
     }
 
-    //TODO - ANOTAÇÃO essa função fica aqui ou em visão, ela é mesmo necessária??
-    public void exibirUsuario() {
+    public void pesquisaUsuario(Usuario usuarioAPesquisar) {
 
+        if (armzUsuarios.pesquisaUsuario(usuarioAPesquisar)){
+            //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado"
+
+        } else {
+            //TODO - TELA fazer e colocar a tela de "usuário não existe"
+
+        }
     }
 
-    //TODO - TELA essa função fica aqui ou em visão
     public void exibirTodosUsuarios() {
-        if (armazenamentoUsuarios.isEmpty()){
-            //TODO - TELA de "Não há usuários cadastrados
-        } else {
-            ArrayList<Usuario> usuariosCadastrados = armazenamentoUsuarios.getListaUsuarios();
 
+        if (armzUsuarios.isEmpty()){
+            //TODO - TELA de "Não há usuários cadastrados
+
+        } else {
+            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
+
+            //TODO - TELA colocar na tela a exibição de varios usuários ou mandar a array list pra visão
             for (Usuario usuario : usuariosCadastrados) {
-                //TODO - TELA colocar na tela a exibição de varios usuários
                 System.out.println(usuario);
+
             }
         }
     }
@@ -105,16 +92,52 @@ public class ControleGetPoc {
      * Manipulam a classe Poc;
      */
 
-    public void addPoc() {
+    public void addPoc(Poc novoPoc) {
 
+        if (!armzPocs.pesquisaPoc(novoPoc)){
+            armzPocs.addPoc(novoPoc);
+
+        } else {
+            //TODO - TELA fazer e colocar a tela de "Poc já cadastrado" mesma da pesquisa
+
+        }
     }
 
-    public void removePoc() {
+    public void removePoc(Poc pocARemover) {
+        if (armzPocs.pesquisaPoc(pocARemover)){
+            armzPocs.removePoc(pocARemover);
 
+        } else {
+            //TODO - TELA fazer e colocar a tela de "poc não existe" mesma da pesquisa
+
+        }
     }
 
-    public void pesquisarPoc() {
+    public void pesquisarPoc(Poc pocAPesquisar) {
 
+        if (armzPocs.pesquisaPoc(pocAPesquisar)){
+            //TODO - TELA fazer e colocar a tela de "Poc já cadastrado"
+
+        } else {
+            //TODO - TELA fazer e colocar a tela de "poc não existe"
+
+        }
+    }
+
+    public void exibirPocs() {
+
+        if (armzPocs.isEmpty()){
+            //TODO - TELA de "Não há pocs cadastrados
+
+        } else {
+            ArrayList<Poc> pocsCadastrados = armzPocs.getPocs();
+
+            //TODO - TELA colocar na tela a exibição de varios poc ou mandar a array list pra visão
+            for (Poc pocs : pocsCadastrados) {
+                System.out.println(pocs);
+
+            }
+        }
     }
 
     public void editarPoc() {

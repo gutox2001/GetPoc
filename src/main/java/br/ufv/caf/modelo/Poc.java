@@ -40,6 +40,4 @@ public class Poc {
         this.areaDaPoc = areaPoc;
     }
 
-    // Funções gets e sets desnecessárias foram apagas, assim como a "editar", serão reformuladas usando o módulo de controle
-
 }
