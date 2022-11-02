@@ -44,9 +44,9 @@ public class App
         Poc p = new Poc("Eu e ela", null, "Aroldo", "Joao", 
         null, "lindo", null);
         ArmazenamentoPocs l = new ArmazenamentoPocs();
-        l.adicionar(p);
+        l.addPoc(p);
         System.out.println(l.pesquisar("Eu e ela"));
-        l.remover("Eu e ela");
+        l.removePoc("Eu e ela");
         System.out.println(p.getTitulo());
     
     }
