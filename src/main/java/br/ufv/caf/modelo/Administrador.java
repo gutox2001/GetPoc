@@ -19,7 +19,6 @@ public class Administrador extends Usuario {
     public Administrador(String nome, String matricula, String senha) {
 
         super(nome, matricula, senha, TipoUsuario.ADMINISTRADOR);
-
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
