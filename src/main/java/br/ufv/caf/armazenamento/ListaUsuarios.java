@@ -63,7 +63,7 @@ public class ListaUsuarios {
             System.out.println("VAZIO");
         }
         for (Usuario usuario : usuarios) {
-            usuario.mostraUsuario();
+            usuario.toString();
             usuario.mostraOpcoes();
         }
         System.out.println("********************");

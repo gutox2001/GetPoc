@@ -16,6 +16,7 @@ package br.ufv.caf.modelo;
 */
 
 public abstract class Usuario {
+
     //TODO o certo é o enum ficar aqui?
     public enum TipoUsuario {
         ALUNO, PROFESSOR, ADMINISTRADOR;
@@ -37,15 +38,11 @@ public abstract class Usuario {
     //TODO ver se precisa de mais gets ou sets
     public int getMatricula() {
         return this.matricula;
-
     }
 
-    //TODO modar para toString
-    public void mostraUsuario() {
-        System.out.println("- NOME USUARIO: " + this.nome);
-        System.out.println("- MATRICULA USUARIO: " + this.matricula);
-        System.out.println("- TIPO USUARIO: " + this.tipoUsuario.name());
-
+    @Override
+    public String toString() {
+        return "- NOME USUARIO: " + this.nome + "- MATRICULA USUARIO: " + this.matricula + "- TIPO USUARIO: " + this.tipoUsuario.name();
     }
 
 }
