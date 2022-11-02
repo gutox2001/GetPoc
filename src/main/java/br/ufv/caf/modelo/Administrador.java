@@ -19,7 +19,6 @@ public class Administrador extends Usuario {
 
     public Administrador(String nome, int matricula, String senha) {
         super(nome, matricula, senha, TipoUsuario.ADMINISTRADOR);
-
     }
 
 }
