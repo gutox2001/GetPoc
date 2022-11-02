@@ -7,24 +7,25 @@ import br.ufv.caf.modelo.Poc;
 
 /*
 *
-*Classe que representa o armazenamento das Pocs cadastradas no sistema;
-*Métodos:
-*   public ListaPocs - construtor da classe;
-*	public void adicionar - adiciona nova Poc na ListaPocs;
-*	
+* Classe que representa o armazenamento das Pocs cadastradas no sistema;
+* Métodos:
+*   public ArmazenamentoPocs - construtor da classe;
+*   public void adicionar - adiciona nova Poc na ArmazenamentoPocs;
 *
+* @Aroldo Augusto Barbosa Simões - 4250
+* @Gabriel Ryan dos Santos Oliveira - 4688
+* @Thiago Cândido Rocha - 4225
+* @João Vitor Chagas Lobo - 4693
 *
-*@Aroldo Augusto Barbosa Simões - 4250
-*@Gabriel Ryan dos Santos Oliveira - 4688
-*@Thiago Cândido Rocha - 4225
-*@João Vitor Chagas Lobo - 4693
+*  @since 02/11/2022 - 16:00
 *
 */
 
-public class ListaPocs {
+public class ArmazenamentoPocs {
+
     private ArrayList<Poc> listaPocs;
     
-    public ListaPocs(){
+    public ArmazenamentoPocs(){
         listaPocs = new ArrayList<Poc>();
     }
 

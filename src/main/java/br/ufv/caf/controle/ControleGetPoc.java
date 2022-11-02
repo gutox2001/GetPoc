@@ -1,5 +1,11 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.modelo.Usuario;
+
+import java.util.ArrayList;
+
+//TODO colocar no cabeçalho as descrições das funções
 /*
  *
  * Classe que faz o controle do fluxo de informçãoes do sistema do GetPoc;
@@ -11,28 +17,88 @@ package br.ufv.caf.controle;
  *  @Thiago Cândido Rocha - 4225
  *  @João Vitor Chagas Lobo - 4693
  *
+ * @since 02/11/2022 - 16:00
+ *
  */
 
 public class ControleGetPoc {
 
+    ArmazenamentoUsuarios armazenamentoUsuarios;
+
     public ControleGetPoc() {
+        armazenamentoUsuarios = new ArmazenamentoUsuarios();
     }
 
+    //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
     /** --- Funções de Usuário ---
-     * Manipulam a classe abstrata Usuario e suas subclasses;
-     * Todos os usuários são identificados por suas matriculas
+     * Manipulam a classe abstrata Usuario e as suas subclasses;
+     * Todos os usuários são identificados por suas matrículas
      */
 
-    public void addUsuario() {
+    public void addUsuario(Usuario usuarioAdm, Usuario novoUsuario) {
 
+        if (!armazenamentoUsuarios.pesquisaUsuario(novoUsuario)){
+
+            if (usuarioAdm.getTipoUsuario() == Usuario.TipoUsuario.ADMINISTRADOR) {
+
+                armazenamentoUsuarios.addUsuario(novoUsuario);
+
+            } else {
+                //TODO - TELA fazer e colocar a tela de "usuário não tem acesso"
+
+            }
+        } else {
+            //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado" mesma da pesquisa
+
+        }
     }
 
-    public void removeUsuario() {
+    public void removeUsuario(Usuario usuarioAdm, Usuario usuarioARemover) {
 
+        if (armazenamentoUsuarios.pesquisaUsuario(usuarioARemover)) {
+
+            if (usuarioAdm.getTipoUsuario() == Usuario.TipoUsuario.ADMINISTRADOR) {
+
+                armazenamentoUsuarios.removerUsuario(usuarioARemover);
+
+            } else {
+                //TODO - TELA fazer e colocar a tela de "usuário não tem acesso"
+
+            }
+        } else {
+            //TODO - TELA fazer e colocar a tela de "usuário não existe" mesma da pesquisa
+
+        }
     }
 
+    public void exibeUsuario(Usuario usuarioAPesquisar) {
+
+        if (armazenamentoUsuarios.pesquisaUsuario(usuarioAPesquisar)){
+            //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado" e exibir o usuário
+
+        } else {
+            //TODO - TELA fazer e colocar a tela de "usuário não existe" mesma da pesquisa
+
+        }
+    }
+
+    //TODO - ANOTAÇÃO essa função fica aqui ou em visão, ela é mesmo necessária??
     public void exibirUsuario() {
 
+    }
+
+    //TODO - TELA essa função fica aqui ou em visão
+    public void exibirTodosUsuarios() {
+        if (armazenamentoUsuarios.isEmpty()){
+            //TODO - TELA de "Não há usuários cadastrados
+        } else {
+            ArrayList<Usuario> usuariosCadastrados = armazenamentoUsuarios.getListaUsuarios();
+
+            for (Usuario usuario : usuariosCadastrados) {
+                //TODO - TELA colocar na tela a exibição de varios usuários
+                System.out.println(usuario);
+            }
+        }
     }
 
     /** --- Funções de Poc ---
