@@ -54,7 +54,7 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "- NOME USUARIO: " + this.nome + "- MATRICULA USUARIO: " + this.matricula + "- TIPO USUARIO: " + this.tipoUsuario.name();
+        return " NOME USUARIO: " + this.nome + "- MATRICULA USUARIO: " + this.matricula + "- TIPO USUARIO: " + this.tipoUsuario.name();
     }
 
 }

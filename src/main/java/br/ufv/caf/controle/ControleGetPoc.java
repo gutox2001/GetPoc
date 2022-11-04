@@ -4,6 +4,7 @@ import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.visao.MenusControle;
 
 import java.util.ArrayList;
 
@@ -24,12 +25,13 @@ import java.util.ArrayList;
  *
  */
 
-public class ControleGetPoc {
+public class ControleGetPoc extends MenusControle {
 
     ArmazenamentoUsuarios armzUsuarios;
     ArmazenamentoPocs armzPocs;
 
-    public ControleGetPoc() {
+    public ControleGetPoc()  {
+        super();
         armzUsuarios = new ArmazenamentoUsuarios();
     }
 
@@ -45,7 +47,7 @@ public class ControleGetPoc {
             armzUsuarios.addUsuario(novoUsuario);
 
         } else {
-            //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado" mesma da pesquisa
+            verificaCadastroUsuario(true);
 
         }
     }
@@ -56,35 +58,34 @@ public class ControleGetPoc {
                 armzUsuarios.removeUsuario(usuarioARemover);
 
         } else {
-            //TODO - TELA fazer e colocar a tela de "usuário não existe" mesma da pesquisa
+            verificaCadastroUsuario(false);
 
         }
     }
 
     public void pesquisaUsuario(Usuario usuarioAPesquisar) {
+        boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
-        if (armzUsuarios.pesquisaUsuario(usuarioAPesquisar)){
-            //TODO - TELA fazer e colocar a tela de "usuário ja cadastrado"
-
-        } else {
-            //TODO - TELA fazer e colocar a tela de "usuário não existe"
-
-        }
+        verificaCadastroUsuario(flag);
     }
 
     public void exibirTodosUsuarios() {
 
         if (armzUsuarios.isEmpty()){
-            //TODO - TELA de "Não há usuários cadastrados
+            sistemaSemUsuarios();
+
 
         } else {
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            //TODO - TELA colocar na tela a exibição de varios usuários ou mandar a array list pra visão
-            for (Usuario usuario : usuariosCadastrados) {
+            //TODO - TELA verificar se é o ideal passar a lista para a visão
+
+            exibeUsuariosDoSistema(usuariosCadastrados);
+
+            /*for (Usuario usuario : usuariosCadastrados) {
                 System.out.println(usuario);
 
-            }
+            }*/
         }
     }
 
@@ -98,7 +99,7 @@ public class ControleGetPoc {
             armzPocs.addPoc(novoPoc);
 
         } else {
-            //TODO - TELA fazer e colocar a tela de "Poc já cadastrado" mesma da pesquisa
+            verificaCadastroPOC(true);
 
         }
     }
@@ -108,35 +109,32 @@ public class ControleGetPoc {
             armzPocs.removePoc(pocARemover);
 
         } else {
-            //TODO - TELA fazer e colocar a tela de "poc não existe" mesma da pesquisa
+            verificaCadastroPOC(false);
 
         }
     }
 
     public void pesquisarPoc(Poc pocAPesquisar) {
 
-        if (armzPocs.pesquisaPoc(pocAPesquisar)){
-            //TODO - TELA fazer e colocar a tela de "Poc já cadastrado"
+        boolean flag = armzPocs.pesquisaPoc(pocAPesquisar);
 
-        } else {
-            //TODO - TELA fazer e colocar a tela de "poc não existe"
-
-        }
+        verificaCadastroPOC(flag);
     }
 
     public void exibirPocs() {
 
         if (armzPocs.isEmpty()){
-            //TODO - TELA de "Não há pocs cadastrados
+            sistemaSemPOCs();
 
         } else {
             ArrayList<Poc> pocsCadastrados = armzPocs.getPocs();
 
-            //TODO - TELA colocar na tela a exibição de varios poc ou mandar a array list pra visão
-            for (Poc pocs : pocsCadastrados) {
+            //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
+            exibePocsDoSistema(pocsCadastrados);
+            /*for (Poc pocs : pocsCadastrados) {
                 System.out.println(pocs);
 
-            }
+            }*/
         }
     }
 
