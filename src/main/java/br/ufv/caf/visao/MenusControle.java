@@ -9,11 +9,12 @@ public class MenusControle {
 
     //TODO - Verificar níveis de permissão para todos os métodos da classe
     //TODO - Dependendo de como o controle ficar organizado, talvez seja melhor separar a visao em duas
-    public void verificaCadastroUsuario(boolean flag){
+    public void verificaCadastroUsuario(boolean flag, Usuario usuario){
         if(flag){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O usuario ja esta cadastrado no nosso sistema!");
+            System.out.println(usuario);
             System.out.println("=============================================" +
                     "=============================================");
         }
@@ -53,11 +54,12 @@ public class MenusControle {
 
     }
 
-    public void verificaCadastroPOC(boolean flag){
+    public void verificaCadastroPOC(boolean flag, Poc poc){
         if(flag){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O POC esta cadastrado no nosso sistema!");
+            System.out.println(poc);
             System.out.println("=============================================" +
                     "=============================================");
         }
