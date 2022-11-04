@@ -47,7 +47,7 @@ public class ControleGetPoc extends MenusControle {
             armzUsuarios.addUsuario(novoUsuario);
 
         } else {
-            verificaCadastroUsuario(true);
+            verificaCadastroUsuario(true, novoUsuario);
 
         }
     }
@@ -58,7 +58,7 @@ public class ControleGetPoc extends MenusControle {
                 armzUsuarios.removeUsuario(usuarioARemover);
 
         } else {
-            verificaCadastroUsuario(false);
+            verificaCadastroUsuario(false, usuarioARemover);
 
         }
     }
@@ -66,7 +66,7 @@ public class ControleGetPoc extends MenusControle {
     public void pesquisaUsuario(Usuario usuarioAPesquisar) {
         boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
-        verificaCadastroUsuario(flag);
+        verificaCadastroUsuario(flag, usuarioAPesquisar);
     }
 
     public void exibirTodosUsuarios() {
@@ -99,7 +99,7 @@ public class ControleGetPoc extends MenusControle {
             armzPocs.addPoc(novoPoc);
 
         } else {
-            verificaCadastroPOC(true);
+            verificaCadastroPOC(true, novoPoc);
 
         }
     }
@@ -109,7 +109,7 @@ public class ControleGetPoc extends MenusControle {
             armzPocs.removePoc(pocARemover);
 
         } else {
-            verificaCadastroPOC(false);
+            verificaCadastroPOC(false, pocARemover);
 
         }
     }
@@ -118,7 +118,7 @@ public class ControleGetPoc extends MenusControle {
 
         boolean flag = armzPocs.pesquisaPoc(pocAPesquisar);
 
-        verificaCadastroPOC(flag);
+        verificaCadastroPOC(flag, pocAPesquisar);
     }
 
     public void exibirPocs() {
