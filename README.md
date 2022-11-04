@@ -34,7 +34,7 @@ Escolhas do grupo:
     
 Motivação pela escolha da ArrayList como estrutura de dados principal:
 
-    - A ArrayList em Java é uma estrutura de dados dinâmica que possui boas características em operações de inserção e busca, uma vez que a ordem de complexidade para ambas é O(1). No caso das operações de busca, por exemplo, bastaria associar uma chave ID, inteira, a cada POC e buscar na ArrayList o POC na exata posição em questão.
-    - Além das vantagens descritar acima, uma ArrayList possui um código muito mais intuitivo e de fácil compreensão até mesmo para programadores iniciantes em Java, bem como resulta em um programa mais limpo.
-    - Por fim, devido ao fato do programa não possuir a necessidade de ser Thread-Safe, isto é, a versão atual do GetPoc apenas possui uma única thread em execução (main), o uso de uma ArrayList para as operações anteriormente descritas é justificável. No entanto, observa-se que no caso do projeto passar a usufruir dos benefícios da programação concorrente, será interessante substituir a ArrayList por estruturas como Vector, que são Thread-Safe. 
+  - A ArrayList em Java é uma estrutura de dados dinâmica que possui boas características em operações de inserção e busca, uma vez que a ordem de complexidade para ambas é O(1). No caso das operações de busca, por exemplo, bastaria associar uma chave ID, inteira, a cada POC e buscar na ArrayList o POC na exata posição em questão.
+  - Além das vantagens descritar acima, uma ArrayList possui um código muito mais intuitivo e de fácil compreensão até mesmo para programadores iniciantes em Java, bem como resulta em um programa mais limpo.
+  - Por fim, devido ao fato do programa não possuir a necessidade de ser Thread-Safe, isto é, a versão atual do GetPoc apenas possui uma única thread em execução (main), o uso de uma ArrayList para as operações anteriormente descritas é justificável. No entanto, observa-se que no caso do projeto passar a usufruir dos benefícios da programação concorrente, será interessante substituir a ArrayList por estruturas como Vector, que são Thread-Safe. 
     
