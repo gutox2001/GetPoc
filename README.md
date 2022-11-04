@@ -38,3 +38,10 @@
   - Além das vantagens descritar acima, uma ArrayList possui um código muito mais intuitivo e de fácil compreensão até mesmo para programadores iniciantes em Java, bem como resulta em um programa mais limpo.
   - Por fim, devido ao fato do programa não possuir a necessidade de ser Thread-Safe, isto é, a versão atual do GetPoc apenas possui uma única thread em execução (main), o uso de uma ArrayList para as operações anteriormente descritas é justificável. No entanto, observa-se que no caso do projeto passar a usufruir dos benefícios da programação concorrente, será interessante substituir a ArrayList por estruturas como Vector, que são Thread-Safe. 
     
+
+**O emprego do modelo MVC no projeto:**
+
+  - A utilização do MVC no código foi de suma importância para uma melhor organização das funcionalidades de cada pacote bem como das suas respectivas classes. Além disso, facilitou o controle de versões do GitHub uma vez que conflitos podem ser tratados localmente nos pacotes, salvo em ocasiões especiais.
+  - O modelo utilizado permitiu unir as funcionalidades da Visão com o Controle e providenciará uma fácil manutenção do código caso o Controle seja subdividido em dois com funcionalidades para objetos específicos.
+  - O MVC também tornou possível integrar o Controle com o Modelo juntamente com o Armazenamento, pacote no qual as listas de objetos estão localizadas.
+  - Com a abordagem adotada, será possível integrar o projeto com um banco de dados relacional uma vez que a estruturação do código permite adicionar funcionalidades de persistência de dados sem afetar diretamente as demais classes.
