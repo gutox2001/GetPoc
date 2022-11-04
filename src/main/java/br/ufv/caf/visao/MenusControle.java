@@ -5,6 +5,25 @@ import br.ufv.caf.modelo.Poc;
 
 import java.util.ArrayList;
 
+/*
+ *
+ * Classe responsável pela exibição de informações do controle do sistema;
+ * Métodos:
+ *
+ *  public void verificaCadastroUsuario(boolean flag, Usuario usuario) - Retorna as informações do usuário se estiver/for cadastrado no sistema
+ *  public void sistemaSemUsuarios() - Retorna uma mensagem que descreve que o sistema está vazio (sem usuários cadastrados)
+ *  public void exibeUsuariosDoSistema(ArrayList<Usuario> usuariosCadastrados) - Método responsável por exibir todos os usuários cadastrados
+ *  public void verificaCadastroPOC(boolean flag, Poc poc) - Método responsável por retornar as informações de um POC se este estiver/for cadastrado no sistema
+ *  public void sistemaSemPOCs() - Exibe uma mensagem no caso do sistema não possuir POCs cadastrados
+ *  public void exibePocsDoSistema(ArrayList<Poc> pocsCadastrados) - Método responsável por exibir todos os POCs cadastrados no sistema
+ *
+ *  @Thiago Cândido Rocha - 4225
+ *
+ * @since 04/11/2022 - 13:47
+ *
+ */
+
+
 public class MenusControle {
 
     //TODO - Verificar níveis de permissão para todos os métodos da classe
