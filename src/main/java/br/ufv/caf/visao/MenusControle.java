@@ -24,7 +24,7 @@ import java.util.ArrayList;
  */
 
 
-public class MenusControle {
+public class abstrac MenusControle { //TODO - Verificar se é ideal que a classe seja abstrata
 
     //TODO - Verificar níveis de permissão para todos os métodos da classe
     //TODO - Dependendo de como o controle ficar organizado, talvez seja melhor separar a visao em duas
