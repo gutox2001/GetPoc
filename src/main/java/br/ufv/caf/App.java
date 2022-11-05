@@ -4,51 +4,42 @@ import java.util.Scanner;
 
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
-import br.ufv.caf.modelo.Poc;
-import br.ufv.caf.modelo.Usuario.TipoUsuario;
+import br.ufv.caf.controle.ControleGetPoc;
 
+/*
+ *
+ * Classe principal do sistema que une todos os modulos e os executa de acordo com cada usuário;
+ * Métodos:
+ *
+ *
+ *  @Aroldo Augusto Barbosa Simões - 4250
+ *  @Gabriel Ryan dos Santos Oliveira - 4688
+ *  @Thiago Cândido Rocha - 4225
+ *  @João Vitor Chagas Lobo - 4693
+ *
+ * @since 05/11/2022 - 20:20
+ *
+ */
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        ArmazenamentoUsuarios usuarios;
+public class App {
+    public static void main( String[] args ){
 
         Scanner input = new Scanner(System.in);
 
-        usuarios = new ArmazenamentoUsuarios();
+        ArmazenamentoUsuarios armzUsuarios = new ArmazenamentoUsuarios();
+        ArmazenamentoPocs armzPocs = new ArmazenamentoPocs();
+
+        ControleGetPoc controleGetPoc = new ControleGetPoc(armzUsuarios, armzPocs);
 
         System.out.println("0 - Cadastrar um usuario || 1 - entrar com um existente?");
 
-        switch(Integer.parseInt(input.next())){
+        //TODO - login do usuario
 
-            case 0:
-                usuarios.adicionarAluno("Aroldo",1234,"1234",TipoUsuario.ALUNO);
-                usuarios.adicionarProfessor("Thiago",1234,"1234",TipoUsuario.PROFESSOR);
-                usuarios.adicionarAdministrador("João", 5000, "9874", TipoUsuario.ADMINISTRADOR);
-                usuarios.adicionarAluno("Gabriel Nigode", 5500, "1000", TipoUsuario.ALUNO);
-                break;
+        //TODO - ações do usuário, de acordo com o usuário
 
-            case 1:
-                break;
-                
-            default:
 
-                break;
-        }
-        usuarios.mostraUsuarios();
 
         input.close();
-
-        System.out.println("TESTE POC e ListaPoc");
-        Poc p = new Poc("Eu e ela", null, "Aroldo", "Joao", 
-        null, "lindo", null);
-        ArmazenamentoPocs l = new ArmazenamentoPocs();
-        l.addPoc(p);
-        System.out.println(l.pesquisar("Eu e ela"));
-        l.removePoc("Eu e ela");
-        System.out.println(p.getTitulo());
-    
     }
 
 }
