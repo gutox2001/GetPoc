@@ -25,14 +25,16 @@ import java.util.ArrayList;
  *
  */
 
+//TODO - olhar essa questao da subclasse
 public class ControleGetPoc extends MenusControle {
 
     ArmazenamentoUsuarios armzUsuarios;
     ArmazenamentoPocs armzPocs;
 
-    public ControleGetPoc()  {
-        super();
-        armzUsuarios = new ArmazenamentoUsuarios();
+    public ControleGetPoc(ArmazenamentoUsuarios armzUsuarios, ArmazenamentoPocs armzPocs) {
+        this.armzUsuarios = armzUsuarios;
+        this.armzPocs = armzPocs;
+
     }
 
     //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
