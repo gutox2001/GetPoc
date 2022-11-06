@@ -9,7 +9,6 @@ import br.ufv.caf.visao.MenusControle;
 import java.util.ArrayList;
 
 //TODO colocar no cabeçalho as descrições das funções
-//TODO fazer modulo de validação
 /*
  *
  * Classe que faz o controle do fluxo de informçãoes do sistema do GetPoc;
@@ -76,18 +75,10 @@ public class ControleGetPoc extends MenusControle {
         if (armzUsuarios.isEmpty()){
             sistemaSemUsuarios();
 
-
         } else {
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            //TODO - TELA verificar se é o ideal passar a lista para a visão
-
             exibeUsuariosDoSistema(usuariosCadastrados);
-
-            /*for (Usuario usuario : usuariosCadastrados) {
-                System.out.println(usuario);
-
-            }*/
         }
     }
 
@@ -131,15 +122,10 @@ public class ControleGetPoc extends MenusControle {
         } else {
             ArrayList<Poc> pocsCadastrados = armzPocs.getPocs();
 
-            //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
-            exibePocsDoSistema(pocsCadastrados);
-            /*for (Poc pocs : pocsCadastrados) {
-                System.out.println(pocs);
-
-            }*/
         }
     }
 
+    //TODO - Refatorar este código atentar aos comentarios no PR
     public void editarPoc() {
         /*int resposta=1, i=1;
         String tituloEditado, nomeOrientadorEditado, nomeCo_OrientadorEditado, resumoEditado;

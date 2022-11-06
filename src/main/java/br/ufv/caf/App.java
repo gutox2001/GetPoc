@@ -11,6 +11,7 @@ import br.ufv.caf.controle.ControleGetPoc;
  * Classe principal do sistema que une todos os modulos e os executa de acordo com cada usuário;
  * Métodos:
  *
+ * @author João Lobo, Thiago Rocha, Aroldo Augusto
  *
  *  @Aroldo Augusto Barbosa Simões - 4250
  *  @Gabriel Ryan dos Santos Oliveira - 4688
@@ -36,8 +37,6 @@ public class App {
         //TODO - login do usuario
 
         //TODO - ações do usuário, de acordo com o usuário
-
-
 
         input.close();
     }
