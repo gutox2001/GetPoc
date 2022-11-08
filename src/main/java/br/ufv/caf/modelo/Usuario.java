@@ -1,75 +1,60 @@
 package br.ufv.caf.modelo;
 
-import java.util.Scanner;
-
-import br.ufv.caf.visao.MenusUsuarios;
-
 /*
 *
-*Classe abstrata Usuário que representa os usuários base do sistema;
-*Métodos:
-*	protected Usuario - construtor da classe;
-*	
+* Classe abstrata Usuário que representa os usuários base do sistema;
+* Métodos:
+*   protected Usuario - construtor da classe;
 *
+* @Aroldo Augusto Barbosa Simões - 4250
+* @Gabriel Ryan dos Santos Oliveira - 4688
+* @Thiago Cândido Rocha - 4225
+* @João Vitor Chagas Lobo - 4693
 *
-*@Aroldo Augusto Barbosa Simões - 4250
-*@Gabriel Ryan dos Santos Oliveira - 4688
-*@Thiago Cândido Rocha - 4225
-*@João Vitor Chagas Lobo - 4693
+* @since 02/11/2022 - 15:30
 *
 */
 
-
 public abstract class Usuario {
+
+    //TODO o certo é o enum ficar aqui?
     public enum TipoUsuario {
         ALUNO, PROFESSOR, ADMINISTRADOR;
     }
+
     private String nome;
     private int matricula;
     private String senha;
     private TipoUsuario tipoUsuario;
 
-    private MenusUsuarios menu;
-
-    protected Usuario(String nome, int matricula, String senha, TipoUsuario tUsuario) {
-        this.menu = new MenusUsuarios();
+    protected Usuario(String nome, int matricula, String senha, TipoUsuario tipoUsuario) {
         this.nome = nome;
         this.matricula = matricula;
         this.senha = senha;
-        this.tipoUsuario = tUsuario;
+        this.tipoUsuario = tipoUsuario;
+
+    }
+
+    //TODO ver se precisa de mais gets ou sets
+    public String getNome() {
+        return nome;
     }
 
     public int getMatricula() {
         return this.matricula;
     }
 
-    public void mostraUsuario() {
-        System.out.println("- NOME USUARIO: "+this.nome);
-        System.out.println("- MATRICULA USUARIO: "+this.matricula);
-        System.out.println("- TIPO USUARIO: "+this.tipoUsuario.name());
+    public String getSenha() {
+        return senha;
     }
 
-    protected void cadastraUsuario(TipoUsuario tUsuario) { //Mudar para receber entrada no controle
-        /*Scanner scan = new Scanner(System.in);
-        System.out.println("*** NOVO USUARIO ***");
-        System.out.println("- NOME USUARIO: ");
-        this.nome = scan.nextLine();
-        System.out.println("- SENHA: 4 Digitos INTEIROS");
-        this.senha = scan.nextLine();
-        scan.nextLine();
-        scan.close();*/
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void mostraOpcoes() {
-        switch(this.tipoUsuario.name()){
-            case "ALUNO":
-                menu.menuFuncionalidadesAluno();
-                break;
-            case "PROFESSOR":
-                menu.menuFuncionalidadesProfessor();
-                break;
-            case "ADMINISTRADOR":
-                menu.menuFuncionalidadesAdministrador();
-        }
+    @Override
+    public String toString() {
+        return " NOME USUARIO: " + this.nome + "- MATRICULA USUARIO: " + this.matricula + "- TIPO USUARIO: " + this.tipoUsuario.name();
     }
+
 }
