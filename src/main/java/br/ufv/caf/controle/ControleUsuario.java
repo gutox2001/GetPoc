@@ -4,7 +4,7 @@ import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
-import br.ufv.caf.visao.MenusControle;
+//import br.ufv.caf.visao.MenusControle; TODO - Controle vai ser importado pelo visão
 
 import java.util.ArrayList;
 
@@ -25,12 +25,11 @@ import java.util.ArrayList;
  *
  */
 
-public class ControleUsuario extends MenusControle {
+public class ControleUsuario {
 
     ArmazenamentoUsuarios armzUsuarios;
 
     public ControleUsuario()  {
-        super();
         armzUsuarios = new ArmazenamentoUsuarios();
     }
 
@@ -46,7 +45,7 @@ public class ControleUsuario extends MenusControle {
             armzUsuarios.addUsuario(novoUsuario);
 
         } else {
-            verificaCadastroUsuario(true, novoUsuario);
+            //verificaCadastroUsuario(true, novoUsuario);
 
         }
     }
@@ -57,7 +56,7 @@ public class ControleUsuario extends MenusControle {
                 armzUsuarios.removeUsuario(usuarioARemover);
 
         } else {
-            verificaCadastroUsuario(false, usuarioARemover);
+            //verificaCadastroUsuario(false, usuarioARemover);
 
         }
     }
@@ -65,13 +64,13 @@ public class ControleUsuario extends MenusControle {
     public void pesquisaUsuario(Usuario usuarioAPesquisar) {
         boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
-        verificaCadastroUsuario(flag, usuarioAPesquisar);
+        //verificaCadastroUsuario(flag, usuarioAPesquisar);
     }
 
     public void exibirTodosUsuarios() {
 
         if (armzUsuarios.isEmpty()){
-            sistemaSemUsuarios();
+            //sistemaSemUsuarios();
 
 
         } else {
@@ -79,7 +78,7 @@ public class ControleUsuario extends MenusControle {
 
             //TODO - TELA verificar se é o ideal passar a lista para a visão
 
-            exibeUsuariosDoSistema(usuariosCadastrados);
+            //exibeUsuariosDoSistema(usuariosCadastrados);
 
             /*for (Usuario usuario : usuariosCadastrados) {
                 System.out.println(usuario);
@@ -87,6 +86,5 @@ public class ControleUsuario extends MenusControle {
             }*/
         }
     }
-
-    
+   
 }

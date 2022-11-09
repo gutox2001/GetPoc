@@ -4,20 +4,34 @@ import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.modelo.Poc;
 
+
+//TODO colocar no cabeçalho as descrições das funções
+/*
+*
+* Classe que representa o armazenamento das Pocs cadastradas no sistema;
+* Métodos:
+*   public ControlePoc - construtor da classe;
+*   public void addPoc - adiciona nova Poc na ArmazenamentoPocs;
+*
+* @Aroldo Augusto Barbosa Simões - 4250
+* @João Vitor Chagas Lobo - 4693
+*
+*  @since 02/11/2022 - 18:30
+*
+*/
+
 public class ControlePoc {
-    /** --- Funções de Poc ---
-     * Manipulam a classe Poc;
-     */
 
     ArmazenamentoPocs armzPocs;
 
     public ControlePoc(){
+
         armzPocs = new ArmazenamentoPocs();
     }
 
     public void addPoc(Poc novoPoc) {
 
-        if (!armzPocs.pesquisaPoc(novoPoc)){
+        if (armzPocs.pesquisaPoc(novoPoc.getTituloPoc()) == (-1)){
             armzPocs.addPoc(novoPoc);
         } else {
             //verificaCadastroPOC(true, novoPoc);
@@ -25,22 +39,26 @@ public class ControlePoc {
         }
     }
 
-    public void removePoc(Poc pocARemover) {
-        if (armzPocs.pesquisaPoc(pocARemover)){
-            armzPocs.removePoc(pocARemover);
+    public void removePoc(String tituloPocRemover) {
+        //
+        armzPocs.removePoc(tituloPocRemover);
 
-        } else {
-            //verificaCadastroPOC(false, pocARemover);
-
-        }
     }
 
-    public boolean pesquisarPoc(Poc pocAPesquisar) {
+    public int pesquisarPoc(String tituloPocAPesquisar) {
+        //Função retorna a posição do Poc no armazenamento;
 
-        //boolean flag =
         //verificaCadastroPOC(flag, pocAPesquisar);
         
-        return armzPocs.pesquisaPoc(pocAPesquisar);
+        return armzPocs.pesquisaPoc(tituloPocAPesquisar);
+    }
+
+    public boolean isEmpty() {
+        return armzPocs.isEmpty();
+    }
+
+    public int quantidadePocsArmazenadas() {
+        return armzPocs.quantidadePocsArmazenadas();
     }
 
     public void exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
