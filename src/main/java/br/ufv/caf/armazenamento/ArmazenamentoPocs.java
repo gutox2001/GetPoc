@@ -25,7 +25,7 @@ public class ArmazenamentoPocs {
     private ArrayList<Poc> listaPocs;
     
     public ArmazenamentoPocs(){
-        listaPocs = new ArrayList<>();
+        listaPocs = new ArrayList<Poc>();
     }
 
     public ArrayList<Poc> getPocs(){
@@ -37,16 +37,32 @@ public class ArmazenamentoPocs {
         this.listaPocs.add(novoPoc);
     }
 //
-    public void removePoc(Poc pocARemover){
-        this.listaPocs.remove(pocARemover);
+    public void removePoc(String tituloPocRemover){
+        int resultadoPesquisa = pesquisaPoc(tituloPocRemover);
+        
+        if(resultadoPesquisa == -1) System.out.println("POC não encontrada!");
+        else this.listaPocs.remove(resultadoPesquisa);
+
     }
 
-    public boolean pesquisaPoc(Poc pocAPesquisar){
-        return listaPocs.contains(pocAPesquisar);
+    public int pesquisaPoc(String tituloPoc){ //Poc pocAPesquisar
+        //Função retorna a posição do Poc no armazenamento;
+
+        for (int i = 0; i < listaPocs.size(); i++) {
+            if(listaPocs.get(i).getTituloPoc() == tituloPoc) return i;
+        }
+
+        return -1; //Retorna -1 se não foi possível achar o Poc;
+
+        //return listaPocs.contains(pocAPesquisar);
     }
 
     public boolean isEmpty() {
-        return listaPocs.isEmpty();
+        return true;
+    }
+
+    public int quantidadePocsArmazenadas() {
+        return listaPocs.size();
     }
 
 }

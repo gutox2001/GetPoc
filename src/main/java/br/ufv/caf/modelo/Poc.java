@@ -31,7 +31,6 @@ public class Poc {
 
     public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
                String nomeCoOrientador, ArrayList<String> palavrasChave, String resumo, Area areaPoc) {
-
         this.titulo = titulo;
         this.nomeOrientador = nomeOrientador;
         this.nomeCoOrientador = nomeCoOrientador;
@@ -40,4 +39,8 @@ public class Poc {
         this.areaDaPoc = areaPoc;
     }
 
+    public String getTituloPoc(){
+        return this.titulo;
+    }
+    
 }

@@ -1,9 +1,11 @@
 package br.ufv.caf;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
-//import java.util.ArrayList;
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.Poc;
 
@@ -17,8 +19,11 @@ import br.ufv.caf.modelo.Poc;
 *   public void teste1, public void teste2, public void teste3 - faz o teste das classes Poc e ListaPocs;
 *
 *
-*
+*@Aroldo Augusto Barbosa Simões - 4250
 *@Gabriel Ryan dos Santos Oliveira - 4688
+* 
+*@since 09/11/2022 - 14:00
+*@version 1.1
 *
 */
 
@@ -30,7 +35,7 @@ public class PocTest {
 
     @BeforeEach
     public void iniciaTeste() {
-        /*
+        
         ArrayList<String> listaAutores = new ArrayList<String>();
         ArrayList<String> listaPalavrasChave = new ArrayList<String>();
 
@@ -41,51 +46,55 @@ public class PocTest {
         listaPalavrasChave.add("ESOF");
         listaPalavrasChave.add("Engenharia");
         listaPalavrasChave.add("SoftWare");
-        */
+        
         controlePoc.addPoc(new Poc("ESOF", null, "Aroldo",
         "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE));
-        /*listaAutores.clear();
-        listaPalavrasChave.clear();    */
+
+        System.out.println(controlePoc.quantidadePocsArmazenadas());
+
+        listaAutores.clear();
+        listaPalavrasChave.clear();    
 
         //SEGUNDA POC
-        /* 
         listaAutores.add("Joao");
         listaAutores.add("Thiago");
 
         listaPalavrasChave.add("CD");
         listaPalavrasChave.add("Ciencia");
         listaPalavrasChave.add("Dados");
-        */
+        
         controlePoc.addPoc(new Poc("CD", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS));
-        /*/
+
         listaAutores.clear();
-        listaPalavrasChave.clear();*/
+        listaPalavrasChave.clear();
 
         //TERCEIRA POC
-        /*
         listaAutores.add("Gabriel");
         listaAutores.add("Joao");
 
         listaPalavrasChave.add("IC");
         listaPalavrasChave.add("Internet");
-        listaPalavrasChave.add("Coisas");*/
+        listaPalavrasChave.add("Coisas");
 
         controlePoc.addPoc(new Poc("IC", null, "Gabriel",
         "Joao", null, "INTERNET_DAS_COISAS", 
         Poc.Area.INTERNET_DAS_COISAS));
-        /*
+        
         listaAutores.clear();
-        listaPalavrasChave.clear();*/
+        listaPalavrasChave.clear();
     }
 
     @Test
     public void teste01(){
+
         iniciaTeste();
-        //controlePoc.editar();
-        /*
+
+        assertEquals(3, controlePoc.quantidadePocsArmazenadas());
+
+        
         ArrayList<String> listaAutoresTeste1 = new ArrayList<String>();
         ArrayList<String> listaPalavrasChaveTeste1 = new ArrayList<String>();
         
@@ -94,24 +103,27 @@ public class PocTest {
 
         listaPalavrasChaveTeste1.add("ESOF");
         listaPalavrasChaveTeste1.add("Engenharia");
-        listaPalavrasChaveTeste1.add("SoftWare");*/
+        listaPalavrasChaveTeste1.add("SoftWare");
 
         Poc poc1 = new Poc("ESOF", null, "Aroldo",
         "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE);
 
-        assertEquals(true, controlePoc.pesquisarPoc(poc1));
+        int resultadoPesquisa1 = controlePoc.pesquisarPoc(poc1.getTituloPoc());
 
-        controlePoc.removePoc(poc1);
-        assertEquals(controlePoc.pesquisarPoc(poc1), null );
+        assertEquals(0, resultadoPesquisa1);
+        
+        controlePoc.removePoc(poc1.getTituloPoc());
+        assertEquals(-1, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
 
         //controlePoc.editar();
     }
 
     @Test
     public void teste2() {
+
         iniciaTeste();
-        /*
+        
         ArrayList<String> listaAutoresTeste2 = new ArrayList<String>();
         ArrayList<String> listaPalavrasChaveTeste2 = new ArrayList<String>();
         listaAutoresTeste2.add("Joao");
@@ -119,16 +131,18 @@ public class PocTest {
 
         listaPalavrasChaveTeste2.add("CD");
         listaPalavrasChaveTeste2.add("Ciencia");
-        listaPalavrasChaveTeste2.add("Dados");*/
+        listaPalavrasChaveTeste2.add("Dados");
 
         Poc poc2 = new Poc("CD", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS);
 
-        assertEquals(true, controlePoc.pesquisarPoc(poc2));
+        int resultadoPesquisa2 = controlePoc.pesquisarPoc(poc2.getTituloPoc());
 
-        controlePoc.removePoc(poc2);
-        assertEquals(controlePoc.pesquisarPoc(poc2), null );
+        assertEquals(1, resultadoPesquisa2);
+
+        controlePoc.removePoc(poc2.getTituloPoc());
+        assertEquals(-1, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
 
         //controlePoc.editar();
     }
@@ -136,7 +150,7 @@ public class PocTest {
     @Test
     public void teste3() {
         iniciaTeste();
-        /*
+        
         ArrayList<String> listaAutoresTeste3 = new ArrayList<String>();
         ArrayList<String> listaPalavrasChaveTeste3 = new ArrayList<String>();
         
@@ -145,17 +159,20 @@ public class PocTest {
 
         listaPalavrasChaveTeste3.add("IC");
         listaPalavrasChaveTeste3.add("Internet");
-        listaPalavrasChaveTeste3.add("Coisas");*/
+        listaPalavrasChaveTeste3.add("Coisas");
 
         Poc poc3 = new Poc("IC", null, "Gabriel",
         "Joao", null, "INTERNET_DAS_COISAS", 
         Poc.Area.INTERNET_DAS_COISAS);
 
-        assertEquals(true, controlePoc.pesquisarPoc(poc3));
+        int resultadoPesquisa3 = controlePoc.pesquisarPoc(poc3.getTituloPoc());
 
-        controlePoc.removePoc(poc3);
-        assertEquals(controlePoc.pesquisarPoc(poc3), null );
+        assertEquals(2, resultadoPesquisa3);
+
+        controlePoc.removePoc(poc3.getTituloPoc());
+        assertEquals(-1, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
 
         //controlePoc.editar();
     }
+
 }
