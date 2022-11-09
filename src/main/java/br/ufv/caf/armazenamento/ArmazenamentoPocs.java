@@ -32,7 +32,7 @@ public class ArmazenamentoPocs {
         return this.listaPocs;
     }
 
-    //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entada de dados da função vai mudar
+    //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entrada de dados da função vai mudar
     public void addPoc(Poc novoPoc){
         this.listaPocs.add(novoPoc);
     }
