@@ -24,40 +24,29 @@ public class ArmazenamentoPocs {
 
     private ArrayList<Poc> listaPocs;
     
-    public ArmazenamentoPocs() {
+    public ArmazenamentoPocs(){
         listaPocs = new ArrayList<Poc>();
     }
 
-    public ArrayList<Poc> getPocs() {
+    public ArrayList<Poc> getPocs(){
         return this.listaPocs;
     }
 
     //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entrada de dados da função vai mudar
-    public boolean addPoc(Poc novoPoc) { //Função adiciona uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário;
-        if (pesquisaPoc(novoPoc.getTituloPoc()) == -1) {
-            this.listaPocs.add(novoPoc);
-            return true;
-        } else {
-            return false;
-        }
-
+    public void addPoc(Poc novoPoc){
+        this.listaPocs.add(novoPoc);
     }
-
-    public boolean removePoc(String tituloPocRemover) { //Função remove uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário;
+//
+    public void removePoc(String tituloPocRemover){ //TODO - O print deveria ficar na visão e não no armazenamento
         int resultadoPesquisa = pesquisaPoc(tituloPocRemover);
         
-        if(resultadoPesquisa == -1) {
-            System.out.println("POC não encontrada!");
-            return false;
-        }
-        else {
-            this.listaPocs.remove(resultadoPesquisa);
-            return true;
-        }
+        if(resultadoPesquisa == -1) System.out.println("POC não encontrada!");
+        else this.listaPocs.remove(resultadoPesquisa);
 
     }
 
-    public int pesquisaPoc(String tituloPoc) { //Função retorna a posição do Poc no armazenamento;
+    public int pesquisaPoc(String tituloPoc){ //Poc pocAPesquisar
+        //Função retorna a posição do Poc no armazenamento;
 
         for (int i = 0; i < listaPocs.size(); i++) {
             if(listaPocs.get(i).getTituloPoc() == tituloPoc) return i;
@@ -65,18 +54,14 @@ public class ArmazenamentoPocs {
 
         return -1; //Retorna -1 se não foi possível achar o Poc;
 
+        //return listaPocs.contains(pocAPesquisar);
     }
 
-    public boolean isEmpty() { //Função analisa se não há POCs armazenadas no sistema e retorna 'true' caso isso ocorra;
-        if (listaPocs.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
-
+    public boolean isEmpty() {
+        return true;
     }
 
-    public int quantidadePocsArmazenadas() { //Função analisa e retorna quantas POCs estão armazenadas no sistema;
+    public int quantidadePocsArmazenadas() {
         return listaPocs.size();
     }
 

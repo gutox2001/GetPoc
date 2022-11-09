@@ -29,14 +29,13 @@ public class ControlePoc {
         armzPocs = new ArmazenamentoPocs();
     }
 
-    public void addPoc(Poc novoPoc) {
+    public boolean addPoc(Poc novoPoc) {
 
         if (armzPocs.pesquisaPoc(novoPoc.getTituloPoc()) == (-1)){
             armzPocs.addPoc(novoPoc);
-        } else {
-            //verificaCadastroPOC(true, novoPoc);
-
+            return true;
         }
+        return false;
     }
 
     public void removePoc(String tituloPocRemover) {
@@ -48,6 +47,8 @@ public class ControlePoc {
     public int pesquisarPoc(String tituloPocAPesquisar) {
         //Função retorna a posição do Poc no armazenamento;
 
+        //verificaCadastroPOC(flag, pocAPesquisar);
+        
         return armzPocs.pesquisaPoc(tituloPocAPesquisar);
     }
 
@@ -59,32 +60,25 @@ public class ControlePoc {
         return armzPocs.quantidadePocsArmazenadas();
     }
 
-    public boolean exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
+    public void exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
 
         if (armzPocs.isEmpty()){
+            //sistemaSemPOCs();
             System.out.println("Sistema não possui POCs cadastradas!");
-            return false;
 
         } else {
             ArrayList<Poc> pocsCadastrados = armzPocs.getPocs();
 
             //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
-            for (Poc poc : pocsCadastrados) {
-                poc.exibePoc();
-            }
-            return true;
+            //exibePocsDoSistema(pocsCadastrados);
+            /*for (Poc pocs : pocsCadastrados) {
+                System.out.println(pocs);
+
+            }*/
         }
     }
 
-    public int editarPoc(Poc pocEditada, String tituloPocDesatualizada) { //Retorna a posição da Poc atualizada; //TODO - REFATORAR EDITAR POC - conferir
-        if (pesquisarPoc(tituloPocDesatualizada) != -1) {
-            removePoc(tituloPocDesatualizada);
-            addPoc(pocEditada);
-            return pesquisarPoc(pocEditada.getTituloPoc());
-        } else {
-            return -1; //Poc desatualizada não foi encontrada;
-        }
-
+    public void editarPoc() {
         /*int resposta=1, i=1;
         String tituloEditado, nomeOrientadorEditado, nomeCo_OrientadorEditado, resumoEditado;
         String areaPocEditado;
@@ -147,5 +141,7 @@ public class ControlePoc {
         scan.close();
     }*/
     }
+
+
 
 }

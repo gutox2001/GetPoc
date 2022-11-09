@@ -1,7 +1,10 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
+//import br.ufv.caf.visao.MenusControle; TODO - Controle vai ser importado pelo visão
 
 import java.util.ArrayList;
 
@@ -36,75 +39,46 @@ public class ControleUsuario {
      * Todos os usuários são identificados por suas matrículas
      */
 
-    public boolean validaUsuario(Usuario usuario) { //TODO - Refatorar validaUsuario
-        if (usuario.validaMatricula() && usuario.validaSenha()) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean addUsuario(Usuario novoUsuario) {
 
-    }
-
-    public boolean addUsuario(Usuario novoUsuario) { //Adiciona um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
-    
-        if (validaUsuario(novoUsuario)){
+        if (!armzUsuarios.pesquisaUsuario(novoUsuario)){
             armzUsuarios.addUsuario(novoUsuario);
-            if (pesquisaUsuario(novoUsuario) != -1) {
-                return true;
-            } else {
-                return false;
-            }
-        } 
-        else {
-            return false;
+            return true;
 
         }
-        
+        return false;
     }
 
-    public boolean removeUsuario(Usuario usuarioARemover) { //Remove um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
+    public boolean removeUsuario(Usuario usuarioARemover) {
 
-        if (armzUsuarios.pesquisaUsuario(usuarioARemover) != -1) {
+        if (armzUsuarios.pesquisaUsuario(usuarioARemover)) {
                 armzUsuarios.removeUsuario(usuarioARemover);
-                if (armzUsuarios.pesquisaUsuario(usuarioARemover) == -1) { //Pesquisa para conferir se Usuário foi removido;
-                    return true;
-                }
-                else return false;
+                return true;
 
-        } else {
-                if (validaUsuario(usuarioARemover)) {
-                    System.out.println("Usuário válido porém não possui cadastro! ");
-                    return false;
-                } else {
-                    return false;
-                }
         }
-
+        return false;
     }
 
-    public int pesquisaUsuario(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
-        if(validaUsuario(usuarioAPesquisar))
-            return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-        else return -1; //Retorna '-1' se o objeto não foi encontrado;
-
+    public void pesquisaUsuario(Usuario usuarioAPesquisar) {
+        boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
     }
 
-    public boolean exibirTodosUsuarios() {
+    public void exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
 
         if (armzUsuarios.isEmpty()){
-            System.out.println("Sistema não possui Usuários cadastrados!");
-            return false;
+            //sistemaSemUsuarios();
 
 
-        } 
-        else {
+        } else {
+
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            for (Usuario usuario : usuariosCadastrados) {
-                usuario.toString();
-            }
+            //exibeUsuariosDoSistema(usuariosCadastrados);
 
-            return true;
+            /*for (Usuario usuario : usuariosCadastrados) {
+                System.out.println(usuario);
+
+            }*/
         }
     }
    
