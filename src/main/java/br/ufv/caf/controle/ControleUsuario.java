@@ -39,44 +39,39 @@ public class ControleUsuario {
      * Todos os usuários são identificados por suas matrículas
      */
 
-    public void addUsuario(Usuario usuarioAdm, Usuario novoUsuario) {
+    public boolean addUsuario(Usuario novoUsuario) {
 
         if (!armzUsuarios.pesquisaUsuario(novoUsuario)){
             armzUsuarios.addUsuario(novoUsuario);
-
-        } else {
-            //verificaCadastroUsuario(true, novoUsuario);
+            return true;
 
         }
+        return false;
     }
 
-    public void removeUsuario(Usuario usuarioAdm, Usuario usuarioARemover) {
+    public boolean removeUsuario(Usuario usuarioARemover) {
 
         if (armzUsuarios.pesquisaUsuario(usuarioARemover)) {
                 armzUsuarios.removeUsuario(usuarioARemover);
-
-        } else {
-            //verificaCadastroUsuario(false, usuarioARemover);
+                return true;
 
         }
+        return false;
     }
 
     public void pesquisaUsuario(Usuario usuarioAPesquisar) {
         boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-
-        //verificaCadastroUsuario(flag, usuarioAPesquisar);
     }
 
-    public void exibirTodosUsuarios() {
+    public void exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
 
         if (armzUsuarios.isEmpty()){
             //sistemaSemUsuarios();
 
 
         } else {
-            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            //TODO - TELA verificar se é o ideal passar a lista para a visão
+            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
             //exibeUsuariosDoSistema(usuariosCadastrados);
 

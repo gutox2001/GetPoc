@@ -29,14 +29,13 @@ public class ControlePoc {
         armzPocs = new ArmazenamentoPocs();
     }
 
-    public void addPoc(Poc novoPoc) {
+    public boolean addPoc(Poc novoPoc) {
 
         if (armzPocs.pesquisaPoc(novoPoc.getTituloPoc()) == (-1)){
             armzPocs.addPoc(novoPoc);
-        } else {
-            //verificaCadastroPOC(true, novoPoc);
-
+            return true;
         }
+        return false;
     }
 
     public void removePoc(String tituloPocRemover) {
@@ -143,20 +142,6 @@ public class ControlePoc {
     }*/
     }
 
-    //TODO ver se isso fica aqui meesmo
-    /*public void mostraOpcoes() {
-        switch(this.tipoUsuario.name()){
-            case "ALUNO":
-                menu.menuFuncionalidadesAluno();
-                break;
-            case "PROFESSOR":
-                menu.menuFuncionalidadesProfessor();
-                break;
-            case "ADMINISTRADOR":
-                menu.menuFuncionalidadesAdministrador();
-        }
-    }
 
-     */
 
 }

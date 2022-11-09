@@ -1,5 +1,6 @@
 package br.ufv.caf.visao;
 
+import br.ufv.caf.controle.ControleUsuario;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
@@ -8,17 +9,15 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
-public class MenusUsuario implements InterfaceControle{
+public class TelaUsuario{
     //TODO - Separar o controle em dois
-    private ControleUsuario controle;
-    //private ControleGetPoc controle;
-    private Scanner input;
+    protected ControleUsuario controle;
+    protected Scanner inputUser;
 
-    public MenusUsuario(/*ControleUsuario controle*/ControleUsuario controle){
-        this.input = new Scanner(System.in);
+    public TelaUsuario(ControleUsuario controle){
+        this.inputUser = new Scanner(System.in);
         this.controle = controle;
     }
-
 
     private Usuario preenchimentoDados(){
         String nome;
@@ -29,17 +28,17 @@ public class MenusUsuario implements InterfaceControle{
 
         System.out.println("*************************************************************************");
         System.out.println("-> Entre com o nome do usuário");
-        nome = this.input.nextLine();
+        nome = this.inputUser.nextLine();
 
         do {
             System.out.println("Entre com um número válido de matrícula");
-            matricula = this.input.nextLine();
-        }while(!controle.verificaMatricula(matricula)); //TODO - Função para verificar matrícula válida
+            matricula = this.inputUser.nextLine();
+        }while(!this.controle.verificaMatricula(matricula)); //TODO - Função para verificar matrícula válida
 
-        senha = this.input.nextLine();
+        senha = this.inputUser.nextLine();
 
         System.out.println("O usuário é um professor ou um aluno?  \n0 - PROFESSOR   1 - ALUNO");
-        opcao = Short.parseShort(this.input.nextLine());
+        opcao = Short.parseShort(this.inputUser.nextLine());
         switch(opcao){
             case 0:
 
@@ -57,17 +56,12 @@ public class MenusUsuario implements InterfaceControle{
 
     private void efetuarCadastro() {
 
-        Usuario user;
-
         //TODO - É preciso estar logado como ADMIN para cadastrar. Ainda será verificado como isso será feito
-
-        user = preenchimentoDados();
-
-        if(!this.controle.addUsuario(admin, user)){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
+        System.out.println("*************************************************************************");
+        if(!this.controle.addUsuario(preenchimentoDados())){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O usuario ja esta cadastrado no nosso sistema!");
-            System.out.println(user);
             System.out.println("=============================================" +
                     "=============================================");
         }
@@ -76,7 +70,6 @@ public class MenusUsuario implements InterfaceControle{
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O cadastro no sistema foi realizado com sucesso!");
-            System.out.println(user);
             System.out.println("=============================================" +
                     "=============================================");
         }
@@ -88,12 +81,9 @@ public class MenusUsuario implements InterfaceControle{
 
     private void efetuarRemocao() {
 
-        Usuario user;
-
         //TODO - Talvez exista uma forma melhor para a remoção sem a necessidade de passar um objeto usuário totalmente idêntico
-        user = preenchimentoDados();
 
-        if(!this.controle.removeUsuario(admin, user)){
+        if(!this.controle.removeUsuario(preenchimentoDados())){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
@@ -111,64 +101,11 @@ public class MenusUsuario implements InterfaceControle{
 
     }
 
-    @Override
-    public void verificaSistema() {
-        if(this.controle.sistemaVazio){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
-            System.out.println("=============================================" +
-                    "=============================================");
-
-            System.out.println("Nao existem usuarios cadastrados no nosso sistema, " +
-                    "consulte um administrador para maiores detalhes");
-
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
-
+    private void menuPesquisa(){
+        this.controle.pesquisaUsuario(preenchimentoDados());
     }
 
-    @Override
-    public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList
-        ArrayList<Usuario> usuariosCadastrados = this.controle.getListaUsuarios();
-        System.out.println("=============================================" +
-                "=============================================");
-
-        for(Usuario user : usuariosCadastrados){
-            System.out.println("->"+user);
-        }
-
-        System.out.println("=============================================" +
-                "=============================================");
-
-    }
-
-
-    public void logarComoUsuario(){
-        String matricula, senha;
-        Usuario usuarioLogado;
-        System.out.println("*************************************************************************");
-        System.out.println("Entre com a sua matrícula e com a sua senha:");
-        matricula = this.input.nextLine();
-        senha = this.input.nextLine();
-
-        do{
-            usuarioLogado = login(matricula, senha); //TODO - Controle do usuário deve possuir o controle de Login;
-        }while(usuarioLogado != null);
-
-        if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.ALUNO)){ //TODO - Verificar se está funcionando corretamente
-            menuFuncionalidadesAluno();
-        }
-
-        else if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.PROFESSOR)){
-            menuFuncionalidadesProfessor();
-        }
-
-        else{
-            menuFuncionalidadesAdministrador();
-        }
-
-    }
-
-    private void menuFuncionalidadesAluno() {
+    protected void menuFuncionalidadesAluno(TelaPoc telaPoc) {
         int opcao;
         String nomePoc;
 
@@ -179,22 +116,19 @@ public class MenusUsuario implements InterfaceControle{
         System.out.println("=============================================");
         do {
             System.out.print("-> ");
-            opcao = Integer.parseInt(input.nextLine());
+            opcao = Integer.parseInt(inputUser.nextLine());
             switch (opcao) {
                 case 0:
                     System.out.println("OBRIGADO!");
                     break;
 
                 default: //Assume que valores incorretos sempre irão pesquisar
-                    System.out.println("Qual é o título do POC que deseja pesquisar?");
-                    nomePoc = input.nextLine();
-                    //pesquisarPoc_aluno do controlePoc;
+                    telaPoc.menuPesquisa();
                     break;
             }
         } while (opcao != 0);
     }
-
-    private void menuFuncionalidadesProfessor() {
+    protected void menuFuncionalidadesProfessor(TelaPoc telaPoc) {
         int opcao;
         String nomePoc;
 
@@ -208,30 +142,20 @@ public class MenusUsuario implements InterfaceControle{
         System.out.println("=============================================");
         do {
             System.out.print("-> ");
-            opcao = Integer.parseInt(input.nextLine());
+            opcao = Integer.parseInt(inputUser.nextLine());
             switch (opcao) {
                 case 1:
-                    System.out.println("Qual é o título do POC que deseja pesquisar?");
-                    nomePoc = input.nextLine();
-                    //pesquisarPoc_professor do controlePoc;
+                    telaPoc.menuPesquisa();
                     break;
                 case 2:
-                    System.out.println("Qual é o título do POC que deseja cadastrar?");
-                    nomePoc = input.nextLine();
-                    //cadastrarPoc_professor do controlePoc;
+                    telaPoc.menuCadastro();
                     break;
                 case 3:
-                    System.out.println("Qual é o título do POC que deseja editar?");
-                    nomePoc = input.nextLine();
-                    //editarPoc_professor do controlePoc;
+                    telaPoc.menuEdicao();
                     break;
                 case 4:
-                    System.out.println("Qual é o título do POC que deseja remover?");
-                    nomePoc = input.nextLine();
-                    //removerPoc_professor do controlePoc;
+                    telaPoc.menuRemocao();
                     break;
-
-
                 default:
                     System.out.println("OBRIGADO!");
                     break;
@@ -239,7 +163,7 @@ public class MenusUsuario implements InterfaceControle{
         } while (opcao != 0); //Assume que opções erradas irão continuar no menu mas mostrarão a mensagem acima
     }
 
-    private void menuFuncionalidadesAdministrador() {
+    protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc) {
         int opcao;
         String nomePoc;
 
@@ -257,40 +181,32 @@ public class MenusUsuario implements InterfaceControle{
         System.out.println("=============================================");
         do {
             System.out.print("-> ");
-            opcao = Integer.parseInt(input.nextLine());
+            opcao = Integer.parseInt(inputUser.nextLine());
             switch (opcao) {
 
                 case 1:
-                    System.out.println("Qual é o título do POC que deseja pesquisar?");
-                    nomePoc = input.nextLine();
-                    //pesquisarPoc_adminin do controlePoc;
+                    telaPoc.menuPesquisa();
                     break;
                 case 2:
-                    System.out.println("Qual é o título do POC que deseja cadastrar?");
-                    nomePoc = input.nextLine();
-                    //cadastrarPoc_adminin do controlePoc;
+                    telaPoc.menuCadastro();
                     break;
                 case 3:
-                    System.out.println("Qual é o título do POC que deseja editar?");
-                    nomePoc = input.nextLine();
-                    //editarPoc_adminin do controlePoc;
+                    telaPoc.menuEdicao();
                     break;
                 case 4:
-                    System.out.println("Qual é o título do POC que deseja remover?");
-                    nomePoc = input.nextLine();
-                    //removerPoc_adminin do controlePoc;
+                    telaPoc.menuRemocao();
                     break;
                 case 5: //TODO - Visão para pesquisa
-                    //pesquisarUsuario_adminin do controleUsuario;
+                    this.menuPesquisa();
                     break;
                 case 6:
-                    efetuarCadastro();
+                    this.efetuarCadastro();
                     break;
                 case 7: //TODO - Visão para edição
-                    //editarUsuario_adminin do controleUsuario;
+
                     break;
                 case 8:
-                    efetuarRemocao();
+                    this.efetuarRemocao();
                     //removerUsuario_adminin do controleUsuario;
                     break;
 
