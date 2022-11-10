@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *  @Thiago Cândido Rocha - 4225
  *  @João Vitor Chagas Lobo - 4693
  *
- * @since 02/11/2022 - 16:00
+ * @since 09/11/2022 - 22:00
  *
  */
 
@@ -37,7 +37,8 @@ public class ControleUsuario {
      */
 
     public boolean validaUsuario(Usuario usuario) { //TODO - Refatorar validaUsuario
-        if (usuario.validaMatricula() && usuario.validaSenha()) {
+        
+        if ((usuario.validaMatricula() && usuario.validaSenha()) && (pesquisaUsuario(usuario) != -1)) {
             return true;
         } else {
             return false;
@@ -106,6 +107,10 @@ public class ControleUsuario {
 
             return true;
         }
+    }
+
+    public boolean isEmpty(){
+        return armzUsuarios.isEmpty();
     }
    
 }

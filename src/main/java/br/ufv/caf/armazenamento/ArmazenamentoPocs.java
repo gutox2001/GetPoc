@@ -16,7 +16,7 @@ import br.ufv.caf.modelo.Poc;
 * @Thiago Cândido Rocha - 4225
 * @João Vitor Chagas Lobo - 4693
 *
-*  @since 02/11/2022 - 18:30
+*  @since 09/11/2022 - 22:00
 *
 */
 
@@ -44,6 +44,7 @@ public class ArmazenamentoPocs {
     }
 
     public boolean removePoc(String tituloPocRemover) { //Função remove uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário;
+        
         int resultadoPesquisa = pesquisaPoc(tituloPocRemover);
         
         if(resultadoPesquisa == -1) {
@@ -68,6 +69,7 @@ public class ArmazenamentoPocs {
     }
 
     public boolean isEmpty() { //Função analisa se não há POCs armazenadas no sistema e retorna 'true' caso isso ocorra;
+        
         if (listaPocs.isEmpty()) {
             return true;
         } else {

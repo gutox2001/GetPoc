@@ -6,6 +6,21 @@ import br.ufv.caf.modelo.Poc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+* //TODO colocar no cabeçalho as descrições das funções
+* Classe ...;
+* Métodos:
+*   public ...;
+*
+* @Aroldo Augusto Barbosa Simões - 4250
+* @Gabriel Ryan dos Santos Oliveira - 4688
+* @Thiago Cândido Rocha - 4225
+* @João Vitor Chagas Lobo - 4693
+*
+* @since 09/11/2022 - 22:00
+*
+*/
+
 public class TelaPoc {
     protected ControlePoc controle;
     private Scanner inputPoc;
@@ -110,7 +125,7 @@ public class TelaPoc {
 
         System.out.println("-> Entre com o título do POC que deseja remover:");
 
-        if(!this.controle.removePoc(this.inputPoc.nextLine()){
+        if(!this.controle.removePoc(this.inputPoc.nextLine())){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
