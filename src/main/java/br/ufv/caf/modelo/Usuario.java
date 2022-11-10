@@ -1,7 +1,7 @@
 package br.ufv.caf.modelo;
 
 /*
-*
+* //TODO colocar no cabeçalho as descrições das funções
 * Classe abstrata Usuário que representa os usuários base do sistema;
 * Métodos:
 *   protected Usuario - construtor da classe;
@@ -11,7 +11,7 @@ package br.ufv.caf.modelo;
 * @Thiago Cândido Rocha - 4225
 * @João Vitor Chagas Lobo - 4693
 *
-* @since 02/11/2022 - 15:30
+* @since 09/11/2022 - 20:00
 *
 */
 
@@ -23,11 +23,11 @@ public abstract class Usuario {
     }
 
     private String nome;
-    private int matricula;
+    private String matricula;
     private String senha;
     private TipoUsuario tipoUsuario;
 
-    protected Usuario(String nome, int matricula, String senha, TipoUsuario tipoUsuario) {
+    protected Usuario(String nome, String matricula, String senha, TipoUsuario tipoUsuario) {
         this.nome = nome;
         this.matricula = matricula;
         this.senha = senha;
@@ -40,7 +40,7 @@ public abstract class Usuario {
         return nome;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return this.matricula;
     }
 
@@ -54,7 +54,11 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return " NOME USUARIO: " + this.nome + "- MATRICULA USUARIO: " + this.matricula + "- TIPO USUARIO: " + this.tipoUsuario.name();
+        return " NOME USUARIO: " + this.nome + "\n- MATRICULA USUARIO: " + this.matricula + "\n- TIPO USUARIO: " + this.tipoUsuario.name();
     }
+
+    public abstract boolean validaMatricula();
+
+    public abstract boolean validaSenha();
 
 }
