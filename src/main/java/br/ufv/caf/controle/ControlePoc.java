@@ -16,7 +16,7 @@ import br.ufv.caf.modelo.Poc;
 * @Aroldo Augusto Barbosa Simões - 4250
 * @João Vitor Chagas Lobo - 4693
 *
-*  @since 02/11/2022 - 18:30
+*  @since 09/11/2022 - 22:00
 *
 */
 
@@ -38,9 +38,13 @@ public class ControlePoc {
         return false;
     }
 
-    public void removePoc(String tituloPocRemover) {
-        //
-        armzPocs.removePoc(tituloPocRemover);
+    public boolean removePoc(String tituloPocRemover) { //Função remove uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário;
+        
+        if (armzPocs.removePoc(tituloPocRemover)) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 

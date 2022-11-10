@@ -6,6 +6,21 @@ import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
 
+/*
+* //TODO colocar no cabeçalho as descrições das funções
+* Classe ...;
+* Métodos:
+*   public ...;
+*
+* @Aroldo Augusto Barbosa Simões - 4250
+* @Gabriel Ryan dos Santos Oliveira - 4688
+* @Thiago Cândido Rocha - 4225
+* @João Vitor Chagas Lobo - 4693
+*
+* @since 09/11/2022 - 22:00
+*
+*/
+
 public class TelaControle {
     private TelaUsuario telaUser;
     private TelaPoc telaPoc;
@@ -44,7 +59,7 @@ public class TelaControle {
 
 
     public void verificaSistema() {
-        if(this.telaUser.controle.sistemaVazio()){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
+        if(this.telaUser.controle.isEmpty()){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
             System.out.println("=============================================" +
                     "=============================================");
 
@@ -59,7 +74,10 @@ public class TelaControle {
 
 
     public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList
-        ArrayList<Usuario> usuariosCadastrados = this.telaUser.controle.getListaUsuarios();
+        
+        this.telaUser.controle.exibirTodosUsuarios();
+        //TODO - FAVOR VALIDAR a pedido de Aroldo @Thiago
+        /*ArrayList<Usuario> usuariosCadastrados = this.telaUser.controle.exibirTodosUsuarios();
         System.out.println("=============================================" +
                 "=============================================");
 
@@ -70,5 +88,8 @@ public class TelaControle {
         System.out.println("=============================================" +
                 "=============================================");
 
+    }*/
+
     }
+
 }
