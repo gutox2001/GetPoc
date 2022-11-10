@@ -16,7 +16,7 @@ import br.ufv.caf.modelo.Usuario;
 * @Thiago Cândido Rocha - 4225
 * @João Vitor Chagas Lobo - 4693
 *
-*  @since 02/11/2022 - 18:30
+*  @since 09/11/2022 - 20:00
 *
 */
 
@@ -32,17 +32,25 @@ public class ArmazenamentoUsuarios {
         return this.listaUsuarios;
     }
 
-    //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entada de dados da função vai mudar
+    //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entada de dados da função vai mudar (Não há necessidade - Aroldo)
     public void addUsuario(Usuario novoUsuario){
         this.listaUsuarios.add(novoUsuario);
     }
 
     public void removeUsuario(Usuario usuarioARemover){
-       this.listaUsuarios.remove(usuarioARemover);
+       this.listaUsuarios.remove(pesquisaUsuario(usuarioARemover));
     }
 
-    public boolean pesquisaUsuario(Usuario usuarioAPesquisar) {
-        return listaUsuarios.contains(usuarioAPesquisar);
+    public int pesquisaUsuario(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            if ((usuarioAPesquisar.getNome() == listaUsuarios.get(i).getNome()) &&
+                usuarioAPesquisar.getMatricula() == listaUsuarios.get(i).getMatricula() &&
+                usuarioAPesquisar.getSenha() == listaUsuarios.get(i).getSenha()) {
+                return i;
+            }
+        }
+        return -1; //Lista pode estar vazia;
+
     }
 
     public boolean isEmpty() {

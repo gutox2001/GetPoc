@@ -11,7 +11,7 @@ import br.ufv.caf.modelo.Poc;
 
 
 /*
-*
+* //TODO colocar no cabeçalho as descrições das funções
 *Classe que faz o teste das classes Poc e ListaPocs;
 *Métodos:
 *	public TestePoc - construtor da classe;
@@ -22,8 +22,8 @@ import br.ufv.caf.modelo.Poc;
 *@Aroldo Augusto Barbosa Simões - 4250
 *@Gabriel Ryan dos Santos Oliveira - 4688
 * 
-*@since 09/11/2022 - 14:00
-*@version 1.1
+*@since 09/11/2022 - 21:30
+*@version 1.2
 *
 */
 
@@ -88,7 +88,7 @@ public class PocTest {
     }
 
     @Test
-    public void teste01(){
+    public void teste01(){ //Testa Funcionalidades ControlePoc para Poc1
 
         iniciaTeste();
 
@@ -105,22 +105,32 @@ public class PocTest {
         listaPalavrasChaveTeste1.add("Engenharia");
         listaPalavrasChaveTeste1.add("SoftWare");
 
-        Poc poc1 = new Poc("ESOF", null, "Aroldo",
-        "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
+        Poc poc1 = new Poc("ESOF", listaAutoresTeste1, "Aroldo",
+        "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE);
 
         int resultadoPesquisa1 = controlePoc.pesquisarPoc(poc1.getTituloPoc());
-
         assertEquals(0, resultadoPesquisa1);
         
         controlePoc.removePoc(poc1.getTituloPoc());
         assertEquals(-1, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
 
-        //controlePoc.editar();
+        int resultadoEditarPoc1 = controlePoc.editarPoc(poc1, "DESATUALIZADA");
+        assertEquals(-1, resultadoEditarPoc1);
+
+        boolean resultadoexibirPocs1 = controlePoc.exibirPocs();
+        assertEquals(true, resultadoexibirPocs1);
+
+        boolean resultadoIsEmptyPoc1 = controlePoc.isEmpty();
+        assertEquals(false, resultadoIsEmptyPoc1);
+
+        int resultadoquantidadePocsArmazenadasPoc1 = controlePoc.quantidadePocsArmazenadas();
+        assertEquals(2, resultadoquantidadePocsArmazenadasPoc1);
+
     }
 
     @Test
-    public void teste2() {
+    public void teste2() { //Testa Funcionalidades ControlePoc para Poc2
 
         iniciaTeste();
         
@@ -144,11 +154,25 @@ public class PocTest {
         controlePoc.removePoc(poc2.getTituloPoc());
         assertEquals(-1, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
 
-        //controlePoc.editar();
+        Poc novaPoc2 = new Poc("NOVA POC 2", null, "Joao",
+        "Thiago", null, "CIENCIA_DE_DADOS", 
+        Poc.Area.CIENCIA_DE_DADOS);
+        int resultadoEditarPoc1 = controlePoc.editarPoc(novaPoc2, "IC");
+        assertEquals(1, resultadoEditarPoc1); //Poc editada deve estar agora na posição '1' da lista
+
+        boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
+        assertEquals(true, resultadoexibirPocs2);
+
+        boolean resultadoIsEmptyPoc2 = controlePoc.isEmpty();
+        assertEquals(false, resultadoIsEmptyPoc2);
+
+        int resultadoquantidadePocsArmazenadasPoc2 = controlePoc.quantidadePocsArmazenadas();
+        assertEquals(2, resultadoquantidadePocsArmazenadasPoc2);
+
     }
 
     @Test
-    public void teste3() {
+    public void teste3() { //Testa Funcionalidades ControlePoc para Poc3
         iniciaTeste();
         
         ArrayList<String> listaAutoresTeste3 = new ArrayList<String>();
@@ -172,7 +196,21 @@ public class PocTest {
         controlePoc.removePoc(poc3.getTituloPoc());
         assertEquals(-1, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
 
-        //controlePoc.editar();
+        Poc novaPoc3 = new Poc("NOVA POC 3", null, "PROFESSOR ATUALIZADO - Fabrício",
+        "Thiago - Atualizado", null, "Sem resumo especificado", 
+        Poc.Area.CIENCIA_DE_DADOS);
+        int resultadoEditarPoc1 = controlePoc.editarPoc(novaPoc3, "CD");
+        assertEquals(1, resultadoEditarPoc1); //Poc editada deve estar agora na posição '1' da lista
+
+        boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
+        assertEquals(true, resultadoexibirPocs2);
+
+        boolean resultadoIsEmptyPoc3 = controlePoc.isEmpty();
+        assertEquals(false, resultadoIsEmptyPoc3);
+
+        int resultadoquantidadePocsArmazenadasPoc3 = controlePoc.quantidadePocsArmazenadas();
+        assertEquals(2, resultadoquantidadePocsArmazenadasPoc3);
+
     }
 
 }
