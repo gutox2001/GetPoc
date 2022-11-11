@@ -46,15 +46,14 @@ public class ControleUsuario {
      * @throws Null
      */
 
-    public void addUsuario(Usuario usuarioAdm, Usuario novoUsuario) {
+    public boolean addUsuario(Usuario novoUsuario) {
 
         if (!armzUsuarios.pesquisaUsuario(novoUsuario)){
             armzUsuarios.addUsuario(novoUsuario);
-
-        } else {
-            //verificaCadastroUsuario(true, novoUsuario);
+            return true;
 
         }
+        return false;
     }
 
      /** Método removeUsuario, usado para poder remover os usuários da lista de usuários do sistema
@@ -66,15 +65,14 @@ public class ControleUsuario {
      * @throws Null
      */
 
-    public void removeUsuario(Usuario usuarioAdm, Usuario usuarioARemover) {
+    public boolean removeUsuario(Usuario usuarioARemover) {
 
         if (armzUsuarios.pesquisaUsuario(usuarioARemover)) {
                 armzUsuarios.removeUsuario(usuarioARemover);
-
-        } else {
-            //verificaCadastroUsuario(false, usuarioARemover);
+                return true;
 
         }
+        return false;
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários
@@ -87,8 +85,6 @@ public class ControleUsuario {
 
     public void pesquisaUsuario(Usuario usuarioAPesquisar) {
         boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-
-        //verificaCadastroUsuario(flag, usuarioAPesquisar);
     }
 
     /** Método exibirTodosUsuarios, utilizado para exibir se os usuários armazenados na lista de usuários
@@ -99,16 +95,15 @@ public class ControleUsuario {
      * @throws Null
      */
 
-    public void exibirTodosUsuarios() {
+    public void exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
 
         if (armzUsuarios.isEmpty()){
             //sistemaSemUsuarios();
 
 
         } else {
-            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            //TODO - TELA verificar se é o ideal passar a lista para a visão
+            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
             //exibeUsuariosDoSistema(usuariosCadastrados);
 

@@ -35,14 +35,13 @@ public class ControlePoc {
      * @throws Null
      */
 
-    public void addPoc(Poc novoPoc) {
+    public boolean addPoc(Poc novoPoc) {
 
         if (armzPocs.pesquisaPoc(novoPoc.getTituloPoc()) == (-1)){
             armzPocs.addPoc(novoPoc);
-        } else {
-            //verificaCadastroPOC(true, novoPoc);
-
+            return true;
         }
+        return false;
     }
 
     /** Método removePoc, usado para remover um determinado poc da lista de poc's do sistema
@@ -197,19 +196,6 @@ public class ControlePoc {
     }*/
     }
 
-    //TODO ver se isso fica aqui meesmo
-    /*public void mostraOpcoes() {
-        switch(this.tipoUsuario.name()){
-            case "ALUNO":
-                menu.menuFuncionalidadesAluno();
-                break;
-            case "PROFESSOR":
-                menu.menuFuncionalidadesProfessor();
-                break;
-            case "ADMINISTRADOR":
-                menu.menuFuncionalidadesAdministrador();
-        }
-    }
 
-     */
+
 }
