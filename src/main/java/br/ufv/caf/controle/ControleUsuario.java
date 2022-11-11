@@ -1,30 +1,31 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
+//import br.ufv.caf.visao.MenusControle; TODO - Controle vai ser importado pelo visão
 
 import java.util.ArrayList;
-
-//TODO colocar no cabeçalho as descrições das funções
 //TODO fazer modulo de validação
-/*
- *
- * Classe que faz o controle do fluxo de informçãoes do sistema do GetPoc;
- * Métodos:
- *  public ControleGetPoc - construtor da classe;
- *
- *  @Aroldo Augusto Barbosa Simões - 4250
- *  @Gabriel Ryan dos Santos Oliveira - 4688
- *  @Thiago Cândido Rocha - 4225
- *  @João Vitor Chagas Lobo - 4693
- *
- * @since 09/11/2022 - 22:00
- *
+
+/** Classes que tem a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
+ * @author
+ * @since 02/11/2022 - 16:00
+ * @version 1.0
  */
 
 public class ControleUsuario {
 
     ArmazenamentoUsuarios armzUsuarios;
+
+    /** Método ControleUsuario, construtor da classe ControleUsuario
+     * @author 
+     * @param Null
+     * @return Null
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
 
     public ControleUsuario()  {
         armzUsuarios = new ArmazenamentoUsuarios();
@@ -32,85 +33,86 @@ public class ControleUsuario {
 
     //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
     /** --- Funções de Usuário ---
-     * Manipulam a classe abstrata Usuario e as suas subclasses;
-     * Todos os usuários são identificados por suas matrículas
+     * ;
+     * 
      */
 
-    public boolean validaUsuario(Usuario usuario) { //TODO - Refatorar validaUsuario
-        
-        if ((usuario.validaMatricula() && usuario.validaSenha()) && (pesquisaUsuario(usuario) != -1)) {
-            return true;
-        } else {
-            return false;
-        }
+    /** Método addUsuario, usado para poder adicionar novos usuários a lista de usuários do sistema
+     * <p>
+     * Manipulam a classe abstrata Usuario e as suas subclasses
+     * <p>
+     * Todos os usuários são identificados por suas matrículas
+     * @author
+     * @param novoUsuario Usuario - Novo Usuário
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
 
-    }
+    public boolean addUsuario(Usuario novoUsuario) {
 
-    public boolean addUsuario(Usuario novoUsuario) { //Adiciona um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
-    
-        if (validaUsuario(novoUsuario)){
+        if (!armzUsuarios.pesquisaUsuario(novoUsuario)){
             armzUsuarios.addUsuario(novoUsuario);
-            if (pesquisaUsuario(novoUsuario) != -1) {
-                return true;
-            } else {
-                return false;
-            }
-        } 
-        else {
-            return false;
+            return true;
 
         }
-        
+        return false;
     }
 
-    public boolean removeUsuario(Usuario usuarioARemover) { //Remove um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
+    /** Método removeUsuario, usado para poder remover os usuários da lista de usuários do sistema
+     * @author 
+     * @param usuarioARemover Usuario - Usuário que deseja remover
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
 
-        if (armzUsuarios.pesquisaUsuario(usuarioARemover) != -1) {
+    public boolean removeUsuario(Usuario usuarioARemover) {
+
+        if (armzUsuarios.pesquisaUsuario(usuarioARemover)) {
                 armzUsuarios.removeUsuario(usuarioARemover);
-                if (armzUsuarios.pesquisaUsuario(usuarioARemover) == -1) { //Pesquisa para conferir se Usuário foi removido;
-                    return true;
-                }
-                else return false;
+                return true;
+
+        }
+        return false;
+    }
+
+    /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários
+     * @author 
+     * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
+    public void pesquisaUsuario(Usuario usuarioAPesquisar) {
+        boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
+    }
+
+    /** Método exibirTodosUsuarios, utilizado para exibir se os usuários armazenados na lista de usuários
+     * @author
+     * @param Null
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
+    public void exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
+        
+        if (armzUsuarios.isEmpty()){
+            //sistemaSemUsuarios();
+
 
         } else {
-                if (validaUsuario(usuarioARemover)) {
-                    System.out.println("Usuário válido porém não possui cadastro! ");
-                    return false;
-                } else {
-                    return false;
-                }
-        }
 
-    }
-
-    public int pesquisaUsuario(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
-        if(validaUsuario(usuarioAPesquisar))
-            return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-        else return -1; //Retorna '-1' se o objeto não foi encontrado;
-
-    }
-
-    public boolean exibirTodosUsuarios() {
-
-        if (armzUsuarios.isEmpty()){
-            System.out.println("Sistema não possui Usuários cadastrados!");
-            return false;
-
-
-        } 
-        else {
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
+        
+            //exibeUsuariosDoSistema(usuariosCadastrados);
 
-            for (Usuario usuario : usuariosCadastrados) {
-                usuario.toString();
-            }
+            /*for (Usuario usuario : usuariosCadastrados) {
+                System.out.println(usuario);
 
-            return true;
+            }*/
         }
     }
-
-    public boolean isEmpty(){
-        return armzUsuarios.isEmpty();
-    }
-   
 }

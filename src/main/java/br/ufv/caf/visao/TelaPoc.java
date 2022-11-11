@@ -6,29 +6,36 @@ import br.ufv.caf.modelo.Poc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe ...;
-* Métodos:
-*   public ...;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-* @since 09/11/2022 - 22:00
-*
-*/
+/** Classes que tem como funcionalidade apresentar a tela de controle sobre os poc's
+ * @author 
+ * @since Data - Hora
+ * @version 1.0
+ */
 
 public class TelaPoc {
     protected ControlePoc controle;
     private Scanner inputPoc;
 
+    /** Método TelaPoc, construtor da classe TelaPoc
+     * @author 
+     * @param controle ControlePoc - Descrição
+     * @return Null
+     * @since Data - Hora
+     * @throws Null
+     */
+
     public TelaPoc(ControlePoc controle){
         this.controle = controle;
         this.inputPoc = new Scanner(System.in);
     }
+
+    /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
+     * @author 
+     * @param Null
+     * @return Poc
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private Poc preenchimentoDados(){
         String titulo;
@@ -83,6 +90,14 @@ public class TelaPoc {
                 palavrasChave, resumo, area);
     }
 
+    /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
+     * @author 
+     * @param Null
+     * @return int
+     * @since Data - Hora
+     * @throws Null
+     */
+
     protected int  menuPesquisa(){
         String titulo;
 
@@ -94,6 +109,14 @@ public class TelaPoc {
 
         return this.controle.pesquisarPoc(titulo);
     }
+
+    /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
+     * @author 
+     * @param Null
+     * @return void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     protected void menuCadastro(){
 
@@ -117,15 +140,31 @@ public class TelaPoc {
         System.out.println("*************************************************************************");
     }
 
+    /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema
+     * @author 
+     * @param Null
+     * @return void
+     * @since Data - Hora
+     * @throws Null
+     */
+
     protected void menuEdicao(){ // TODO - Implementar a lógica para a edição no controle e para e leitura de dados aqui
 
     }
+
+    /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
+     * @author 
+     * @param Null
+     * @return void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     protected void menuRemocao(){
 
         System.out.println("-> Entre com o título do POC que deseja remover:");
 
-        if(!this.controle.removePoc(this.inputPoc.nextLine())){
+        if(!this.controle.removePoc(this.inputPoc.nextLine()){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
@@ -141,5 +180,4 @@ public class TelaPoc {
                     "=============================================");
         }
     }
-
 }
