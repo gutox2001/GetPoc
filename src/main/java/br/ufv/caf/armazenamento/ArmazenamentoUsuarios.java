@@ -41,11 +41,7 @@ public class ArmazenamentoUsuarios {
 
     // TODO - Annotation: Se o modo de armazenamento mudar, a entrada de dados da função também mudara
 
-    /** Método addUsuario, usNo ramo dev
-Your branch is up to date with 'origin/dev'.
-
-nothing to commit, working tree clean
-ado para adicionar um novos usuários a lista de usuários
+    /** Método addUsuario, utilizado para adicionar um novo usuário a lista de usuários
      * @author
      * @param novoUsuario Usuario - Novo usuário
      * @return void

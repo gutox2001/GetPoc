@@ -57,5 +57,4 @@ public class Poc {
     public String getTituloPoc(){
         return this.titulo;
     }
-    
 }

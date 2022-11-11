@@ -30,7 +30,7 @@ public class ControlePoc {
     /** Método addPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
      * @author 
      * @param novoPoc Poc - Novo Poc
-     * @return void
+     * @return boolean
      * @since 02/11/2022 - 18:30
      * @throws Null
      */
@@ -195,7 +195,4 @@ public class ControlePoc {
         scan.close();
     }*/
     }
-
-
-
 }

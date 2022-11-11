@@ -33,15 +33,18 @@ public class ControleUsuario {
 
     //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
     /** --- Funções de Usuário ---
-     * Manipulam a classe abstrata Usuario e as suas subclasses;
-     * Todos os usuários são identificados por suas matrículas
+     * ;
+     * 
      */
 
     /** Método addUsuario, usado para poder adicionar novos usuários a lista de usuários do sistema
-     * @author 
-     * @param usuarioAdm Usuario - Novo Usuário do tipo Adm
+     * <p>
+     * Manipulam a classe abstrata Usuario e as suas subclasses
+     * <p>
+     * Todos os usuários são identificados por suas matrículas
+     * @author
      * @param novoUsuario Usuario - Novo Usuário
-     * @return void
+     * @return boolean
      * @since 02/11/2022 - 16:00
      * @throws Null
      */
@@ -56,11 +59,10 @@ public class ControleUsuario {
         return false;
     }
 
-     /** Método removeUsuario, usado para poder remover os usuários da lista de usuários do sistema
+    /** Método removeUsuario, usado para poder remover os usuários da lista de usuários do sistema
      * @author 
-     * @param usuarioAdm Usuario - Usuário do tipo Adm
      * @param usuarioARemover Usuario - Usuário que deseja remover
-     * @return void
+     * @return boolean
      * @since 02/11/2022 - 16:00
      * @throws Null
      */
@@ -96,7 +98,7 @@ public class ControleUsuario {
      */
 
     public void exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
-
+        
         if (armzUsuarios.isEmpty()){
             //sistemaSemUsuarios();
 
@@ -104,7 +106,7 @@ public class ControleUsuario {
         } else {
 
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
-
+        
             //exibeUsuariosDoSistema(usuariosCadastrados);
 
             /*for (Usuario usuario : usuariosCadastrados) {
