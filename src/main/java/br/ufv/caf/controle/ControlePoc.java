@@ -1,131 +1,84 @@
 package br.ufv.caf.controle;
 
-import br.ufv.caf.armazenamento.ArmazenamentoPocs;
-import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
-import br.ufv.caf.modelo.Poc;
-import br.ufv.caf.modelo.Usuario;
-import br.ufv.caf.visao.MenusControle;
-
 import java.util.ArrayList;
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
+import br.ufv.caf.modelo.Poc;
+
 
 //TODO colocar no cabeçalho as descrições das funções
 /*
- *
- * Classe que faz o controle do fluxo de informçãoes do sistema do GetPoc;
- * Métodos:
- *  public ControleGetPoc - construtor da classe;
- *
- *  @Aroldo Augusto Barbosa Simões - 4250
- *  @Gabriel Ryan dos Santos Oliveira - 4688
- *  @Thiago Cândido Rocha - 4225
- *  @João Vitor Chagas Lobo - 4693
- *
- * @since 02/11/2022 - 16:00
- *
- */
+*
+* Classe que representa o armazenamento das Pocs cadastradas no sistema;
+* Métodos:
+*   public ControlePoc - construtor da classe;
+*   public void addPoc - adiciona nova Poc na ArmazenamentoPocs;
+*
+* @Aroldo Augusto Barbosa Simões - 4250
+* @João Vitor Chagas Lobo - 4693
+*
+*  @since 02/11/2022 - 18:30
+*
+*/
 
-//TODO - olhar essa questao da subclasse
-public class ControleGetPoc extends MenusControle {
+public class ControlePoc {
 
-    ArmazenamentoUsuarios armzUsuarios;
     ArmazenamentoPocs armzPocs;
 
-    public ControleGetPoc(ArmazenamentoUsuarios armzUsuarios, ArmazenamentoPocs armzPocs) {
-        this.armzUsuarios = armzUsuarios;
-        this.armzPocs = armzPocs;
+    public ControlePoc(){
 
+        armzPocs = new ArmazenamentoPocs();
     }
-
-    //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
-    /** --- Funções de Usuário ---
-     * Manipulam a classe abstrata Usuario e as suas subclasses;
-     * Todos os usuários são identificados por suas matrículas
-     */
-
-    public void addUsuario(Usuario usuarioAdm, Usuario novoUsuario) {
-
-        if (!armzUsuarios.pesquisaUsuario(novoUsuario)){
-            armzUsuarios.addUsuario(novoUsuario);
-
-        } else {
-            verificaCadastroUsuario(true, novoUsuario);
-
-        }
-    }
-
-    public void removeUsuario(Usuario usuarioAdm, Usuario usuarioARemover) {
-
-        if (armzUsuarios.pesquisaUsuario(usuarioARemover)) {
-                armzUsuarios.removeUsuario(usuarioARemover);
-
-        } else {
-            verificaCadastroUsuario(false, usuarioARemover);
-
-        }
-    }
-
-    public void pesquisaUsuario(Usuario usuarioAPesquisar) {
-        boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-
-        verificaCadastroUsuario(flag, usuarioAPesquisar);
-    }
-
-    public void exibirTodosUsuarios() {
-
-        if (armzUsuarios.isEmpty()){
-            sistemaSemUsuarios();
-
-        } else {
-            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
-
-            exibeUsuariosDoSistema(usuariosCadastrados);
-        }
-    }
-
-    /** --- Funções de Poc ---
-     * Manipulam a classe Poc;
-     */
 
     public void addPoc(Poc novoPoc) {
 
-        if (!armzPocs.pesquisaPoc(novoPoc)){
+        if (armzPocs.pesquisaPoc(novoPoc.getTituloPoc()) == (-1)){
             armzPocs.addPoc(novoPoc);
-
         } else {
-            verificaCadastroPOC(true, novoPoc);
+            //verificaCadastroPOC(true, novoPoc);
 
         }
     }
 
-    public void removePoc(Poc pocARemover) {
-        if (armzPocs.pesquisaPoc(pocARemover)){
-            armzPocs.removePoc(pocARemover);
+    public void removePoc(String tituloPocRemover) {
+        //
+        armzPocs.removePoc(tituloPocRemover);
 
-        } else {
-            verificaCadastroPOC(false, pocARemover);
-
-        }
     }
 
-    public void pesquisarPoc(Poc pocAPesquisar) {
+    public int pesquisarPoc(String tituloPocAPesquisar) {
+        //Função retorna a posição do Poc no armazenamento;
 
-        boolean flag = armzPocs.pesquisaPoc(pocAPesquisar);
-
-        verificaCadastroPOC(flag, pocAPesquisar);
+        //verificaCadastroPOC(flag, pocAPesquisar);
+        
+        return armzPocs.pesquisaPoc(tituloPocAPesquisar);
     }
 
-    public void exibirPocs() {
+    public boolean isEmpty() {
+        return armzPocs.isEmpty();
+    }
+
+    public int quantidadePocsArmazenadas() {
+        return armzPocs.quantidadePocsArmazenadas();
+    }
+
+    public void exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
 
         if (armzPocs.isEmpty()){
-            sistemaSemPOCs();
+            //sistemaSemPOCs();
+            System.out.println("Sistema não possui POCs cadastradas!");
 
         } else {
             ArrayList<Poc> pocsCadastrados = armzPocs.getPocs();
 
+            //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
+            //exibePocsDoSistema(pocsCadastrados);
+            /*for (Poc pocs : pocsCadastrados) {
+                System.out.println(pocs);
+
+            }*/
         }
     }
 
-    //TODO - Refatorar este código atentar aos comentarios no PR
     public void editarPoc() {
         /*int resposta=1, i=1;
         String tituloEditado, nomeOrientadorEditado, nomeCo_OrientadorEditado, resumoEditado;
