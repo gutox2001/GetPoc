@@ -3,10 +3,7 @@ package br.ufv.caf.armazenamento;
 import java.util.ArrayList;
 import br.ufv.caf.modelo.Usuario;
 
-/**	
-*	public void adicionarProfessor - adiciona professor na lista de usuários;
-*
-*/
+
 
 /** Classes que tem a finalidade de armazenar os usuários cadastradas no sistema
  * @author 
@@ -47,7 +44,7 @@ public class ArmazenamentoUsuarios {
     /** Método addUsuario, usado para adicionar um novos usuários a lista de usuários
      * @author
      * @param novoUsuario Usuario - Novo usuário
-     * @return Void
+     * @return void
      * @since 02/11/2022 - 18:30
      * @throws Null
      */
@@ -59,7 +56,7 @@ public class ArmazenamentoUsuarios {
     /** Método removeUsuario, usado para remover usuários da lista de usuários
      * @author
      * @param usuarioARemover Usuario - Usuário que deseja remover
-     * @return Void
+     * @return void
      * @since 02/11/2022 - 18:30
      * @throws Null
      */
@@ -71,7 +68,7 @@ public class ArmazenamentoUsuarios {
     /** Método pesquisaUsuario,  utilizado para verificar se um determinado Usuário está presente na lista 
      * @author
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se está presente na lista de Usuário
-     * @return Boolean
+     * @return boolean
      * @since 02/11/2022 - 18:30
      * @throws Null
      */
@@ -83,7 +80,7 @@ public class ArmazenamentoUsuarios {
     /** Método isEmpty, utilizado para verificar se a lista de Usuários está vazia 
      * @author
      * @param Null
-     * @return Boolean
+     * @return boolean
      * @since 02/11/2022 - 18:30
      * @throws Null
      */

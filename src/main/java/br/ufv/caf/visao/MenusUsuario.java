@@ -8,17 +8,37 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
+/** Classe MenusUsuario representa um menu para q os usuários possam ser cadastrados 
+ * @since data - hora
+ * @version 1.0
+ */
+
 public class MenusUsuario implements InterfaceControle{
     //TODO - Separar o controle em dois
     private ControleUsuario controle;
     //private ControleGetPoc controle;
     private Scanner input;
 
+    /** Método MenusUsuario, construtor da classe MenusUsuario
+     * @author 
+     * @param controle ControleUsuario - Controle do Usuário
+     * @return Null
+     * @since Data - Hora
+     * @throws Null
+     */
+
     public MenusUsuario(/*ControleUsuario controle*/ControleUsuario controle){
         this.input = new Scanner(System.in);
         this.controle = controle;
     }
-
+    
+    /** Método preenchimentoDados, tem a finalidade de preencher os dados do usuário que está sendo cadastrado
+     * @author 
+     * @param Null
+     * @return Usuario - Dados do Usuário
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private Usuario preenchimentoDados(){
         String nome;
@@ -55,6 +75,14 @@ public class MenusUsuario implements InterfaceControle{
 
     }
 
+    /** Método efetuarCadastro, tem a finalidade de efetuar o cadastro do usuário se possível
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
+
     private void efetuarCadastro() {
 
         Usuario user;
@@ -85,6 +113,13 @@ public class MenusUsuario implements InterfaceControle{
 
     }
 
+    /** Método efetuarRemocao, tem a finalidade de remover o cadastro do usuário se possível
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private void efetuarRemocao() {
 
@@ -111,6 +146,14 @@ public class MenusUsuario implements InterfaceControle{
 
     }
 
+    /** Método efetuarRemocao, tem a finalidade de verificar se o sistema está vazio
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
+
     @Override
     public void verificaSistema() {
         if(this.controle.sistemaVazio){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
@@ -125,6 +168,14 @@ public class MenusUsuario implements InterfaceControle{
         }
 
     }
+
+    /** Método exibeSistema, tem a finalidade de exibir os usuário cadastrados no sistema
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     @Override
     public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList
@@ -141,6 +192,13 @@ public class MenusUsuario implements InterfaceControle{
 
     }
 
+    /** Método logarComoUsuario, tem a finalidade de fazer o login do usuário no sistema
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     public void logarComoUsuario(){
         String matricula, senha;
@@ -168,6 +226,14 @@ public class MenusUsuario implements InterfaceControle{
 
     }
 
+    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
+
     private void menuFuncionalidadesAluno() {
         int opcao;
         String nomePoc;
@@ -193,6 +259,14 @@ public class MenusUsuario implements InterfaceControle{
             }
         } while (opcao != 0);
     }
+
+    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private void menuFuncionalidadesProfessor() {
         int opcao;
@@ -238,6 +312,14 @@ public class MenusUsuario implements InterfaceControle{
             }
         } while (opcao != 0); //Assume que opções erradas irão continuar no menu mas mostrarão a mensagem acima
     }
+
+    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private void menuFuncionalidadesAdministrador() {
         int opcao;
