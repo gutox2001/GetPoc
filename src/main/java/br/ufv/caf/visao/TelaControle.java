@@ -6,29 +6,37 @@ import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe ...;
-* Métodos:
-*   public ...;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-* @since 09/11/2022 - 22:00
-*
-*/
+/** Classes que tem como funcionalidade implementa o controle sobre os poc's
+ * @author 
+ * @since Data - Hora
+ * @version 1.0
+ */
 
 public class TelaControle {
     private TelaUsuario telaUser;
     private TelaPoc telaPoc;
 
+    /** Método TelaControle, construtor da classe TelaControle
+     * @author 
+     * @param telaUser TelaUsuario - Tela do Usuário
+     * @param telaPOC TelaPoc - Tela do poc
+     * @return Null
+     * @since Data - Hora
+     * @throws Null
+     */
+
     public TelaControle(TelaUsuario telaUser, TelaPoc telaPOC){
         this.telaUser = telaUser;
         this.telaPoc = telaPOC;
     }
+
+    /** Método logarComoUsuario, responsável por fazer o login do usuário
+     * @author 
+     * @param Null
+     * @return void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     public void logarComoUsuario(){
         String matricula, senha;
@@ -57,9 +65,16 @@ public class TelaControle {
 
     }
 
+    /** Método verificaSistema, responsável por verificar se o sistema está vazio
+     * @author 
+     * @param Null
+     * @return void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     public void verificaSistema() {
-        if(this.telaUser.controle.isEmpty()){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
+        if(this.telaUser.controle.sistemaVazio()){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
             System.out.println("=============================================" +
                     "=============================================");
 
@@ -72,12 +87,16 @@ public class TelaControle {
 
     }
 
-
+    /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
+     * @author 
+     * @param Null
+     * @return void
+     * @since Data - Hora
+     * @throws Null
+     */
+    
     public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList
-        
-        this.telaUser.controle.exibirTodosUsuarios();
-        //TODO - FAVOR VALIDAR a pedido de Aroldo @Thiago
-        /*ArrayList<Usuario> usuariosCadastrados = this.telaUser.controle.exibirTodosUsuarios();
+        ArrayList<Usuario> usuariosCadastrados = this.telaUser.controle.getListaUsuarios();
         System.out.println("=============================================" +
                 "=============================================");
 
@@ -88,8 +107,5 @@ public class TelaControle {
         System.out.println("=============================================" +
                 "=============================================");
 
-    }*/
-
     }
-
 }
