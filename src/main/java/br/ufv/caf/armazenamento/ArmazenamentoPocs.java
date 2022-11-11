@@ -37,7 +37,7 @@ public class ArmazenamentoPocs {
         this.listaPocs.add(novoPoc);
     }
 //
-    public void removePoc(String tituloPocRemover){
+    public void removePoc(String tituloPocRemover){ //TODO - O print deveria ficar na visão e não no armazenamento
         int resultadoPesquisa = pesquisaPoc(tituloPocRemover);
         
         if(resultadoPesquisa == -1) System.out.println("POC não encontrada!");
