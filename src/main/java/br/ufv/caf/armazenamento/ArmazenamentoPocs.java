@@ -3,41 +3,62 @@ package br.ufv.caf.armazenamento;
 import java.util.ArrayList;
 import br.ufv.caf.modelo.Poc;
 
-//TODO colocar no cabeçalho as descrições das funções
-/*
-*
-* Classe que representa o armazenamento das Pocs cadastradas no sistema;
-* Métodos:
-*   public ArmazenamentoPocs - construtor da classe;
-*   public void addPoc - adiciona nova Poc na ArmazenamentoPocs;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-*  @since 02/11/2022 - 18:30
-*
-*/
+/** Classes que tem a finalidade de armazenar os poc's cadastrados no sistema
+ * @author 
+ * @since 02/11/2022 - 18:30
+ * @version 1.0
+ */
 
 public class ArmazenamentoPocs {
 
     private ArrayList<Poc> listaPocs;
+
+    /** Método ArmazenamentoPocs, construtor da classe ArmazenamentoPocs
+     * @author 
+     * @param Null
+     * @return Null
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
     
     public ArmazenamentoPocs(){
         listaPocs = new ArrayList<Poc>();
     }
 
+    /** Método getPocs, usado para obter a lista de poc's já adicionados no sistema
+     * @author 
+     * @param Null
+     * @return ArrayList<Poc> - Lista de Poc's
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public ArrayList<Poc> getPocs(){
         return this.listaPocs;
     }
 
-    //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entrada de dados da função vai mudar
+    // TODO - Annotation: Se o modo de armazenamento mudar, a entrada de dados da função também mudara
+
+    /** Método addPoc, usado para adicionar novos poc's a lista de Poc's
+     * @author 
+     * @param novoPoc Poc - Novo Poc
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public void addPoc(Poc novoPoc){
         this.listaPocs.add(novoPoc);
     }
-//
-    public void removePoc(String tituloPocRemover){ //TODO - O print deveria ficar na visão e não no armazenamento
+
+    /** Método removePoc, usado para adicionar novos poc's a lista de poc's
+     * @author 
+     * @param tituloPocRemover String - Titulo do Poc que deseja remover
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+     public void removePoc(String tituloPocRemover){ //TODO - O print deveria ficar na visão e não no armazenamento
         int resultadoPesquisa = pesquisaPoc(tituloPocRemover);
         
         if(resultadoPesquisa == -1) System.out.println("POC não encontrada!");
@@ -45,24 +66,47 @@ public class ArmazenamentoPocs {
 
     }
 
+    /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
+     * A função retornara a posição do poc no armazenamento, e caso não seja possível achar o poc retornara -1
+     * @author 
+     * @param tituloPoc String - Titulo do Poc que deseja verificar se está presente na lista de poc's
+     * @return int
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public int pesquisaPoc(String tituloPoc){ //Poc pocAPesquisar
-        //Função retorna a posição do Poc no armazenamento;
 
         for (int i = 0; i < listaPocs.size(); i++) {
             if(listaPocs.get(i).getTituloPoc() == tituloPoc) return i;
         }
 
-        return -1; //Retorna -1 se não foi possível achar o Poc;
+        return -1;
 
         //return listaPocs.contains(pocAPesquisar);
     }
+
+    /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia 
+     * @author
+     * @param Null
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
 
     public boolean isEmpty() {
         return true;
     }
 
+    /** Método quantidadePocsArmazenadas, utilizado para saber a quantidade de poc's armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return int
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public int quantidadePocsArmazenadas() {
         return listaPocs.size();
     }
-
 }

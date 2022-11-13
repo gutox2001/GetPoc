@@ -4,30 +4,36 @@ import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.modelo.Poc;
 
-
-//TODO colocar no cabeçalho as descrições das funções
-/*
-*
-* Classe que representa o armazenamento das Pocs cadastradas no sistema;
-* Métodos:
-*   public ControlePoc - construtor da classe;
-*   public void addPoc - adiciona nova Poc na ArmazenamentoPocs;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @João Vitor Chagas Lobo - 4693
-*
-*  @since 02/11/2022 - 18:30
-*
-*/
+/** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
+ * @author
+ * @since 02/11/2022 - 18:30
+ * @version 1.0
+ */
 
 public class ControlePoc {
 
     ArmazenamentoPocs armzPocs;
 
+    /** Método ControlePoc, construtor da classe ControlePoc
+     * @author 
+     * @param Null
+     * @return Null
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public ControlePoc(){
 
         armzPocs = new ArmazenamentoPocs();
     }
+
+    /** Método addPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
+     * @author 
+     * @param novoPoc Poc - Novo Poc
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
 
     public boolean addPoc(Poc novoPoc) {
 
@@ -38,27 +44,67 @@ public class ControlePoc {
         return false;
     }
 
+    /** Método removePoc, usado para remover um determinado poc da lista de poc's do sistema
+     * @author 
+     * @param tituloPocRemover String - Titulo do poc o qual deseja remover 
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public void removePoc(String tituloPocRemover) {
         //
         armzPocs.removePoc(tituloPocRemover);
 
     }
 
+    /** Método pesquisarPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
+     * A função retornara a posição do poc no armazenamento, e caso não seja possível achar o poc retornara -1
+     * @author 
+     * @param tituloPocAPesquisar String - Titulo do poc o qual deseja pesquisar 
+     * @return int
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public int pesquisarPoc(String tituloPocAPesquisar) {
-        //Função retorna a posição do Poc no armazenamento;
 
         //verificaCadastroPOC(flag, pocAPesquisar);
         
         return armzPocs.pesquisaPoc(tituloPocAPesquisar);
     }
 
+        /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia 
+     * @author
+     * @param Null
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public boolean isEmpty() {
         return armzPocs.isEmpty();
     }
 
+    /** Método quantidadePocsArmazenadas, utilizado para saber a quantidade de poc's armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return int
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public int quantidadePocsArmazenadas() {
         return armzPocs.quantidadePocsArmazenadas();
     }
+
+    /** Método exibirPocs, utilizado para exibir os poc's armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
 
     public void exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
 
@@ -77,6 +123,14 @@ public class ControlePoc {
             }*/
         }
     }
+
+    /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
 
     public void editarPoc() {
         /*int resposta=1, i=1;
@@ -141,7 +195,4 @@ public class ControlePoc {
         scan.close();
     }*/
     }
-
-
-
 }
