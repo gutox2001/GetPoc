@@ -17,12 +17,12 @@ public class TelaControle {
     private TelaUsuario telaUser;
     private TelaPoc telaPoc;
 
-    /** Método TelaControle, construtor da classe TelaControle
-     * @author 
+    /** public TelaControle, construtor da classe TelaControle
+     * @author @Thiago Cândido Rocha - 4225
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
      * @return Null
-     * @since Data - Hora
+     * @since 09/11/2022 - 22:00
      * @throws Null
      */
 
@@ -50,7 +50,7 @@ public class TelaControle {
 
         do{
             tipo = login(matricula, senha); //TODO - Controle do usuário deve possuir o controle de Login e retornar o tipo do usuário;
-        }while(tipo != null); //TODO - Verificar se funciona dessa forma;
+        }while(tipo != null);
 
         if(tipo.equals(Usuario.TipoUsuario.ALUNO)){ //TODO - Verificar se está funcionando corretamente
             telaUser.menuFuncionalidadesAluno(this.telaPoc);
@@ -99,19 +99,7 @@ public class TelaControle {
     public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList
         
         this.telaUser.controle.exibirTodosUsuarios();
-        //TODO - FAVOR VALIDAR a pedido de Aroldo @Thiago
-        /*ArrayList<Usuario> usuariosCadastrados = this.telaUser.controle.exibirTodosUsuarios();
-        System.out.println("=============================================" +
-                "=============================================");
-
-        for(Usuario user : usuariosCadastrados){
-            System.out.println("->"+user);
-        }
-
-        System.out.println("=============================================" +
-                "=============================================");
-
-    }*/
+        
 
     }
 
