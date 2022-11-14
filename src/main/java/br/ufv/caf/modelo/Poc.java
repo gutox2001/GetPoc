@@ -3,22 +3,23 @@ package br.ufv.caf.modelo;
 import java.util.ArrayList;
 
 /** Classes que implementa a entidade Poc
- * @author 
- * @since 02/11/2022 - 16:00
- * @version 1.0
+ * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @since 09/11/2022 - 22:00
+ * @version 1.2
  */
 
 public class Poc {
 
+    //TODO - Conferir se esse será o formato da Area da Poc;
     public enum Area {
         ENGENHARIA_DE_SOFTWARE, CIENCIA_DE_DADOS, INTERNET_DAS_COISAS;
     }
 
     private String titulo;
-    private ArrayList<String> listaAutores;
+    private ArrayList<String> listaAutores = new ArrayList<String>(); //TODO - Listas estão dando nullpointerexception, tratar
     private String nomeOrientador;
     private String nomeCoOrientador;
-    private ArrayList<String> palavrasChave;
+    private ArrayList<String> palavrasChave = new ArrayList<String>();
     private String resumo;
     private Area areaDaPoc;
 
@@ -31,14 +32,15 @@ public class Poc {
      * @param palavrasChave ArrayList<String> - Palavra chave que descreve o poc
      * @param resumo String - Resumo geral do que o poc se trata
      * @param areaPoc Area - Área que o poc irá aborda
-     * @return Null
+     * @return null
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
     public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
                String nomeCoOrientador, ArrayList<String> palavrasChave, String resumo, Area areaPoc) {
         this.titulo = titulo;
+        this.listaAutores = listaAutores;
         this.nomeOrientador = nomeOrientador;
         this.nomeCoOrientador = nomeCoOrientador;
         this.palavrasChave = palavrasChave;
@@ -48,13 +50,66 @@ public class Poc {
 
     /** Método getTituloPoc, usado para obter o titulo do poc já adicionados no sistema
      * @author 
-     * @param Null
+     * @param null
      * @return String - Titulo do Poc
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
     public String getTituloPoc(){
         return this.titulo;
     }
+
+    /** Método exibePoc, usado para exibir os poc's adicionados no sistema
+     * @author 
+     * @param null
+     * @return void
+     * @since 02/11/2022 - 16:00
+     * @throws null
+     */
+
+    public void exibePoc(){
+
+        System.out.println("- TÍTULO: "+ getTituloPoc());
+
+        System.out.print("- AUTORES: ");/* //TODO- CORRIGIR Erro NPE DAS LISTAS; 
+        if (this.listaAutores.isEmpty()) {
+            System.out.println("Lista de Autores Vazia!");
+        } else {
+            for (String autor : this.listaAutores) {
+                System.out.println("  ->" + autor);
+            }
+        }*/
+
+        System.out.println("- NOME ORIENTADOR: " + this.nomeOrientador);
+        System.out.println("- NOME CO-ORIENTADOR: " + this.nomeCoOrientador);
+
+        /*/
+        System.out.print("- PALAVRAS-CHAVE: "); //TODO- CORRIGIR Erro NPE DAS LISTAS; 
+        if (this.listaAutores.isEmpty()) {
+            System.out.println("Não há palvras-chave cadastradas!");
+        } else {
+            for (String palavra : this.palavrasChave) {
+                System.out.print(palavra + "; ");
+            }
+        }*/
+        
+        System.out.println("\n- RESUMO: " + this.resumo);
+        System.out.println("- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString());
+    }
+
+    /** Método validaTitulo, usado para verificar o formato do titulo dos poc's
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws null
+     */
+
+    public boolean validaTitulo() { //TODO - VERIFICAR FORMATO DO TITULO;
+        return this.getTituloPoc().matches("\\w{2,}");
+    }
+
+    //TODO - VALIDAÇÃO DAS outras informações da Poc;
+    //TODO - GARANTIR que todos os atributos serão preenchidos;
 }

@@ -1,30 +1,47 @@
 package br.ufv.caf.modelo;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe que herda a classe abstrata Usuário e implementa funcionalidades do Aluno;
-* Métodos:
-*   public Aluno - construtor da classe;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-* @since 09/11/2022 - 20:00
-*
-*/
+/** Classes que herda a classe abstrata Usuário e implementa as funcionalidades do Aluno
+ * @author @Aroldo Augusto Barbosa Simões
+ * @since 09/11/2022  - 22:00
+ * @version 1.2
+ */
 
 public class Aluno extends Usuario {
+
+    /** Método Aluno, construtor da classe Aluno
+     * @author 
+     * @param nome String - Nome do Aluno
+     * @param matricula int - Numero da Matricula
+     * @param senha String - Senha de acesso
+     * @return null
+     * @since 01/11/2022 - 20:17
+     * @throws null
+     */
 
     public Aluno(String nome, String matricula, String senha) {
         super(nome, matricula, senha, TipoUsuario.ALUNO);
     }
 
+    /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 09/11/2022 - 22:00
+     * @throws null
+     */
+
     @Override
     public boolean validaMatricula() { //TODO - VERIFICAR FORMATO DA MATRICULA
         return this.getMatricula().matches("\\d{4}");
     }
+
+    /** Método validaMatricula, tem a finalidade de verificar o formato da senha
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 09/11/2022 - 22:00
+     * @throws null
+     */
 
     @Override
     public boolean validaSenha() { //TODO - VERIFICAR FORMATO DA SENHA

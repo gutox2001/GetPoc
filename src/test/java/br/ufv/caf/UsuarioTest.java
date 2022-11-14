@@ -13,27 +13,36 @@ import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-*Classe que faz o teste das classes Uuário e ArmazenamentoUsuarios;
-*Métodos:
-*	public TesteUsuario - construtor da classe;
-*	public void iniciaTeste - inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves;
-*   public void teste1, public void teste2, public void teste3, public void teste4, public void teste5 e public void teste6 - fazem o teste das classes Usuario e ArmazenamentoUsuario;
-*
-*
-*@Aroldo Augusto Barbosa Simões - 4250
-* 
-*@since 09/11/2022 - 20:00
-*@version 1.0
-*
-*/
+/** Classes que tem como funcionalidade fazer o teste das classes Uuário e ArmazenamentoUsuarios
+ * @author Aroldo Augusto Barbosa Simões - 4250
+ * @author Gabriel Ryan dos Santos Oliveira - 4688
+ * 
+ * @since 09/11/2022 - 14:00
+ * @version 1.0
+ */
+
 public class UsuarioTest {
 
     ArmazenamentoUsuarios armazenamentoUsuarios = new ArmazenamentoUsuarios();
     ControleUsuario controleUsuario = new ControleUsuario(armazenamentoUsuarios);
 
+    /** Método UsuarioTest, construtor da classe UsuarioTest
+     * @author 
+     * @param null
+     * @return null
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
+
     public UsuarioTest() {};
+
+    /** Método iniciaTeste, inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
 
     @BeforeEach
     void iniciaTeste() {
@@ -50,6 +59,14 @@ public class UsuarioTest {
         controleUsuario.cadastraUsuario(u4);
 
     }
+
+    /** Método teste01, fazem o teste das classes Usuario e ArmazenamentoUsuario;
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
 
     @Test
     public void teste01() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u1;
@@ -68,6 +85,14 @@ public class UsuarioTest {
 
     }
 
+    /** Método teste02, fazem o teste das classes Usuario e ArmazenamentoUsuario;
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
+
     @Test
     public void teste02() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u2;
 
@@ -84,6 +109,14 @@ public class UsuarioTest {
         assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp2));
 
     }
+
+    /** Método teste03, fazem o teste das classes Usuario e ArmazenamentoUsuario;
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
 
     @Test
     public void teste03() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u3;
@@ -102,6 +135,14 @@ public class UsuarioTest {
 
     }
 
+    /** Método teste04, fazem o teste das classes Usuario e ArmazenamentoUsuario;
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
+
     @Test
     public void teste04() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u3;
 
@@ -119,6 +160,14 @@ public class UsuarioTest {
 
     }
 
+    /** Método teste05, fazem o teste das classes Usuario e ArmazenamentoUsuario;
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
+
     @Test
     public void teste05() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o usuário inválido;
 
@@ -135,6 +184,15 @@ public class UsuarioTest {
         assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp5));
 
     }
+
+
+    /** Método teste06, fazem o teste das classes Usuario e ArmazenamentoUsuario;
+     * @author 
+     * @param null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws null
+     */
 
     @Test
     public void teste06() {

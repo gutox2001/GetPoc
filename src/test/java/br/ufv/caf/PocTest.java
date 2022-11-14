@@ -22,20 +22,20 @@ public class PocTest {
 
     /** Método PocTest, construtor da classe PocTest
      * @author 
-     * @param Null
-     * @return Null
+     * @param null
+     * @return null
      * @since 09/11/2022 - 14:00
-     * @throws Null
+     * @throws null
      */
 
     public PocTest(){}
 
     /** Método iniciaTeste, responsável por inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since 09/11/2022 - 14:00
-     * @throws Null
+     * @throws null
      */
 
     @BeforeEach
@@ -92,12 +92,12 @@ public class PocTest {
         listaPalavrasChave.clear();
     }
 
-    /** Método iniciaTeste, responsável por fazer o teste das classes Poc e ListaPocs;
+    /** Método teste01, responsável por testa Funcionalidades ControlePoc para Poc1
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since 09/11/2022 - 14:00
-     * @throws Null
+     * @throws null
      */
 
     @Test
@@ -132,12 +132,12 @@ public class PocTest {
         //controlePoc.editar();
     }
 
-    /** Método iniciaTeste, responsável por fazer o teste das classes Poc e ListaPocs;
+    /** Método teste2, responsável por testar Funcionalidades ControlePoc para Poc2
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since 09/11/2022 - 14:00
-     * @throws Null
+     * @throws null
      */
 
     @Test
@@ -168,7 +168,7 @@ public class PocTest {
         //controlePoc.editar();
     }
 
-    /** Método iniciaTeste, responsável por fazer o teste das classes Poc e ListaPocs;
+    /** Método teste3, responsável por testar Funcionalidades ControlePoc para Poc3
      * @author 
      * @param Null
      * @return void
