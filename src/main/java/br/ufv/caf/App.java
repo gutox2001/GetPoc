@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
-import br.ufv.caf.controle.ControleGetPoc;
 
 /*
  *

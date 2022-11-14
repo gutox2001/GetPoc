@@ -2,6 +2,8 @@ package br.ufv.caf;
 
 import static org.junit.Assert.assertEquals;
 
+import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -28,28 +30,29 @@ import br.ufv.caf.modelo.Usuario;
 */
 public class UsuarioTest {
 
-    ControleUsuario controleUsuario = new ControleUsuario();
+    ArmazenamentoUsuarios armazenamentoUsuarios = new ArmazenamentoUsuarios();
+    ControleUsuario controleUsuario = new ControleUsuario(armazenamentoUsuarios);
 
     public UsuarioTest() {};
 
     @BeforeEach
     void iniciaTeste() {
         Usuario u1 = new Administrador("AROLDO", "4250", "12345");      
-        controleUsuario.addUsuario(u1);
+        controleUsuario.cadastraUsuario(u1);
 
         Usuario u2 = new Professor("THIAGO", "4225", "54321");      
-        controleUsuario.addUsuario(u2);
+        controleUsuario.cadastraUsuario(u2);
 
         Usuario u3 = new Aluno("GABRIEL", "4333", "12543");      
-        controleUsuario.addUsuario(u3);
+        controleUsuario.cadastraUsuario(u3);
 
         Usuario u4 = new Aluno("JOÃO", "4555", "21354");      
-        controleUsuario.addUsuario(u4);
+        controleUsuario.cadastraUsuario(u4);
 
     }
 
     @Test
-    public void teste01() { //Testa funcionalidades ControleUsuario para o u1;
+    public void teste01() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u1;
 
         iniciaTeste();
 
@@ -66,7 +69,7 @@ public class UsuarioTest {
     }
 
     @Test
-    public void teste02() { //Testa funcionalidades ControleUsuario para o u2;
+    public void teste02() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u2;
 
         iniciaTeste();
 
@@ -83,7 +86,7 @@ public class UsuarioTest {
     }
 
     @Test
-    public void teste03() { //Testa funcionalidades ControleUsuario para o u3;
+    public void teste03() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u3;
 
         iniciaTeste();
 
@@ -100,7 +103,7 @@ public class UsuarioTest {
     }
 
     @Test
-    public void teste04() { //Testa funcionalidades ControleUsuario para o u3;
+    public void teste04() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u3;
 
         iniciaTeste();
 
@@ -117,7 +120,7 @@ public class UsuarioTest {
     }
 
     @Test
-    public void teste05() { //Testa funcionalidades ControleUsuario para o usuário inválido;
+    public void teste05() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o usuário inválido;
 
         iniciaTeste();
 
