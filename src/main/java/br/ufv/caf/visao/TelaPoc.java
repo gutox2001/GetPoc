@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** Classes que tem como funcionalidade apresentar a tela de controle sobre os poc's
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Thiago Cândido Rocha - 4225
  * @since Data - Hora
  * @version 1.0
@@ -20,9 +19,9 @@ public class TelaPoc {
     /** Método TelaPoc, construtor da classe TelaPoc
      * @author 
      * @param controle ControlePoc - Descrição
-     * @return Null
+     * @return null
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     public TelaPoc(ControlePoc controle){
@@ -32,10 +31,10 @@ public class TelaPoc {
 
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
      * @author 
-     * @param Null
+     * @param null
      * @return Poc
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     private Poc preenchimentoDados(){
@@ -93,10 +92,10 @@ public class TelaPoc {
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
      * @author 
-     * @param Null
+     * @param null
      * @return int
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     protected int  menuPesquisa(){
@@ -113,10 +112,10 @@ public class TelaPoc {
 
     /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     protected void menuCadastro(){
@@ -143,10 +142,10 @@ public class TelaPoc {
 
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     protected void menuEdicao(){ // TODO - Implementar a lógica para a edição no controle e para e leitura de dados aqui
@@ -155,10 +154,10 @@ public class TelaPoc {
 
     /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     protected void menuRemocao(){

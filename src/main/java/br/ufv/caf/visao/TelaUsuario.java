@@ -8,7 +8,6 @@ import br.ufv.caf.modelo.Usuario;
 import java.util.Scanner;
 
 /** Classe MenusUsuario representa um menu para q os usuários possam ser cadastrados 
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Thiago Cândido Rocha - 4225
  * @since data - hora
  * @version 1.0
@@ -22,9 +21,9 @@ public class TelaUsuario{
     /** Método MenusUsuario, construtor da classe MenusUsuario
      * @author 
      * @param controle ControleUsuario - Controle do Usuário
-     * @return Null
+     * @return null
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     public TelaUsuario(ControleUsuario controle){
@@ -34,10 +33,10 @@ public class TelaUsuario{
     
     /** Método preenchimentoDados, tem a finalidade de preencher os dados do usuário que está sendo cadastrado
      * @author 
-     * @param Null
+     * @param null
      * @return Usuario - Dados do Usuário
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     private Usuario preenchimentoDados(){
@@ -71,6 +70,14 @@ public class TelaUsuario{
 
     }
 
+    /** Método validacaoDados, tem a finalidade de validar os dados do usuário que está sendo cadastrado
+     * @author 
+     * @param userTemp Usuario
+     * @return Usuario - Dados do Usuário
+     * @since Data - Hora
+     * @throws null
+     */
+
     public Usuario validacaoDados(Usuario userTemp){
         do {
             preenchimentoDados();
@@ -81,10 +88,10 @@ public class TelaUsuario{
 
     /** Método efetuarCadastro, tem a finalidade de efetuar o cadastro do usuário se possível
      * @author 
-     * @param Null
+     * @param null
      * @return Void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     private void efetuarCadastro() {
@@ -113,10 +120,10 @@ public class TelaUsuario{
 
     /** Método efetuarRemocao, tem a finalidade de remover o cadastro do usuário se possível
      * @author 
-     * @param Null
+     * @param null
      * @return Void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     private void efetuarRemocao() {
@@ -141,9 +148,25 @@ public class TelaUsuario{
 
     }
 
+    /** Método menuPesquisa, tem a finalidade de pesquisar um usuário
+     * @author 
+     * @param null
+     * @return Void
+     * @since Data - Hora
+     * @throws null
+     */
+
     private void menuPesquisa(){
         this.controle.pesquisaUsuario(preenchimentoDados());
     }
+
+    /** Método menuPesquisa, tem a finalidade de exibir as funcionalidades do usuário
+     * @author 
+     * @param telaPoc TelaPoc 
+     * @return Void
+     * @since Data - Hora
+     * @throws null
+     */
 
     protected void menuFuncionalidadesAluno(TelaPoc telaPoc) {
         int opcao;
@@ -171,10 +194,10 @@ public class TelaUsuario{
 
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
      * @author 
-     * @param Null
+     * @param null
      * @return Void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     protected void menuFuncionalidadesProfessor(TelaPoc telaPoc) {
@@ -214,10 +237,10 @@ public class TelaUsuario{
 
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
      * @author 
-     * @param Null
+     * @param null
      * @return Void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc) {

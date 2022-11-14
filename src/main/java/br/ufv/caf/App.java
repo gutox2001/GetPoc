@@ -6,20 +6,13 @@ import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.controle.ControleGetPoc;
 
-/*
- *
- * Classe principal do sistema que une todos os modulos e os executa de acordo com cada usuário;
- * Métodos:
- *
- * @author João Lobo, Thiago Rocha, Aroldo Augusto
- *
- *  @Aroldo Augusto Barbosa Simões - 4250
- *  @Gabriel Ryan dos Santos Oliveira - 4688
- *  @Thiago Cândido Rocha - 4225
- *  @João Vitor Chagas Lobo - 4693
- *
+/** Classe App representa a classe principal do sistema que une todos os modulos e os executa de acordo com cada usuário 
+ * @author Aroldo Augusto Barbosa Simões - 4250
+ * @author Gabriel Ryan dos Santos Oliveira - 4688
+ * @author Thiago Cândido Rocha - 4225
+ * @author João Vitor Chagas Lobo - 4693
  * @since 05/11/2022 - 20:20
- *
+ * @version 1.0
  */
 
 public class App {

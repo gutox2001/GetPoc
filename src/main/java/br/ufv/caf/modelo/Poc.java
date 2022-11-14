@@ -3,7 +3,6 @@ package br.ufv.caf.modelo;
 import java.util.ArrayList;
 
 /** Classes que implementa a entidade Poc
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Aroldo Augusto Barbosa Simões - 4250
  * @since 09/11/2022 - 22:00
  * @version 1.2
@@ -33,9 +32,9 @@ public class Poc {
      * @param palavrasChave ArrayList<String> - Palavra chave que descreve o poc
      * @param resumo String - Resumo geral do que o poc se trata
      * @param areaPoc Area - Área que o poc irá aborda
-     * @return Null
+     * @return null
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
     public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
@@ -51,15 +50,23 @@ public class Poc {
 
     /** Método getTituloPoc, usado para obter o titulo do poc já adicionados no sistema
      * @author 
-     * @param Null
+     * @param null
      * @return String - Titulo do Poc
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
     public String getTituloPoc(){
         return this.titulo;
     }
+
+    /** Método exibePoc, usado para exibir os poc's adicionados no sistema
+     * @author 
+     * @param null
+     * @return void
+     * @since 02/11/2022 - 16:00
+     * @throws null
+     */
 
     public void exibePoc(){
 
@@ -90,6 +97,14 @@ public class Poc {
         System.out.println("\n- RESUMO: " + this.resumo);
         System.out.println("- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString());
     }
+
+    /** Método validaTitulo, usado para verificar o formato do titulo dos poc's
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws null
+     */
 
     public boolean validaTitulo() { //TODO - VERIFICAR FORMATO DO TITULO;
         return this.getTituloPoc().matches("\\w{2,}");

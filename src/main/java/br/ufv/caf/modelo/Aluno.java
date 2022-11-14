@@ -1,7 +1,6 @@
 package br.ufv.caf.modelo;
 
 /** Classes que herda a classe abstrata Usuário e implementa as funcionalidades do Aluno
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Aroldo Augusto Barbosa Simões
  * @since 09/11/2022  - 22:00
  * @version 1.2
@@ -14,19 +13,35 @@ public class Aluno extends Usuario {
      * @param nome String - Nome do Aluno
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
-     * @return Null
+     * @return null
      * @since 01/11/2022 - 20:17
-     * @throws Null
+     * @throws null
      */
 
     public Aluno(String nome, String matricula, String senha) {
         super(nome, matricula, senha, TipoUsuario.ALUNO);
     }
 
+    /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 09/11/2022 - 22:00
+     * @throws null
+     */
+
     @Override
     public boolean validaMatricula() { //TODO - VERIFICAR FORMATO DA MATRICULA
         return this.getMatricula().matches("\\d{4}");
     }
+
+    /** Método validaMatricula, tem a finalidade de verificar o formato da senha
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 09/11/2022 - 22:00
+     * @throws null
+     */
 
     @Override
     public boolean validaSenha() { //TODO - VERIFICAR FORMATO DA SENHA

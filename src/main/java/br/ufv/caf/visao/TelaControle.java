@@ -7,7 +7,6 @@ import br.ufv.caf.modelo.Usuario;
 import java.util.ArrayList;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Thiago Cândido Rocha - 4225
  * @since 09/11/2022 - 22:00
  * @version 1.0
@@ -21,9 +20,9 @@ public class TelaControle {
      * @author 
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
-     * @return Null
+     * @return null
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     public TelaControle(TelaUsuario telaUser, TelaPoc telaPOC){
@@ -33,10 +32,10 @@ public class TelaControle {
 
     /** Método logarComoUsuario, responsável por fazer o login do usuário
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     public void logarComoUsuario(){
@@ -68,10 +67,10 @@ public class TelaControle {
 
     /** Método verificaSistema, responsável por verificar se o sistema está vazio
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
 
     public void verificaSistema() {
@@ -90,10 +89,10 @@ public class TelaControle {
 
     /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
      * @author 
-     * @param Null
+     * @param null
      * @return void
      * @since Data - Hora
-     * @throws Null
+     * @throws null
      */
     
     public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList

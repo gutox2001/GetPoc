@@ -13,7 +13,6 @@ import java.util.Objects;
 //TODO fazer modulo de validação
 
 /** Classes que tem a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
- * TODO: CONFIRMAR CABEÇALHOS
  * @author
  * @since xx/11/2022 - 16:00
  * @version 1.0
@@ -25,10 +24,10 @@ public class ControleUsuario {
 
     /** Método ControleUsuario, construtor da classe ControleUsuario
      * @author 
-     * @param Null
+     * @param null
      * @return Null
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
     public ControleUsuario()  {
@@ -44,7 +43,7 @@ public class ControleUsuario {
      * @param novoUsuario Usuario - Novo Usuário
      * @return boolean
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
     public boolean validaUsuario(Usuario usuario) { //TODO - Refatorar validaUsuario
@@ -58,14 +57,16 @@ public class ControleUsuario {
     }
 
     /** Método addUsuario, usado para poder adicionar os usuários na lista de usuários do sistema
+     * <p>
+     * Adiciona um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false'
      * @author 
      * @param usuarioARemover Usuario - Usuário que deseja remover
      * @return boolean
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
 
-    public boolean addUsuario(Usuario novoUsuario) { //Adiciona um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
+    public boolean addUsuario(Usuario novoUsuario) {
     
         if (validaUsuario(novoUsuario)){
             armzUsuarios.addUsuario(novoUsuario);
@@ -83,14 +84,16 @@ public class ControleUsuario {
     }
 
     /** Método removeUsuario, usado para poder remover os usuários na lista de usuários do sistema
+     * <p>
+     * Remove um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false'
      * @author 
      * @param usuarioARemover Usuario - Usuário que deseja remover
      * @return boolean
      * @since 02/11/2022 - 16:00
-     * @throws Null
+     * @throws null
      */
     
-    public boolean removeUsuario(Usuario usuarioARemover) { //Remove um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
+    public boolean removeUsuario(Usuario usuarioARemover) {
 
         if (armzUsuarios.pesquisaUsuario(usuarioARemover) != -1) {
                 armzUsuarios.removeUsuario(usuarioARemover);
@@ -111,20 +114,30 @@ public class ControleUsuario {
     }
 
     //TODO mudar essa descrição
-    /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários
+    /** Método pesquisaUsuarioObjeto, utilizado para pesquisar e retorna a posição do usuário no armazenamento
+     * <p>
+     * Retorna '-1' se o objeto não foi encontrado
      * @author 
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
-     * @return void
+     * @return int
      * @since 02/11/2022 - 18:30
-     * @throws Null
+     * @throws null
      */
     
-    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento; //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA
+    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA
         if(validaUsuario(usuarioAPesquisar))
             return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-        else return -1; //Retorna '-1' se o objeto não foi encontrado;
+        else return -1;
 
     }
+
+    /** Método pesquisaUsuarioMatricula, utilizado para pesquisar e retorna um usuário no armazenamento através da matricula
+     * @author 
+     * @param matricula String - Matricula do usuário que deseja pesquisar
+     * @return Usuario
+     * @since 02/11/2022 - 18:30
+     * @throws null
+     */
 
     public Usuario pesquisaUsuarioMatricula(String matricula) {
         for (Usuario usuario : armzUsuarios.getListaUsuarios()) {
@@ -138,6 +151,16 @@ public class ControleUsuario {
         return null;
 
     }
+
+    /** Método realizarLogin, utilizado para pesquisar e retorna um usuário no armazenamento através da matricula
+     * @author 
+     * @param matricula String - Matricula do usuário que deseja fazer login
+     * @param senha String - Senha do usuário que deseja fazer login
+     * @return Usuario
+     * @since 02/11/2022 - 18:30
+     * @throws ExcecaoSenhaInvalida
+     * @throws ExcecaoUsuarioNaoEncontrado
+     */
 
     public Usuario realizarLogin(String matricula, String senha) throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado {
 
@@ -158,6 +181,14 @@ public class ControleUsuario {
         }
     }
 
+    /** Método exibirTodosUsuarios, utilizado para retorna os usuário do armazenamento
+     * @author 
+     * @param null
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws null
+     */
+
     public boolean exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
         
         if (armzUsuarios.isEmpty()){
@@ -174,6 +205,14 @@ public class ControleUsuario {
             return true;
         }
     }
+
+    /** Método isEmpty, utilizado para verificar se o armazenamento de Usuários está vazia 
+     * @author
+     * @param null
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws null
+     */
 
     public boolean isEmpty(){
         return armzUsuarios.isEmpty();
