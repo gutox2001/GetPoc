@@ -1,12 +1,16 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.Excecoes.ExcecaoSenhaInvalida;
+import br.ufv.caf.Excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
 //import br.ufv.caf.visao.MenusControle; TODO - Controle vai ser importado pelo visão
 
 import java.util.ArrayList;
+import java.util.Objects;
 //TODO fazer modulo de validação
 
 /** Classes que tem a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
@@ -30,12 +34,6 @@ public class ControleUsuario {
     public ControleUsuario()  {
         armzUsuarios = new ArmazenamentoUsuarios();
     }
-
-    //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
-    /** --- Funções de Usuário ---
-     * ;
-     * 
-     */
 
     /** Método addUsuario, usado para poder adicionar novos usuários a lista de usuários do sistema
      * <p>
@@ -77,6 +75,7 @@ public class ControleUsuario {
         return false;
     }
 
+    //TODO mudar essa descrição
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários
      * @author 
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
@@ -85,8 +84,16 @@ public class ControleUsuario {
      * @throws Null
      */
 
-    public void pesquisaUsuario(Usuario usuarioAPesquisar) {
-        boolean flag = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
+    public Usuario pesquisaUsuario(String matricula) {
+        for (Usuario usuario : armzUsuarios.getListaUsuarios()) {
+            if (Objects.equals(usuario.getMatricula(), matricula)){
+                return usuario;
+
+            }
+
+        }
+
+        return null;
     }
 
     /** Método exibirTodosUsuarios, utilizado para exibir se os usuários armazenados na lista de usuários
@@ -96,6 +103,25 @@ public class ControleUsuario {
      * @since 02/11/2022 - 18:30
      * @throws Null
      */
+
+    public Usuario realizarLogin(String matricula, String senha) throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado {
+
+        Usuario usuario = pesquisaUsuario(matricula);
+
+        if (usuario != null){
+            if (usuario.getSenha().equals(senha)){
+                return usuario;
+
+            } else {
+                throw new ExcecaoSenhaInvalida();
+
+            }
+
+        } else {
+
+            throw new ExcecaoUsuarioNaoEncontrado();
+        }
+    }
 
     public void exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
         
