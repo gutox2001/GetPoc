@@ -32,14 +32,15 @@ public class TelaControle {
     }
 
     /** Método logarComoUsuario, responsável por fazer o login do usuário
-     * @author 
-     * @param Null
-     * @return void
-     * @since Data - Hora
+     * @author @Thiago Cândido Rocha - 4225
+     * @param telaUser TelaUsuario - Tela do Usuário
+     * @param telaPOC TelaPoc - Tela do poc
+     * @return Null
+     * @since 09/11/2022 - 22:00
      * @throws Null
      */
 
-    public void logarComoUsuario(){
+    public void logarComoUsuario(){ //TODO - Propagar as excessões criadas
         String matricula, senha;
         Usuario.TipoUsuario tipo = null;
         System.out.println("*************************************************************************");
@@ -49,10 +50,10 @@ public class TelaControle {
         System.out.println("*************************************************************************");
 
         do{
-            tipo = login(matricula, senha); //TODO - Controle do usuário deve possuir o controle de Login e retornar o tipo do usuário;
+            tipo = login(matricula, senha); 
         }while(tipo != null);
 
-        if(tipo.equals(Usuario.TipoUsuario.ALUNO)){ //TODO - Verificar se está funcionando corretamente
+        if(tipo.equals(Usuario.TipoUsuario.ALUNO)){ 
             telaUser.menuFuncionalidadesAluno(this.telaPoc);
         }
 
@@ -67,15 +68,16 @@ public class TelaControle {
     }
 
     /** Método verificaSistema, responsável por verificar se o sistema está vazio
-     * @author 
-     * @param Null
-     * @return void
-     * @since Data - Hora
+     * @author @Thiago Cândido Rocha - 4225
+     * @param telaUser TelaUsuario - Tela do Usuário
+     * @param telaPOC TelaPoc - Tela do poc
+     * @return Null
+     * @since 11/11/2022 - 22:00
      * @throws Null
      */
 
     public void verificaSistema() {
-        if(this.telaUser.controle.isEmpty()){ //TODO - Função no controle de usuário para verificar se o sistema está vazio
+        if(this.telaUser.controle.isEmpty()){ 
             System.out.println("=============================================" +
                     "=============================================");
 
@@ -89,14 +91,15 @@ public class TelaControle {
     }
 
     /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
-     * @author 
-     * @param Null
-     * @return void
-     * @since Data - Hora
+     * @author @Thiago Cândido Rocha - 4225
+     * @param telaUser TelaUsuario - Tela do Usuário
+     * @param telaPOC TelaPoc - Tela do poc
+     * @return Null
+     * @since 11/11/2022 - 22:00
      * @throws Null
      */
     
-    public void exibeSistema() { //TODO - Ou o controle pode ter uma função que retorna usuários para cá ou deve passar a ArrayList
+    public void exibeSistema() { 
         
         this.telaUser.controle.exibirTodosUsuarios();
         
