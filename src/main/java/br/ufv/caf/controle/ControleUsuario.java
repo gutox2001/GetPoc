@@ -128,7 +128,6 @@ public class ControleUsuario {
         if (armzUsuarios.isEmpty()){
             //sistemaSemUsuarios();
 
-
         } else {
 
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
