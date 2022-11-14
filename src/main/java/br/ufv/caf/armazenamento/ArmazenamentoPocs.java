@@ -67,6 +67,7 @@ public class ArmazenamentoPocs {
      * @throws Null
      */
     
+    //TODO - O print deveria ficar na visão e não no armazenamento(A mudar para tratamento de erro)
     public boolean removePoc(String tituloPocRemover) { //Função remove uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário;
         
         int resultadoPesquisa = pesquisaPoc(tituloPocRemover);

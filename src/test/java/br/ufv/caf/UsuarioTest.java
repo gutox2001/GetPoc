@@ -55,13 +55,13 @@ public class UsuarioTest {
 
         Usuario usuarioTemp1 = new Administrador("AROLDO", "4250", "12345");
 
-        assertEquals(0, controleUsuario.pesquisaUsuario(usuarioTemp1));
+        assertEquals(0, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp1));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp1));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp1));
 
-        assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp1));
+        assertEquals(-1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp1));
 
     }
 
@@ -72,13 +72,13 @@ public class UsuarioTest {
 
         Usuario usuarioTemp2 = new Professor("THIAGO", "4225", "54321");
 
-        assertEquals(1, controleUsuario.pesquisaUsuario(usuarioTemp2));
+        assertEquals(1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp2));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp2));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp2));
 
-        assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp2));
+        assertEquals(-1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp2));
 
     }
 
@@ -89,13 +89,13 @@ public class UsuarioTest {
 
         Usuario usuarioTemp3 = new Aluno("GABRIEL", "4333", "12543");
 
-        assertEquals(2, controleUsuario.pesquisaUsuario(usuarioTemp3));
+        assertEquals(2, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp3));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp3));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp3));
 
-        assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp3));
+        assertEquals(-1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp3));
 
     }
 
@@ -106,13 +106,13 @@ public class UsuarioTest {
 
         Usuario usuarioTemp4 = new Aluno("JOÃO", "4555", "21354");
 
-        assertEquals(3, controleUsuario.pesquisaUsuario(usuarioTemp4));
+        assertEquals(3, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp4));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp4));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp4));
 
-        assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp4));
+        assertEquals(-1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp4));
 
     }
 
@@ -123,13 +123,13 @@ public class UsuarioTest {
 
         Usuario usuarioTemp5 = new Aluno("FABRÍCIO", "5000", "11111");
 
-        assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp5));
+        assertEquals(-1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp5));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp5));
 
         assertEquals(false, controleUsuario.removeUsuario(usuarioTemp5));
 
-        assertEquals(-1, controleUsuario.pesquisaUsuario(usuarioTemp5));
+        assertEquals(-1, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp5));
 
     }
 
@@ -141,4 +141,5 @@ public class UsuarioTest {
         assertEquals(true, controleUsuario.exibirTodosUsuarios());
 
     }
+    
 }

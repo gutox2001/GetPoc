@@ -1,9 +1,15 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.Excecoes.ExcecaoSenhaInvalida;
+import br.ufv.caf.Excecoes.ExcecaoUsuarioNaoEncontrado;
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.modelo.Aluno;
+import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
+import java.util.Objects;
 //TODO fazer modulo de validação
 
 /** Classes que tem a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
@@ -29,12 +35,6 @@ public class ControleUsuario {
         armzUsuarios = new ArmazenamentoUsuarios();
     }
 
-    //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
-    /** --- Funções de Usuário ---
-     * ;
-     * 
-     */
-
     /** Método addUsuario, usado para poder adicionar novos usuários a lista de usuários do sistema
      * <p>
      * Manipulam a classe abstrata Usuario e as suas subclasses
@@ -49,7 +49,7 @@ public class ControleUsuario {
 
     public boolean validaUsuario(Usuario usuario) { //TODO - Refatorar validaUsuario
         
-        if ((usuario.validaMatricula() && usuario.validaSenha()) && (pesquisaUsuario(usuario) != -1)) {
+        if ((usuario.validaMatricula() && usuario.validaSenha()) && (pesquisaUsuarioObjeto(usuario) != -1)) {
             return true;
         } else {
             return false;
@@ -69,7 +69,7 @@ public class ControleUsuario {
     
         if (validaUsuario(novoUsuario)){
             armzUsuarios.addUsuario(novoUsuario);
-            if (pesquisaUsuario(novoUsuario) != -1) {
+            if (pesquisaUsuarioObjeto(novoUsuario) != -1) {
                 return true;
             } else {
                 return false;
@@ -110,6 +110,7 @@ public class ControleUsuario {
 
     }
 
+    //TODO mudar essa descrição
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários
      * @author 
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
@@ -118,20 +119,50 @@ public class ControleUsuario {
      * @throws Null
      */
     
-    public int pesquisaUsuario(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
+    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento; //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA
         if(validaUsuario(usuarioAPesquisar))
             return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
         else return -1; //Retorna '-1' se o objeto não foi encontrado;
 
     }
 
-    public boolean exibirTodosUsuarios() {
+    public Usuario pesquisaUsuarioMatricula(String matricula) {
+        for (Usuario usuario : armzUsuarios.getListaUsuarios()) {
+            if (Objects.equals(usuario.getMatricula(), matricula)){
+                return usuario;
 
+            }
+
+        }
+
+        return null;
+
+    }
+
+    public Usuario realizarLogin(String matricula, String senha) throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado {
+
+        Usuario usuario = pesquisaUsuarioMatricula(matricula);
+
+        if (usuario != null){
+            if (usuario.getSenha().equals(senha)){
+                return usuario;
+
+            } else {
+                throw new ExcecaoSenhaInvalida();
+
+            }
+
+        } else {
+
+            throw new ExcecaoUsuarioNaoEncontrado();
+        }
+    }
+
+    public boolean exibirTodosUsuarios() { //TODO - Verificar se é o ideal deixar isso aqui
+        
         if (armzUsuarios.isEmpty()){
             System.out.println("Sistema não possui Usuários cadastrados!");
             return false;
-
-
         } 
         else {
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();

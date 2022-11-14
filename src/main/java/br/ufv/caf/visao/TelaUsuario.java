@@ -39,6 +39,7 @@ public class TelaUsuario{
      * @since Data - Hora
      * @throws Null
      */
+
     private Usuario preenchimentoDados(){
         String nome;
         String matricula;
@@ -167,6 +168,7 @@ public class TelaUsuario{
             }
         } while (opcao != 0);
     }
+
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
      * @author 
      * @param Null
