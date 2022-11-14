@@ -4,30 +4,37 @@ import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.modelo.Poc;
 
-
-//TODO colocar no cabeçalho as descrições das funções
-/*
-*
-* Classe que representa o armazenamento das Pocs cadastradas no sistema;
-* Métodos:
-*   public ControlePoc - construtor da classe;
-*   public void addPoc - adiciona nova Poc na ArmazenamentoPocs;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @João Vitor Chagas Lobo - 4693
-*
-*  @since 09/11/2022 - 22:00
-*
-*/
+/** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
+ * TODO: CONFIRMAR CABEÇALHOS
+ * @author
+ * @since XX/11/2022 - 18:30
+ * @version 1.0
+ */
 
 public class ControlePoc {
 
     ArmazenamentoPocs armzPocs;
 
+    /** Método ControlePoc, construtor da classe ControlePoc
+     * @author 
+     * @param Null
+     * @return Null
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public ControlePoc(){
 
         armzPocs = new ArmazenamentoPocs();
     }
+
+    /** Método addPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
+     * @author 
+     * @param novoPoc Poc - Novo Poc
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
 
     public boolean addPoc(Poc novoPoc) {
 
@@ -38,6 +45,13 @@ public class ControlePoc {
         return false;
     }
 
+    /** Método removePoc, usado para remover um determinado poc da lista de poc's do sistema
+     * @author 
+     * @param tituloPocRemover String - Titulo do poc o qual deseja remover 
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
     public boolean removePoc(String tituloPocRemover) { //Função remove uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário;
         
         if (armzPocs.removePoc(tituloPocRemover)) {
@@ -48,20 +62,51 @@ public class ControlePoc {
 
     }
 
+    /** Método pesquisarPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
+     * A função retornara a posição do poc no armazenamento, e caso não seja possível achar o poc retornara -1
+     * @author 
+     * @param tituloPocAPesquisar String - Titulo do poc o qual deseja pesquisar 
+     * @return int
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public int pesquisarPoc(String tituloPocAPesquisar) {
-        //Função retorna a posição do Poc no armazenamento;
 
         return armzPocs.pesquisaPoc(tituloPocAPesquisar);
     }
+
+        /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia 
+     * @author
+     * @param Null
+     * @return boolean
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
 
     public boolean isEmpty() {
         return armzPocs.isEmpty();
     }
 
+    /** Método quantidadePocsArmazenadas, utilizado para saber a quantidade de poc's armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return int
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+
     public int quantidadePocsArmazenadas() {
         return armzPocs.quantidadePocsArmazenadas();
     }
 
+    /** Método exibirPocs, utilizado para exibir os poc's armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
     public boolean exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
 
         if (armzPocs.isEmpty()){
@@ -79,6 +124,13 @@ public class ControlePoc {
         }
     }
 
+    /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
+     * @author
+     * @param Null
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
     public int editarPoc(Poc pocEditada, String tituloPocDesatualizada) { //Retorna a posição da Poc atualizada; //TODO - REFATORAR EDITAR POC - conferir
         if (pesquisarPoc(tituloPocDesatualizada) != -1) {
             removePoc(tituloPocDesatualizada);
@@ -87,7 +139,7 @@ public class ControlePoc {
         } else {
             return -1; //Poc desatualizada não foi encontrada;
         }
-
+        //TODO: ANALISAR MÉTODO ANTIGO
         /*int resposta=1, i=1;
         String tituloEditado, nomeOrientadorEditado, nomeCo_OrientadorEditado, resumoEditado;
         String areaPocEditado;

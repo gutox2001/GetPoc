@@ -2,18 +2,12 @@ package br.ufv.caf.modelo;
 
 import java.util.ArrayList;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe implementa entidade Poc;
-* Métodos:
-*   public Poc - construtor da classe;
-*	
-* @Aroldo Augusto Barbosa Simões - 4250
-* @João Vitor Chagas Lobo - 4693
-*
-*  @since 09/11/2022 - 22:00
-*
-*/
+/** Classes que implementa a entidade Poc
+ * TODO: CONFIRMAR CABEÇALHOS
+ * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @since 09/11/2022 - 22:00
+ * @version 1.2
+ */
 
 public class Poc {
 
@@ -30,6 +24,20 @@ public class Poc {
     private String resumo;
     private Area areaDaPoc;
 
+    /** Método Poc, construtor da classe Poc
+     * @author 
+     * @param titulo String - Titulo do poc
+     * @param listaAutores ArrayList<String> - Autores envolvidos no poc
+     * @param nomeOrientador String - Nome do orientador do poc
+     * @param nomeCoOrientador String - Nome do coorientador do poc
+     * @param palavrasChave ArrayList<String> - Palavra chave que descreve o poc
+     * @param resumo String - Resumo geral do que o poc se trata
+     * @param areaPoc Area - Área que o poc irá aborda
+     * @return Null
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
+
     public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
                String nomeCoOrientador, ArrayList<String> palavrasChave, String resumo, Area areaPoc) {
         this.titulo = titulo;
@@ -40,6 +48,14 @@ public class Poc {
         this.resumo = resumo;
         this.areaDaPoc = areaPoc;
     }
+
+    /** Método getTituloPoc, usado para obter o titulo do poc já adicionados no sistema
+     * @author 
+     * @param Null
+     * @return String - Titulo do Poc
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
 
     public String getTituloPoc(){
         return this.titulo;

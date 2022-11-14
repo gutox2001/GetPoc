@@ -1,21 +1,23 @@
 package br.ufv.caf.modelo;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe que herda a classe abstrata Usuário e implementa funcionalidades do Professor;
-* Métodos:
-*   public Professor - construtor da classe;
-*	
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-* @since 09/11/2022 - 20:00
-*
-*/
+/** Classe que herda a classe abstrata Usuário e implementa as funcionalidades do Professor
+ * TODO: Confirmar Cabeçalhos
+ * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @since 09/11/2022 - 22:00
+ * @version 1.2
+ */
 
 public class Professor extends Usuario{
+
+    /** Método Professor, construtor da classe Professor //TODO: Completar cabeçalho
+     * @author 
+     * @param nome String - Nome do Professor(a)
+     * @param matricula int - Numero da Matricula
+     * @param senha String - Senha de acesso
+     * @return Null
+     * @since 01/11/2022 - 20:17
+     * @throws Null
+     */ 
 
     public Professor(String nome, String matricula, String senha) {
         super(nome, matricula, senha, TipoUsuario.PROFESSOR);

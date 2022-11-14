@@ -4,27 +4,26 @@ import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
-
-//TODO colocar no cabeçalho as descrições das funções
 //TODO fazer modulo de validação
-/*
- *
- * Classe que faz o controle do fluxo de informçãoes do sistema do GetPoc;
- * Métodos:
- *  public ControleGetPoc - construtor da classe;
- *
- *  @Aroldo Augusto Barbosa Simões - 4250
- *  @Gabriel Ryan dos Santos Oliveira - 4688
- *  @Thiago Cândido Rocha - 4225
- *  @João Vitor Chagas Lobo - 4693
- *
- * @since 09/11/2022 - 22:00
- *
+
+/** Classes que tem a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
+ * TODO: CONFIRMAR CABEÇALHOS
+ * @author
+ * @since xx/11/2022 - 16:00
+ * @version 1.0
  */
 
 public class ControleUsuario {
 
     ArmazenamentoUsuarios armzUsuarios;
+
+    /** Método ControleUsuario, construtor da classe ControleUsuario
+     * @author 
+     * @param Null
+     * @return Null
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
 
     public ControleUsuario()  {
         armzUsuarios = new ArmazenamentoUsuarios();
@@ -32,8 +31,20 @@ public class ControleUsuario {
 
     //TODO - ANOTAÇÃO a principio essas funções ficarão aqui, mas talvez seja melhor fazer 2 controles separados
     /** --- Funções de Usuário ---
-     * Manipulam a classe abstrata Usuario e as suas subclasses;
+     * ;
+     * 
+     */
+
+    /** Método addUsuario, usado para poder adicionar novos usuários a lista de usuários do sistema
+     * <p>
+     * Manipulam a classe abstrata Usuario e as suas subclasses
+     * <p>
      * Todos os usuários são identificados por suas matrículas
+     * @author
+     * @param novoUsuario Usuario - Novo Usuário
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws Null
      */
 
     public boolean validaUsuario(Usuario usuario) { //TODO - Refatorar validaUsuario
@@ -45,6 +56,14 @@ public class ControleUsuario {
         }
 
     }
+
+    /** Método addUsuario, usado para poder adicionar os usuários na lista de usuários do sistema
+     * @author 
+     * @param usuarioARemover Usuario - Usuário que deseja remover
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
 
     public boolean addUsuario(Usuario novoUsuario) { //Adiciona um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
     
@@ -63,6 +82,14 @@ public class ControleUsuario {
         
     }
 
+    /** Método removeUsuario, usado para poder remover os usuários na lista de usuários do sistema
+     * @author 
+     * @param usuarioARemover Usuario - Usuário que deseja remover
+     * @return boolean
+     * @since 02/11/2022 - 16:00
+     * @throws Null
+     */
+    
     public boolean removeUsuario(Usuario usuarioARemover) { //Remove um usuário ao sistema. Caso o processo dê certo retorna 'true', do contrário 'false';
 
         if (armzUsuarios.pesquisaUsuario(usuarioARemover) != -1) {
@@ -83,6 +110,14 @@ public class ControleUsuario {
 
     }
 
+    /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários
+     * @author 
+     * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
+     * @return void
+     * @since 02/11/2022 - 18:30
+     * @throws Null
+     */
+    
     public int pesquisaUsuario(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
         if(validaUsuario(usuarioAPesquisar))
             return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);

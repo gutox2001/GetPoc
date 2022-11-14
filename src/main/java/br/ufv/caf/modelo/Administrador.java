@@ -1,21 +1,23 @@
 package br.ufv.caf.modelo;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe que herda a classe abstrata Usuário e implementa funcionalidades do Administrador;
-* Métodos:
-*   public Administrador - construtor da classe;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-* @since 09/11/2022 - 22:00
-*
-*/
+/** Classes que herda a classe abstrata Usuário e implementa as funcionalidades do Administrador
+ * TODO: CONFIRMAR CABEÇALHOS
+ * @author @Aroldo Augusto Barbosa Simões
+ * @since 09/11/2022  - 22:00
+ * @version 1.1
+ */
 
 public class Administrador extends Usuario {
+
+    /** Método Administrador, construtor da classe Administrador
+     * @author 
+     * @param nome String - Nome do Administrador
+     * @param matricula int - Numero da Matricula
+     * @param senha String - Senha de acesso
+     * @return Null
+     * @since 01/11/2022 - 20:17
+     * @throws Null
+     */
 
     public Administrador(String nome, String matricula, String senha) {
         super(nome, matricula, senha, TipoUsuario.ADMINISTRADOR);

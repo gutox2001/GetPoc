@@ -9,29 +9,34 @@ import org.junit.Test;
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.Poc;
 
-
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-*Classe que faz o teste das classes Poc e ListaPocs;
-*Métodos:
-*	public TestePoc - construtor da classe;
-*	public void iniciaTeste - inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves;
-*   public void teste1, public void teste2, public void teste3 - faz o teste das classes Poc e ListaPocs;
-*
-*
-*@Aroldo Augusto Barbosa Simões - 4250
-*@Gabriel Ryan dos Santos Oliveira - 4688
+/** Classes que tem como funcionalidade fazer o teste das classes Poc e ArmazenamentoPocs
+ * @author Aroldo Augusto Barbosa Simões - 4250
+ * @author Gabriel Ryan dos Santos Oliveira - 4688
 * 
-*@since 09/11/2022 - 21:30
-*@version 1.2
-*
-*/
+ * @since 09/11/2022 - 14:00
+ * @version 1.1
+ */
 
 public class PocTest {
     ControlePoc controlePoc = new ControlePoc();
 
+    /** Método PocTest, construtor da classe PocTest
+     * @author 
+     * @param Null
+     * @return Null
+     * @since 09/11/2022 - 14:00
+     * @throws Null
+     */
+
     public PocTest(){}
 
+    /** Método iniciaTeste, responsável por inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
+     * @author 
+     * @param Null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws Null
+     */
 
     @BeforeEach
     public void iniciaTeste() {
@@ -87,6 +92,14 @@ public class PocTest {
         listaPalavrasChave.clear();
     }
 
+    /** Método iniciaTeste, responsável por fazer o teste das classes Poc e ListaPocs;
+     * @author 
+     * @param Null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws Null
+     */
+
     @Test
     public void teste01(){ //Testa Funcionalidades ControlePoc para Poc1
 
@@ -128,6 +141,14 @@ public class PocTest {
         assertEquals(2, resultadoquantidadePocsArmazenadasPoc1);
 
     }
+
+    /** Método iniciaTeste, responsável por fazer o teste das classes Poc e ListaPocs;
+     * @author 
+     * @param Null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws Null
+     */
 
     @Test
     public void teste2() { //Testa Funcionalidades ControlePoc para Poc2
@@ -171,6 +192,14 @@ public class PocTest {
 
     }
 
+    /** Método iniciaTeste, responsável por fazer o teste das classes Poc e ListaPocs;
+     * @author 
+     * @param Null
+     * @return void
+     * @since 09/11/2022 - 14:00
+     * @throws Null
+     */
+    
     @Test
     public void teste3() { //Testa Funcionalidades ControlePoc para Poc3
         iniciaTeste();
