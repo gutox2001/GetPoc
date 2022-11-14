@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** Classes que tem como funcionalidade apresentar a tela de controle sobre os poc's
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Thiago Cândido Rocha - 4225
  * @since Data - Hora
  * @version 1.0
@@ -18,7 +17,7 @@ public class TelaPoc {
     private Scanner inputPoc;
 
     /** Método TelaPoc, construtor da classe TelaPoc
-     * @author 
+     * @author @Thiago Cândido Rocha - 4225 
      * @param controle ControlePoc - Descrição
      * @return Null
      * @since Data - Hora
