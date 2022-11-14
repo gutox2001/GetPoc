@@ -37,7 +37,7 @@ public class TelaControle {
      * @param telaPOC TelaPoc - Tela do poc
      * @return Null
      * @since 09/11/2022 - 22:00
-     * @throws Null
+     * @throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado
      */
 
     public void logarComoUsuario(){ //TODO - Propagar as excessões criadas
