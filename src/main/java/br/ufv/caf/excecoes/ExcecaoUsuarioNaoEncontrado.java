@@ -1,4 +1,4 @@
-package br.ufv.caf.Excecoes;
+package br.ufv.caf.excecoes;
 
 public class ExcecaoUsuarioNaoEncontrado extends Exception{
 
