@@ -9,30 +9,36 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
-/*
-* //TODO colocar no cabeçalho as descrições das funções
-* Classe ...;
-* Métodos:
-*   public ...;
-*
-* @Aroldo Augusto Barbosa Simões - 4250
-* @Gabriel Ryan dos Santos Oliveira - 4688
-* @Thiago Cândido Rocha - 4225
-* @João Vitor Chagas Lobo - 4693
-*
-* @since 09/11/2022 - 22:00
-*
-*/
+/** Classe MenusUsuario representa um menu para q os usuários possam ser cadastrados 
+ * @since data - hora
+ * @version 1.0
+ */
 
 public class TelaUsuario{
     //TODO - Separar o controle em dois
     protected ControleUsuario controle;
     protected Scanner inputUser;
 
+    /** Método MenusUsuario, construtor da classe MenusUsuario
+     * @author 
+     * @param controle ControleUsuario - Controle do Usuário
+     * @return Null
+     * @since Data - Hora
+     * @throws Null
+     */
+
     public TelaUsuario(ControleUsuario controle){
         this.inputUser = new Scanner(System.in);
         this.controle = controle;
     }
+    
+    /** Método preenchimentoDados, tem a finalidade de preencher os dados do usuário que está sendo cadastrado
+     * @author 
+     * @param Null
+     * @return Usuario - Dados do Usuário
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private Usuario preenchimentoDados(){
         String nome;
@@ -45,8 +51,11 @@ public class TelaUsuario{
         System.out.println("-> Entre com o nome do usuário");
         nome = this.inputUser.nextLine();
 
-        System.out.println("Entre com um número válido de matrícula");
-        matricula = this.inputUser.nextLine(); //Vericicação de Usuário abaixo;
+        do {
+            System.out.println("Entre com um número válido de matrícula");
+            matricula = this.inputUser.nextLine();
+        }while(!this.controle.verificaMatricula(matricula)); //TODO - Função para verificar matrícula válida
+
         senha = this.inputUser.nextLine();
 
         System.out.println("O usuário é um professor ou um aluno?  \n0 - PROFESSOR   1 - ALUNO");
@@ -63,21 +72,22 @@ public class TelaUsuario{
 
         return userTemp;
 
+
     }
 
-    public Usuario validacaoDados(Usuario userTemp){
-        do {
-            preenchimentoDados();
-        } while (!controle.validaUsuario(userTemp));
-
-        return userTemp;
-    }
+    /** Método efetuarCadastro, tem a finalidade de efetuar o cadastro do usuário se possível
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private void efetuarCadastro() {
 
         //TODO - É preciso estar logado como ADMIN para cadastrar. Ainda será verificado como isso será feito
         System.out.println("*************************************************************************");
-        if(!this.controle.addUsuario(validacaoDados(preenchimentoDados()))){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
+        if(!this.controle.addUsuario(preenchimentoDados())){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O usuario ja esta cadastrado no nosso sistema!");
@@ -97,6 +107,13 @@ public class TelaUsuario{
 
     }
 
+    /** Método efetuarRemocao, tem a finalidade de remover o cadastro do usuário se possível
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     private void efetuarRemocao() {
 
@@ -147,6 +164,15 @@ public class TelaUsuario{
             }
         } while (opcao != 0);
     }
+
+    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
+
     protected void menuFuncionalidadesProfessor(TelaPoc telaPoc) {
         int opcao;
         String nomePoc;
@@ -181,6 +207,14 @@ public class TelaUsuario{
             }
         } while (opcao != 0); //Assume que opções erradas irão continuar no menu mas mostrarão a mensagem acima
     }
+
+    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
+     * @author 
+     * @param Null
+     * @return Void
+     * @since Data - Hora
+     * @throws Null
+     */
 
     protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc) {
         int opcao;
@@ -236,5 +270,4 @@ public class TelaUsuario{
             }
         } while (opcao != 0);
     }
-    
 }
