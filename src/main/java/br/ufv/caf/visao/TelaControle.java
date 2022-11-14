@@ -7,7 +7,6 @@ import br.ufv.caf.modelo.Usuario;
 import java.util.ArrayList;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @Thiago Cândido Rocha - 4225
  * @since 09/11/2022 - 22:00
  * @version 1.0
