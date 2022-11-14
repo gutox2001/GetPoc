@@ -33,7 +33,7 @@ public class TelaControle {
     /** Método logarComoUsuario, responsável por fazer o login do usuário
      * @author @Thiago Cândido Rocha - 4225
      * @param Null
-     * @return Null
+     * @return void
      * @since 10/11/2022 - 22:00
      * @throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado
      */
@@ -68,7 +68,7 @@ public class TelaControle {
     /** Método verificaSistema, responsável por verificar se o sistema está vazio
      * @author @Thiago Cândido Rocha - 4225
      * @param Null
-     * @return Null
+     * @return void
      * @since 11/11/2022 - 19:00
      * @throws Null
      */
@@ -90,7 +90,7 @@ public class TelaControle {
     /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
      * @author @Thiago Cândido Rocha - 4225
      * @param Null
-     * @return Null
+     * @return void
      * @since 11/11/2022 - 19:00
      * @throws Null
      */
