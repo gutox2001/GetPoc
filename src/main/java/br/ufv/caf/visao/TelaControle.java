@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
  * @author @Thiago Cândido Rocha - 4225
- * @since 09/11/2022 - 22:00
+ * @since 10/11/2022 - 22:00
  * @version 1.0
  */
 
@@ -21,7 +21,7 @@ public class TelaControle {
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
      * @return Null
-     * @since 09/11/2022 - 22:00
+     * @since 10/11/2022 - 22:00
      * @throws Null
      */
 
@@ -35,7 +35,7 @@ public class TelaControle {
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
      * @return Null
-     * @since 09/11/2022 - 22:00
+     * @since 10/11/2022 - 22:00
      * @throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado
      */
 
@@ -71,7 +71,7 @@ public class TelaControle {
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
      * @return Null
-     * @since 11/11/2022 - 22:00
+     * @since 11/11/2022 - 19:00
      * @throws Null
      */
 
@@ -94,7 +94,7 @@ public class TelaControle {
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
      * @return Null
-     * @since 11/11/2022 - 22:00
+     * @since 11/11/2022 - 19:00
      * @throws Null
      */
     
