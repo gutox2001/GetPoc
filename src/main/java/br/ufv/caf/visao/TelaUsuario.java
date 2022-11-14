@@ -7,9 +7,9 @@ import br.ufv.caf.modelo.Usuario;
 
 import java.util.Scanner;
 
-import java.util.ArrayList;
-
 /** Classe MenusUsuario representa um menu para q os usuários possam ser cadastrados 
+ * TODO: CONFIRMAR CABEÇALHOS
+ * @author @Thiago Cândido Rocha - 4225
  * @since data - hora
  * @version 1.0
  */
@@ -51,11 +51,8 @@ public class TelaUsuario{
         System.out.println("-> Entre com o nome do usuário");
         nome = this.inputUser.nextLine();
 
-        do {
-            System.out.println("Entre com um número válido de matrícula");
-            matricula = this.inputUser.nextLine();
-        }while(!this.controle.verificaMatricula(matricula)); //TODO - Função para verificar matrícula válida
-
+        System.out.println("Entre com um número válido de matrícula");
+        matricula = this.inputUser.nextLine(); //Vericicação de Usuário abaixo;
         senha = this.inputUser.nextLine();
 
         System.out.println("O usuário é um professor ou um aluno?  \n0 - PROFESSOR   1 - ALUNO");
@@ -72,7 +69,14 @@ public class TelaUsuario{
 
         return userTemp;
 
+    }
 
+    public Usuario validacaoDados(Usuario userTemp){
+        do {
+            preenchimentoDados();
+        } while (!controle.validaUsuario(userTemp));
+
+        return userTemp;
     }
 
     /** Método efetuarCadastro, tem a finalidade de efetuar o cadastro do usuário se possível
@@ -87,7 +91,7 @@ public class TelaUsuario{
 
         //TODO - É preciso estar logado como ADMIN para cadastrar. Ainda será verificado como isso será feito
         System.out.println("*************************************************************************");
-        if(!this.controle.addUsuario(preenchimentoDados())){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
+        if(!this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()))){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O usuario ja esta cadastrado no nosso sistema!");
@@ -270,4 +274,5 @@ public class TelaUsuario{
             }
         } while (opcao != 0);
     }
+    
 }
