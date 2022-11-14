@@ -16,7 +16,7 @@ public class TelaControle {
     private TelaUsuario telaUser;
     private TelaPoc telaPoc;
 
-    /** public TelaControle, construtor da classe TelaControle
+    /** Método TelaControle, construtor da classe TelaControle
      * @author @Thiago Cândido Rocha - 4225
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
@@ -32,8 +32,7 @@ public class TelaControle {
 
     /** Método logarComoUsuario, responsável por fazer o login do usuário
      * @author @Thiago Cândido Rocha - 4225
-     * @param telaUser TelaUsuario - Tela do Usuário
-     * @param telaPOC TelaPoc - Tela do poc
+     * @param Null
      * @return Null
      * @since 10/11/2022 - 22:00
      * @throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado
@@ -68,8 +67,7 @@ public class TelaControle {
 
     /** Método verificaSistema, responsável por verificar se o sistema está vazio
      * @author @Thiago Cândido Rocha - 4225
-     * @param telaUser TelaUsuario - Tela do Usuário
-     * @param telaPOC TelaPoc - Tela do poc
+     * @param Null
      * @return Null
      * @since 11/11/2022 - 19:00
      * @throws Null
@@ -91,8 +89,7 @@ public class TelaControle {
 
     /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
      * @author @Thiago Cândido Rocha - 4225
-     * @param telaUser TelaUsuario - Tela do Usuário
-     * @param telaPOC TelaPoc - Tela do poc
+     * @param Null
      * @return Null
      * @since 11/11/2022 - 19:00
      * @throws Null
