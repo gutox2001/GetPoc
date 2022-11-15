@@ -1,7 +1,6 @@
 package br.ufv.caf.modelo;
 
 /** Classe abstrata Usuário que representa os usuários base do sistema
- * TODO: Confirmar Cabeçalhos
  * @author @Aroldo Augusto Barbosa Simões - 4250
  * @since 09/11/2022 - 22:00
  * @version 1.2
@@ -9,7 +8,12 @@ package br.ufv.caf.modelo;
 
 public abstract class Usuario {
 
-    //Enum utilizado para definir tipo do Usuário
+    /** Método TipoUsuario, tem a finalidade de definir tipo do Usuário
+     * @author 
+     * @return enum
+     * @since 09/11/2022 - 22:00
+     */
+
     public enum TipoUsuario {
         ALUNO, PROFESSOR, ADMINISTRADOR;
     }
@@ -25,9 +29,7 @@ public abstract class Usuario {
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
      * @param tipoUsuario TipoUsuario - Tipo de usuário
-     * @return Null
      * @since 02/11/2022 - 15:30
-     * @throws Null
      */
 
     protected Usuario(String nome, String matricula, String senha, TipoUsuario tipoUsuario) {
@@ -42,10 +44,8 @@ public abstract class Usuario {
 
     /** Método getNome, usado para obter o Nome do Usuário
      * @author 
-     * @param Null
      * @return String - Nome do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws Null
      */
 
     public String getNome() {
@@ -54,10 +54,8 @@ public abstract class Usuario {
 
     /** Método getMatricula, usado para obter o Matricula do Usuário
      * @author 
-     * @param Null
      * @return int - Numero da matricula do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws Null
      */
 
     public String getMatricula() {
@@ -66,10 +64,8 @@ public abstract class Usuario {
 
     /** Método getSenha, usado para obter o a senha do Usuário
      * @author 
-     * @param Null
      * @return String - Senha do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws Null
      */
 
     public String getSenha() {
@@ -78,10 +74,8 @@ public abstract class Usuario {
 
     /** Método getTipoUsuario, usado para obter o tipo do Usuário
      * @author 
-     * @param Null
      * @return TipoUsuario - Tipo do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws Null
      */
 
     public TipoUsuario getTipoUsuario() {
@@ -90,10 +84,8 @@ public abstract class Usuario {
 
     /** Método toString, usado para obter todos os dados do Usuário
      * @author 
-     * @param Null
      * @return String - Nome, Matricula, Tipo do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws Null
      */
 
     @Override
@@ -101,8 +93,22 @@ public abstract class Usuario {
         return " NOME USUARIO: " + this.nome + "\n- MATRICULA USUARIO: " + this.matricula + "\n- TIPO USUARIO: " + this.tipoUsuario.name();
     }
 
+
+    /** Método validaMatricula, tem a finalidade de verificar o formato da senha
+     * @author 
+     * @return boolean
+     * @since 09/11/2022 - 22:00
+     */
+
     public abstract boolean validaMatricula();
 
+
+    /** Método validaSenha, tem a finalidade de verificar o formato da senha
+     * @author 
+     * @return boolean
+     * @since 09/11/2022 - 22:00
+     */
+    
     public abstract boolean validaSenha();
 
 }

@@ -7,10 +7,8 @@ import br.ufv.caf.modelo.Usuario;
 
 //TODO Implementar sistema de persistencia nesta classe com sistema de arquivos CSV
 /** Classes com a finalidade de armazenar os usuários cadastradas no sistema
- * TODO: CONFIRMAR CABEÇALHOS
  * @author @João Vitor Chagas Lobo - 4693
  * @author @Aroldo Augusto Barbosa Simões - 4250
-*
  * @since 14/11/2022 - 18:40
  * @version 1.3
  */
@@ -93,7 +91,7 @@ public class ArmazenamentoUsuarios {
     /** Método de TESTE pesquisaIndiceUsuario, utilizado para verificar se um determinado Usuário está presente na lista e retornar o indice do mesmo
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se está presente na lista de Usuário
-     * @return boolean
+     * @return int
      * @since 02/11/2022 - 18:30
      */
 

@@ -9,14 +9,14 @@ import br.ufv.caf.modelo.Usuario;
 import java.util.ArrayList;
 import java.util.Objects;
 //TODO fazer modulo de validação
-//TODO: CONFIRMAR CABEÇALHOS
 
 /** Classes com a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
+ * <p>
  * Manipulam a classe abstrata Usuario e as suas subclasses
+ * <p>
  * Todos os usuários são identificados por suas matrículas
  * @author @João Vitor Chagas Lobo - 4693
  * @author @Aroldo Augusto Barbosa Simões - 4250
- *
  * @since 14/11/2022 - 18:42
  * @version 1.1
  */
@@ -102,11 +102,11 @@ public class ControleUsuario {
     /** Método de TESTE pesquisaUsuarioObjeto, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
-     * @return void
+     * @return int
      * @since 02/11/2022 - 18:30
      */
     
-    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento; //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA
+    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA
         if(validaUsuario(usuarioAPesquisar))
             return armzUsuarios.pesquisaIndiceUsuario(usuarioAPesquisar);
         else return -1; //Retorna '-1' se o objeto não foi encontrado;
@@ -172,7 +172,6 @@ public class ControleUsuario {
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 02/11/2022 - 18:30
-     * @throws null
      */
 
     public boolean exibirTodosUsuarios() { //TODO - Mudar para a visao
@@ -196,7 +195,6 @@ public class ControleUsuario {
      * @author
      * @return boolean
      * @since 02/11/2022 - 18:30
-     * @throws null
      */
 
     //TODO mudar para sem usuários cadastrados algo do tipo

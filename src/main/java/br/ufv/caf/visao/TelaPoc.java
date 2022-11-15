@@ -19,9 +19,7 @@ public class TelaPoc {
     /** Método TelaPoc, construtor da classe TelaPoc
      * @author @Thiago Cândido Rocha - 4225 
      * @param controle ControlePoc - Controle do POC
-     * @return Null
      * @since 09/11/2022 - 18:30
-     * @throws Null
      */
 
     public TelaPoc(ControlePoc controle){
@@ -31,10 +29,8 @@ public class TelaPoc {
 
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
      * @author @Thiago Cândido Rocha - 4225
-     * @param Null
      * @return Poc
      * @since 09/11/2022 - 21:00
-     * @throws Null
      */
 
     private Poc preenchimentoDados(){
@@ -92,10 +88,8 @@ public class TelaPoc {
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
      * @author @Thiago Cândido Rocha - 4225
-     * @param Null
      * @return int
      * @since 09/11/2022 - 21:00
-     * @throws Null
      */
 
     protected int  menuPesquisa(){
@@ -112,10 +106,7 @@ public class TelaPoc {
 
     /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
      * @author @Thiago Cândido Rocha - 4225
-     * @param Null
-     * @return void
      * @since 09/11/2022 - 21:00
-     * @throws Null
      */
 
     protected void menuCadastro(){
@@ -142,10 +133,7 @@ public class TelaPoc {
 
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema
      * @author @Thiago Cândido Rocha - 4225
-     * @param Null
-     * @return void
      * @since 09/11/2022 - 21:00
-     * @throws Null
      */
 
     protected void menuEdicao(){ // TODO - Implementar a lógica para a edição no controle e para e leitura de dados aqui
@@ -154,10 +142,7 @@ public class TelaPoc {
 
     /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
      * @author @Thiago Cândido Rocha - 4225
-     * @param Null
-     * @return void
      * @since 09/11/2022 - 21:00
-     * @throws Null
      */
 
     protected void menuRemocao(){
