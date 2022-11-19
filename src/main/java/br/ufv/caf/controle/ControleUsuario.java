@@ -63,18 +63,18 @@ public class ControleUsuario {
         //TODO Depois de feita, tratar aqui a exceção para dados inválidos
         if (validaUsuario(novoUsuario)) {
 
-            if (!armzUsuarios.pesquisaUsuario(novoUsuario).equals(novoUsuario)){
-
-                if (validaUsuario(novoUsuario)) {
+            if (armzUsuarios.pesquisaIndiceUsuario(novoUsuario) == -1){
 
                     armzUsuarios.addUsuario(novoUsuario);
                     return true;
-                    }
-                }
-            } else {
 
-                return false;
             }
+        } 
+        else {
+
+            return false;
+            
+        }
         return false;
     }
 
@@ -87,16 +87,18 @@ public class ControleUsuario {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
     
-    public boolean removeUsuario(Usuario usuarioARemover) throws ExcecaoUsuarioNaoEncontrado {
+    public boolean removeUsuario(Usuario usuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado 
 
-        if (armzUsuarios.pesquisaUsuario(usuarioARemover).equals(usuarioARemover)) {
+        if (armzUsuarios.pesquisaIndiceUsuario(usuarioARemover) != -1) {
 
                 armzUsuarios.removeUsuario(usuarioARemover);
                 return true;
+                
         } else {
-
-            throw new ExcecaoUsuarioNaoEncontrado();
+            //throw new ExcecaoUsuarioNaoEncontrado();
+            return false;
         }
+
     }
 
     /** Método de TESTE pesquisaUsuarioObjeto, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
@@ -106,10 +108,11 @@ public class ControleUsuario {
      * @since 02/11/2022 - 18:30
      */
     
-    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA
-        if(validaUsuario(usuarioAPesquisar))
-            return armzUsuarios.pesquisaIndiceUsuario(usuarioAPesquisar);
-        else return -1; //Retorna '-1' se o objeto não foi encontrado;
+    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { 
+        //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA 
+        //TODO:FAZER FUNÇÃO CORRETA QUE RETORNA OBJETO;
+        if(validaUsuario(usuarioAPesquisar)) return armzUsuarios.pesquisaIndiceUsuario(usuarioAPesquisar);
+        else return -1; //Retorna '-1' se o objeto não foi encontrado ou se o formato do objeto não é valido;
 
     }
 

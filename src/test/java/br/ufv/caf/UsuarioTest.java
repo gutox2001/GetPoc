@@ -66,11 +66,13 @@ public class UsuarioTest {
 
         iniciaTeste();
 
+        assertEquals(false, controleUsuario.isEmpty());
+
         Usuario usuarioTemp1 = new Administrador("AROLDO", "4250", "12345");
 
-        assertEquals(0, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp1));
-
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp1));
+
+        assertEquals(0, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp1));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp1));
 

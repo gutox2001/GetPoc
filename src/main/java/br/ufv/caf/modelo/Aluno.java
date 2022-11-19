@@ -9,7 +9,7 @@ package br.ufv.caf.modelo;
 public class Aluno extends Usuario {
 
     /** Método Aluno, construtor da classe Aluno
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param nome String - Nome do Aluno
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
@@ -21,7 +21,7 @@ public class Aluno extends Usuario {
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
-     * @author
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */
@@ -32,7 +32,7 @@ public class Aluno extends Usuario {
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da senha
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */

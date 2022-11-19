@@ -59,14 +59,11 @@ public class ArmazenamentoUsuarios {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
-    public void removeUsuario(Usuario usuarioARemover) throws ExcecaoUsuarioNaoEncontrado {
+    public void removeUsuario(Usuario usuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado
 
-       if (this.pesquisaUsuario(usuarioARemover) != null){
-           this.listaUsuarios.remove(usuarioARemover);
-
-       } else {
+       this.listaUsuarios.remove(pesquisaIndiceUsuario(usuarioARemover)); /*else {
            throw new ExcecaoUsuarioNaoEncontrado();
-       }
+       }*/
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado Usuário está presente na lista
