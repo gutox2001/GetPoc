@@ -9,11 +9,9 @@ package br.ufv.caf.modelo;
 public abstract class Usuario {
 
     /** Método TipoUsuario, tem a finalidade de definir tipo do Usuário
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return enum
      * @since 09/11/2022 - 22:00
-     * @throws null
      */
 
     public enum TipoUsuario {
@@ -26,14 +24,12 @@ public abstract class Usuario {
     private TipoUsuario tipoUsuario;
 
     /** Método Usuario, construtor da classe Usuario
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões
      * @param nome String - Nome do Usuário
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
      * @param tipoUsuario TipoUsuario - Tipo de usuário
-     * @return null
      * @since 02/11/2022 - 15:30
-     * @throws null
      */
 
     protected Usuario(String nome, String matricula, String senha, TipoUsuario tipoUsuario) {
@@ -47,11 +43,9 @@ public abstract class Usuario {
     //TODO ver se precisa de mais gets ou sets
 
     /** Método getNome, usado para obter o Nome do Usuário
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return String - Nome do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws null
      */
 
     public String getNome() {
@@ -59,11 +53,9 @@ public abstract class Usuario {
     }
 
     /** Método getMatricula, usado para obter o Matricula do Usuário
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return int - Numero da matricula do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws null
      */
 
     public String getMatricula() {
@@ -71,11 +63,9 @@ public abstract class Usuario {
     }
 
     /** Método getSenha, usado para obter o a senha do Usuário
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return String - Senha do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws null
      */
 
     public String getSenha() {
@@ -83,11 +73,9 @@ public abstract class Usuario {
     }
 
     /** Método getTipoUsuario, usado para obter o tipo do Usuário
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return TipoUsuario - Tipo do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws null
      */
 
     public TipoUsuario getTipoUsuario() {
@@ -95,11 +83,9 @@ public abstract class Usuario {
     }
 
     /** Método toString, usado para obter todos os dados do Usuário
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return String - Nome, Matricula, Tipo do Usuário
      * @since 02/11/2022 - 15:30
-     * @throws null
      */
 
     @Override
@@ -109,22 +95,18 @@ public abstract class Usuario {
 
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da senha
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
-     * @throws null
      */
 
     public abstract boolean validaMatricula();
 
 
     /** Método validaSenha, tem a finalidade de verificar o formato da senha
-     * @author 
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
-     * @throws null
      */
     
     public abstract boolean validaSenha();
