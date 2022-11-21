@@ -6,10 +6,11 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
+
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.Poc;
 
-/** Classes que tem como funcionalidade fazer o teste das classes Poc e ListaPocs
+/** Classes que tem como funcionalidade fazer o teste das classes Poc e ArmazenamentoPocs
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @author Gabriel Ryan dos Santos Oliveira - 4688
 * 
@@ -18,24 +19,21 @@ import br.ufv.caf.modelo.Poc;
  */
 
 public class PocTest {
+    
     ControlePoc controlePoc = new ControlePoc();
 
     /** Método PocTest, construtor da classe PocTest
-     * @author 
-     * @param null
-     * @return null
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @since 09/11/2022 - 14:00
-     * @throws null
      */
 
     public PocTest(){}
 
     /** Método iniciaTeste, responsável por inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
-     * @author 
-     * @param null
-     * @return void
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @since 09/11/2022 - 14:00
-     * @throws null
      */
 
     @BeforeEach
@@ -93,11 +91,9 @@ public class PocTest {
     }
 
     /** Método teste01, responsável por testa Funcionalidades ControlePoc para Poc1
-     * @author 
-     * @param null
-     * @return void
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @since 09/11/2022 - 14:00
-     * @throws null
      */
 
     @Test
@@ -118,26 +114,32 @@ public class PocTest {
         listaPalavrasChaveTeste1.add("Engenharia");
         listaPalavrasChaveTeste1.add("SoftWare");
 
-        Poc poc1 = new Poc("ESOF", null, "Aroldo",
-        "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
+        Poc poc1 = new Poc("ESOF", listaAutoresTeste1, "Aroldo",
+        "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE);
 
-        int resultadoPesquisa1 = controlePoc.pesquisarPoc(poc1.getTituloPoc());
-
-        assertEquals(0, resultadoPesquisa1);
+        assertEquals(controlePoc.getListaPocs().get(0), controlePoc.pesquisarPoc(poc1.getTituloPoc()));
         
         controlePoc.removePoc(poc1.getTituloPoc());
-        assertEquals(-1, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
+        assertEquals(null, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
 
-        //controlePoc.editar();
+        assertEquals(false, controlePoc.editarPoc(poc1, "DESATUALIZADA"));
+
+        boolean resultadoexibirPocs1 = controlePoc.exibirPocs();
+        assertEquals(true, resultadoexibirPocs1);
+
+        boolean resultadoIsEmptyPoc1 = controlePoc.isEmpty();
+        assertEquals(false, resultadoIsEmptyPoc1);
+
+        int resultadoquantidadePocsArmazenadasPoc1 = controlePoc.quantidadePocsArmazenadas();
+        assertEquals(2, resultadoquantidadePocsArmazenadasPoc1);
+
     }
 
     /** Método teste2, responsável por testar Funcionalidades ControlePoc para Poc2
-     * @author 
-     * @param null
-     * @return void
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @since 09/11/2022 - 14:00
-     * @throws null
      */
 
     @Test
@@ -158,26 +160,35 @@ public class PocTest {
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS);
 
-        int resultadoPesquisa2 = controlePoc.pesquisarPoc(poc2.getTituloPoc());
-
-        assertEquals(1, resultadoPesquisa2);
+        assertEquals(controlePoc.getListaPocs().get(1), controlePoc.pesquisarPoc(poc2.getTituloPoc()));
 
         controlePoc.removePoc(poc2.getTituloPoc());
-        assertEquals(-1, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
+        assertEquals(null, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
 
-        //controlePoc.editar();
+        Poc novaPoc2 = new Poc("NOVA POC 2", null, "Joao",
+        "Thiago", null, "CIENCIA_DE_DADOS", 
+        Poc.Area.CIENCIA_DE_DADOS);
+        assertEquals(true, controlePoc.editarPoc(novaPoc2, "IC")); //Poc editada deve estar agora na posição '1' da lista
+
+        boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
+        assertEquals(true, resultadoexibirPocs2);
+
+        boolean resultadoIsEmptyPoc2 = controlePoc.isEmpty();
+        assertEquals(false, resultadoIsEmptyPoc2);
+
+        int resultadoquantidadePocsArmazenadasPoc2 = controlePoc.quantidadePocsArmazenadas();
+        assertEquals(2, resultadoquantidadePocsArmazenadasPoc2);
+
     }
 
     /** Método teste3, responsável por testar Funcionalidades ControlePoc para Poc3
-     * @author 
-     * @param Null
-     * @return void
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @since 09/11/2022 - 14:00
-     * @throws Null
      */
     
     @Test
-    public void teste3() {
+    public void teste3() { //Testa Funcionalidades ControlePoc para Poc3
         iniciaTeste();
         
         ArrayList<String> listaAutoresTeste3 = new ArrayList<String>();
@@ -194,14 +205,25 @@ public class PocTest {
         "Joao", null, "INTERNET_DAS_COISAS", 
         Poc.Area.INTERNET_DAS_COISAS);
 
-        int resultadoPesquisa3 = controlePoc.pesquisarPoc(poc3.getTituloPoc());
-
-        assertEquals(2, resultadoPesquisa3);
+        assertEquals(controlePoc.getListaPocs().get(2), controlePoc.pesquisarPoc(poc3.getTituloPoc()));
 
         controlePoc.removePoc(poc3.getTituloPoc());
-        assertEquals(-1, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
+        assertEquals(null, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
 
-        //controlePoc.editar();
+        Poc novaPoc3 = new Poc("NOVA POC 3", null, "PROFESSOR ATUALIZADO - Fabrício",
+        "Thiago - Atualizado", null, "Sem resumo especificado", 
+        Poc.Area.CIENCIA_DE_DADOS);
+        assertEquals(true, controlePoc.editarPoc(novaPoc3, "CD")); //Poc editada deve estar agora na posição '1' da lista
+
+        boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
+        assertEquals(true, resultadoexibirPocs2);
+
+        boolean resultadoIsEmptyPoc3 = controlePoc.isEmpty();
+        assertEquals(false, resultadoIsEmptyPoc3);
+
+        int resultadoquantidadePocsArmazenadasPoc3 = controlePoc.quantidadePocsArmazenadas();
+        assertEquals(2, resultadoquantidadePocsArmazenadasPoc3);
+
     }
 
 }

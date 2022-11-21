@@ -6,8 +6,9 @@ import br.ufv.caf.modelo.Poc;
 
 /** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
  * @author
- * @since 02/11/2022 - 18:30
- * @version 1.0
+ * @author @Aroldo Augusto Barbosa Simões
+ * @since 21/11/2022 - 19:30
+ * @version 1.1
  */
 
 public class ControlePoc {
@@ -16,10 +17,7 @@ public class ControlePoc {
 
     /** Método ControlePoc, construtor da classe ControlePoc
      * @author 
-     * @param null
-     * @return null
      * @since 02/11/2022 - 18:30
-     * @throws null
      */
 
     public ControlePoc(){
@@ -28,62 +26,53 @@ public class ControlePoc {
     }
 
     /** Método addPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões
      * @param novoPoc Poc - Novo Poc
      * @return boolean
-     * @since 02/11/2022 - 18:30
-     * @throws null
+     * @since 21/11/2022 - 19:30
      */
 
     public boolean addPoc(Poc novoPoc) {
 
-        if (armzPocs.pesquisaPoc(novoPoc.getTituloPoc()) == (-1)){
-            armzPocs.addPoc(novoPoc);
-            return true;
-        }
-        return false;
+        return armzPocs.addPoc(novoPoc);
+
     }
 
     /** Método removePoc, usado para remover um determinado poc da lista de poc's do sistema
      * <p>
      * Função remove uma poc e retorna 'true' se o processo foi completo e 'false' do contrário
-     * @author 
+     * @author
+     * @author @Aroldo Augusto Barbosa Simões
      * @param tituloPocRemover String - Titulo do poc o qual deseja remover 
-     * @return void
-     * @since 02/11/2022 - 18:30
-     * @throws null
+     * @since 21/11/2022 - 19:30
      */
+
     public boolean removePoc(String tituloPocRemover) {
         
-        if (armzPocs.removePoc(tituloPocRemover)) {
-            return true;
-        } else {
-            return false;
-        }
+        return armzPocs.removePoc(tituloPocRemover);
 
     }
 
     /** Método pesquisarPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
      * <p>
-     * A função retornara a posição do poc no armazenamento, e caso não seja possível achar o poc retornara -1
+     * A função retornara a Poc, e caso não seja possível achar o poc retornara null;
      * @author 
+     * @author @Aroldo Augusto Barbosa Simões
      * @param tituloPocAPesquisar String - Titulo do poc o qual deseja pesquisar 
-     * @return int
-     * @since 02/11/2022 - 18:30
-     * @throws null
+     * @return Poc
+     * @since 21/11/2022 - 19:30
      */
 
-    public int pesquisarPoc(String tituloPocAPesquisar) {
+    public Poc pesquisarPoc(String tituloPocAPesquisar) {
 
         return armzPocs.pesquisaPoc(tituloPocAPesquisar);
+
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia 
      * @author
-     * @param null
      * @return boolean
      * @since 02/11/2022 - 18:30
-     * @throws null
      */
 
     public boolean isEmpty() {
@@ -92,10 +81,8 @@ public class ControlePoc {
 
     /** Método quantidadePocsArmazenadas, utilizado para saber a quantidade de poc's armazenados na lista de poc's
      * @author
-     * @param null
      * @return int
      * @since 02/11/2022 - 18:30
-     * @throws null
      */
 
     public int quantidadePocsArmazenadas() {
@@ -104,10 +91,9 @@ public class ControlePoc {
 
     /** Método exibirPocs, utilizado para exibir os poc's armazenados na lista de poc's
      * @author
-     * @param null
+     * @author @Aroldo Augusto Barbosa Simões
      * @return boolean
-     * @since 02/11/2022 - 18:30
-     * @throws null
+     * @since 21/11/2022 - 19:30
      */
 
     public boolean exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
@@ -117,7 +103,7 @@ public class ControlePoc {
             return false;
 
         } else {
-            ArrayList<Poc> pocsCadastrados = armzPocs.getPocs();
+            ArrayList<Poc> pocsCadastrados = armzPocs.getListaPocs();
 
             //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
             for (Poc poc : pocsCadastrados) {
@@ -127,22 +113,35 @@ public class ControlePoc {
         }
     }
 
-    /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
-     * @author
-     * @param null
-     * @return int
-     * @since 02/11/2022 - 18:30
-     * @throws null
+    /** Método getListaPocs, utilizado para conseguir editar os poc's já armazenados na lista de poc's //TODO: APAGAR FUNÇÃO!
+     * @author @Aroldo Augusto Barbosa Simões
+     * @return ArrayList<Poc>
+     * @since 21/11/2022 - 20:30
      */
 
-    public int editarPoc(Poc pocEditada, String tituloPocDesatualizada) { //Retorna a posição da Poc atualizada; //TODO - REFATORAR EDITAR POC - conferir
-        if (pesquisarPoc(tituloPocDesatualizada) != -1) {
+    public ArrayList<Poc> getListaPocs(){
+
+        return armzPocs.getListaPocs();
+
+    }
+
+    /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
+     * @author
+     * @return int
+     * @since 02/11/2022 - 18:30
+     */
+
+    public boolean editarPoc(Poc pocEditada, String tituloPocDesatualizada) {
+         //Retorna a posição da Poc atualizada; //TODO - conferir
+        if (pesquisarPoc(tituloPocDesatualizada) != null) {
             removePoc(tituloPocDesatualizada);
             addPoc(pocEditada);
-            return pesquisarPoc(pocEditada.getTituloPoc());
-        } else {
-            return -1; //Poc desatualizada não foi encontrada;
+            return true;
+        } 
+        else {
+            return false; //Poc desatualizada não foi encontrada;
         }
+
         //TODO: ANALISAR MÉTODO ANTIGO
         /*int resposta=1, i=1;
         String tituloEditado, nomeOrientadorEditado, nomeCo_OrientadorEditado, resumoEditado;
