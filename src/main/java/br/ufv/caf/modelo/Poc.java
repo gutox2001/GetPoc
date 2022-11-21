@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /** Classes que implementa a entidade Poc
  * @author @Aroldo Augusto Barbosa Simões - 4250
- * @since 09/11/2022 - 22:00
- * @version 1.2
+ * @since 21/11/2022 - 20:00
+ * @version 1.3
  */
 
 public class Poc {
@@ -54,6 +54,28 @@ public class Poc {
 
     public String getTituloPoc(){
         return this.titulo;
+    }
+
+    /** Método getListaAutoresPoc, usado para obter a lista de autores da Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return ArrayList<String> - Lista de Autores da Poc
+     * @since 21/11/2022 - 20:00
+     */
+
+    public ArrayList<String> getListaAutoresPoc(){
+        return this.listaAutores;
+    }
+
+    /** Método getListaPalavrasChavePoc, usado para obter a lista de palavras-chave da Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return ArrayList<String> - Palavras-chave da Poc
+     * @since 21/11/2022 - 20:00
+     */
+
+    public ArrayList<String> getListaPalavrasChavePoc(){
+
+        return this.palavrasChave;
+
     }
 
     /** Método exibePoc, usado para exibir os poc's adicionados no sistema

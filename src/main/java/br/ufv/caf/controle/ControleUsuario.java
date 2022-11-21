@@ -7,7 +7,7 @@ import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
-import java.util.Objects;
+
 //TODO fazer modulo de validação
 
 /** Classes com a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
@@ -63,7 +63,7 @@ public class ControleUsuario {
         //TODO Depois de feita, tratar aqui a exceção para dados inválidos
         if (validaUsuario(novoUsuario)) {
 
-            if (armzUsuarios.pesquisaIndiceUsuario(novoUsuario) == -1){
+            if (armzUsuarios.pesquisaUsuarioMatricula(novoUsuario.getMatricula()) == null){
 
                     armzUsuarios.addUsuario(novoUsuario);
                     return true;
@@ -81,17 +81,17 @@ public class ControleUsuario {
     /** Método removeUsuario, usado para poder remover os usuários na lista de usuários do sistema
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param usuarioARemover Usuario - Usuário que deseja remover
+     * @param matriculaUsuarioARemover String - Matrícula do usuário que deseja remover
      * @return boolean
-     * @since 02/11/2022 - 16:00
+     * @since 21/11/2022 - 19:00
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
     
-    public boolean removeUsuario(Usuario usuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado 
+    public boolean removeUsuario(String matriculaUsuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado 
 
-        if (armzUsuarios.pesquisaIndiceUsuario(usuarioARemover) != -1) {
+        if (armzUsuarios.pesquisaUsuarioMatricula(matriculaUsuarioARemover) != null) {
 
-                armzUsuarios.removeUsuario(usuarioARemover);
+                armzUsuarios.removeUsuario(matriculaUsuarioARemover);
                 return true;
                 
         } else {
@@ -101,39 +101,28 @@ public class ControleUsuario {
 
     }
 
-    /** Método de TESTE pesquisaUsuarioObjeto, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
+    /** Método pesquisaUsuarioObjeto, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
-     * @return int
-     * @since 02/11/2022 - 18:30
+     * @param usuarioAPesquisar Usuario - Verifica se determinado usuário está presente na lista de usuários
+     * @return Usuario
+     * @since 21/11/2022 - 19:00
      */
     
-    public int pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { 
-        //TODO: ANALISAR FORMULAÇÃO QUE RETORNA USUÁRIO E PESQUISA PELA MATRICULA 
-        //TODO:FAZER FUNÇÃO CORRETA QUE RETORNA OBJETO;
-        if(validaUsuario(usuarioAPesquisar)) return armzUsuarios.pesquisaIndiceUsuario(usuarioAPesquisar);
-        else return -1; //Retorna '-1' se o objeto não foi encontrado ou se o formato do objeto não é valido;
+    public Usuario pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { 
+        return armzUsuarios.pesquisaUsuarioObjeto(usuarioAPesquisar);
 
     }
 
     /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado usuário está presente na lista de usuários pelo valor de sua matricula
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param matricula "String" - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
-     * @return void
-     * @since 02/11/2022 - 18:30
+     * @param matriculaUsuarioAPesquisar "String" - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
+     * @return Usuario
+     * @since 21/11/2022 - 19:00
      */
 
-    public Usuario pesquisaUsuarioMatricula(String matricula) {
-        for (Usuario usuario : armzUsuarios.getListaUsuarios()) {
-            if (Objects.equals(usuario.getMatricula(), matricula)){
-                return usuario;
-
-            }
-
-        }
-
-        return null;
+    public Usuario pesquisaUsuarioMatricula(String matriculaUsuarioAPesquisar) {
+        return armzUsuarios.pesquisaUsuarioMatricula(matriculaUsuarioAPesquisar);
 
     }
 
@@ -202,7 +191,9 @@ public class ControleUsuario {
 
     //TODO mudar para sem usuários cadastrados algo do tipo
     public boolean isEmpty(){
+
         return armzUsuarios.isEmpty();
+        
     }
    
 }

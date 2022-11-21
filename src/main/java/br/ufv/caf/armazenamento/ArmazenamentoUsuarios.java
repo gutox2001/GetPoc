@@ -1,6 +1,7 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.modelo.Usuario;
@@ -34,8 +35,10 @@ public class ArmazenamentoUsuarios {
      * @since 02/11/2022 - 18:30
      */
 
-    public ArrayList<Usuario> getListaUsuarios(){
+    public ArrayList<Usuario> getListaUsuarios(){ //TODO: APAGAR FUNÇÃO!
+
         return this.listaUsuarios;
+        
     }
 
     // TODO - Annotation: Se o modo de armazenamento mudar, a entrada de dados da função também mudará
@@ -59,9 +62,9 @@ public class ArmazenamentoUsuarios {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
-    public void removeUsuario(Usuario usuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado
+    public void removeUsuario(String matriculaUsuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado
 
-       this.listaUsuarios.remove(pesquisaIndiceUsuario(usuarioARemover)); /*else {
+       this.listaUsuarios.remove(pesquisaUsuarioMatricula(matriculaUsuarioARemover)); /*else {
            throw new ExcecaoUsuarioNaoEncontrado();
        }*/
     }
@@ -71,13 +74,17 @@ public class ArmazenamentoUsuarios {
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se está presente na lista de usuários
      * @return Usuario
-     * @since 14/11/2022 - 18:21
+     * @since 21/11/2022 - 19:00
      */
     
-    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) {
+    public Usuario pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) {
 
         for (Usuario usuarioLista : listaUsuarios) {
-            if (usuarioLista.equals(usuarioAPesquisar)) {
+            if ((Objects.equals(usuarioLista.getNome(), usuarioAPesquisar.getNome())) 
+                && (Objects.equals(usuarioLista.getMatricula(), usuarioAPesquisar.getMatricula())) 
+                && (Objects.equals(usuarioLista.getSenha(), usuarioAPesquisar.getSenha())) 
+                && (Objects.equals(usuarioLista.getTipoUsuario(), usuarioAPesquisar.getTipoUsuario()))) {
+
                 return usuarioLista;
             }
         }
@@ -85,22 +92,20 @@ public class ArmazenamentoUsuarios {
         return null;
     }
 
-    /** Método de TESTE pesquisaIndiceUsuario, utilizado para verificar se um determinado Usuário está presente na lista e retornar o indice do mesmo
+    /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado Usuário está presente na lista a partir da matrícula e retorna o usuário ou 'null'
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se está presente na lista de Usuário
-     * @return int
-     * @since 02/11/2022 - 18:30
+     * @param matriculaUsuarioAPesquisar String - Matrícula do Usuário que deseja verificar se está presente na lista de Usuário
+     * @return Usuario
+     * @since 21/11/2022 - 19:00
      */
 
-    public int pesquisaIndiceUsuario(Usuario usuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
-        for (int i = 0; i < listaUsuarios.size(); i++) {
-            if ((usuarioAPesquisar.getNome() == listaUsuarios.get(i).getNome()) &&
-                    usuarioAPesquisar.getMatricula() == listaUsuarios.get(i).getMatricula() &&
-                    usuarioAPesquisar.getSenha() == listaUsuarios.get(i).getSenha()) {
-                return i;
+    public Usuario pesquisaUsuarioMatricula(String matriculaUsuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
+        for (Usuario usuario : listaUsuarios) {
+            if(Objects.equals(usuario.getMatricula(), matriculaUsuarioAPesquisar)){
+                return usuario;
             }
         }
-        return -1; //Lista pode estar vazia;
+        return null; //Lista pode estar vazia;
 
     }
 
