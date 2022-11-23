@@ -63,7 +63,7 @@ public class ControleUsuario {
         //TODO Depois de feita, tratar aqui a exceção para dados inválidos
         if (validaUsuario(novoUsuario)) {
 
-            if (armzUsuarios.pesquisaUsuarioMatricula(novoUsuario.getMatricula()) == null){
+            if (armzUsuarios.pesquisaUsuario(novoUsuario.getMatricula()) == null){
 
                     armzUsuarios.addUsuario(novoUsuario);
                     return true;
@@ -89,7 +89,7 @@ public class ControleUsuario {
     
     public boolean removeUsuario(String matriculaUsuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado 
 
-        if (armzUsuarios.pesquisaUsuarioMatricula(matriculaUsuarioARemover) != null) {
+        if (armzUsuarios.pesquisaUsuario(matriculaUsuarioARemover) != null) {
 
                 armzUsuarios.removeUsuario(matriculaUsuarioARemover);
                 return true;
@@ -101,19 +101,19 @@ public class ControleUsuario {
 
     }
 
-    /** Método pesquisaUsuarioObjeto, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
+    /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Verifica se determinado usuário está presente na lista de usuários
      * @return Usuario
      * @since 21/11/2022 - 19:00
      */
     
-    public Usuario pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) { 
-        return armzUsuarios.pesquisaUsuarioObjeto(usuarioAPesquisar);
+    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) { 
+        return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
     }
 
-    /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado usuário está presente na lista de usuários pelo valor de sua matricula
+    /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários pelo valor de sua matricula
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param matriculaUsuarioAPesquisar "String" - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
@@ -121,8 +121,8 @@ public class ControleUsuario {
      * @since 21/11/2022 - 19:00
      */
 
-    public Usuario pesquisaUsuarioMatricula(String matriculaUsuarioAPesquisar) {
-        return armzUsuarios.pesquisaUsuarioMatricula(matriculaUsuarioAPesquisar);
+    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) {
+        return armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
 
     }
 
@@ -138,7 +138,7 @@ public class ControleUsuario {
 
     public Usuario realizarLogin(String matricula, String senha) throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado {
 
-        Usuario usuario = pesquisaUsuarioMatricula(matricula);
+        Usuario usuario = pesquisaUsuario(matricula);
 
         if (usuario != null){
 

@@ -72,11 +72,11 @@ public class UsuarioTest {
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp1));
 
-        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(0), controleUsuario.pesquisaUsuarioObjeto(usuarioTemp1));
+        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(0), controleUsuario.pesquisaUsuario(usuarioTemp1));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp1.getMatricula()));
 
-        assertEquals(null, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp1));
+        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp1));
 
     }
 
@@ -97,13 +97,13 @@ public class UsuarioTest {
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp2));
 
-        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(1), controleUsuario.pesquisaUsuarioObjeto(usuarioTemp2));
+        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(1), controleUsuario.pesquisaUsuario(usuarioTemp2));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp2));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp2.getMatricula()));
 
-        assertEquals(null, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp2));
+        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp2));
 
     }
 
@@ -124,13 +124,13 @@ public class UsuarioTest {
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp3));
 
-        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(2), controleUsuario.pesquisaUsuarioObjeto(usuarioTemp3));
+        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(2), controleUsuario.pesquisaUsuario(usuarioTemp3));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp3));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp3.getMatricula()));
 
-        assertEquals(null, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp3));
+        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp3));
 
     }
 
@@ -151,13 +151,13 @@ public class UsuarioTest {
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp4));
 
-        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(3), controleUsuario.pesquisaUsuarioObjeto(usuarioTemp4));
+        assertEquals(armazenamentoUsuarios.getListaUsuarios().get(3), controleUsuario.pesquisaUsuario(usuarioTemp4));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp4));
 
         assertEquals(true, controleUsuario.removeUsuario(usuarioTemp4.getMatricula()));
 
-        assertEquals(null, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp4));
+        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp4));
 
     }
 
@@ -178,13 +178,13 @@ public class UsuarioTest {
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp5));
 
-        assertEquals(null, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp5));
+        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp5));
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp5));
 
         assertEquals(false, controleUsuario.removeUsuario(usuarioTemp5.getMatricula()));
 
-        assertEquals(null, controleUsuario.pesquisaUsuarioObjeto(usuarioTemp5));
+        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp5));
 
     }
 

@@ -64,7 +64,7 @@ public class ArmazenamentoUsuarios {
 
     public void removeUsuario(String matriculaUsuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado
 
-       this.listaUsuarios.remove(pesquisaUsuarioMatricula(matriculaUsuarioARemover)); /*else {
+       this.listaUsuarios.remove(pesquisaUsuario(matriculaUsuarioARemover)); /*else {
            throw new ExcecaoUsuarioNaoEncontrado();
        }*/
     }
@@ -77,7 +77,7 @@ public class ArmazenamentoUsuarios {
      * @since 21/11/2022 - 19:00
      */
     
-    public Usuario pesquisaUsuarioObjeto(Usuario usuarioAPesquisar) {
+    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) {
 
         for (Usuario usuarioLista : listaUsuarios) {
             if ((Objects.equals(usuarioLista.getNome(), usuarioAPesquisar.getNome())) 
@@ -99,7 +99,7 @@ public class ArmazenamentoUsuarios {
      * @since 21/11/2022 - 19:00
      */
 
-    public Usuario pesquisaUsuarioMatricula(String matriculaUsuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
+    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
         for (Usuario usuario : listaUsuarios) {
             if(Objects.equals(usuario.getMatricula(), matriculaUsuarioAPesquisar)){
                 return usuario;
