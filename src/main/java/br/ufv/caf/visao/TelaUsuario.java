@@ -1,29 +1,27 @@
 package br.ufv.caf.visao;
 
 import br.ufv.caf.controle.ControleUsuario;
+import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
 
 import java.util.Scanner;
 
-/** Classe MenusUsuario representa um menu para q os usuários possam ser cadastrados 
+/** Classe MenusUsuario representa um menu para que os usuários possam ser cadastrados 
  * @author @Thiago Cândido Rocha - 4225
- * @since data - hora
+ * @since 09/11/2022 - 17:00
  * @version 1.0
  */
 
 public class TelaUsuario{
-    //TODO - Separar o controle em dois
     protected ControleUsuario controle;
     protected Scanner inputUser;
 
     /** Método MenusUsuario, construtor da classe MenusUsuario
-     * @author 
+     * @author @Thiago Cândido Rocha - 4225
      * @param controle ControleUsuario - Controle do Usuário
-     * @return null
-     * @since Data - Hora
-     * @throws null
+     * @since 09/11/2022 - 17:30
      */
 
     public TelaUsuario(ControleUsuario controle){
@@ -32,11 +30,9 @@ public class TelaUsuario{
     }
     
     /** Método preenchimentoDados, tem a finalidade de preencher os dados do usuário que está sendo cadastrado
-     * @author 
-     * @param null
+     * @author @Thiago Cândido Rocha - 4225
      * @return Usuario - Dados do Usuário
-     * @since Data - Hora
-     * @throws null
+     * @since 09/11/2022 - 17:30
      */
 
     private Usuario preenchimentoDados(){
@@ -69,15 +65,14 @@ public class TelaUsuario{
         return userTemp;
 
     }
-
-    /** Método validacaoDados, tem a finalidade de validar os dados do usuário que está sendo cadastrado
-     * @author 
-     * @param userTemp Usuario
+    
+    
+    /** Método validacaoDados, tem a finalidade de validar os dados que serão preenchidos
+     * @author @Thiago Cândido Rocha - 4225
      * @return Usuario - Dados do Usuário
-     * @since Data - Hora
-     * @throws null
+     * @since 09/11/2022 - 17:30
      */
-
+    
     public Usuario validacaoDados(Usuario userTemp){
         do {
             preenchimentoDados();
@@ -87,21 +82,17 @@ public class TelaUsuario{
     }
 
     /** Método efetuarCadastro, tem a finalidade de efetuar o cadastro do usuário se possível
-     * @author 
-     * @param null
-     * @return Void
-     * @since Data - Hora
-     * @throws null
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 18:00
      */
 
     private void efetuarCadastro() {
 
-        //TODO - É preciso estar logado como ADMIN para cadastrar. Ainda será verificado como isso será feito
         System.out.println("*************************************************************************");
-        if(!this.controle.addUsuario(validacaoDados(preenchimentoDados()))){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
+        if(!this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()))){
             System.out.println("=============================================" +
                     "=============================================");
-            System.out.println("O usuario ja esta cadastrado no nosso sistema!");
+            System.err.println("O usuario ja esta cadastrado no nosso sistema!");
             System.out.println("=============================================" +
                     "=============================================");
         }
@@ -119,53 +110,50 @@ public class TelaUsuario{
     }
 
     /** Método efetuarRemocao, tem a finalidade de remover o cadastro do usuário se possível
-     * @author 
-     * @param null
-     * @return Void
-     * @since Data - Hora
-     * @throws null
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 18:00
      */
 
     private void efetuarRemocao() {
+        boolean flag = false;
 
-        //TODO - Talvez exista uma forma melhor para a remoção sem a necessidade de passar um objeto usuário totalmente idêntico
+        do {
+            try {
+                this.controle.removeUsuario(preenchimentoDados());
+                flag = true;
 
-        if(!this.controle.removeUsuario(preenchimentoDados())){
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+                System.out.println("=============================================" +
+                        "=============================================");
+                System.out.println("A remoção foi realizada com sucesso!");
+                System.out.println("=============================================" +
+                        "=============================================");
 
-        else{
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("A remoção foi realizada com sucesso!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+            } catch (ExcecaoUsuarioNaoEncontrado noUser) {
+
+                System.out.println("=============================================" +
+                        "=============================================");
+                System.err.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
+                System.out.println("=============================================" +
+                        "=============================================");
+            }
+        }while(!flag);
 
     }
 
-    /** Método menuPesquisa, tem a finalidade de pesquisar um usuário
-     * @author 
-     * @param null
-     * @return Void
-     * @since Data - Hora
-     * @throws null
+    /** Método menuPesquisa, tem a finalidade de pesquisar um Usuário (ADMIN ONLY)
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 18:00
      */
-
+    
     private void menuPesquisa(){
-        this.controle.pesquisaUsuario(preenchimentoDados());
+        System.out.println("Entre com a matrícula do usuário que deseja pesquisar");
+        Usuario usuarioPesquisado = this.controle.pesquisaUsuarioMatricula(this.inputUser.nextLine());
+        System.out.println(usuarioPesquisado.toString());
     }
-
-    /** Método menuPesquisa, tem a finalidade de exibir as funcionalidades do usuário
-     * @author 
-     * @param telaPoc TelaPoc 
-     * @return Void
-     * @since Data - Hora
-     * @throws null
+    
+    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as funcionalidades de um aluno
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 18:00
      */
 
     protected void menuFuncionalidadesAluno(TelaPoc telaPoc) {
@@ -192,12 +180,10 @@ public class TelaUsuario{
         } while (opcao != 0);
     }
 
-    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
-     * @author 
-     * @param null
-     * @return Void
-     * @since Data - Hora
-     * @throws null
+    /** Método menuFuncionalidadesProfessor, tem a finalidade de mostrar as opções de um professor
+     * @author @Thiago Cândido Rocha - 4225
+     * @param TelaPoc - visão do POC
+     * @since 09/11/2022 - 18:00
      */
 
     protected void menuFuncionalidadesProfessor(TelaPoc telaPoc) {
@@ -235,12 +221,10 @@ public class TelaUsuario{
         } while (opcao != 0); //Assume que opções erradas irão continuar no menu mas mostrarão a mensagem acima
     }
 
-    /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as opções que usuário vai ter
-     * @author 
-     * @param null
-     * @return Void
-     * @since Data - Hora
-     * @throws null
+    /** Método menuFuncionalidadesAdministrador, tem a finalidade de mostrar as opções de um administrador
+     * @author @Thiago Cândido Rocha - 4225
+     * @param TelaPoc - visão do POC
+     * @since 09/11/2022 - 18:00
      */
 
     protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc) {
@@ -276,7 +260,7 @@ public class TelaUsuario{
                 case 4:
                     telaPoc.menuRemocao();
                     break;
-                case 5: //TODO - Visão para pesquisa
+                case 5: 
                     this.menuPesquisa();
                     break;
                 case 6:
@@ -287,7 +271,6 @@ public class TelaUsuario{
                     break;
                 case 8:
                     this.efetuarRemocao();
-                    //removerUsuario_adminin do controleUsuario;
                     break;
 
 
