@@ -119,7 +119,8 @@ public class TelaUsuario{
 
         do {
             try {
-                this.controle.removeUsuario(preenchimentoDados());
+                System.out.println("Entre com a matrícula do usuário que deseja remover:");
+                this.controle.removeUsuario(this.inputUser.nextLine());
                 flag = true;
 
                 System.out.println("=============================================" +
