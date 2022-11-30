@@ -143,7 +143,8 @@ public class TelaUsuario{
 
     private void menuEdicao(){
         System.out.println("Qual a matrícula do usuário que deseja editar no sistema?");
-        this.controle.pesquisaUsuarioMatricula(this.inputUser.nextLine());
+        Usuario usuarioPesquisado = this.controle.pesquisaUsuario(this.inputUser.nextLine());
+
 
 
     }
@@ -154,7 +155,7 @@ public class TelaUsuario{
     
     private void menuPesquisa(){
         System.out.println("Entre com a matrícula do usuário que deseja pesquisar");
-        Usuario usuarioPesquisado = this.controle.pesquisaUsuarioMatricula(this.inputUser.nextLine());
+        Usuario usuarioPesquisado = this.controle.pesquisaUsuario(this.inputUser.nextLine());
         System.out.println(usuarioPesquisado.toString());
     }
     
