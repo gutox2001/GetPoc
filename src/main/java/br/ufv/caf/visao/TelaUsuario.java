@@ -141,9 +141,24 @@ public class TelaUsuario{
 
     }
 
-    private void menuEdicao(){
-        System.out.println("Qual a matrícula do usuário que deseja editar no sistema?");
-        Usuario usuarioPesquisado = this.controle.pesquisaUsuario(this.inputUser.nextLine());
+    private void menuEdicaoAdmin(){
+
+    }
+    private void menuEdicao(Usuario usuarioLogado){
+
+        if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)){
+            menuEdicaoAdmin();
+        }
+
+        else{
+
+        }
+
+        System.out.println("=============================================");
+        System.out.println("| Qual informação deseja alterar?            |");
+        System.out.println("| o 0 -> Nome                                |");
+        System.out.println("| o 1 -> Senha                               |");
+        System.out.println("=============================================");
 
 
 
@@ -275,7 +290,7 @@ public class TelaUsuario{
                     this.efetuarCadastro();
                     break;
                 case 7: //TODO - Visão para edição
-                    this.menuEdicao();
+                    this.menuEdicaoAdmin();
                     break;
                 case 8:
                     this.efetuarRemocao();
