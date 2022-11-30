@@ -87,16 +87,14 @@ public class ControleUsuario {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
     
-    public boolean removeUsuario(String matriculaUsuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado 
+    public void removeUsuario(String matriculaUsuarioARemover) throws ExcecaoUsuarioNaoEncontrado{
 
         if (armzUsuarios.pesquisaUsuario(matriculaUsuarioARemover) != null) {
 
                 armzUsuarios.removeUsuario(matriculaUsuarioARemover);
-                return true;
                 
         } else {
-            //throw new ExcecaoUsuarioNaoEncontrado();
-            return false;
+            throw new ExcecaoUsuarioNaoEncontrado();
         }
 
     }
