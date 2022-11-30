@@ -9,7 +9,7 @@ package br.ufv.caf.modelo;
 public class Professor extends Usuario{
 
     /** Método Professor, construtor da classe Professor que herdada funcionalidades da classe Usuario
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param nome String - Nome do Professor(a)
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
@@ -21,7 +21,7 @@ public class Professor extends Usuario{
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */
@@ -32,7 +32,7 @@ public class Professor extends Usuario{
     }
 
     /** Método validaSenha, tem a finalidade de verificar o formato da senha
-     * @author 
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */
