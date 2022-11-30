@@ -1,10 +1,8 @@
 package br.ufv.caf.visao;
 
-import br.ufv.caf.modelo.Aluno;
-import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
-
-import java.util.ArrayList;
+import br.ufv.caf.excecoes.ExcecaoSenhaInvalida;
+import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
  * @author @Thiago Cândido Rocha - 4225
@@ -12,7 +10,7 @@ import java.util.ArrayList;
  * @version 1.0
  */
 
-public class TelaControle {
+public class TelaPrincipal {
     private TelaUsuario telaUser;
     private TelaPoc telaPoc;
 
@@ -23,7 +21,7 @@ public class TelaControle {
      * @since 10/11/2022 - 22:00
      */
 
-    public TelaControle(TelaUsuario telaUser, TelaPoc telaPOC){
+    public TelaPrincipal(TelaUsuario telaUser, TelaPoc telaPOC){
         this.telaUser = telaUser;
         this.telaPoc = telaPOC;
     }
@@ -35,9 +33,10 @@ public class TelaControle {
      * @throws ExcecaoUsuarioNaoEncontrado
      */
 
-    public void logarComoUsuario(){ //TODO - Propagar as excessões criadas
+    public void logarComoUsuario(){
+
         String matricula, senha;
-        Usuario.TipoUsuario tipo = null;
+        Usuario usuarioLogado = null;
         System.out.println("*************************************************************************");
         System.out.println("Entre com a sua matrícula e com a sua senha:");
         matricula = this.telaUser.inputUser.nextLine();
@@ -45,14 +44,21 @@ public class TelaControle {
         System.out.println("*************************************************************************");
 
         do{
-            tipo = login(matricula, senha); 
-        }while(tipo != null);
+            try {
+                usuarioLogado = this.telaUser.controle.realizarLogin(matricula, senha);
+            }catch(ExcecaoUsuarioNaoEncontrado noUser){
+                System.err.println("Usuario não encontrado");
+            }catch(ExcecaoSenhaInvalida invalidPass){
+                System.err.println("Senha incorreta, tente novamente");
+            }
+            
+        }while(usuarioLogado == null);
 
-        if(tipo.equals(Usuario.TipoUsuario.ALUNO)){ 
+        if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.ALUNO)){
             telaUser.menuFuncionalidadesAluno(this.telaPoc);
         }
 
-        else if(tipo.equals(Usuario.TipoUsuario.PROFESSOR)){
+        else if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.PROFESSOR)){
             telaUser.menuFuncionalidadesProfessor(this.telaPoc);
         }
 
@@ -67,17 +73,11 @@ public class TelaControle {
      * @since 11/11/2022 - 19:00
      */
 
-    public void verificaSistema() {
+    private boolean verificaSistema() {
         if(this.telaUser.controle.isEmpty()){ 
-            System.out.println("=============================================" +
-                    "=============================================");
-
-            System.out.println("Nao existem usuarios cadastrados no nosso sistema, " +
-                    "consulte um administrador para maiores detalhes");
-
-            System.out.println("=============================================" +
-                    "=============================================");
+            return false;
         }
+        return true;
 
     }
 

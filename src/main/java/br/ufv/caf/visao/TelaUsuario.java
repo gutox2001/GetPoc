@@ -1,6 +1,7 @@
 package br.ufv.caf.visao;
 
 import br.ufv.caf.controle.ControleUsuario;
+import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
@@ -88,10 +89,10 @@ public class TelaUsuario{
     private void efetuarCadastro() {
 
         System.out.println("*************************************************************************");
-        if(!this.controle.addUsuario(validacaoDados(preenchimentoDados()))){ 
+        if(!this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()))){
             System.out.println("=============================================" +
                     "=============================================");
-            System.out.println("O usuario ja esta cadastrado no nosso sistema!");
+            System.err.println("O usuario ja esta cadastrado no nosso sistema!");
             System.out.println("=============================================" +
                     "=============================================");
         }
@@ -114,22 +115,28 @@ public class TelaUsuario{
      */
 
     private void efetuarRemocao() {
+        boolean flag = false;
 
-        if(!this.controle.removeUsuario(preenchimentoDados())){
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+        do {
+            try {
+                this.controle.removeUsuario(preenchimentoDados());
+                flag = true;
 
-        else{
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("A remoção foi realizada com sucesso!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+                System.out.println("=============================================" +
+                        "=============================================");
+                System.out.println("A remoção foi realizada com sucesso!");
+                System.out.println("=============================================" +
+                        "=============================================");
+
+            } catch (ExcecaoUsuarioNaoEncontrado noUser) {
+
+                System.out.println("=============================================" +
+                        "=============================================");
+                System.err.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
+                System.out.println("=============================================" +
+                        "=============================================");
+            }
+        }while(!flag);
 
     }
 
@@ -139,7 +146,9 @@ public class TelaUsuario{
      */
     
     private void menuPesquisa(){
-        this.controle.pesquisaUsuario(preenchimentoDados());
+        System.out.println("Entre com a matrícula do usuário que deseja pesquisar");
+        Usuario usuarioPesquisado = this.controle.pesquisaUsuarioMatricula(this.inputUser.nextLine());
+        System.out.println(usuarioPesquisado.toString());
     }
     
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as funcionalidades de um aluno

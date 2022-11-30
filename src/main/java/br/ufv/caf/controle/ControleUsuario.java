@@ -87,12 +87,11 @@ public class ControleUsuario {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
     
-    public boolean removeUsuario(Usuario usuarioARemover) throws ExcecaoUsuarioNaoEncontrado {
+    public void removeUsuario(Usuario usuarioARemover) throws ExcecaoUsuarioNaoEncontrado {
 
         if (armzUsuarios.pesquisaUsuario(usuarioARemover).equals(usuarioARemover)) {
 
                 armzUsuarios.removeUsuario(usuarioARemover);
-                return true;
         } else {
 
             throw new ExcecaoUsuarioNaoEncontrado();
@@ -184,7 +183,7 @@ public class ControleUsuario {
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
             for (Usuario usuario : usuariosCadastrados) {
-                usuario.toString();
+                System.out.println(usuario.toString());
             }
 
             return true;
