@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
+
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.Poc;
 
@@ -18,6 +19,7 @@ import br.ufv.caf.modelo.Poc;
  */
 
 public class PocTest {
+    
     ControlePoc controlePoc = new ControlePoc();
 
     /** Método PocTest, construtor da classe PocTest
@@ -116,14 +118,12 @@ public class PocTest {
         "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE);
 
-        int resultadoPesquisa1 = controlePoc.pesquisarPoc(poc1.getTituloPoc());
-        assertEquals(0, resultadoPesquisa1);
+        assertEquals(controlePoc.getListaPocs().get(0), controlePoc.pesquisarPoc(poc1.getTituloPoc()));
         
         controlePoc.removePoc(poc1.getTituloPoc());
-        assertEquals(-1, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
+        assertEquals(null, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
 
-        int resultadoEditarPoc1 = controlePoc.editarPoc(poc1, "DESATUALIZADA");
-        assertEquals(-1, resultadoEditarPoc1);
+        assertEquals(false, controlePoc.editarPoc(poc1, "DESATUALIZADA"));
 
         boolean resultadoexibirPocs1 = controlePoc.exibirPocs();
         assertEquals(true, resultadoexibirPocs1);
@@ -160,18 +160,15 @@ public class PocTest {
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS);
 
-        int resultadoPesquisa2 = controlePoc.pesquisarPoc(poc2.getTituloPoc());
-
-        assertEquals(1, resultadoPesquisa2);
+        assertEquals(controlePoc.getListaPocs().get(1), controlePoc.pesquisarPoc(poc2.getTituloPoc()));
 
         controlePoc.removePoc(poc2.getTituloPoc());
-        assertEquals(-1, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
+        assertEquals(null, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
 
         Poc novaPoc2 = new Poc("NOVA POC 2", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS);
-        int resultadoEditarPoc1 = controlePoc.editarPoc(novaPoc2, "IC");
-        assertEquals(1, resultadoEditarPoc1); //Poc editada deve estar agora na posição '1' da lista
+        assertEquals(true, controlePoc.editarPoc(novaPoc2, "IC")); //Poc editada deve estar agora na posição '1' da lista
 
         boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
         assertEquals(true, resultadoexibirPocs2);
@@ -208,18 +205,15 @@ public class PocTest {
         "Joao", null, "INTERNET_DAS_COISAS", 
         Poc.Area.INTERNET_DAS_COISAS);
 
-        int resultadoPesquisa3 = controlePoc.pesquisarPoc(poc3.getTituloPoc());
-
-        assertEquals(2, resultadoPesquisa3);
+        assertEquals(controlePoc.getListaPocs().get(2), controlePoc.pesquisarPoc(poc3.getTituloPoc()));
 
         controlePoc.removePoc(poc3.getTituloPoc());
-        assertEquals(-1, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
+        assertEquals(null, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
 
         Poc novaPoc3 = new Poc("NOVA POC 3", null, "PROFESSOR ATUALIZADO - Fabrício",
         "Thiago - Atualizado", null, "Sem resumo especificado", 
         Poc.Area.CIENCIA_DE_DADOS);
-        int resultadoEditarPoc1 = controlePoc.editarPoc(novaPoc3, "CD");
-        assertEquals(1, resultadoEditarPoc1); //Poc editada deve estar agora na posição '1' da lista
+        assertEquals(true, controlePoc.editarPoc(novaPoc3, "CD")); //Poc editada deve estar agora na posição '1' da lista
 
         boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
         assertEquals(true, resultadoexibirPocs2);
