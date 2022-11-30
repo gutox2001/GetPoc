@@ -140,6 +140,12 @@ public class TelaUsuario{
 
     }
 
+    private void menuEdicao(){
+        System.out.println("Qual a matrícula do usuário que deseja editar no sistema?");
+        this.controle.pesquisaUsuarioMatricula(this.inputUser.nextLine());
+
+
+    }
     /** Método menuPesquisa, tem a finalidade de pesquisar um Usuário (ADMIN ONLY)
      * @author @Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
@@ -182,7 +188,7 @@ public class TelaUsuario{
 
     /** Método menuFuncionalidadesProfessor, tem a finalidade de mostrar as opções de um professor
      * @author @Thiago Cândido Rocha - 4225
-     * @param TelaPoc - visão do POC
+     * @param telaPoc TelaPoc - visão do POC
      * @since 09/11/2022 - 18:00
      */
 
@@ -223,7 +229,7 @@ public class TelaUsuario{
 
     /** Método menuFuncionalidadesAdministrador, tem a finalidade de mostrar as opções de um administrador
      * @author @Thiago Cândido Rocha - 4225
-     * @param TelaPoc - visão do POC
+     * @param telaPoc TelaPoc - visão do POC
      * @since 09/11/2022 - 18:00
      */
 
@@ -267,7 +273,7 @@ public class TelaUsuario{
                     this.efetuarCadastro();
                     break;
                 case 7: //TODO - Visão para edição
-
+                    this.menuEdicao();
                     break;
                 case 8:
                     this.efetuarRemocao();
