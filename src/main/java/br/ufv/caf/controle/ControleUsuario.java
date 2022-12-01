@@ -8,8 +8,6 @@ import br.ufv.caf.modelo.Usuario;
 
 import java.util.ArrayList;
 
-//TODO fazer modulo de validação
-
 /** Classes com a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
  * <p>
  * Manipulam a classe abstrata Usuario e as suas subclasses
