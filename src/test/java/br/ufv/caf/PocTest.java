@@ -50,7 +50,7 @@ public class PocTest {
         listaPalavrasChave.add("Engenharia");
         listaPalavrasChave.add("SoftWare");
         
-        controlePoc.addPoc(new Poc("ESOF", null, "Aroldo",
+        controlePoc.cadastraPoc(new Poc("ESOF", null, "Aroldo",
         "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE));
 
@@ -67,7 +67,7 @@ public class PocTest {
         listaPalavrasChave.add("Ciencia");
         listaPalavrasChave.add("Dados");
         
-        controlePoc.addPoc(new Poc("CD", null, "Joao",
+        controlePoc.cadastraPoc(new Poc("CD", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS));
 
@@ -82,7 +82,7 @@ public class PocTest {
         listaPalavrasChave.add("Internet");
         listaPalavrasChave.add("Coisas");
 
-        controlePoc.addPoc(new Poc("IC", null, "Gabriel",
+        controlePoc.cadastraPoc(new Poc("IC", null, "Gabriel",
         "Joao", null, "INTERNET_DAS_COISAS", 
         Poc.Area.INTERNET_DAS_COISAS));
         

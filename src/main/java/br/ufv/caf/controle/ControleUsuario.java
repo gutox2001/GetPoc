@@ -1,15 +1,12 @@
 package br.ufv.caf.controle;
 
+import br.ufv.caf.excecoes.ExcecaoSenhaInvalida;
+import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 
 import br.ufv.caf.modelo.Usuario;
-import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
-import br.ufv.caf.modelo.excecoes.ExcecaoNenhumUsuarioCadastrado;
-import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 import java.util.ArrayList;
-
-//TODO fazer modulo de validação //???
 
 /** Classes com a finalidade de fazer do fluxo de informações dos usuários do sistema do GetPoc
  * <p>
@@ -18,8 +15,8 @@ import java.util.ArrayList;
  * Todos os usuários são identificados por suas matrículas
  * @author @João Vitor Chagas Lobo - 4693
  * @author @Aroldo Augusto Barbosa Simões - 4250
- * @since 01/12/2022 - 20:00
- * @version 1.2
+ * @since 14/11/2022 - 18:42
+ * @version 1.1
  */
 
 public class ControleUsuario {
@@ -34,9 +31,7 @@ public class ControleUsuario {
      */
 
     public ControleUsuario(ArmazenamentoUsuarios armzUsuarios)  {
-
         this.armzUsuarios = armzUsuarios;
-
     }
 
     /** Método validaUsuario, usado informar se a matrícula e a senha do usuário estão em formatos validos
@@ -44,21 +39,12 @@ public class ControleUsuario {
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param usuario Usuario - Usuário que será validado
      * @return boolean
-     * @since 01/12/2022 - 20:00
+     * @since 14/11/2022 - 18:56
      */
 
-    public boolean validaUsuario(Usuario usuario) throws ExcecaoDadosInvalidos {
-
-        if (usuario.validaMatricula() && usuario.validaSenha()) {
-
-            return true;
-
-        } else {
-
-            throw new ExcecaoDadosInvalidos();
-
-        }
-
+    //TODO Criar exceção para dados inválidos
+    public boolean validaUsuario(Usuario usuario) {
+        return usuario.validaMatricula() && usuario.validaSenha();
     }
 
     /** Método cadastraUsuario, usado para cadastrar um usuário no sistema
@@ -66,24 +52,28 @@ public class ControleUsuario {
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param novoUsuario Usuario - Usuário que deseja remover
-     * @since 01/12/2022 - 20:00
+     * @return boolean
+     * @since 14/11/2022 - 19:00
      */
 
-    public void cadastraUsuario(Usuario novoUsuario) throws ExcecaoDadosInvalidos {
+    public boolean cadastraUsuario(Usuario novoUsuario) {
 
+        //TODO Depois de feita, tratar aqui a exceção para dados inválidos
         if (validaUsuario(novoUsuario)) {
 
             if (armzUsuarios.pesquisaUsuario(novoUsuario.getMatricula()) == null){
 
                     armzUsuarios.addUsuario(novoUsuario);
+                    return true;
 
             }
-        } else {
+        } 
+        else {
 
-            throw new ExcecaoDadosInvalidos();
+            return false;
             
         }
-
+        return false;
     }
 
     /** Método removeUsuario, usado para poder remover os usuários na lista de usuários do sistema
@@ -95,16 +85,14 @@ public class ControleUsuario {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
     
-    public void removeUsuario(String matriculaUsuarioARemover) throws ExcecaoUsuarioNaoEncontrado {
+    public void removeUsuario(String matriculaUsuarioARemover) throws ExcecaoUsuarioNaoEncontrado{
 
         if (armzUsuarios.pesquisaUsuario(matriculaUsuarioARemover) != null) {
 
                 armzUsuarios.removeUsuario(matriculaUsuarioARemover);
                 
         } else {
-
             throw new ExcecaoUsuarioNaoEncontrado();
-
         }
 
     }
@@ -113,25 +101,11 @@ public class ControleUsuario {
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Verifica se determinado usuário está presente na lista de usuários
      * @return Usuario
-     * @since 01/12/2022 - 20:00
-     * @throws ExcecaoUsuarioNaoEncontrado
+     * @since 21/11/2022 - 19:00
      */
     
-    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado { 
-
-        Usuario uTemp;
-
-        uTemp = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
-
-        if(uTemp != null) {
-
-            return uTemp;
-
-        } else {
-
-            throw new ExcecaoUsuarioNaoEncontrado();
-
-        }
+    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) { 
+        return armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
     }
 
@@ -140,41 +114,25 @@ public class ControleUsuario {
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param matriculaUsuarioAPesquisar "String" - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
      * @return Usuario
-     * @since 01/12/2022 - 20:00
-     * @throws ExcecaoUsuarioNaoEncontrado
+     * @since 21/11/2022 - 19:00
      */
 
-    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado {
-
-        Usuario uTemp;
-
-        uTemp = armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
-
-        if(uTemp != null) {
-
-            return uTemp;
-
-        } else {
-
-            throw new ExcecaoUsuarioNaoEncontrado();
-
-        }
+    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) {
+        return armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
 
     }
 
     /** Método realizarLogin, utilizado para pesquisar e retorna um usuário no armazenamento através da matricula
      * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param matricula String - Matricula do usuário que deseja fazer login
      * @param senha String - Senha do usuário que deseja fazer login
      * @return Usuario
-     * @since 01/12/2022 - 20:00
-     * @throws ExcecaoDadosInvalidos;
-     * @throws ExcecaoMatriculaInvalida;
+     * @since 02/11/2022 - 18:30
+     * @throws ExcecaoSenhaInvalida;
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
-    public Usuario realizarLogin(String matricula, String senha) throws ExcecaoDadosInvalidos, ExcecaoUsuarioNaoEncontrado {
+    public Usuario realizarLogin(String matricula, String senha) throws ExcecaoSenhaInvalida, ExcecaoUsuarioNaoEncontrado {
 
         Usuario usuario = pesquisaUsuario(matricula);
 
@@ -182,56 +140,53 @@ public class ControleUsuario {
 
             if (validaUsuario(usuario)) {
 
+                if (usuario.getSenha().equals(senha)) {
+
                     return usuario;
+                } else {
 
-            } else {
-
-                    throw new ExcecaoDadosInvalidos();
-                    
+                    throw new ExcecaoSenhaInvalida();
                 }
-                
+                //TODO Substituir por exeção de dados fora da formatação
+            } return null;
         } else {
 
             throw new ExcecaoUsuarioNaoEncontrado();
-
         }
-
     }
 
     /** Método exibirTodosUsuarios, utilizado para retorna os usuário do armazenamento
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
-     * @since 01/12/2022 - 20:00
+     * @since 02/11/2022 - 18:30
      */
 
-    public void exibirTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado { //TODO - Mudar para a visao //OU NÃO
+    public boolean exibirTodosUsuarios() { //TODO - Mudar para a visao
         
-        if (armazenamentoUsuariosVazio()) {
-
-            throw new ExcecaoNenhumUsuarioCadastrado();
-
-        } else {
-
+        if (armzUsuarios.isEmpty()){
+            System.out.println("Sistema não possui Usuários cadastrados!");
+            return false;
+        } 
+        else {
             ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
             for (Usuario usuario : usuariosCadastrados) {
-
                 usuario.toString();
-
             }
 
+            return true;
         }
-
     }
 
     /** Método isEmpty, utilizado para verificar se o armazenamento de Usuários está vazia
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author
      * @return boolean
-     * @since 01/12/2022 - 20:00
+     * @since 02/11/2022 - 18:30
      */
 
-    public boolean armazenamentoUsuariosVazio() {
+    //TODO mudar para sem usuários cadastrados algo do tipo
+    public boolean isEmpty(){
 
         return armzUsuarios.isEmpty();
         

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /** Classes que tem como funcionalidade apresentar a tela de controle sobre os poc's
  * @author @Thiago Cândido Rocha - 4225
- * @since Data - Hora
+ * @since 09/11/2022 - 18:30
  * @version 1.0
  */
 
@@ -17,11 +17,9 @@ public class TelaPoc {
     private Scanner inputPoc;
 
     /** Método TelaPoc, construtor da classe TelaPoc
-     * @author 
-     * @param controle ControlePoc - Descrição
-     * @return null
-     * @since Data - Hora
-     * @throws null
+     * @author @Thiago Cândido Rocha - 4225 
+     * @param controle ControlePoc - Controle do POC
+     * @since 09/11/2022 - 18:30
      */
 
     public TelaPoc(ControlePoc controle){
@@ -30,11 +28,9 @@ public class TelaPoc {
     }
 
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
-     * @author 
-     * @param null
+     * @author @Thiago Cândido Rocha - 4225
      * @return Poc
-     * @since Data - Hora
-     * @throws null
+     * @since 09/11/2022 - 21:00
      */
 
     private Poc preenchimentoDados(){
@@ -91,11 +87,9 @@ public class TelaPoc {
     }
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
-     * @author 
-     * @param null
+     * @author @Thiago Cândido Rocha - 4225
      * @return int
-     * @since Data - Hora
-     * @throws null
+     * @since 09/11/2022 - 21:00
      */
 
     protected int  menuPesquisa(){
@@ -111,17 +105,14 @@ public class TelaPoc {
     }
 
     /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
-     * @author 
-     * @param null
-     * @return void
-     * @since Data - Hora
-     * @throws null
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 21:00
      */
 
     protected void menuCadastro(){
 
         System.out.println("*************************************************************************");
-        if(!this.controle.addPoc(preenchimentoDados())){ //TODO - Função que deve retornar true ou false caso o cadastro tenha sido válido ou não
+        if(!this.controle.cadastraPoc(preenchimentoDados())){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O POC ja esta cadastrado no nosso sistema!");
@@ -141,11 +132,8 @@ public class TelaPoc {
     }
 
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema
-     * @author 
-     * @param null
-     * @return void
-     * @since Data - Hora
-     * @throws null
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 21:00
      */
 
     protected void menuEdicao(){ // TODO - Implementar a lógica para a edição no controle e para e leitura de dados aqui
@@ -153,11 +141,8 @@ public class TelaPoc {
     }
 
     /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
-     * @author 
-     * @param null
-     * @return void
-     * @since Data - Hora
-     * @throws null
+     * @author @Thiago Cândido Rocha - 4225
+     * @since 09/11/2022 - 21:00
      */
 
     protected void menuRemocao(){
