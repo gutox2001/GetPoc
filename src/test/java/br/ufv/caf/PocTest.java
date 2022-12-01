@@ -118,10 +118,10 @@ public class PocTest {
         "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
         Poc.Area.ENGENHARIA_DE_SOFTWARE);
 
-        assertEquals(controlePoc.getListaPocs().get(0), controlePoc.pesquisarPoc(poc1.getTituloPoc()));
+        assertEquals(controlePoc.getListaPocs().get(0), controlePoc.pesquisarPoc(poc1.getTitulo()));
         
-        controlePoc.removePoc(poc1.getTituloPoc());
-        assertEquals(null, controlePoc.pesquisarPoc(poc1.getTituloPoc()) );
+        controlePoc.removePoc(poc1.getTitulo());
+        assertEquals(null, controlePoc.pesquisarPoc(poc1.getTitulo()) );
 
         assertEquals(false, controlePoc.editarPoc(poc1, "DESATUALIZADA"));
 
@@ -160,10 +160,10 @@ public class PocTest {
         "Thiago", null, "CIENCIA_DE_DADOS", 
         Poc.Area.CIENCIA_DE_DADOS);
 
-        assertEquals(controlePoc.getListaPocs().get(1), controlePoc.pesquisarPoc(poc2.getTituloPoc()));
+        assertEquals(controlePoc.getListaPocs().get(1), controlePoc.pesquisarPoc(poc2.getTitulo()));
 
-        controlePoc.removePoc(poc2.getTituloPoc());
-        assertEquals(null, controlePoc.pesquisarPoc(poc2.getTituloPoc()) );
+        controlePoc.removePoc(poc2.getTitulo());
+        assertEquals(null, controlePoc.pesquisarPoc(poc2.getTitulo()) );
 
         Poc novaPoc2 = new Poc("NOVA POC 2", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
@@ -205,10 +205,10 @@ public class PocTest {
         "Joao", null, "INTERNET_DAS_COISAS", 
         Poc.Area.INTERNET_DAS_COISAS);
 
-        assertEquals(controlePoc.getListaPocs().get(2), controlePoc.pesquisarPoc(poc3.getTituloPoc()));
+        assertEquals(controlePoc.getListaPocs().get(2), controlePoc.pesquisarPoc(poc3.getTitulo()));
 
-        controlePoc.removePoc(poc3.getTituloPoc());
-        assertEquals(null, controlePoc.pesquisarPoc(poc3.getTituloPoc()) );
+        controlePoc.removePoc(poc3.getTitulo());
+        assertEquals(null, controlePoc.pesquisarPoc(poc3.getTitulo()) );
 
         Poc novaPoc3 = new Poc("NOVA POC 3", null, "PROFESSOR ATUALIZADO - Fabrício",
         "Thiago - Atualizado", null, "Sem resumo especificado", 
