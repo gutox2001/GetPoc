@@ -1,10 +1,10 @@
 package br.ufv.caf.visao;
 
 import br.ufv.caf.controle.ControleUsuario;
-import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 import java.util.Scanner;
 
