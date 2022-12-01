@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class Poc {
 
-    //TODO - Conferir se esse será o formato da Area da Poc;
     public enum Area {
         ENGENHARIA_DE_SOFTWARE, CIENCIA_DE_DADOS, INTERNET_DAS_COISAS;
     }
@@ -47,14 +46,22 @@ public class Poc {
         this.areaDaPoc = areaPoc;
     }
 
-    /** Método getTituloPoc, usado para obter o titulo do poc já adicionados no sistema
+    /** Método getTitulo, usado para obter o titulo do poc já adicionados no sistema
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return String - Titulo do Poc
      * @since 02/11/2022 - 16:00
      */
 
-    public String getTituloPoc(){
+    public String getTitulo(){
         return this.titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public ArrayList<String> getListaAutores() {
+        return listaAutores;
     }
 
     /** Método getListaAutoresPoc, usado para obter a lista de autores da Poc
@@ -63,20 +70,54 @@ public class Poc {
      * @since 21/11/2022 - 20:00
      */
 
-    public ArrayList<String> getListaAutoresPoc(){
-        return this.listaAutores;
+    public void setListaAutores(ArrayList<String> listaAutores) {
+        this.listaAutores = listaAutores;
     }
 
-    /** Método getListaPalavrasChavePoc, usado para obter a lista de palavras-chave da Poc
+    public String getNomeOrientador() {
+        return nomeOrientador;
+    }
+
+    public void setNomeOrientador(String nomeOrientador) {
+        this.nomeOrientador = nomeOrientador;
+    }
+
+    public String getNomeCoOrientador() {
+        return nomeCoOrientador;
+    }
+
+    public void setNomeCoOrientador(String nomeCoOrientador) {
+        this.nomeCoOrientador = nomeCoOrientador;
+    }
+
+    /** Método getPalavrasChave, usado para obter a lista de palavras-chave da Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return ArrayList<String> - Palavras-chave da Poc
      * @since 21/11/2022 - 20:00
      */
 
-    public ArrayList<String> getListaPalavrasChavePoc(){
+    public ArrayList<String> getPalavrasChave() {
+        return palavrasChave;
+    }
 
-        return this.palavrasChave;
+    public void setPalavrasChave(ArrayList<String> palavrasChave) {
+        this.palavrasChave = palavrasChave;
+    }
 
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
+    }
+
+    public Area getAreaDaPoc() {
+        return areaDaPoc;
+    }
+
+    public void setAreaDaPoc(Area areaDaPoc) {
+        this.areaDaPoc = areaDaPoc;
     }
 
     /** Método exibePoc, usado para exibir os poc's adicionados no sistema
@@ -108,7 +149,7 @@ public class Poc {
     public String toString(){
 
         return  "TÍTULO: " + this.titulo + "\n"
-                + "- AUTORES: " + toStringPalavrasChave()
+                + "- AUTORES: " + toStringAutores()
                 + "- NOME ORIENTADOR: " + this.nomeOrientador + "\n"
                 + "- NOME CO-ORIENTADOR: " + this.nomeCoOrientador + "\n"
                 + "- PALAVRAS CHAVE: " + toStringPalavrasChave()
@@ -124,10 +165,10 @@ public class Poc {
 
     //TODO - VERIFICAR FORMATO DO TITULO
     //TODO - Verificar se isso é necessário
-    public boolean validaTitulo() { ;
-        return this.getTituloPoc().matches("\\w{2,}");
-    }
-
     //TODO - VALIDAÇÃO DAS outras informações da Poc;
     //TODO - GARANTIR que todos os atributos serão preenchidos;
+    public boolean validaTitulo() {
+        return this.getTitulo().matches("\\w{2,}");
+    }
+
 }

@@ -49,7 +49,7 @@ public class ArmazenamentoPocs {
 
     //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entrada de dados da função vai mudar
     public boolean addPoc(Poc novoPoc) {
-        if (pesquisaPoc(novoPoc.getTituloPoc()) == null) {
+        if (pesquisaPoc(novoPoc.getTitulo()) == null) {
             this.listaPocs.add(novoPoc);
             return true;
         } else {
@@ -95,7 +95,7 @@ public class ArmazenamentoPocs {
     public Poc pesquisaPoc(String tituloPoc) { 
 
         for (Poc poc : listaPocs) {
-            if(Objects.equals(poc.getTituloPoc(), tituloPoc)) return poc;
+            if(Objects.equals(poc.getTitulo(), tituloPoc)) return poc;
         }
 
         return null;
