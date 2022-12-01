@@ -37,7 +37,7 @@ public class ArmazenamentoPocs {
         return this.listaPocs;
     }
 
-    /** Método addPoc, usado para adicionar novos poc's a lista de Poc's
+    /** Método cadastraPoc, usado para adicionar novos poc's a lista de Poc's
      * <p>
      * Função adiciona uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário
      * @author @João Vitor Chagas Lobo - 4693
@@ -48,14 +48,8 @@ public class ArmazenamentoPocs {
      */
 
     //TODO - ANOTAÇÃO se mudar o modo de armazenamento a entrada de dados da função vai mudar
-    public boolean addPoc(Poc novoPoc) {
-        if (pesquisaPoc(novoPoc.getTitulo()) == null) {
+    public void addPoc(Poc novoPoc) {
             this.listaPocs.add(novoPoc);
-            return true;
-        } else {
-            return false;
-        }
-
     }
 
     /** Método removePoc, usado para adicionar novos poc's a lista de poc's
@@ -63,20 +57,20 @@ public class ArmazenamentoPocs {
      * Função remove uma Poc e retorna 'true' se o processo foi completo e 'false' do contrário
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param tituloPocRemover String - Titulo do Poc que deseja remover
+     * @param pocARemover Poc - Poc que deseja remover
      * @return boolean
      * @since 21/11/2022 - 19:30
      */
     
     //TODO - O print deveria ficar na visão e não no armazenamento(A mudar para tratamento de erro)
-    public boolean removePoc(String tituloPocRemover) {
+    public boolean removePoc(Poc pocARemover) {
         
-        if(pesquisaPoc(tituloPocRemover) == null) {
-            System.out.println("POC não encontrada!");
+        if(pesquisaPoc(pocARemover) == null) {
+            //TODO - Colocar exceção e tirar bool (fazer igual usuário)
             return false;
         }
         else {
-            this.listaPocs.remove(pesquisaPoc(tituloPocRemover));
+            this.listaPocs.remove(pesquisaPoc(pocARemover));
             return true;
         }
 
@@ -87,19 +81,20 @@ public class ArmazenamentoPocs {
      * A função retornara a Poc, e caso não seja possível achar o poc retornara null;
      * @author @João Vitor Chagas Lobo - 4693
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param tituloPoc String - Titulo do Poc que deseja verificar se está presente na lista de poc's
+     * @param pocAPesquisar Poc - Poc que deseja verificar se está presente na lista de poc's
      * @return Poc
      * @since 21/11/2022 - 19:30
      */
 
-    public Poc pesquisaPoc(String tituloPoc) { 
+    public Poc pesquisaPoc(Poc pocAPesquisar) {
 
         for (Poc poc : listaPocs) {
-            if(Objects.equals(poc.getTitulo(), tituloPoc)) return poc;
+            if(Objects.equals(poc.getTitulo(), pocAPesquisar.getTitulo())) {
+                return poc;
+            }
         }
 
         return null;
-
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia

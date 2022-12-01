@@ -112,7 +112,7 @@ public class TelaPoc {
     protected void menuCadastro(){
 
         System.out.println("*************************************************************************");
-        if(!this.controle.addPoc(preenchimentoDados())){ 
+        if(!this.controle.cadastraPoc(preenchimentoDados())){
             System.out.println("=============================================" +
                     "=============================================");
             System.out.println("O POC ja esta cadastrado no nosso sistema!");

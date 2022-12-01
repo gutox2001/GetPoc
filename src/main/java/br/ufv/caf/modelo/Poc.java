@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * @version 1.3
  */
 
+//TODO - getter e setters serão deletados se não forem usados
+
 public class Poc {
 
     public enum Area {

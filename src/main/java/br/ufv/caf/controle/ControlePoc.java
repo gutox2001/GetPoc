@@ -16,26 +16,29 @@ public class ControlePoc {
     ArmazenamentoPocs armzPocs;
 
     /** Método ControlePoc, construtor da classe ControlePoc
-     * @author 
+     * @author @João Vitor Chagas Lobo - 4693
      * @since 02/11/2022 - 18:30
      */
 
-    public ControlePoc(){
-
-        armzPocs = new ArmazenamentoPocs();
+    public ControlePoc(ArmazenamentoPocs armzPocs){
+        this.armzPocs = armzPocs;
     }
 
-    /** Método addPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
+    /** Método cadastraPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
      * @author @Aroldo Augusto Barbosa Simões
+     * @author @João Vitor Chagas Lobo - 4693
      * @param novoPoc Poc - Novo Poc
      * @return boolean
      * @since 21/11/2022 - 19:30
      */
 
-    public boolean addPoc(Poc novoPoc) {
+    //TODO - Ver se vamos fazer metodos para validar a criação de POCs
+    
+    public void cadastraPoc(Poc novoPoc) {
 
-        return armzPocs.addPoc(novoPoc);
-
+        if (armzPocs.pesquisaPoc(novoPoc){
+            armzPocs.addPoc(novoPoc);
+        }
     }
 
     /** Método removePoc, usado para remover um determinado poc da lista de poc's do sistema
@@ -135,7 +138,7 @@ public class ControlePoc {
          //Retorna a posição da Poc atualizada; //TODO - conferir
         if (pesquisarPoc(tituloPocDesatualizada) != null) {
             removePoc(tituloPocDesatualizada);
-            addPoc(pocEditada);
+            cadastraPoc(pocEditada);
             return true;
         } 
         else {
