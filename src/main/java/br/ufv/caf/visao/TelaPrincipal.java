@@ -1,8 +1,8 @@
 package br.ufv.caf.visao;
 
 import br.ufv.caf.modelo.Usuario;
-import br.ufv.caf.excecoes.ExcecaoSenhaInvalida;
-import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
+import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
+import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
  * @author @Thiago Cândido Rocha - 4225
@@ -29,7 +29,7 @@ public class TelaPrincipal {
     /** Método logarComoUsuario, responsável por fazer o login do usuário
      * @author @Thiago Cândido Rocha - 4225
      * @since 10/11/2022 - 22:00
-     * @throws ExcecaoSenhaInvalida
+     * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioNaoEncontrado
      */
 
@@ -48,7 +48,7 @@ public class TelaPrincipal {
                 usuarioLogado = this.telaUser.controle.realizarLogin(matricula, senha);
             }catch(ExcecaoUsuarioNaoEncontrado noUser){
                 System.err.println("Usuario não encontrado");
-            }catch(ExcecaoSenhaInvalida invalidPass){
+            }catch(ExcecaoDadosInvalidos invalidPass){
                 System.err.println("Senha incorreta, tente novamente");
             }
             
