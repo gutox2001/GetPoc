@@ -3,7 +3,7 @@ package br.ufv.caf;
 import static org.junit.Assert.assertEquals;
 
 import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
-import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
+
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -12,6 +12,8 @@ import br.ufv.caf.modelo.Administrador;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
+import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 /** Classes que tem como funcionalidade fazer o teste das classes Uuário e ArmazenamentoUsuarios
  * @author Aroldo Augusto Barbosa Simões - 4250
@@ -36,11 +38,12 @@ public class UsuarioTest {
     /** Método iniciaTeste, inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
+     * @throws ExcecaoDadosInvalidos
      * @since 09/11/2022 - 14:00
      */
 
     @BeforeEach
-    void iniciaTeste() {
+    void iniciaTeste() throws ExcecaoDadosInvalidos {
         Usuario u1 = new Administrador("AROLDO", "4250", "12345");      
         controleUsuario.cadastraUsuario(u1);
 
@@ -58,15 +61,16 @@ public class UsuarioTest {
     /** Método teste01, fazem o teste das classes Usuario e ArmazenamentoUsuario;
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
+     * @throws ExcecaoUsuarioNaoEncontrado
      * @since 09/11/2022 - 14:00
      */
 
     @Test
-    public void teste01() { //Testa funcionalidades ControleUsuario para o u1; throws ExcecaoUsuarioNaoEncontrado
+    public void teste01() throws ExcecaoUsuarioNaoEncontrado { //Testa funcionalidades ControleUsuario para o u1; throws ExcecaoUsuarioNaoEncontrado
 
         iniciaTeste();
 
-        assertEquals(false, controleUsuario.isEmpty());
+        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp1 = new Administrador("AROLDO", "4250", "12345");
 
@@ -74,9 +78,9 @@ public class UsuarioTest {
 
         assertEquals(armazenamentoUsuarios.getListaUsuarios().get(0), controleUsuario.pesquisaUsuario(usuarioTemp1));
 
-        assertEquals(true, controleUsuario.removeUsuario(usuarioTemp1.getMatricula()));
+        controleUsuario.removeUsuario(usuarioTemp1.getMatricula());
 
-        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp1));
+        assertEquals(ExcecaoUsuarioNaoEncontrado, controleUsuario.pesquisaUsuario(usuarioTemp1));
 
     }
 
@@ -91,7 +95,7 @@ public class UsuarioTest {
 
         iniciaTeste();
 
-        assertEquals(false, controleUsuario.isEmpty());
+        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp2 = new Professor("THIAGO", "4225", "54321");
 
@@ -118,7 +122,7 @@ public class UsuarioTest {
 
         iniciaTeste();
 
-        assertEquals(false, controleUsuario.isEmpty());
+        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp3 = new Aluno("GABRIEL", "4333", "12543");
 
@@ -145,7 +149,7 @@ public class UsuarioTest {
 
         iniciaTeste();
 
-        assertEquals(false, controleUsuario.isEmpty());
+        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp4 = new Aluno("JOÃO", "4555", "21354");
 
@@ -172,7 +176,7 @@ public class UsuarioTest {
 
         iniciaTeste();
 
-        assertEquals(false, controleUsuario.isEmpty());
+        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp5 = new Aluno("FABRÍCIO", "5000", "11111");
 
@@ -212,7 +216,7 @@ public class UsuarioTest {
 
         assertEquals(false, controleUsuario.removeUsuario("5000"));
 
-        assertEquals(true, controleUsuario.isEmpty());
+        assertEquals(true, controleUsuario.armazenamentoUsuariosVazio());
 
     }
     

@@ -3,8 +3,8 @@ package br.ufv.caf.armazenamento;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import br.ufv.caf.excecoes.ExcecaoUsuarioNaoEncontrado;
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 //TODO Implementar sistema de persistencia nesta classe com sistema de arquivos CSV
 /** Classes com a finalidade de armazenar os usuários cadastradas no sistema

@@ -1,12 +1,12 @@
-package br.ufv.caf.excecoes;
+package br.ufv.caf.modelo.excecoes;
 
-/** Classes que tem a finalidade de trata exceção de senha do sistema GetPoc
+/** Classes que tem a finalidade de trata exceção de usuários do sistema GetPoc
  * @author
  * @since xx/11/2022 - 00:00
  * @version 1.0
  */
 
-public class ExcecaoSenhaInvalida extends Exception{
+public class ExcecaoUsuarioNaoEncontrado extends Exception{
 
     /** Método getMessage, retornara uma mensagem caso ...
      * @author 
@@ -18,8 +18,6 @@ public class ExcecaoSenhaInvalida extends Exception{
 
     @Override
     public String getMessage() {
-        return "Senha Inválida\n" +
-                "Verifique a senha e a matricula digitada";
+        return "Usuário buscado não foi encontrado!";
     }
-
 }
