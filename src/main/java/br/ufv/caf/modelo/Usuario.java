@@ -102,6 +102,30 @@ public abstract class Usuario {
 
     }
 
+    /** Método setSenha, usado para modificar a senha do Usuário
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @param String senha
+     * @since 30/11/2022 - x
+     */
+
+    public void setSenha(String senha) {
+
+        this.senha = senha;
+
+    }
+
+    /** Método setNome, usado para modificar o nome do Usuário
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @param String nome
+     * @since 30/11/2022 - x
+     */
+
+    public void setNome(String nome){
+
+        this.nome = nome;
+        
+    }
+
     /** Método getTipoUsuario, usado para obter o tipo do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @return TipoUsuario - Tipo do Usuário
