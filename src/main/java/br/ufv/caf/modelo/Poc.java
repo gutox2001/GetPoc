@@ -16,10 +16,10 @@ public class Poc {
     }
 
     private String titulo;
-    private ArrayList<String> listaAutores = new ArrayList<String>(); //TODO - Listas estão dando nullpointerexception, tratar
+    private ArrayList<String> listaAutores;
     private String nomeOrientador;
     private String nomeCoOrientador;
-    private ArrayList<String> palavrasChave = new ArrayList<String>();
+    private ArrayList<String> palavrasChave;
     private String resumo;
     private Area areaDaPoc;
 
@@ -37,6 +37,7 @@ public class Poc {
 
     public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
                String nomeCoOrientador, ArrayList<String> palavrasChave, String resumo, Area areaPoc) {
+
         this.titulo = titulo;
         this.listaAutores = listaAutores;
         this.nomeOrientador = nomeOrientador;
@@ -83,34 +84,36 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    public void exibePoc(){
+    public String toStringAutores(){
+        String nomesAutores = "";
 
-        System.out.println("- TÍTULO: "+ getTituloPoc());
+        for (String autores: this.listaAutores) {
+            nomesAutores += autores + "\n";
+        }
 
-        System.out.print("- AUTORES: ");/* //TODO- CORRIGIR Erro NPE DAS LISTAS; 
-        if (this.listaAutores.isEmpty()) {
-            System.out.println("Lista de Autores Vazia!");
-        } else {
-            for (String autor : this.listaAutores) {
-                System.out.println("  ->" + autor);
-            }
-        }*/
+        return nomesAutores;
+    }
 
-        System.out.println("- NOME ORIENTADOR: " + this.nomeOrientador);
-        System.out.println("- NOME CO-ORIENTADOR: " + this.nomeCoOrientador);
+    public String toStringPalavrasChave(){
+        String palavrasChave = "";
 
-        /*/
-        System.out.print("- PALAVRAS-CHAVE: "); //TODO- CORRIGIR Erro NPE DAS LISTAS; 
-        if (this.listaAutores.isEmpty()) {
-            System.out.println("Não há palvras-chave cadastradas!");
-        } else {
-            for (String palavra : this.palavrasChave) {
-                System.out.print(palavra + "; ");
-            }
-        }*/
-        
-        System.out.println("\n- RESUMO: " + this.resumo);
-        System.out.println("- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString());
+        for (String palavraChave: this.palavrasChave) {
+            palavrasChave += palavraChave + "\n";
+        }
+
+        return palavrasChave;
+    }
+
+    @Override
+    public String toString(){
+
+        return  "TÍTULO: " + this.titulo + "\n"
+                + "- AUTORES: " + toStringPalavrasChave()
+                + "- NOME ORIENTADOR: " + this.nomeOrientador + "\n"
+                + "- NOME CO-ORIENTADOR: " + this.nomeCoOrientador + "\n"
+                + "- PALAVRAS CHAVE: " + toStringPalavrasChave()
+                + "- RESUMO: " + this.resumo + "\n"
+                + "- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString();
     }
 
     /** Método validaTitulo, usado para verificar o formato do titulo dos poc's
@@ -119,7 +122,9 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    public boolean validaTitulo() { //TODO - VERIFICAR FORMATO DO TITULO;
+    //TODO - VERIFICAR FORMATO DO TITULO
+    //TODO - Verificar se isso é necessário
+    public boolean validaTitulo() { ;
         return this.getTituloPoc().matches("\\w{2,}");
     }
 
