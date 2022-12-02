@@ -129,7 +129,7 @@ public class TelaUsuario{
                 System.out.println("=============================================" +
                         "=============================================");
 
-            } catch (ExcecaoUsuarioNaoEncontrado noUser) {
+            } catch (ExcecaoUsuarioNaoEncontrado notFound) {
 
                 System.out.println("=============================================" +
                         "=============================================");
@@ -141,15 +141,105 @@ public class TelaUsuario{
 
     }
 
+    private void menuEdicaoAdmin(){
+        String matricula;
+        boolean option = false;
+
+        System.out.println("Entre com a matrícula do usuário que deseja editar:");
+        matricula = this.inputUser.nextLine();
+        Usuario usuarioPesquisado = null;
+
+        do {
+            try {
+                usuarioPesquisado = this.controle.pesquisaUsuario(matricula);
+            } catch (ExcecaoUsuarioNaoEncontrado notFound) {
+                System.err.println("O usuário não está cadastrado no sistema ou a " +
+                        "matrícula é inválida, deseja tentar novamente?\n" +
+                        "1 - SIM, 0 - NÃO");
+                option = this.inputUser.nextBoolean();
+                if(option){
+                    System.out.println("Entre novamente com a matrícula do usuário que deseja editar:");
+                    matricula = this.inputUser.nextLine();
+                }
+            }
+        }while(option);
+
+        if(usuarioPesquisado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)){
+            System.err.println("Por medidas de segurança, um admin não pode alterar dados de outro admin.");
+        }
+
+        else{
+            menuEdicaoComum(usuarioPesquisado);
+        }
+
+
+    }
+
+    private void menuEdicaoComum(Usuario usuarioAtual){
+        System.out.println("=============================================");
+        System.out.println("| Qual informação deseja alterar?            |");
+        System.out.println("| o 0 -> Nome                                |");
+        System.out.println("| o 1 -> Senha                               |");
+        System.out.println("=============================================");
+
+        switch(Integer.parseInt(this.inputUser.nextLine())){
+            case 1:
+                String senha;
+                System.out.println("Entre com a nova senha:");
+                senha = this.inputUser.nextLine();
+                System.out.println("Deseja realmente alterar a sua senha? " +
+                        "Este processo não poderá ser revertido manualmente!!!\n" +
+                        "0 - SIM, 1  - NÃO");
+
+                if(!this.inputUser.nextBoolean()) {
+                    this.controle.alteraSenha(usuarioAtual, senha);
+                }
+
+                break;
+
+            default:
+                String nome;
+                System.out.println("Entre com o novo nome de usuário:");
+                nome = this.inputUser.nextLine();
+                System.out.println("Deseja realmente alterar o seu nome?" +
+                        "0 - SIM, 1  - NÃO");
+
+                if(!this.inputUser.nextBoolean()) {
+                    this.controle.alteraNome(usuarioAtual, nome);
+                }
+
+                break;
+        }
+    }
+    private void menuEdicao(Usuario usuarioLogado){
+
+        if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)){
+            menuEdicaoAdmin();
+        }
+
+        else{
+            menuEdicaoComum(usuarioLogado);
+        }
+
+
+
+
+
+    }
     /** Método menuPesquisa, tem a finalidade de pesquisar um Usuário (ADMIN ONLY)
      * @author @Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
      */
     
-    private void menuPesquisa(){
+    private void menuExibeBuscaUsuario(){
         System.out.println("Entre com a matrícula do usuário que deseja pesquisar");
-        Usuario usuarioPesquisado = this.controle.pesquisaUsuarioMatricula(this.inputUser.nextLine());
-        System.out.println(usuarioPesquisado.toString());
+        try{
+            Usuario usuarioPesquisado = this.controle.pesquisaUsuario(this.inputUser.nextLine());
+            System.out.println(usuarioPesquisado.toString());
+        }catch(ExcecaoUsuarioNaoEncontrado notFound){
+            System.err.println("O usuário procurado não existe!");
+        }
+
     }
     
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as funcionalidades de um aluno
@@ -183,7 +273,7 @@ public class TelaUsuario{
 
     /** Método menuFuncionalidadesProfessor, tem a finalidade de mostrar as opções de um professor
      * @author @Thiago Cândido Rocha - 4225
-     * @param TelaPoc - visão do POC
+     * @param telaPoc TelaPoc - visão do POC
      * @since 09/11/2022 - 18:00
      */
 
@@ -224,7 +314,7 @@ public class TelaUsuario{
 
     /** Método menuFuncionalidadesAdministrador, tem a finalidade de mostrar as opções de um administrador
      * @author @Thiago Cândido Rocha - 4225
-     * @param TelaPoc - visão do POC
+     * @param telaPoc TelaPoc - visão do POC
      * @since 09/11/2022 - 18:00
      */
 
@@ -262,13 +352,13 @@ public class TelaUsuario{
                     telaPoc.menuRemocao();
                     break;
                 case 5: 
-                    this.menuPesquisa();
+                    this.menuExibeBuscaUsuario();
                     break;
                 case 6:
                     this.efetuarCadastro();
                     break;
                 case 7: //TODO - Visão para edição
-
+                    this.menuEdicaoAdmin();
                     break;
                 case 8:
                     this.efetuarRemocao();
