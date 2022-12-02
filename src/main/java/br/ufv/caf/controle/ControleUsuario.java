@@ -117,8 +117,16 @@ public class ControleUsuario {
      * @since 21/11/2022 - 19:00
      */
 
-    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) {
-        return armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
+    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado {
+        Usuario usuarioPesquisado = armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
+        if(usuarioPesquisado != null){
+            return usuarioPesquisado;
+        }
+
+        else{
+            throw new ExcecaoUsuarioNaoEncontrado();
+        }
+
 
     }
 
@@ -190,6 +198,14 @@ public class ControleUsuario {
 
         return armzUsuarios.isEmpty();
         
+    }
+
+    public void alteraSenha(Usuario usuarioLogado, String senha){
+        usuarioLogado.setSenha(senha);
+    }
+
+    public void alteraNome(Usuario usuarioLogado, String nome){
+        usuarioLogado.setNome(nome);
     }
    
 }
