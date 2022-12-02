@@ -111,4 +111,11 @@ public abstract class Usuario {
     
     public abstract boolean validaSenha();
 
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
