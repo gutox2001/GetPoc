@@ -115,7 +115,7 @@ public class Poc {
     }
 
     public Area getAreaDaPoc() {
-        return areaDaPoc;
+        return this.areaDaPoc;
     }
 
     public void setAreaDaPoc(Area areaDaPoc) {
