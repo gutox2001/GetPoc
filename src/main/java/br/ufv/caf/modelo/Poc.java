@@ -12,17 +12,13 @@ import java.util.ArrayList;
 
 public class Poc {
 
-    public enum Area {
-        ENGENHARIA_DE_SOFTWARE, CIENCIA_DE_DADOS, INTERNET_DAS_COISAS;
-    }
-
     private String titulo;
     private ArrayList<String> listaAutores;
     private String nomeOrientador;
     private String nomeCoOrientador;
     private ArrayList<String> palavrasChave;
     private String resumo;
-    private Area areaDaPoc;
+    private AreasPoc areaDaPoc;
 
     /** Método Poc, construtor da classe Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
@@ -48,78 +44,164 @@ public class Poc {
         this.areaDaPoc = areaPoc;
     }
 
-    /** Método getTitulo, usado para obter o titulo do poc já adicionados no sistema
+    /** Método getTitulo, usado para obter o titulo do poc já cadastrado no sistema
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return String - Titulo do Poc
      * @since 02/11/2022 - 16:00
      */
 
-    public String getTitulo(){
+    public String getTitulo() {
+
         return this.titulo;
+
     }
+
+    /** Método setTitulo, usado para redefinir o título do poc já cadastrado no sistema
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
+
 
     public void setTitulo(String titulo) {
+
         this.titulo = titulo;
+
     }
+
+    /** Método getListaAutores, usado para...
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return ArrayList<String> - Lista de autores
+     * @since 01/12/2022 - 22:00
+     */
 
     public ArrayList<String> getListaAutores() {
+
         return listaAutores;
+
     }
 
-    /** Método getListaAutoresPoc, usado para obter a lista de autores da Poc
+    /** Método setListaAutores, usado para redefinir a lista de autores da Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @return ArrayList<String> - Lista de Autores da Poc
-     * @since 21/11/2022 - 20:00
+     * @since 01/12/2022 - 22:00
      */
 
     public void setListaAutores(ArrayList<String> listaAutores) {
+
         this.listaAutores = listaAutores;
+
     }
+
+    /** Método getNomeOrientador, usado para retornar o nome do Orientador do Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return String - Nome Orientador do Poc
+     * @since 01/12/2022 - 22:00
+     */
 
     public String getNomeOrientador() {
+
         return nomeOrientador;
+
     }
+
+    /** Método setNomeOrientador, usado para redefinir o nome do orientador do poc já cadastrado no sistema
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
 
     public void setNomeOrientador(String nomeOrientador) {
+
         this.nomeOrientador = nomeOrientador;
+
     }
+
+    /** Método getNomeCoOrientador, usado para retornar o nome do Co-Orientador do Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return String - Nome Co-Orientador do Poc
+     * @since 01/12/2022 - 22:00
+     */
 
     public String getNomeCoOrientador() {
+
         return nomeCoOrientador;
+
     }
 
+    /** Método setNomeCoOrientador, usado para redefinir o nome do co-orientador do poc já cadastrado no sistema
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
+
     public void setNomeCoOrientador(String nomeCoOrientador) {
+
         this.nomeCoOrientador = nomeCoOrientador;
+
     }
 
     /** Método getPalavrasChave, usado para obter a lista de palavras-chave da Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @return ArrayList<String> - Palavras-chave da Poc
+     * @return ArrayList<String> - Palavras-chave do Poc
      * @since 21/11/2022 - 20:00
      */
 
     public ArrayList<String> getPalavrasChave() {
+
         return palavrasChave;
+
     }
+
+    /** Método setPalavrasChave, usado para redefinir a lista de palavras-chave da Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
 
     public void setPalavrasChave(ArrayList<String> palavrasChave) {
+
         this.palavrasChave = palavrasChave;
+
     }
 
+    /** Método getResumo, usado para retornar o resumo do Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
+
     public String getResumo() {
+
         return resumo;
+
     }
+
+    /** Método setResumo, usado para redefinir o resumo do Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return String - Resumo do Poc
+     * @since 01/12/2022 - 22:00
+     */
 
     public void setResumo(String resumo) {
         this.resumo = resumo;
     }
 
-    public Area getAreaDaPoc() {
+    /** Método getAreaDaPoc, usado para retornar a área científica do Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return Area - Área científica do Poc
+     * @since 01/12/2022 - 22:00
+     */
+
+    public AreasPoc getAreaDaPoc() {
+
         return this.areaDaPoc;
+
     }
 
-    public void setAreaDaPoc(Area areaDaPoc) {
+    /** Método setAreaDaPoc, usado para redefinir a área científica do Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
+
+    public void setAreaDaPoc(AreasPoc areaDaPoc) {
+
         this.areaDaPoc = areaDaPoc;
+
     }
 
     /** Método exibePoc, usado para exibir os poc's adicionados no sistema
@@ -170,7 +252,9 @@ public class Poc {
     //TODO - VALIDAÇÃO DAS outras informações da Poc;
     //TODO - GARANTIR que todos os atributos serão preenchidos;
     public boolean validaTitulo() {
+
         return this.getTitulo().matches("\\w{2,}");
+
     }
 
 }
