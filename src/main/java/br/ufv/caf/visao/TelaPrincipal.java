@@ -2,6 +2,7 @@ package br.ufv.caf.visao;
 
 import br.ufv.caf.modelo.Usuario;
 import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
+import br.ufv.caf.modelo.excecoes.ExcecaoNenhumUsuarioCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
@@ -55,11 +56,11 @@ public class TelaPrincipal {
         }while(usuarioLogado == null);
 
         if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.ALUNO)){
-            telaUser.menuFuncionalidadesAluno(this.telaPoc);
+            telaUser.menuFuncionalidadesAluno(this.telaPoc, usuarioLogado);
         }
 
         else if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.PROFESSOR)){
-            telaUser.menuFuncionalidadesProfessor(this.telaPoc);
+            telaUser.menuFuncionalidadesProfessor(this.telaPoc, usuarioLogado);
         }
 
         else{
@@ -74,7 +75,7 @@ public class TelaPrincipal {
      */
 
     private boolean verificaSistema() {
-        if(this.telaUser.controle.isEmpty()){ 
+        if(this.telaUser.controle.armazenamentoUsuariosVazio()){
             return false;
         }
         return true;
@@ -87,8 +88,11 @@ public class TelaPrincipal {
      */
     
     public void exibeSistema() { 
-        
-        this.telaUser.controle.exibirTodosUsuarios();
+        try {
+            this.telaUser.controle.exibirTodosUsuarios();
+        }catch(ExcecaoNenhumUsuarioCadastrado emptySystem){
+            System.err.println("O sistema não possui usuários cadastrados!");
+        }
         
 
     }
