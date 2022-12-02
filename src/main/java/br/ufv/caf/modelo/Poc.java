@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Classes que implementa a entidade Poc
  * @author @Aroldo Augusto Barbosa Simões - 4250
  * @since 21/11/2022 - 20:00
- * @version 1.3
+ * @version 1.3 
  */
 
 //TODO - getter e setters serão deletados se não forem usados
