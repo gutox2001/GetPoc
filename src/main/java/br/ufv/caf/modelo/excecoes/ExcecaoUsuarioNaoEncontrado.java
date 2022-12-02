@@ -1,4 +1,4 @@
-package br.ufv.caf.excecoes;
+package br.ufv.caf.modelo.excecoes;
 
 /** Classes que tem a finalidade de trata exceção de usuários do sistema GetPoc
  * @author

@@ -2,8 +2,9 @@ package br.ufv.caf;
 
 import java.util.Scanner;
 
-import br.ufv.caf.armazenamento.ArmazenamentoPocs;
-import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.visao.TelaPoc;
+import br.ufv.caf.visao.TelaPrincipal;
+import br.ufv.caf.visao.TelaUsuario;
 
 /** Classe App representa a classe principal do sistema que une todos os modulos e os executa de acordo com cada usuário 
  * @author Aroldo Augusto Barbosa Simões - 4250
@@ -19,18 +20,24 @@ public class App {
 
         Scanner input = new Scanner(System.in);
 
-        ArmazenamentoUsuarios armzUsuarios = new ArmazenamentoUsuarios();
-        ArmazenamentoPocs armzPocs = new ArmazenamentoPocs();
+        TelaUsuario telaUser = new TelaUsuario(null);
 
-        ControleGetPoc controleGetPoc = new ControleGetPoc(armzUsuarios, armzPocs);
+        TelaPoc telaPoc = new TelaPoc(null);
 
-        System.out.println("0 - Cadastrar um usuario || 1 - entrar com um existente?");
+        TelaPrincipal tela = new TelaPrincipal(telaUser, telaPoc);
+
+        System.out.println("LOGIN");
 
         //TODO - login do usuario
 
+        tela.logarComoUsuario();
+
         //TODO - ações do usuário, de acordo com o usuário
 
+        tela.exibeSistema();
+
         input.close();
+
     }
 
 }
