@@ -93,7 +93,7 @@ public abstract class Usuario {
     public void setNome(String nome){
 
         this.nome = nome;
-        
+
     }
 
     /** Método getTipoUsuario, usado para obter o tipo do Usuário
@@ -137,11 +137,5 @@ public abstract class Usuario {
     
     public abstract boolean validaSenha();
 
-    public void setNome(String nome){
-        this.nome = nome;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }
