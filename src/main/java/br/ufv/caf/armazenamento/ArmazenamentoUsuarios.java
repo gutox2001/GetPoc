@@ -2,6 +2,7 @@ package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.modelo.Usuario.TipoUsuario;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 /** Classes com a finalidade de armazenar os usuários cadastradas no sistema
@@ -125,7 +126,24 @@ public class ArmazenamentoUsuarios {
                usuarioAux.setNome(usuarioLista.split(",")[0]);
                usuarioAux.setMatricula(usuarioLista.split(",")[1]);
                usuarioAux.setSenha(usuarioLista.split(",")[2]);
-               usuarioAux.setTipoUsuario(null);
+               
+               switch (usuarioLista.split(",")[3]) {
+                case "ALUNO":
+                    usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
+                    
+                    break;
+                case "PROFESSOR":
+                    usuarioAux.setTipoUsuario(TipoUsuario.PROFESSOR);
+                    
+                    break;
+                case "ADMINISTRADOR":
+                    usuarioAux.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+
+                    break;
+                default:
+                
+                    break;
+               }
 
                return usuarioAux;
             }

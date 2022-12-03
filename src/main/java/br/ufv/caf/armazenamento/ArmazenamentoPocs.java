@@ -3,6 +3,7 @@ package br.ufv.caf.armazenamento;
 import java.util.ArrayList;
 
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.Poc.Area;
 
 /** Classes que tem a finalidade de armazenar os poc's cadastrados no sistema
  * @author João Vitor Chagas Lobo - 4693
@@ -103,7 +104,7 @@ public class ArmazenamentoPocs {
      * @return Poc
      * @since 02/12/2022 - 14:00
      */
-/*
+
     public Poc pesquisaPoc(String tituloPocAPesquisar) {
 
         listaPocs = arquivo.Read("/src/regs/pocs.csv");
@@ -113,14 +114,38 @@ public class ArmazenamentoPocs {
 
                 Poc pocAux = null;
                 pocAux.setTitulo(poc.split(",")[0]);
-                pocAux.setListaAutores(listaPocs);
+                pocAux.setListaAutores(poc.split(",")[1]);
+                pocAux.setNomeOrientador(poc.split(",")[2]);
+                pocAux.setNomeCoOrientador(poc.split(",")[3]);
+                pocAux.setPalavrasChave(poc.split(",")[4]);
+                pocAux.setResumo(poc.split(",")[5]);
+
+                switch (poc.split(",")[6]) {
+                    case "ENGENHARIA_DE_SOFTWARE":
+                        pocAux.setAreaDaPoc(Area.ENGENHARIA_DE_SOFTWARE);
+                        
+                        break;
+                    case "CIENCIA_DE_DADOS":
+                    pocAux.setAreaDaPoc(Area.CIENCIA_DE_DADOS);
+                        
+                        break;
+                    case "INTERNET_DAS_COISAS":
+                    pocAux.setAreaDaPoc(Area.INTERNET_DAS_COISAS);
+    
+                        break;
+                    default:
+                    
+                        break;
+                }
+
+                pocAux.setAreaDaPoc(null);
                 return pocAux;
             }
         }
 
         return null;
     }
-*/
+
 
     /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia
      * <p>
