@@ -3,6 +3,8 @@ package br.ufv.caf.controle;
 import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
+import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
 /** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
  * @author
@@ -34,10 +36,14 @@ public class ControlePoc {
 
     //TODO - Ver se vamos fazer metodos para validar a criação de POCs
     
-    public void cadastraPoc(Poc novoPoc) {
+    public void cadastraPoc(Poc novoPoc) throws ExcecaoPocJaCadastrado {
 
-        if (armzPocs.pesquisaPoc(novoPoc){
+        if (armzPocs.pesquisaPoc(novoPoc) == null){
             armzPocs.addPoc(novoPoc);
+        }
+
+        else{
+            throw new ExcecaoPocJaCadastrado();
         }
     }
 
@@ -50,9 +56,15 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public boolean removePoc(String tituloPocRemover) {
-        
-        return armzPocs.removePoc(tituloPocRemover);
+    public void removePoc(String tituloPocRemover) throws ExcecaoPocNaoEncontrado{
+
+        if(armzPocs.pesquisaPoc(tituloPocRemover) != null){
+            armzPocs.removePoc(tituloPocRemover);
+        }
+
+        else{
+            throw new ExcecaoPocNaoEncontrado();
+        }
 
     }
 
@@ -66,9 +78,17 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public Poc pesquisarPoc(String tituloPocAPesquisar) {
+    public Poc pesquisarPoc(String tituloPocAPesquisar) throws ExcecaoPocNaoEncontrado {
+        Poc pocPesquisado = armzPocs.pesquisaPoc(tituloPocAPesquisar);
 
-        return armzPocs.pesquisaPoc(tituloPocAPesquisar);
+        if(pocPesquisado!=null){
+            return pocPesquisado;
+        }
+
+        else{
+            throw new ExcecaoPocNaoEncontrado();
+        }
+
 
     }
 
