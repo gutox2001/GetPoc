@@ -93,6 +93,7 @@ public class TelaUsuario{
         do {
             try {
                 this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()));
+                option = false;
             } catch (ExcecaoDadosInvalidos invalidData) {
 
                 System.out.println("=============================================" +
@@ -279,7 +280,7 @@ public class TelaUsuario{
         System.out.println("=============================================");
         System.out.println("| Funcionalidades disponiveis:               |");
         System.out.println("| o 0 -> Sair                                |");
-        System.out.println("| o 1 -> Pesquisar POC                       |");
+        System.out.println("| o 1 -> Pesquisar e exibir POC              |");
         System.out.println("| o 2 -> Cadastrar POC                       |");
         System.out.println("| o 3 -> Editar POC                          |");
         System.out.println("| o 4 -> Remover POC                         |");
