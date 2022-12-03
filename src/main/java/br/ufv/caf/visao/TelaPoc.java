@@ -2,6 +2,8 @@ package br.ufv.caf.visao;
 
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
+import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -92,16 +94,26 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
-    protected int  menuPesquisa(){
+    protected void  menuPesquisa(){
         String titulo;
+        boolean option = false;
 
-        System.out.println("*************************************************************************");
-        System.out.println("-> Entre com o título do POC que deseja pesquisar");
-        System.out.println("*************************************************************************");
+        do{
+            System.out.println("-> Entre com o título do POC que deseja pesquisar");
+            titulo = this.inputPoc.nextLine();
 
-        titulo = this.inputPoc.nextLine();
+            try{
+                System.out.println(this.controle.pesquisarPoc(titulo).toString());
+                option = false;
+            }catch(ExcecaoPocNaoEncontrado notFound){
+                System.err.println("O POC procurado não foi encontrado no nosso sistema, " +
+                        "deseja tentar novamente?\n" +
+                        "1 - SIM, 0 - NÃO");
 
-        return this.controle.pesquisarPoc(titulo);
+                option = this.inputPoc.nextBoolean();
+            }
+        }while(option);
+
     }
 
     /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
@@ -110,25 +122,21 @@ public class TelaPoc {
      */
 
     protected void menuCadastro(){
+        boolean option = false;
 
-        System.out.println("*************************************************************************");
-        if(!this.controle.cadastraPoc(preenchimentoDados())){
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("O POC ja esta cadastrado no nosso sistema!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+        do{
+            try{
+                this.controle.cadastraPoc(preenchimentoDados());
+                option = false;
+            }catch(ExcecaoPocJaCadastrado alreadyOn){
+                System.err.println("O POC informado já está cadastrado no nosso sistema, d" +
+                        "eseja tentar um novo cadastro?\n" +
+                        "1 - SIM, 0 - NÃO");
+                option = this.inputPoc.nextBoolean();
+            }
+        }while(option);
 
-        else{
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("O cadastro no sistema foi realizado com sucesso!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
 
-        System.out.println("*************************************************************************");
     }
 
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema
@@ -136,7 +144,7 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
-    protected void menuEdicao(){ // TODO - Implementar a lógica para a edição no controle e para e leitura de dados aqui
+    protected void menuEdicao(){
 
     }
 
@@ -146,24 +154,22 @@ public class TelaPoc {
      */
 
     protected void menuRemocao(){
+        String tituloPoc;
+        boolean option;
 
-        System.out.println("-> Entre com o título do POC que deseja remover:");
-
-        if(!this.controle.removePoc(this.inputPoc.nextLine())){
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("Nao foi possivel encontrar nenhum usuario com estes dados no nosso sistema!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
-
-        else{
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("A remoção foi realizada com sucesso!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+        do{
+            System.out.println("-> Entre com o título do POC que deseja remover:");
+            tituloPoc = this.inputPoc.nextLine();
+            try{
+                this.controle.removePoc(tituloPoc);]
+                option = false;
+            }catch(ExcecaoPocNaoEncontrado notFound){
+                System.err.println("O título informado não está associado a nenhum POC " +
+                        "cadastrado no nosso sistema, deseja tentar uma nova remoção?\n" +
+                        "1 - SIM, 0 - NÃO");
+                option = this.inputPoc.nextBoolean();
+            }
+        }while(option);
     }
 
 }
