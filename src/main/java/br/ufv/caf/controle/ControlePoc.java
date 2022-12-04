@@ -23,8 +23,10 @@ public class ControlePoc {
      * @since 02/11/2022 - 18:30
      */
 
-    public ControlePoc(ArmazenamentoPocs armzPocs){
+    public ControlePoc(ArmazenamentoPocs armzPocs) {
+
         this.armzPocs = armzPocs;
+
     }
 
     /** Método cadastraPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
@@ -80,6 +82,7 @@ public class ControlePoc {
      */
 
     public Poc pesquisarPoc(String tituloPocAPesquisar) throws ExcecaoPocNaoEncontrado {
+
         Poc pocPesquisado = armzPocs.pesquisaPoc(tituloPocAPesquisar);
 
         if(pocPesquisado!=null){
@@ -121,7 +124,7 @@ public class ControlePoc {
      */
 
     public ArrayList<String> retornarPocsDoSistema() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
-        String pocSplit;
+
         if (armzPocs.isEmpty()){
             return null;
 
@@ -129,6 +132,7 @@ public class ControlePoc {
             ArrayList<String> pocsCadastrados = armzPocs.getListaPocs();
             return pocsCadastrados;
         }
+
     }
 
 
@@ -139,8 +143,9 @@ public class ControlePoc {
      */
 
     public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado,
-            ExcecaoPocJaCadastrado{
-         //Retorna a posição da Poc atualizada; //TODO - conferir
+            ExcecaoPocJaCadastrado {
+        //Retorna a posição da Poc atualizada; //TODO - conferir
+
         if (pesquisarPoc(tituloPocDesatualizada) != null) {
 
             removePoc(tituloPocDesatualizada);

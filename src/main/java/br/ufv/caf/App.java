@@ -2,6 +2,10 @@ package br.ufv.caf;
 
 import java.util.Scanner;
 
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
+import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
+import br.ufv.caf.controle.ControlePoc;
+import br.ufv.caf.controle.ControleUsuario;
 import br.ufv.caf.visao.TelaPoc;
 import br.ufv.caf.visao.TelaPrincipal;
 import br.ufv.caf.visao.TelaUsuario;
@@ -11,7 +15,7 @@ import br.ufv.caf.visao.TelaUsuario;
  * @author Gabriel Ryan dos Santos Oliveira - 4688
  * @author Thiago Cândido Rocha - 4225
  * @author João Vitor Chagas Lobo - 4693
- * @since 05/11/2022 - 20:20
+ * @since 04/12/2022 - 18:00
  * @version 1.0
  */
 
@@ -20,21 +24,19 @@ public class App {
 
         Scanner input = new Scanner(System.in);
 
-        TelaUsuario telaUser = new TelaUsuario(null);
+        ArmazenamentoPocs armzPoc = new ArmazenamentoPocs();
+        ArmazenamentoUsuarios armzUsuarios = new ArmazenamentoUsuarios();
 
-        TelaPoc telaPoc = new TelaPoc(null);
+        ControlePoc controlePoc = new ControlePoc(armzPoc);
+        ControleUsuario controleUsuario = new ControleUsuario(armzUsuarios);
 
+        TelaUsuario telaUser = new TelaUsuario(controleUsuario);
+        TelaPoc telaPoc = new TelaPoc(controlePoc);
         TelaPrincipal tela = new TelaPrincipal(telaUser, telaPoc);
 
         System.out.println("LOGIN");
 
-        //TODO - login do usuario
-
         tela.logarComoUsuario();
-
-        //TODO - ações do usuário, de acordo com o usuário
-
-        tela.exibeSistema();
 
         input.close();
 

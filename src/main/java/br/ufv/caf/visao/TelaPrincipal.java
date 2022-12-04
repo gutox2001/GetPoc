@@ -74,9 +74,12 @@ public class TelaPrincipal {
      * @since 11/11/2022 - 19:00
      */
 
-    private boolean verificaSistema() {
-        if(this.telaUser.controle.armazenamentoUsuariosVazio()){
+    private boolean verificaSistema() {//TODO: Verificar necessidade
+
+        if(this.telaUser.controle.armazenamentoUsuariosVazio()) {
+
             return false;
+
         }
         return true;
 
@@ -88,12 +91,12 @@ public class TelaPrincipal {
      */
     
     public void exibeSistema() { 
+
         try {
             this.telaUser.controle.exibirTodosUsuarios();
         }catch(ExcecaoNenhumUsuarioCadastrado emptySystem){
             System.err.println("O sistema não possui usuários cadastrados!");
         }
-        
 
     }
 
