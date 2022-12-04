@@ -1,6 +1,8 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
+
+import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Usuario;
 import br.ufv.caf.modelo.Usuario.TipoUsuario;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
@@ -38,7 +40,7 @@ public class ArmazenamentoUsuarios {
      * @since 02/12/2022 - 12:00
      */
      
-    public ArrayList<Usuario> getListaUsuarios(){
+    public ArrayList<String> getListaUsuarios() {
 
         return arquivo.Read("/src/regs/usuarios.csv");
         
@@ -52,7 +54,7 @@ public class ArmazenamentoUsuarios {
      * @since 02/12/2022 - 12:00
      */
 
-    public void addUsuario(Usuario novoUsuario){
+    public void addUsuario(Usuario novoUsuario) {
 
         if (arquivo.Write("/src/regs/usuarios.csv", novoUsuario))
             System.out.println("Novo usuário adicionado");
@@ -72,6 +74,7 @@ public class ArmazenamentoUsuarios {
     public void removeUsuario(String matriculaUsuarioRemover) { 
 
         arquivo.Remove("/src/regs/usuarios.csv", matriculaUsuarioRemover);
+
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado Usuário está presente na lista
@@ -105,6 +108,7 @@ public class ArmazenamentoUsuarios {
             }
 
         return null;
+
     }
 
     /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado Usuário está presente na lista a partir da matrícula
@@ -122,8 +126,10 @@ public class ArmazenamentoUsuarios {
         for (String usuarioLista : listaUsuarios) {
             
             if (usuarioLista.split(",")[1].equals(matriculaUsuarioPesquisar)) {
+
+
                 
-               Usuario usuarioAux = null;
+               Usuario usuarioAuxs = new Aluno(matriculaUsuarioPesquisar, matriculaUsuarioPesquisar, matriculaUsuarioPesquisar);
                usuarioAux.setNome(usuarioLista.split(",")[0]);
                usuarioAux.setMatricula(usuarioLista.split(",")[1]);
                usuarioAux.setSenha(usuarioLista.split(",")[2]);
@@ -149,8 +155,9 @@ public class ArmazenamentoUsuarios {
                return usuarioAux;
             }
         }
-        
+
         return null;
+        
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de Usuários está vazia 
@@ -161,6 +168,9 @@ public class ArmazenamentoUsuarios {
      */
 
     public boolean isEmpty() {
+
         return listaUsuarios.isEmpty();
+
     }
+
 }
