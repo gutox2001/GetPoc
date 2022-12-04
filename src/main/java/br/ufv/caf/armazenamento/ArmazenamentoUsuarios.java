@@ -33,6 +33,8 @@ public class ArmazenamentoUsuarios {
         listaUsuarios = arquivo.Read("src/regs/usuarios.csv");
     }
 
+
+
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
