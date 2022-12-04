@@ -38,9 +38,10 @@ public class ArmazenamentoUsuarios {
      * @since 02/12/2022 - 12:00
      */
      
-    public ArrayList<String> getListaUsuarios(){
+    public ArrayList<Usuario> getListaUsuarios(){
 
         return arquivo.Read("/src/regs/usuarios.csv");
+        
     }
 
     /** Método cadastraUsuario, utilizado para adicionar um novo usuário a lista de usuários

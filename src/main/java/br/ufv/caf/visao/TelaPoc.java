@@ -1,6 +1,7 @@
 package br.ufv.caf.visao;
 
 import br.ufv.caf.controle.ControlePoc;
+import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
@@ -82,7 +83,7 @@ public class TelaPoc {
         String palavrasChave = "";
         String palavra = "";
         String resumo;
-        Poc.Area area;
+        AreasPoc area;
         Poc pocTemp;
         boolean flag = false;
 
@@ -113,7 +114,7 @@ public class TelaPoc {
         resumo = this.inputPoc.nextLine();
 
         System.out.println("   o Área central:");  //TODO - Leitura de dados para a área do POC
-        area = Poc.Area.CIENCIA_DE_DADOS;
+        area = AreasPoc.CIENCIA_DE_DADOS;
 
         return pocTemp = new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
                 palavrasChave, resumo, area);
