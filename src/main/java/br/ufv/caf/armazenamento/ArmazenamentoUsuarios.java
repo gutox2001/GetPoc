@@ -29,7 +29,6 @@ public class ArmazenamentoUsuarios {
 
     public ArmazenamentoUsuarios() {
 
-        //this.listaUsuarios = new ArrayList<>();
     }
 
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
@@ -97,11 +96,7 @@ public class ArmazenamentoUsuarios {
                && usuarioLista.split(",")[2].equals(usuarioPesquisar.getSenha())
                && usuarioLista.split(",")[3].equals(String.valueOf(usuarioPesquisar.getTipoUsuario()))) {
                 
-               Usuario usuarioAux = null;
-               usuarioAux.setNome(usuarioPesquisar.getNome());
-               usuarioAux.setMatricula(usuarioPesquisar.getMatricula());
-               usuarioAux.setSenha(usuarioPesquisar.getSenha());
-               usuarioAux.setTipoUsuario(usuarioPesquisar.getTipoUsuario());
+               Usuario usuarioAux = usuarioPesquisar;
 
                return usuarioAux;
                }
