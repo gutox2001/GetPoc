@@ -183,10 +183,9 @@ public class ControleUsuario {
 
         if (usuario != null){
 
-            if (validaUsuario(usuario)) {
+            if (usuario.getSenha().equals(senha)) {
 
                     return usuario;
-
             }
             else {
 
@@ -209,7 +208,7 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public void exibirTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado { //TODO - Mudar para a visao //OU NÃO
+    public ArrayList<String> exibirTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado { //TODO - Mudar para a visao //OU NÃO
         
         if (armazenamentoUsuariosVazio()) {
 
@@ -219,11 +218,7 @@ public class ControleUsuario {
 
             ArrayList<String> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            for (String usuario : usuariosCadastrados) {
-
-                usuario.toString();
-
-            }
+            return usuariosCadastrados;
 
         }
 

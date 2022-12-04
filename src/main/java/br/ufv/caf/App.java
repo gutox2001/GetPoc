@@ -32,11 +32,11 @@ public class App {
 
         TelaUsuario telaUser = new TelaUsuario(controleUsuario);
         TelaPoc telaPoc = new TelaPoc(controlePoc);
-        TelaPrincipal tela = new TelaPrincipal(telaUser, telaPoc);
+        TelaPrincipal telaPrincipal = new TelaPrincipal(telaUser, telaPoc);
 
         System.out.println("LOGIN");
-
-        tela.logarComoUsuario();
+        //telaPrincipal.exibeSistema();
+        telaPrincipal.logarComoUsuario();
 
         input.close();
 

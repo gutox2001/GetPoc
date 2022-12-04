@@ -26,8 +26,9 @@ public class ArmazenamentoPocs {
      */
     
     public ArmazenamentoPocs() {
-
-        //listaPocs = new ArrayList<Poc>();
+        arquivo = new ManipuladorArquivoPoc();
+        listaPocs = new ArrayList<String>();
+        listaPocs = getListaPocs();
     }
 
     /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO!
@@ -40,7 +41,7 @@ public class ArmazenamentoPocs {
 
     public ArrayList<String> getListaPocs() {
 
-        return arquivo.Read("src\\regs\\pocs.csv");
+        return arquivo.Read("src/regs/pocs.csv");
     }
 
     /** Método cadastraPoc, usado para adicionar novos poc's a lista de Poc's
@@ -54,7 +55,7 @@ public class ArmazenamentoPocs {
 
     public void addPoc(Poc novoPoc) {
 
-        if (arquivo.Write("src\\regs\\pocs.csv", novoPoc))
+        if (arquivo.Write("src/regs/pocs.csv", novoPoc))
             System.out.println("Novo usuário adicionado");
         else 
             System.out.println("Novo usuário não adicionado");
@@ -70,7 +71,7 @@ public class ArmazenamentoPocs {
 
     public void removePoc(String tituloPocARemover) {
         
-        arquivo.Remove("src\\regs\\pocs.csv", tituloPocARemover);
+        arquivo.Remove("src/regs/pocs.csv", tituloPocARemover);
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
@@ -83,7 +84,7 @@ public class ArmazenamentoPocs {
 
     public Poc pesquisaPoc(Poc pocAPesquisar) {
 
-        listaPocs = arquivo.Read("src\\regs\\pocs.csv");
+        listaPocs = arquivo.Read("src/regs/pocs.csv");
 
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())){
@@ -106,7 +107,7 @@ public class ArmazenamentoPocs {
 
     public Poc pesquisaPoc(String tituloPocAPesquisar) {
 
-        listaPocs = arquivo.Read("src\\regs\\pocs.csv");
+        listaPocs = arquivo.Read("src/regs/pocs.csv");
 
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(tituloPocAPesquisar)){
