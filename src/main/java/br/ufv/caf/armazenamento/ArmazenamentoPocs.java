@@ -126,11 +126,11 @@ public class ArmazenamentoPocs {
                         
                         break;
                     case "CIENCIA_DE_DADOS":
-                    pocAux.setAreaDaPoc(AreasPoc.CIENCIA_DE_DADOS);
+                        pocAux.setAreaDaPoc(AreasPoc.CIENCIA_DE_DADOS);
                         
                         break;
                     case "INTERNET_DAS_COISAS":
-                    pocAux.setAreaDaPoc(AreasPoc.INTERNET_DAS_COISAS);
+                        pocAux.setAreaDaPoc(AreasPoc.INTERNET_DAS_COISAS);
     
                         break;
                     default:
