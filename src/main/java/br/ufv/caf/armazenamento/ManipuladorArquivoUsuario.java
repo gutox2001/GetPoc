@@ -96,7 +96,7 @@ public class ManipuladorArquivoUsuario{
      * @since 02/12/2022 - 14:00
      */
 
-    public void Remove(String caminho, Usuario usuario) {
+    public void Remove(String caminho, String matriculaUsuarioRemover) {
 
         try {
             FileReader arq = new FileReader(caminho);
@@ -108,7 +108,7 @@ public class ManipuladorArquivoUsuario{
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
-                    if (linha.split(",")[1].equals(usuario.getMatricula()) == false) {
+                    if (linha.split(",")[1].equals(matriculaUsuarioRemover) == false) {
                         listaUsuarios.add(linha);
                         
                     }

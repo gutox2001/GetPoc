@@ -68,9 +68,9 @@ public class ArmazenamentoPocs {
      * @since 02/12/2022 - 14:00
      */
 
-    public void removePoc(String tituloPocRemover) {
-
-        arquivo.Remove("/src/regs/pocs.csv", tituloPocRemover);
+    public void removePoc(String tituloPocARemover) {
+        
+        arquivo.Remove("/src/regs/pocs.csv", tituloPocARemover);
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
