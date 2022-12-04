@@ -217,9 +217,9 @@ public class ControleUsuario {
 
         } else {
 
-            ArrayList<Usuario> usuariosCadastrados = armzUsuarios.getListaUsuarios();
+            ArrayList<String> usuariosCadastrados = armzUsuarios.getListaUsuarios();
 
-            for (Usuario usuario : usuariosCadastrados) {
+            for (String usuario : usuariosCadastrados) {
 
                 usuario.toString();
 
@@ -241,12 +241,16 @@ public class ControleUsuario {
         
     }
 
-    public void alteraSenha(Usuario usuarioLogado, String senha){
+    public void alteraSenha(Usuario usuarioLogado, String senha) {
+
         usuarioLogado.setSenha(senha);
+
     }
 
-    public void alteraNome(Usuario usuarioLogado, String nome){
+    public void alteraNome(Usuario usuarioLogado, String nome) {
+
         usuarioLogado.setNome(nome);
+        
     }
 
 }

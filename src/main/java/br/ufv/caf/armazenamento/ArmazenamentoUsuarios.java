@@ -126,31 +126,28 @@ public class ArmazenamentoUsuarios {
         for (String usuarioLista : listaUsuarios) {
             
             if (usuarioLista.split(",")[1].equals(matriculaUsuarioPesquisar)) {
-
-
-                
-               Usuario usuarioAuxs = new Aluno(matriculaUsuarioPesquisar, matriculaUsuarioPesquisar, matriculaUsuarioPesquisar);
-               usuarioAux.setNome(usuarioLista.split(",")[0]);
-               usuarioAux.setMatricula(usuarioLista.split(",")[1]);
-               usuarioAux.setSenha(usuarioLista.split(",")[2]);
                
-               switch (usuarioLista.split(",")[3]) {
-                case "ALUNO":
-                    usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
-                    
-                    break;
-                case "PROFESSOR":
-                    usuarioAux.setTipoUsuario(TipoUsuario.PROFESSOR);
-                    
-                    break;
-                case "ADMINISTRADOR":
-                    usuarioAux.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+                Usuario usuarioAux = new Aluno(usuarioLista.split(",")[0], usuarioLista.split(",")[1], usuarioLista.split(",")[2]);
 
-                    break;
-                default:
-                
-                    break;
-               }
+                switch (usuarioLista.split(",")[3]) {
+                    case "ALUNO":
+                        
+                        usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
+                        break;
+
+                    case "PROFESSOR":
+
+                        usuarioAux.setTipoUsuario(TipoUsuario.PROFESSOR);
+                        break;
+
+                    case "ADMINISTRADOR":
+
+                        usuarioAux.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+                        break;
+
+                    default:
+                        break;
+                }
 
                return usuarioAux;
             }
