@@ -6,8 +6,6 @@ package br.ufv.caf.modelo;
  * @version 1.3 
  */
 
-//TODO - getter e setters serão deletados se não forem usados
-
 public class Poc {
 
     private String titulo;
@@ -194,18 +192,31 @@ public class Poc {
 
     }
 
-    /** Método exibePoc, usado para exibir os poc's adicionados no sistema
+    /** Método toStringAutores, usado para retornar uma String com todos os autores da Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @since 02/11/2022 - 16:00
+     * @return String - Autores da Poc
+     * @since 02/21/2022 - 19:00
      */
 
     public String toStringAutores(){
         return this.listaAutores.substring(0,this.listaAutores.length()-1);
     }
 
+    /** Método toStringPalavrasChave, usado para retornar uma String com todos as palavras-chave da Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return String - Palavras-chave da Poc
+     * @since 02/21/2022 - 19:00
+     */
+
     public String toStringPalavrasChave(){
         return this.palavrasChave.substring(0,this.palavrasChave.length()-1);
     }
+
+    /** Método toString, usado para retornar uma String com todos os dados da Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return String - Poc e seus dados
+     * @since 02/21/2022 - 19:00
+     */
 
     @Override
     public String toString(){
@@ -217,6 +228,7 @@ public class Poc {
                 + "- PALAVRAS CHAVE: " + toStringPalavrasChave()
                 + "- RESUMO: " + this.resumo + "\n"
                 + "- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString();
+                
     }
 
     /** Método validaTitulo, usado para verificar o formato do titulo dos poc's

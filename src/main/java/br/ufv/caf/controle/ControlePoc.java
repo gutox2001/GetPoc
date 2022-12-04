@@ -2,6 +2,7 @@ package br.ufv.caf.controle;
 
 import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
+import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
@@ -141,9 +142,26 @@ public class ControlePoc {
             ExcecaoPocJaCadastrado{
          //Retorna a posição da Poc atualizada; //TODO - conferir
         if (pesquisarPoc(tituloPocDesatualizada) != null) {
+
             removePoc(tituloPocDesatualizada);
             cadastraPoc(pocEditada);
         }
+
+    }
+
+    /** Método exibeAreasPocDisponiveis, utilizado para exibir as áreas de Pocs disponíveis para cadastro;
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 02/12/2022 - 19:30
+     */
+
+    public void exibeAreasPocDisponiveis() {
+
+        for (AreasPoc area : AreasPoc.values()) {
+
+            System.out.println(area.toString());
+
+        }
+
     }
 
 }
