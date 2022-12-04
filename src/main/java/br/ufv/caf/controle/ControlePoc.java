@@ -2,6 +2,7 @@ package br.ufv.caf.controle;
 
 import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
+import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
 
 /** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
@@ -117,7 +118,7 @@ public class ControlePoc {
     }
 
     /** Método getListaPocs, utilizado para conseguir editar os poc's já armazenados na lista de poc's //TODO: APAGAR FUNÇÃO!
-     * @author @Aroldo Augusto Barbosa Simões
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return ArrayList<Poc>
      * @since 21/11/2022 - 20:30
      */
@@ -137,13 +138,32 @@ public class ControlePoc {
     public boolean editarPoc(Poc pocEditada, String tituloPocDesatualizada) {
          //Retorna a posição da Poc atualizada; //TODO - conferir
         if (pesquisarPoc(tituloPocDesatualizada) != null) {
+
             removePoc(tituloPocDesatualizada);
             cadastraPoc(pocEditada);
             return true;
-        } 
-        else {
+
+        } else {
+
             return false; //Poc desatualizada não foi encontrada;
+            
         }
+
+    }
+
+    /** Método exibeAreasPocDisponiveis, utilizado para exibir as áreas de Pocs disponíveis para cadastro;
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 02/12/2022 - 19:30
+     */
+
+    public void exibeAreasPocDisponiveis() {
+
+        for (AreasPoc area : AreasPoc.values()) {
+
+            System.out.println(area.toString());
+
+        }
+
     }
 
 }

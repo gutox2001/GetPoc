@@ -6,7 +6,7 @@ import br.ufv.caf.modelo.Poc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/** Classes que tem como funcionalidade apresentar a tela de controle sobre os poc's
+/** Classe que tem como funcionalidade apresentar a tela de controle sobre os poc's
  * @author @Thiago Cândido Rocha - 4225
  * @since 09/11/2022 - 18:30
  * @version 1.0
