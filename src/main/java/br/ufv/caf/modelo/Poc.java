@@ -17,10 +17,10 @@ public class Poc {
     }
 
     private String titulo;
-    private ArrayList<String> listaAutores;
+    private String listaAutores;
     private String nomeOrientador;
     private String nomeCoOrientador;
-    private ArrayList<String> palavrasChave;
+    private String palavrasChave;
     private String resumo;
     private Area areaDaPoc;
 
@@ -36,8 +36,8 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
-               String nomeCoOrientador, ArrayList<String> palavrasChave, String resumo, Area areaPoc) {
+    public Poc(String titulo, String listaAutores, String nomeOrientador,
+               String nomeCoOrientador, String palavrasChave, String resumo, Area areaPoc) {
 
         this.titulo = titulo;
         this.listaAutores = listaAutores;
@@ -62,7 +62,7 @@ public class Poc {
         this.titulo = titulo;
     }
 
-    public ArrayList<String> getListaAutores() {
+    public String getListaAutores() {
         return listaAutores;
     }
 
@@ -72,7 +72,7 @@ public class Poc {
      * @since 21/11/2022 - 20:00
      */
 
-    public void setListaAutores(ArrayList<String> listaAutores) {
+    public void setListaAutores(String listaAutores) {
         this.listaAutores = listaAutores;
     }
 
@@ -98,11 +98,11 @@ public class Poc {
      * @since 21/11/2022 - 20:00
      */
 
-    public ArrayList<String> getPalavrasChave() {
-        return palavrasChave;
+    public String getPalavrasChave() {
+        return this.palavrasChave;
     }
 
-    public void setPalavrasChave(ArrayList<String> palavrasChave) {
+    public void setPalavrasChave(String palavrasChave) {
         this.palavrasChave = palavrasChave;
     }
 
@@ -128,23 +128,11 @@ public class Poc {
      */
 
     public String toStringAutores(){
-        String nomesAutores = "";
-
-        for (String autores: this.listaAutores) {
-            nomesAutores += autores + "\n";
-        }
-
-        return nomesAutores;
+        return this.listaAutores.substring(0,this.listaAutores.length()-1);
     }
 
     public String toStringPalavrasChave(){
-        String palavrasChave = "";
-
-        for (String palavraChave: this.palavrasChave) {
-            palavrasChave += palavraChave + "\n";
-        }
-
-        return palavrasChave;
+        return this.palavrasChave.substring(0,this.palavrasChave.length()-1);
     }
 
     @Override
