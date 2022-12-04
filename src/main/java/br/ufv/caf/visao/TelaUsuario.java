@@ -188,34 +188,48 @@ public class TelaUsuario{
     }
 
     private void menuEdicaoComum(Usuario usuarioAtual){
-        System.out.println("=============================================");
-        System.out.println("| Qual informação deseja alterar?            |");
-        System.out.println("| o 0 -> Nome                                |");
-        System.out.println("| o 1 -> Senha                               |");
-        System.out.println("=============================================");
+        int option = 2;
 
-        if (Integer.parseInt(this.inputUser.nextLine()) == 1) {
-            String senha;
-            System.out.println("Entre com a nova senha:");
-            senha = this.inputUser.nextLine();
-            System.out.println("Deseja realmente alterar a sua senha? " +
-                    "Este processo não poderá ser revertido manualmente!!!\n" +
-                    "0 - SIM, 1  - NÃO");
+        do {
 
-            if (!this.inputUser.nextBoolean()) {
-                this.controle.alteraSenha(usuarioAtual, senha);
+            System.out.println("=============================================");
+            System.out.println("| Qual informação deseja alterar?            |");
+            System.out.println("| o 0 -> Nome                                |");
+            System.out.println("| o 1 -> Senha                               |");
+            System.out.println("| o 2 -> Sair                                |");
+            System.out.println("=============================================");
+
+            option = Integer.parseInt(this.inputUser.nextLine());
+            switch (option) {
+                case 0:
+                    String nome;
+                    System.out.println("Entre com o novo nome de usuário:");
+                    nome = this.inputUser.nextLine();
+                    System.out.println("Deseja realmente alterar o seu nome?" +
+                            "0 - SIM, 1  - NÃO");
+
+                    if (!this.inputUser.nextBoolean()) {
+                        this.controle.alteraNome(usuarioAtual, nome);
+                    }
+                    break;
+                case 1:
+                    String senha;
+                    System.out.println("Entre com a nova senha:");
+                    senha = this.inputUser.nextLine();
+                    System.out.println("Deseja realmente alterar a sua senha? " +
+                            "Este processo não poderá ser revertido manualmente!!!\n" +
+                            "0 - SIM, 1  - NÃO");
+
+                    if (!this.inputUser.nextBoolean()) {
+                        this.controle.alteraSenha(usuarioAtual, senha);
+                    }
+                    break;
+
+                default:
+                    System.out.println("Saindo . . .");
+                    break;
             }
-        } else {
-            String nome;
-            System.out.println("Entre com o novo nome de usuário:");
-            nome = this.inputUser.nextLine();
-            System.out.println("Deseja realmente alterar o seu nome?" +
-                    "0 - SIM, 1  - NÃO");
-
-            if (!this.inputUser.nextBoolean()) {
-                this.controle.alteraNome(usuarioAtual, nome);
-            }
-        }
+        }while(option == 0 || option == 1);
     }
 
     /** Método menuPesquisa, tem a finalidade de pesquisar um Usuário (ADMIN ONLY)
@@ -243,13 +257,17 @@ public class TelaUsuario{
         int opcao;
         String nomePoc;
 
-        System.out.println("=============================================");
-        System.out.println("| Funcionalidades disponiveis:               |");
-        System.out.println("| o 0 -> Sair                                |");
-        System.out.println("| o 1 -> Pesquisar POC                       |");
-        System.out.println("| o 2 -> Editar Perfil                       |");
-        System.out.println("=============================================");
+        System.out.println("Lista dos Pocs cadastrados no sistema:");
+        telaPoc.exibeTodosOsTitulosPocs();
+
         do {
+            System.out.println("=============================================");
+            System.out.println("| Funcionalidades disponiveis:               |");
+            System.out.println("| o 0 -> Sair                                |");
+            System.out.println("| o 1 -> Pesquisar POC                       |");
+            System.out.println("| o 2 -> Editar Perfil                       |");
+            System.out.println("=============================================");
+
             System.out.print("-> ");
             opcao = Integer.parseInt(inputUser.nextLine());
             switch (opcao) {
@@ -277,18 +295,23 @@ public class TelaUsuario{
         int opcao;
         String nomePoc;
 
-        System.out.println("=============================================");
-        System.out.println("| Funcionalidades disponiveis:               |");
-        System.out.println("| o 0 -> Sair                                |");
-        System.out.println("| o 1 -> Pesquisar e exibir POC              |");
-        System.out.println("| o 2 -> Cadastrar POC                       |");
-        System.out.println("| o 3 -> Editar POC                          |");
-        System.out.println("| o 4 -> Remover POC                         |");
-        System.out.println("| o 5 -> Editar Perfil                       |");
-        System.out.println("=============================================");
+        System.out.println("Lista dos Pocs cadastrados no sistema:");
+        telaPoc.exibeTodosOsTitulosPocs();
+
         do {
+            System.out.println("=============================================");
+            System.out.println("| Funcionalidades disponiveis:               |");
+            System.out.println("| o 0 -> Sair                                |");
+            System.out.println("| o 1 -> Pesquisar e exibir POC              |");
+            System.out.println("| o 2 -> Cadastrar POC                       |");
+            System.out.println("| o 3 -> Editar POC                          |");
+            System.out.println("| o 4 -> Remover POC                         |");
+            System.out.println("| o 5 -> Editar Perfil                       |");
+            System.out.println("=============================================");
+
             System.out.print("-> ");
             opcao = Integer.parseInt(inputUser.nextLine());
+
             switch (opcao) {
                 case 1:
                     telaPoc.menuPesquisa();
@@ -321,19 +344,23 @@ public class TelaUsuario{
         int opcao;
         String nomePoc;
 
-        System.out.println("=============================================");
-        System.out.println("| Funcionalidades disponiveis:               |");
-        System.out.println("| o 0 -> Sair                                |");
-        System.out.println("| o 1 -> Pesquisar POC                       |");
-        System.out.println("| o 2 -> Cadastrar POC                       |");
-        System.out.println("| o 3 -> Editar POC                          |");
-        System.out.println("| o 4 -> Remover POC                         |");
-        System.out.println("| o 5 -> Pesquisar Usuario                   |");
-        System.out.println("| o 6 -> Cadastrar Usuario                   |");
-        System.out.println("| o 7 -> Editar Usuario                      |");
-        System.out.println("| o 8 -> Remover Usuario                     |");
-        System.out.println("=============================================");
+        System.out.println("Lista dos Pocs cadastrados no sistema:");
+        telaPoc.exibeTodosOsTitulosPocs();
+
         do {
+            System.out.println("=============================================");
+            System.out.println("| Funcionalidades disponiveis:               |");
+            System.out.println("| o 0 -> Sair                                |");
+            System.out.println("| o 1 -> Pesquisar POC                       |");
+            System.out.println("| o 2 -> Cadastrar POC                       |");
+            System.out.println("| o 3 -> Editar POC                          |");
+            System.out.println("| o 4 -> Remover POC                         |");
+            System.out.println("| o 5 -> Pesquisar Usuario                   |");
+            System.out.println("| o 6 -> Cadastrar Usuario                   |");
+            System.out.println("| o 7 -> Editar Usuario                      |");
+            System.out.println("| o 8 -> Remover Usuario                     |");
+            System.out.println("=============================================");
+
             System.out.print("-> ");
             opcao = Integer.parseInt(inputUser.nextLine());
             switch (opcao) {

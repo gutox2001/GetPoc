@@ -1,117 +1,160 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.modelo.Usuario.TipoUsuario;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
-//TODO Implementar sistema de persistencia nesta classe com sistema de arquivos CSV
 /** Classes com a finalidade de armazenar os usuários cadastradas no sistema
- * @author @João Vitor Chagas Lobo - 4693
- * @author @Aroldo Augusto Barbosa Simões - 4250
- * @since 14/11/2022 - 18:40
- * @version 1.3
+ * @author João Vitor Chagas Lobo - 4693
+ * @author Aroldo Augusto Barbosa Simões - 4250
+ * @author Gabriel Ryan Dos Santos Oliveira - 4688
+ * @since 01/12/2022 - 20:00
+ * @version 1.4
  */
 
 public class ArmazenamentoUsuarios {
 
-    private ArrayList<Usuario> listaUsuarios;
+    private ManipuladorArquivoUsuario arquivo;
+    private ArrayList<String> listaUsuarios;
 
     /** Método ArmazenamentoUsuarios, construtor da classe ArmazenamentoUsuarios
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @since 02/11/2022 - 18:30
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @since 02/12/2022 - 12:00
      */
 
     public ArmazenamentoUsuarios() {
-        this.listaUsuarios = new ArrayList<>();
+
+        //this.listaUsuarios = new ArrayList<>();
     }
 
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @return ArrayList<Poc> - Lista de Poc's
-     * @since 02/11/2022 - 18:30
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @return ArrayList<String> - Lista de Usuarios
+     * @since 02/12/2022 - 12:00
      */
+     
+    public ArrayList<String> getListaUsuarios(){
 
-    public ArrayList<Usuario> getListaUsuarios(){ //TODO: APAGAR FUNÇÃO!
-
-        return this.listaUsuarios;
-        
+        return arquivo.Read("/src/regs/usuarios.csv");
     }
 
-    // TODO - Annotation: Se o modo de armazenamento mudar, a entrada de dados da função também mudará
-
     /** Método cadastraUsuario, utilizado para adicionar um novo usuário a lista de usuários
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param novoUsuario Usuario - Novo usuário que será cadastrado na persistencia
-     * @since 02/11/2022 - 18:30
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @param novoUsuario Usuario - Novo usuário que será cadastrado
+     * @since 02/12/2022 - 12:00
      */
 
     public void addUsuario(Usuario novoUsuario){
-        this.listaUsuarios.add(novoUsuario);
+
+        if (arquivo.Write("/src/regs/usuarios.csv", novoUsuario))
+            System.out.println("Novo usuário adicionado");
+        else 
+            System.out.println("Novo usuário não adicionado");
     }
 
     /** Método removeUsuario, usado para remover usuários da lista de usuários
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param usuarioARemover Usuario - Usuário que deseja remover
-     * @since 14/11/2022 - 18:40
+     * @since 02/12/2022 - 12:00
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
-    public void removeUsuario(String matriculaUsuarioARemover) { //throws ExcecaoUsuarioNaoEncontrado
+    public void removeUsuario(Usuario usuarioRemover) { 
 
-       this.listaUsuarios.remove(pesquisaUsuario(matriculaUsuarioARemover)); /*else {
-           throw new ExcecaoUsuarioNaoEncontrado();
-       }*/
+        arquivo.Remove("/src/regs/usuarios.csv", usuarioRemover);
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado Usuário está presente na lista
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param usuarioAPesquisar Usuario - Usuário que deseja verificar se está presente na lista de usuários
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @param usuarioPesquisar Usuario - Usuário que deseja verificar se está presente na lista de usuários
      * @return Usuario
-     * @since 21/11/2022 - 19:00
+     * @since 02/12/2022 - 12:00
      */
     
-    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) {
+    public Usuario pesquisaUsuario(Usuario usuarioPesquisar) {
+    
+        listaUsuarios = arquivo.Read("/src/regs/usuarios.csv");
+    
+        for (String usuarioLista : listaUsuarios) {
 
-        for (Usuario usuarioLista : listaUsuarios) {
-            if ((Objects.equals(usuarioLista.getNome(), usuarioAPesquisar.getNome())) 
-                && (Objects.equals(usuarioLista.getMatricula(), usuarioAPesquisar.getMatricula())) 
-                && (Objects.equals(usuarioLista.getSenha(), usuarioAPesquisar.getSenha())) 
-                && (Objects.equals(usuarioLista.getTipoUsuario(), usuarioAPesquisar.getTipoUsuario()))) {
+            if (usuarioLista.split(",")[0].equals(usuarioPesquisar.getNome()) 
+               && usuarioLista.split(",")[1].equals(usuarioPesquisar.getMatricula())
+               && usuarioLista.split(",")[2].equals(usuarioPesquisar.getSenha())
+               && usuarioLista.split(",")[3].equals(String.valueOf(usuarioPesquisar.getTipoUsuario()))) {
+                
+               Usuario usuarioAux = null;
+               usuarioAux.setNome(usuarioPesquisar.getNome());
+               usuarioAux.setMatricula(usuarioPesquisar.getMatricula());
+               usuarioAux.setSenha(usuarioPesquisar.getSenha());
+               usuarioAux.setTipoUsuario(usuarioPesquisar.getTipoUsuario());
 
-                return usuarioLista;
+               return usuarioAux;
+               }
             }
-        }
 
         return null;
     }
 
-    /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado Usuário está presente na lista a partir da matrícula e retorna o usuário ou 'null'
-     * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param matriculaUsuarioAPesquisar String - Matrícula do Usuário que deseja verificar se está presente na lista de Usuário
+    /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado Usuário está presente na lista a partir da matrícula
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @param matriculaUsuarioPesquisar String - Matrícula do Usuário que deseja verificar se está presente na lista de Usuário
      * @return Usuario
-     * @since 21/11/2022 - 19:00
+     * @since 02/12/2022 - 12:00
      */
 
-    public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) { //Pesquisa retorna a posição do usuário no armazenamento;
-        for (Usuario usuario : listaUsuarios) {
-            if(Objects.equals(usuario.getMatricula(), matriculaUsuarioAPesquisar)){
-                return usuario;
+    public Usuario pesquisaUsuario(String matriculaUsuarioPesquisar) {
+
+        listaUsuarios = arquivo.Read("/src/regs/usuarios.csv");
+        
+        for (String usuarioLista : listaUsuarios) {
+            
+            if (usuarioLista.split(",")[1].equals(matriculaUsuarioPesquisar)) {
+                
+               Usuario usuarioAux = null;
+               usuarioAux.setNome(usuarioLista.split(",")[0]);
+               usuarioAux.setMatricula(usuarioLista.split(",")[1]);
+               usuarioAux.setSenha(usuarioLista.split(",")[2]);
+               
+               switch (usuarioLista.split(",")[3]) {
+                case "ALUNO":
+                    usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
+                    
+                    break;
+                case "PROFESSOR":
+                    usuarioAux.setTipoUsuario(TipoUsuario.PROFESSOR);
+                    
+                    break;
+                case "ADMINISTRADOR":
+                    usuarioAux.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+
+                    break;
+                default:
+                
+                    break;
+               }
+
+               return usuarioAux;
             }
         }
-        return null; //Lista pode estar vazia;
-
+        
+        return null;
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de Usuários está vazia 
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 02/11/2022 - 18:30
      */
@@ -119,5 +162,4 @@ public class ArmazenamentoUsuarios {
     public boolean isEmpty() {
         return listaUsuarios.isEmpty();
     }
-    
 }

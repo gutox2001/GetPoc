@@ -29,6 +29,45 @@ public class TelaPoc {
         this.inputPoc = new Scanner(System.in);
     }
 
+    private String preenchePalavrasChaves(){
+        boolean flag = false;
+        String palavra;
+        String palavrasChave = "";
+        System.out.println("Entre com as palavras chaves do POC. " +
+                "Digitar um número sozinho irá terminar o preenchimento!!");
+        while(!flag){
+            palavra = this.inputPoc.nextLine();
+            if(!palavra.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
+                palavrasChave.concat(palavra);
+                palavrasChave.concat("-");
+            }
+            else{
+                flag = true;
+            }
+        }
+
+        return palavrasChave;
+    }
+
+    private String preencheListaAutores(){
+        boolean flag = false;
+        String autor;
+        String listaAutores = "";
+        System.out.println("Entre com os autores do POC. " +
+                "Digitar um número sozinho irá terminar o preenchimento!!");
+        while(!flag){
+            autor = this.inputPoc.nextLine();
+            if(!autor.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
+                listaAutores.concat(autor);
+                listaAutores.concat("-");
+            }
+            else{
+                flag = true;
+            }
+        }
+
+        return listaAutores;
+    }
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
      * @author @Thiago Cândido Rocha - 4225
      * @return Poc
@@ -40,7 +79,6 @@ public class TelaPoc {
         String nomeOrientador;
         String nomeCoorientador =  "";
         String autores = "";
-        int quantidadeAutores = 0;
         String palavrasChave = "";
         String palavra = "";
         String resumo;
@@ -58,15 +96,7 @@ public class TelaPoc {
         System.out.println("   o Lista de autores do POC:");
         System.out.println("     Quantos autores no total?");
 
-        quantidadeAutores = Integer.parseInt(this.inputPoc.nextLine());
-
-        for(int i = 0; i < quantidadeAutores; i++){
-            System.out.println("Nome do autor "+i+":");
-            autores.concat(this.inputPoc.nextLine());
-            if(i != quantidadeAutores-1){
-                autores.concat("-");
-            }
-        }
+        autores = preencheListaAutores();
 
         System.out.println("   o Nome do orientador:");
 
@@ -77,19 +107,7 @@ public class TelaPoc {
 
         System.out.println("   o Palavras chave: (um dígito sozinho irá parar a busca por novas palavras na entrada)");
 
-        while(!flag){
-            palavra = this.inputPoc.nextLine();
-            if(palavra.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
-                flag = true;
-                if(palavrasChave.length() != 0){
-                    palavrasChave = palavrasChave.substring(0, palavrasChave.length()-1);
-                }
-            }
-            else{
-                palavrasChave.concat(palavra);
-                palavrasChave.concat("-");
-            }
-        }
+        palavrasChave = preenchePalavrasChaves();
 
         System.out.println("   o Resumo em parágrafo único:");
         resumo = this.inputPoc.nextLine();
@@ -134,6 +152,15 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
+    protected void exibeTodosOsTitulosPocs(){
+        String pocSplit;
+        ArrayList<String> pocsCadastrados = this.controle.retornarPocsDoSistema();
+
+        for (String pocs : pocsCadastrados) {
+            pocSplit = pocs.split(",")[0];
+            System.out.println(pocSplit);
+        }
+    }
     protected void menuCadastro(){
         boolean option = false;
 
@@ -158,7 +185,92 @@ public class TelaPoc {
      */
 
     protected void menuEdicao(){
+        String tituloPocDesatualizado;
+        boolean option = false;
+        boolean flagEdicao = true;
+        int opcaoEdicao = 5;
+        Poc pocParaAtualizar = null;
 
+        do {
+            try {
+                System.out.println("Qual é o título do POC que deseja editar?");
+                pocParaAtualizar = this.controle.pesquisarPoc(this.inputPoc.nextLine());
+                option = false;
+            } catch (ExcecaoPocNaoEncontrado notFound) {
+                System.err.println("Poc buscado não foi encontrado no sistema, " +
+                        "deseja tentar novamente?\n" +
+                        "1 - SIM, 0 - NÃO");
+
+                option = this.inputPoc.nextBoolean();
+            }
+        }while(option);
+
+        //Por motivos de segurança e direitos autorais, editar autores não será possível
+
+        do {
+
+            System.out.println("=============================================");
+            System.out.println("| Dados que podem ser alterados:             |");
+            System.out.println("| o 0 -> Palavras chave                      |");
+            System.out.println("| o 1 -> Resumo                              |");
+            System.out.println("| o 2 -> Nome Orientador                     |");
+            System.out.println("| o 3 -> Nome Co-Orientador                  |");
+            System.out.println("| o 4 -> Área Científica                     |");
+            System.out.println("| o 5 -> Sair                                |");
+            System.out.println("=============================================");
+
+            opcaoEdicao = Integer.parseInt(this.inputPoc.nextLine());
+            switch (opcaoEdicao) {
+                case 0:
+                    String novasPalavrasChaves = this.preenchePalavrasChaves();
+                    pocParaAtualizar.setPalavrasChave(novasPalavrasChaves);
+                    break;
+                case 1:
+                    System.out.println("Entre com o novo resumo. " +
+                            "Para fins de comparação, o resumo antigo será exibido:");
+
+                    System.out.println(pocParaAtualizar.getResumo());
+
+                    System.out.println("=============================================");
+
+                    String resumoAtualizado = this.inputPoc.nextLine();
+
+                    pocParaAtualizar.setResumo(resumoAtualizado);
+                    break;
+                case 2:
+                    System.out.println("Entre com o novo nome do orientador. Para fins de comparação," +
+                            "o orientador antigo será exibido:");
+
+                    System.out.println(pocParaAtualizar.getNomeOrientador());
+
+                    System.out.println("=============================================");
+
+                    String nomeOrientadorAtualizado = this.inputPoc.nextLine();
+
+                    pocParaAtualizar.setNomeOrientador(nomeOrientadorAtualizado);
+
+
+                    break;
+                case 3:
+                    System.out.println("Entre com o novo nome do co-orientador. Para fins de comparação," +
+                            "o co-orientador antigo será exibido:");
+
+                    System.out.println(pocParaAtualizar.getNomeCoOrientador());
+
+                    System.out.println("=============================================");
+
+                    String nomeCoOrientadorAtualizado = this.inputPoc.nextLine();
+
+                    pocParaAtualizar.setNomeOrientador(nomeCoOrientadorAtualizado);
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Saindo . . .");
+                    flagEdicao = false;
+                    break;
+            }
+        }while(flagEdicao);
     }
 
     /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
@@ -174,7 +286,7 @@ public class TelaPoc {
             System.out.println("-> Entre com o título do POC que deseja remover:");
             tituloPoc = this.inputPoc.nextLine();
             try{
-                this.controle.removePoc(tituloPoc);]
+                this.controle.removePoc(tituloPoc);
                 option = false;
             }catch(ExcecaoPocNaoEncontrado notFound){
                 System.err.println("O título informado não está associado a nenhum POC " +
