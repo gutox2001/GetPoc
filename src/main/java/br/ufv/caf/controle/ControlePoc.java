@@ -119,7 +119,7 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public boolean exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
+    public boolean exibirPocs() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
 
         if (armzPocs.isEmpty()){
             System.out.println("Sistema não possui POCs cadastradas!");
@@ -142,7 +142,7 @@ public class ControlePoc {
      * @since 21/11/2022 - 20:30
      */
 
-    public ArrayList<Poc> getListaPocs(){
+    public ArrayList<Poc> getListaPocs(){ //TODO - Verificar pois getListaPocs retorna Strings
 
         return armzPocs.getListaPocs();
 
@@ -154,15 +154,12 @@ public class ControlePoc {
      * @since 02/11/2022 - 18:30
      */
 
-    public boolean editarPoc(Poc pocEditada, String tituloPocDesatualizada) {
+    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado,
+            ExcecaoPocJaCadastrado{
          //Retorna a posição da Poc atualizada; //TODO - conferir
         if (pesquisarPoc(tituloPocDesatualizada) != null) {
             removePoc(tituloPocDesatualizada);
             cadastraPoc(pocEditada);
-            return true;
-        } 
-        else {
-            return false; //Poc desatualizada não foi encontrada;
         }
     }
 
