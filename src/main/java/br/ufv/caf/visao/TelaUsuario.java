@@ -4,6 +4,8 @@ import br.ufv.caf.controle.ControleUsuario;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Professor;
 import br.ufv.caf.modelo.Usuario;
+import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
+import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 import java.util.Scanner;
@@ -52,14 +54,10 @@ public class TelaUsuario{
 
         System.out.println("O usuário é um professor ou um aluno?  \n0 - PROFESSOR   1 - ALUNO");
         opcao = Short.parseShort(this.inputUser.nextLine());
-        switch(opcao){
-            case 0:
-
-                userTemp = new Professor(nome,matricula,senha);
-                break;
-            default:
-                userTemp = new Aluno(nome,matricula,senha);
-                break;
+        if (opcao == 0) {
+            userTemp = new Professor(nome, matricula, senha);
+        } else {
+            userTemp = new Aluno(nome, matricula, senha);
         }
 
         return userTemp;
@@ -88,23 +86,36 @@ public class TelaUsuario{
 
     private void efetuarCadastro() {
 
+        boolean option = false;
+
         System.out.println("*************************************************************************");
-        if(!this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()))){
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.err.println("O usuario ja esta cadastrado no nosso sistema!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
 
-        else{
-            System.out.println("=============================================" +
-                    "=============================================");
-            System.out.println("O cadastro no sistema foi realizado com sucesso!");
-            System.out.println("=============================================" +
-                    "=============================================");
-        }
+        do {
+            try {
+                this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()));
+                option = false;
+            } catch (ExcecaoDadosInvalidos invalidData) {
 
+                System.out.println("=============================================" +
+                        "=============================================");
+                System.err.println("Dados inválidos, deseja tentar novamente?\n1 - SIM, 0 - NÃO");
+                System.out.println("=============================================" +
+                        "=============================================");
+
+                option = this.inputUser.nextBoolean();
+
+
+
+
+            } catch (ExcecaoUsuarioJaCadastrado alreadyOn) {
+                System.out.println("=============================================" +
+                        "=============================================");
+                System.err.println("O usuario ja esta cadastrado no nosso sistema!");
+                System.out.println("=============================================" +
+                        "=============================================");
+            }
+
+        }while(option);
         System.out.println("*************************************************************************");
 
     }
@@ -129,7 +140,7 @@ public class TelaUsuario{
                 System.out.println("=============================================" +
                         "=============================================");
 
-            } catch (ExcecaoUsuarioNaoEncontrado noUser) {
+            } catch (ExcecaoUsuarioNaoEncontrado notFound) {
 
                 System.out.println("=============================================" +
                         "=============================================");
@@ -142,36 +153,85 @@ public class TelaUsuario{
     }
 
     private void menuEdicaoAdmin(){
+        String matricula;
+        boolean option = false;
 
-    }
-    private void menuEdicao(Usuario usuarioLogado){
+        System.out.println("Entre com a matrícula do usuário que deseja editar:");
+        matricula = this.inputUser.nextLine();
+        Usuario usuarioPesquisado = null;
 
-        if(usuarioLogado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)){
-            menuEdicaoAdmin();
+        do {
+            try {
+                usuarioPesquisado = this.controle.pesquisaUsuario(matricula);
+                option = false;
+            } catch (ExcecaoUsuarioNaoEncontrado notFound) {
+                System.err.println("O usuário não está cadastrado no sistema ou a " +
+                        "matrícula é inválida, deseja tentar novamente?\n" +
+                        "1 - SIM, 0 - NÃO");
+                option = this.inputUser.nextBoolean();
+                if(option){
+                    System.out.println("Entre novamente com a matrícula do usuário que deseja editar:");
+                    matricula = this.inputUser.nextLine();
+                }
+            }
+        }while(option);
+
+        if(usuarioPesquisado!=null && usuarioPesquisado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)){
+            System.err.println("Por medidas de segurança, um admin não pode alterar dados de outro admin.");
         }
 
         else{
-
+            menuEdicaoComum(usuarioPesquisado);
         }
 
+
+    }
+
+    private void menuEdicaoComum(Usuario usuarioAtual){
         System.out.println("=============================================");
         System.out.println("| Qual informação deseja alterar?            |");
         System.out.println("| o 0 -> Nome                                |");
         System.out.println("| o 1 -> Senha                               |");
         System.out.println("=============================================");
 
+        if (Integer.parseInt(this.inputUser.nextLine()) == 1) {
+            String senha;
+            System.out.println("Entre com a nova senha:");
+            senha = this.inputUser.nextLine();
+            System.out.println("Deseja realmente alterar a sua senha? " +
+                    "Este processo não poderá ser revertido manualmente!!!\n" +
+                    "0 - SIM, 1  - NÃO");
 
+            if (!this.inputUser.nextBoolean()) {
+                this.controle.alteraSenha(usuarioAtual, senha);
+            }
+        } else {
+            String nome;
+            System.out.println("Entre com o novo nome de usuário:");
+            nome = this.inputUser.nextLine();
+            System.out.println("Deseja realmente alterar o seu nome?" +
+                    "0 - SIM, 1  - NÃO");
 
+            if (!this.inputUser.nextBoolean()) {
+                this.controle.alteraNome(usuarioAtual, nome);
+            }
+        }
     }
+
     /** Método menuPesquisa, tem a finalidade de pesquisar um Usuário (ADMIN ONLY)
      * @author @Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
      */
     
-    private void menuPesquisa(){
+    private void menuExibeBuscaUsuario(){
         System.out.println("Entre com a matrícula do usuário que deseja pesquisar");
-        Usuario usuarioPesquisado = this.controle.pesquisaUsuario(this.inputUser.nextLine());
-        System.out.println(usuarioPesquisado.toString());
+        try{
+            Usuario usuarioPesquisado = this.controle.pesquisaUsuario(this.inputUser.nextLine());
+            System.out.println(usuarioPesquisado.toString());
+        }catch(ExcecaoUsuarioNaoEncontrado notFound){
+            System.err.println("O usuário procurado não existe!");
+        }
+
     }
     
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as funcionalidades de um aluno
@@ -179,7 +239,7 @@ public class TelaUsuario{
      * @since 09/11/2022 - 18:00
      */
 
-    protected void menuFuncionalidadesAluno(TelaPoc telaPoc) {
+    protected void menuFuncionalidadesAluno(TelaPoc telaPoc, Usuario usuarioLogado) {
         int opcao;
         String nomePoc;
 
@@ -187,6 +247,7 @@ public class TelaUsuario{
         System.out.println("| Funcionalidades disponiveis:               |");
         System.out.println("| o 0 -> Sair                                |");
         System.out.println("| o 1 -> Pesquisar POC                       |");
+        System.out.println("| o 2 -> Editar Perfil                       |");
         System.out.println("=============================================");
         do {
             System.out.print("-> ");
@@ -194,6 +255,9 @@ public class TelaUsuario{
             switch (opcao) {
                 case 0:
                     System.out.println("OBRIGADO!");
+                    break;
+                case 2:
+                    this.menuEdicaoComum(usuarioLogado);
                     break;
 
                 default: //Assume que valores incorretos sempre irão pesquisar
@@ -209,17 +273,18 @@ public class TelaUsuario{
      * @since 09/11/2022 - 18:00
      */
 
-    protected void menuFuncionalidadesProfessor(TelaPoc telaPoc) {
+    protected void menuFuncionalidadesProfessor(TelaPoc telaPoc, Usuario usuarioLogado) {
         int opcao;
         String nomePoc;
 
         System.out.println("=============================================");
         System.out.println("| Funcionalidades disponiveis:               |");
         System.out.println("| o 0 -> Sair                                |");
-        System.out.println("| o 1 -> Pesquisar POC                       |");
+        System.out.println("| o 1 -> Pesquisar e exibir POC              |");
         System.out.println("| o 2 -> Cadastrar POC                       |");
         System.out.println("| o 3 -> Editar POC                          |");
         System.out.println("| o 4 -> Remover POC                         |");
+        System.out.println("| o 5 -> Editar Perfil                       |");
         System.out.println("=============================================");
         do {
             System.out.print("-> ");
@@ -237,6 +302,8 @@ public class TelaUsuario{
                 case 4:
                     telaPoc.menuRemocao();
                     break;
+                case 5:
+                    this.menuEdicaoComum(usuarioLogado);
                 default:
                     System.out.println("OBRIGADO!");
                     break;
@@ -284,12 +351,12 @@ public class TelaUsuario{
                     telaPoc.menuRemocao();
                     break;
                 case 5: 
-                    this.menuPesquisa();
+                    this.menuExibeBuscaUsuario();
                     break;
                 case 6:
                     this.efetuarCadastro();
                     break;
-                case 7: //TODO - Visão para edição
+                case 7:
                     this.menuEdicaoAdmin();
                     break;
                 case 8:
