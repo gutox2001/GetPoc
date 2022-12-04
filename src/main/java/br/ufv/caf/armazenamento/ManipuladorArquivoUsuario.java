@@ -35,7 +35,7 @@ public class ManipuladorArquivoUsuario{
      * @since 02/12/2022 - 14:00
      */
     
-    public ArrayList<Usuario> Read(String caminho) {
+    public ArrayList<String> Read(String caminho) {
 
         try {
             FileReader arq = new FileReader(caminho);

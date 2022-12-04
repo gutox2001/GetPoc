@@ -1,6 +1,8 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
+
+import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Usuario;
 import br.ufv.caf.modelo.Usuario.TipoUsuario;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
@@ -38,7 +40,7 @@ public class ArmazenamentoUsuarios {
      * @since 02/12/2022 - 12:00
      */
      
-    public ArrayList<Usuario> getListaUsuarios(){
+    public ArrayList<String> getListaUsuarios(){
 
         return arquivo.Read("/src/regs/usuarios.csv");
         
@@ -122,29 +124,28 @@ public class ArmazenamentoUsuarios {
         for (String usuarioLista : listaUsuarios) {
             
             if (usuarioLista.split(",")[1].equals(matriculaUsuarioPesquisar)) {
-                
-               Usuario usuarioAux = null;
-               usuarioAux.setNome(usuarioLista.split(",")[0]);
-               usuarioAux.setMatricula(usuarioLista.split(",")[1]);
-               usuarioAux.setSenha(usuarioLista.split(",")[2]);
                
-               switch (usuarioLista.split(",")[3]) {
-                case "ALUNO":
-                    usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
-                    
-                    break;
-                case "PROFESSOR":
-                    usuarioAux.setTipoUsuario(TipoUsuario.PROFESSOR);
-                    
-                    break;
-                case "ADMINISTRADOR":
-                    usuarioAux.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+                Usuario usuarioAux = new Aluno(usuarioLista.split(",")[0], usuarioLista.split(",")[1], usuarioLista.split(",")[2]);
 
-                    break;
-                default:
-                
-                    break;
-               }
+                switch (usuarioLista.split(",")[3]) {
+                    case "ALUNO":
+                        
+                        usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
+                        break;
+
+                    case "PROFESSOR":
+
+                        usuarioAux.setTipoUsuario(TipoUsuario.PROFESSOR);
+                        break;
+
+                    case "ADMINISTRADOR":
+
+                        usuarioAux.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
+                        break;
+
+                    default:
+                        break;
+                }
 
                return usuarioAux;
             }
