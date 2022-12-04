@@ -2,9 +2,8 @@ package br.ufv.caf.controle;
 
 import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
+import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
-import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
-import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
 /** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
  * @author
@@ -36,14 +35,10 @@ public class ControlePoc {
 
     //TODO - Ver se vamos fazer metodos para validar a criação de POCs
     
-    public void cadastraPoc(Poc novoPoc) throws ExcecaoPocJaCadastrado {
+    public void cadastraPoc(Poc novoPoc) {
 
-        if (armzPocs.pesquisaPoc(novoPoc) == null){
+        if (armzPocs.pesquisaPoc(novoPoc){
             armzPocs.addPoc(novoPoc);
-        }
-
-        else{
-            throw new ExcecaoPocJaCadastrado();
         }
     }
 
@@ -56,15 +51,9 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public void removePoc(String tituloPocRemover) throws ExcecaoPocNaoEncontrado{
-
-        if(armzPocs.pesquisaPoc(tituloPocRemover) != null){
-            armzPocs.removePoc(tituloPocRemover);
-        }
-
-        else{
-            throw new ExcecaoPocNaoEncontrado();
-        }
+    public boolean removePoc(String tituloPocRemover) {
+        
+        return armzPocs.removePoc(tituloPocRemover);
 
     }
 
@@ -78,17 +67,9 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public Poc pesquisarPoc(String tituloPocAPesquisar) throws ExcecaoPocNaoEncontrado {
-        Poc pocPesquisado = armzPocs.pesquisaPoc(tituloPocAPesquisar);
+    public Poc pesquisarPoc(String tituloPocAPesquisar) {
 
-        if(pocPesquisado!=null){
-            return pocPesquisado;
-        }
-
-        else{
-            throw new ExcecaoPocNaoEncontrado();
-        }
-
+        return armzPocs.pesquisaPoc(tituloPocAPesquisar);
 
     }
 
@@ -119,17 +100,34 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public ArrayList<String> retornarPocsDoSistema() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
-        String pocSplit;
+    public boolean exibirPocs() { //TODO - Melhor retornar POCs n? //Aroldo
+
         if (armzPocs.isEmpty()){
-            return null;
+            System.out.println("Sistema não possui POCs cadastradas!");
+            return false;
 
         } else {
-            ArrayList<String> pocsCadastrados = armzPocs.getListaPocs();
-            return pocsCadastrados;
+            ArrayList<Poc> pocsCadastrados = armzPocs.getListaPocs();
+
+            //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
+            for (Poc poc : pocsCadastrados) {
+                poc.exibePoc();
+            }
+            return true;
         }
     }
 
+    /** Método getListaPocs, utilizado para conseguir editar os poc's já armazenados na lista de poc's //TODO: APAGAR FUNÇÃO!
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return ArrayList<Poc>
+     * @since 21/11/2022 - 20:30
+     */
+
+    public ArrayList<Poc> getListaPocs(){
+
+        return armzPocs.getListaPocs();
+
+    }
 
     /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
      * @author
@@ -137,13 +135,35 @@ public class ControlePoc {
      * @since 02/11/2022 - 18:30
      */
 
-    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado,
-            ExcecaoPocJaCadastrado{
+    public boolean editarPoc(Poc pocEditada, String tituloPocDesatualizada) {
          //Retorna a posição da Poc atualizada; //TODO - conferir
         if (pesquisarPoc(tituloPocDesatualizada) != null) {
+
             removePoc(tituloPocDesatualizada);
             cadastraPoc(pocEditada);
+            return true;
+
+        } else {
+
+            return false; //Poc desatualizada não foi encontrada;
+            
         }
+
+    }
+
+    /** Método exibeAreasPocDisponiveis, utilizado para exibir as áreas de Pocs disponíveis para cadastro;
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @since 02/12/2022 - 19:30
+     */
+
+    public void exibeAreasPocDisponiveis() {
+
+        for (AreasPoc area : AreasPoc.values()) {
+
+            System.out.println(area.toString());
+
+        }
+
     }
 
 }
