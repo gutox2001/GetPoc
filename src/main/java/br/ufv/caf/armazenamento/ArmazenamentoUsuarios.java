@@ -68,9 +68,9 @@ public class ArmazenamentoUsuarios {
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
-    public void removeUsuario(Usuario usuarioRemover) { 
+    public void removeUsuario(String matriculaUsuarioRemover) { 
 
-        arquivo.Remove("/src/regs/usuarios.csv", usuarioRemover);
+        arquivo.Remove("/src/regs/usuarios.csv", matriculaUsuarioRemover);
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado Usuário está presente na lista
