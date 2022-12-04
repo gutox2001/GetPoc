@@ -257,6 +257,8 @@ public class TelaUsuario{
         int opcao;
         String nomePoc;
 
+        System.out.println("Lista dos Pocs cadastrados no sistema:");
+        telaPoc.exibeTodosOsTitulosPocs();
 
         do {
             System.out.println("=============================================");
@@ -293,6 +295,9 @@ public class TelaUsuario{
         int opcao;
         String nomePoc;
 
+        System.out.println("Lista dos Pocs cadastrados no sistema:");
+        telaPoc.exibeTodosOsTitulosPocs();
+
         do {
             System.out.println("=============================================");
             System.out.println("| Funcionalidades disponiveis:               |");
@@ -306,6 +311,7 @@ public class TelaUsuario{
 
             System.out.print("-> ");
             opcao = Integer.parseInt(inputUser.nextLine());
+
             switch (opcao) {
                 case 1:
                     telaPoc.menuPesquisa();
@@ -337,6 +343,9 @@ public class TelaUsuario{
     protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc) {
         int opcao;
         String nomePoc;
+
+        System.out.println("Lista dos Pocs cadastrados no sistema:");
+        telaPoc.exibeTodosOsTitulosPocs();
 
         do {
             System.out.println("=============================================");
