@@ -76,13 +76,14 @@ public class ManipuladorArquivoPoc {
      */
 
     public boolean Write(String caminho, Poc novoPoc) {
+
         try {
             FileWriter arq = new FileWriter(caminho);
             PrintWriter gravaArq = new PrintWriter(arq);
 
             gravaArq.print(novoPoc.getTitulo() + ","  + novoPoc.getAreaDaPoc() + ",");
 
-            for (String autoresLista : novoPoc.getListaAutores())
+            for (String autoresLista : novoPoc.getListaAutores()) 
                 gravaArq.print(autoresLista + ","); 
 
             gravaArq.print(novoPoc.getNomeOrientador() + "," + novoPoc.getNomeCoOrientador() + ",");
@@ -99,6 +100,7 @@ public class ManipuladorArquivoPoc {
             System.out.println(e.getMessage());
             return false;
         }
+
     }
 
     /** Método Remove, usado para remover poc's da lista de poc's

@@ -1,7 +1,5 @@
 package br.ufv.caf.modelo;
 
-import java.util.ArrayList;
-
 /** Classes que implementa a entidade Poc
  * @author @Aroldo Augusto Barbosa Simões - 4250
  * @since 21/11/2022 - 20:00
@@ -62,6 +60,12 @@ public class Poc {
         this.titulo = titulo;
     }
 
+    /** Método getListaAutores, usado para retornar a lista de autores da Poc
+     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @return String - lista de autores da Poc
+     * @since 04/12/2022 - 17:00
+     */
+
     public String getListaAutores() {
         return listaAutores;
     }
@@ -99,7 +103,9 @@ public class Poc {
      */
 
     public String getPalavrasChave() {
+
         return this.palavrasChave;
+        
     }
 
     public void setPalavrasChave(String palavrasChave) {
