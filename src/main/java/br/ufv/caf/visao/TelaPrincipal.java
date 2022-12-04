@@ -5,6 +5,8 @@ import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
 import br.ufv.caf.modelo.excecoes.ExcecaoNenhumUsuarioCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
+import java.util.ArrayList;
+
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
  * @author @Thiago Cândido Rocha - 4225
  * @since 10/11/2022 - 22:00
@@ -38,15 +40,13 @@ public class TelaPrincipal {
 
         String matricula, senha;
         Usuario usuarioLogado = null;
-        System.out.println("*************************************************************************");
-        System.out.println("Entre com a sua matrícula:");
-        matricula = this.telaUser.inputUser.nextLine();
-        System.out.println("Entre com a sua senha:");
-        senha = this.telaUser.inputUser.nextLine();
-        System.out.println("*************************************************************************");
 
         do{
             try {
+                System.out.println("Entre com a sua matrícula:");
+                matricula = this.telaUser.inputUser.nextLine();
+                System.out.println("Entre com a sua senha:");
+                senha = this.telaUser.inputUser.nextLine();
                 usuarioLogado = this.telaUser.controle.realizarLogin(matricula, senha);
             }catch(ExcecaoUsuarioNaoEncontrado noUser){
                 System.err.println("Usuario não encontrado");
@@ -91,10 +91,13 @@ public class TelaPrincipal {
      * @since 11/11/2022 - 19:00
      */
     
-    public void exibeSistema() { 
-
+    public void exibeSistema() {
+        ArrayList<String> todosUsuarios = null;
         try {
-            this.telaUser.controle.exibirTodosUsuarios();
+            todosUsuarios = this.telaUser.controle.exibirTodosUsuarios();
+            for(String usuarios : todosUsuarios){
+                System.out.println(usuarios);
+            }
         }catch(ExcecaoNenhumUsuarioCadastrado emptySystem){
             System.err.println("O sistema não possui usuários cadastrados!");
         }
