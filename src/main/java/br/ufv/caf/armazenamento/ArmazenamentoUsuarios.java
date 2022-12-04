@@ -29,11 +29,9 @@ public class ArmazenamentoUsuarios {
 
     public ArmazenamentoUsuarios() {
         arquivo = new ManipuladorArquivoUsuario();
-        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv");
-    
+        listaUsuarios = new ArrayList<String>();
+        listaUsuarios = arquivo.Read("src/regs/usuarios.csv");
     }
-
-
 
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
      * @author João Vitor Chagas Lobo - 4693
@@ -42,10 +40,10 @@ public class ArmazenamentoUsuarios {
      * @return ArrayList<String> - Lista de Usuarios
      * @since 02/12/2022 - 12:00
      */
-     
+
     public ArrayList<String> getListaUsuarios() {
 
-        return listaUsuarios;
+        return arquivo.Read("src/regs/usuarios.csv");
         
     }
 
@@ -59,7 +57,7 @@ public class ArmazenamentoUsuarios {
 
     public void addUsuario(Usuario novoUsuario) {
 
-        if (arquivo.Write("src\\regs\\usuarios.csv", novoUsuario))
+        if (arquivo.Write("src/regs/usuarios.csv", novoUsuario))
             System.out.println("Novo usuário adicionado");
         else 
             System.out.println("Novo usuário não adicionado");
@@ -76,7 +74,7 @@ public class ArmazenamentoUsuarios {
 
     public void removeUsuario(String matriculaUsuarioRemover) { 
 
-        arquivo.Remove("src\\regs\\usuarios.csv", matriculaUsuarioRemover);
+        arquivo.Remove("src/regs/usuarios.csv", matriculaUsuarioRemover);
 
     }
 
@@ -91,7 +89,7 @@ public class ArmazenamentoUsuarios {
     
     public Usuario pesquisaUsuario(Usuario usuarioPesquisar) {
     
-        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv");
+        listaUsuarios = arquivo.Read("src/regs/usuarios.csv");
     
         for (String usuarioLista : listaUsuarios) {
 
@@ -120,7 +118,7 @@ public class ArmazenamentoUsuarios {
 
     public Usuario pesquisaUsuario(String matriculaUsuarioPesquisar) {
 
-        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv"); 
+        listaUsuarios = arquivo.Read("src/regs/usuarios.csv");
         
         for (String usuarioLista : listaUsuarios) {
             
