@@ -5,6 +5,7 @@ import br.ufv.caf.armazenamento.ArmazenamentoUsuarios;
 import br.ufv.caf.modelo.Usuario;
 import br.ufv.caf.modelo.excecoes.ExcecaoDadosInvalidos;
 import br.ufv.caf.modelo.excecoes.ExcecaoNenhumUsuarioCadastrado;
+import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 import java.util.ArrayList;
@@ -45,15 +46,15 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public boolean validaUsuario(Usuario usuario) throws ExcecaoDadosInvalidos {
+    public boolean validaUsuario(Usuario usuario){
 
-        if (usuario.validaMatricula() && usuario.validaSenha()) {
+        if (!(usuario.validaMatricula() && usuario.validaSenha())) {
 
             return true;
 
         } else {
 
-            throw new ExcecaoDadosInvalidos();
+            return false;
 
         }
 
@@ -67,7 +68,8 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public void cadastraUsuario(Usuario novoUsuario) throws ExcecaoDadosInvalidos {
+    public void cadastraUsuario(Usuario novoUsuario) throws ExcecaoDadosInvalidos,
+            ExcecaoUsuarioJaCadastrado {
 
         if (validaUsuario(novoUsuario)) {
 
@@ -75,6 +77,10 @@ public class ControleUsuario {
 
                     armzUsuarios.addUsuario(novoUsuario);
 
+            }
+
+            else{
+                throw new ExcecaoUsuarioJaCadastrado();
             }
         } else {
 
@@ -115,7 +121,7 @@ public class ControleUsuario {
      * @throws ExcecaoUsuarioNaoEncontrado
      */
     
-    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado { 
+    public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado {
 
         Usuario uTemp;
 
@@ -168,7 +174,6 @@ public class ControleUsuario {
      * @return Usuario
      * @since 01/12/2022 - 20:00
      * @throws ExcecaoDadosInvalidos;
-     * @throws ExcecaoMatriculaInvalida;
      * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
@@ -182,12 +187,13 @@ public class ControleUsuario {
 
                     return usuario;
 
-            } else {
+            }
+            else {
 
                     throw new ExcecaoDadosInvalidos();
-                    
-                }
-                
+
+            }
+
         } else {
 
             throw new ExcecaoUsuarioNaoEncontrado();
@@ -234,5 +240,13 @@ public class ControleUsuario {
         return armzUsuarios.isEmpty();
         
     }
-   
+
+    public void alteraSenha(Usuario usuarioLogado, String senha){
+        usuarioLogado.setSenha(senha);
+    }
+
+    public void alteraNome(Usuario usuarioLogado, String nome){
+        usuarioLogado.setNome(nome);
+    }
+
 }
