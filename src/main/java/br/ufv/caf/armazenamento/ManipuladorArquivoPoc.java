@@ -77,13 +77,13 @@ public class ManipuladorArquivoPoc {
 
     public boolean Write(String caminho, Poc novoPoc) {
         try {
-            FileWriter arq = new FileWriter(caminho);
+            FileWriter arq = new FileWriter(caminho, true);
             PrintWriter gravaArq = new PrintWriter(arq);
 
-            gravaArq.println(novoPoc.getTitulo() + ","  + novoPoc.getAreaDaPoc() + "," +
-            novoPoc.getListaAutores() + "," + novoPoc.getNomeOrientador() + "," +
-            novoPoc.getNomeCoOrientador() + "," + novoPoc.getPalavrasChave()+
-            novoPoc.getResumo() + "," + String.valueOf(novoPoc.getAreaDaPoc()));
+            gravaArq.println(novoPoc.getTitulo() + novoPoc.getListaAutores() + "," +
+            novoPoc.getNomeOrientador() + "," + novoPoc.getNomeCoOrientador() + "," +
+            novoPoc.getPalavrasChave()+ novoPoc.getResumo() + "," +
+            String.valueOf(novoPoc.getAreaDaPoc()));
             
             gravaArq.close();
             return true;
@@ -97,7 +97,7 @@ public class ManipuladorArquivoPoc {
     /** Método Remove, usado para remover poc's da lista de poc's
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param caminho String - Caminho do arquivo
-     * @param poc Poc - Poc a remover
+     * @param tituloPocARemover String- Título do Poc a remover
      * @since 02/12/2022 - 14:00
      */
 
@@ -113,7 +113,7 @@ public class ManipuladorArquivoPoc {
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
-                    if (linha.split(",")[0].equals(tituloPocARemover) == false) {
+                    if (!linha.split(",")[0].equals(tituloPocARemover)) {
                         listaPocs.add(linha);
                         
                     }
@@ -124,7 +124,7 @@ public class ManipuladorArquivoPoc {
                 arq.close();
 
                 try {
-                    FileWriter arqAux = new FileWriter(caminho, true);
+                    FileWriter arqAux = new FileWriter(caminho, false);
                     PrintWriter gravaArqAux = new PrintWriter(arqAux);
 
                     for (String pocLista : listaPocs) {

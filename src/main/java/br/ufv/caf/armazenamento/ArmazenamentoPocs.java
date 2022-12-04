@@ -1,7 +1,6 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.AreasPoc;
@@ -57,9 +56,9 @@ public class ArmazenamentoPocs {
     public void addPoc(Poc novoPoc) {
 
         if (arquivo.Write("src/regs/pocs.csv", novoPoc))
-            System.out.println("Novo usuário adicionado");
+            System.out.println("Novo POC adicionado");
         else 
-            System.out.println("Novo usuário não adicionado");
+            System.out.println("Novo POC não adicionado");
     }
 
     /** Método removePoc, usado para remover poc's da lista de poc's
@@ -108,8 +107,6 @@ public class ArmazenamentoPocs {
 
     public Poc pesquisaPoc(String tituloPocAPesquisar) {
 
-        listaPocs = arquivo.Read("src/regs/pocs.csv");
-
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(tituloPocAPesquisar)){
 
@@ -117,16 +114,14 @@ public class ArmazenamentoPocs {
 
                 //Compara a String área da Poc com a lista de Áreas disponíveis
                 for (AreasPoc area : AreasPoc.values()) {
-                    if(Objects.equals(area.name(), poc.split(",")[6])) {
+                    if(area.name().equals(poc.split(",")[6])) {
 
                         pocAux.setAreaDaPoc(area);
 
                     }
                 }
 
-                System.out.println(pocAux.getAreaDaPoc());
                 return pocAux;
-
             }
         }
 

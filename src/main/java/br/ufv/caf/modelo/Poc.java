@@ -1,7 +1,5 @@
 package br.ufv.caf.modelo;
 
-import java.util.ArrayList;
-
 /** Classes que implementa a entidade Poc
  * @author @Aroldo Augusto Barbosa Simões - 4250
  * @since 21/11/2022 - 20:00
@@ -11,10 +9,10 @@ import java.util.ArrayList;
 public class Poc {
 
     private String titulo;
-    private ArrayList<String> listaAutores;
+    private String listaAutores;
     private String nomeOrientador;
     private String nomeCoOrientador;
-    private ArrayList<String> palavrasChave;
+    private String palavrasChave;
     private String resumo;
     private AreasPoc areaDaPoc;
 
@@ -30,8 +28,8 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    public Poc(String titulo, ArrayList<String> listaAutores, String nomeOrientador,
-               String nomeCoOrientador, ArrayList<String> palavrasChave, String resumo, AreasPoc areaPoc) {
+    public Poc(String titulo, String listaAutores, String nomeOrientador,
+               String nomeCoOrientador, String palavrasChave, String resumo, AreasPoc areaPoc) {
 
         this.titulo = titulo;
         this.listaAutores = listaAutores;
@@ -66,14 +64,13 @@ public class Poc {
 
     }
 
-    /** Método getListaAutores, usado para...
+    /** Método getListaAutores, usado para retornar a lista de autores da Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @return ArrayList<String> - Lista de autores
-     * @since 01/12/2022 - 22:00
+     * @return String - lista de autores da Poc
+     * @since 04/12/2022 - 17:00
      */
 
-    public ArrayList<String> getListaAutores() {
-
+    public String getListaAutores() {
         return listaAutores;
 
     }
@@ -83,8 +80,7 @@ public class Poc {
      * @since 01/12/2022 - 22:00
      */
 
-    public void setListaAutores(ArrayList<String> listaAutores) {
-
+    public void setListaAutores(String listaAutores) {
         this.listaAutores = listaAutores;
 
     }
@@ -141,19 +137,13 @@ public class Poc {
      * @since 21/11/2022 - 20:00
      */
 
-    public ArrayList<String> getPalavrasChave() {
+    public String getPalavrasChave() {
 
-        return palavrasChave;
-
+        return this.palavrasChave;
+        
     }
 
-    /** Método setPalavrasChave, usado para redefinir a lista de palavras-chave da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @since 01/12/2022 - 22:00
-     */
-
-    public void setPalavrasChave(ArrayList<String> palavrasChave) {
-
+    public void setPalavrasChave(String palavrasChave) {
         this.palavrasChave = palavrasChave;
 
     }
@@ -209,13 +199,7 @@ public class Poc {
      */
 
     public String toStringAutores(){
-        String nomesAutores = "";
-
-        for (String autores: this.listaAutores) {
-            nomesAutores += autores + "\n";
-        }
-
-        return nomesAutores;
+        return this.listaAutores.substring(0,this.listaAutores.length());
     }
 
     /** Método toStringPalavrasChave, usado para retornar uma String com todos as palavras-chave da Poc
@@ -225,13 +209,7 @@ public class Poc {
      */
 
     public String toStringPalavrasChave(){
-        String palavrasChave = "";
-
-        for (String palavraChave: this.palavrasChave) {
-            palavrasChave += palavraChave + "\n";
-        }
-
-        return palavrasChave;
+        return this.palavrasChave.substring(0,this.palavrasChave.length());
     }
 
     /** Método toString, usado para retornar uma String com todos os dados da Poc
@@ -244,10 +222,10 @@ public class Poc {
     public String toString(){
 
         return  "TÍTULO: " + this.titulo + "\n"
-                + "- AUTORES: " + toStringAutores()
+                + "- AUTORES: " + toStringAutores() + "\n"
                 + "- NOME ORIENTADOR: " + this.nomeOrientador + "\n"
                 + "- NOME CO-ORIENTADOR: " + this.nomeCoOrientador + "\n"
-                + "- PALAVRAS CHAVE: " + toStringPalavrasChave()
+                + "- PALAVRAS CHAVE: " + toStringPalavrasChave() + "\n"
                 + "- RESUMO: " + this.resumo + "\n"
                 + "- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString();
                 

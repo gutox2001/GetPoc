@@ -77,7 +77,7 @@ public class ManipuladorArquivoUsuario{
 
     public boolean Write(String caminho, Usuario novoUsuario) {
         try {
-            FileWriter arq = new FileWriter(caminho);
+            FileWriter arq = new FileWriter(caminho, true);
             PrintWriter gravaArq = new PrintWriter(arq);
             gravaArq.println(novoUsuario.getNome() + "," + novoUsuario.getMatricula() + "," + novoUsuario.getSenha() + "," + String.valueOf(novoUsuario.getTipoUsuario()));
             gravaArq.close();
@@ -108,18 +108,17 @@ public class ManipuladorArquivoUsuario{
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
-                    if (linha.split(",")[1].equals(matriculaUsuarioRemover) == false) {
+                    if (!linha.split(",")[1].equals(matriculaUsuarioRemover)) {
                         listaUsuarios.add(linha);
                         
                     }
-
                     linha = lerArq.readLine();
                 }
 
                 arq.close();
 
                 try {
-                    FileWriter arqAux = new FileWriter(caminho, true);
+                    FileWriter arqAux = new FileWriter(caminho, false);
                     PrintWriter gravaArqAux = new PrintWriter(arqAux);
 
                     for (String usuarioLista : listaUsuarios) {

@@ -237,14 +237,16 @@ public class ControleUsuario {
     }
 
     public void alteraSenha(Usuario usuarioLogado, String senha) {
-
+        this.armzUsuarios.removeUsuario(usuarioLogado.getMatricula());
         usuarioLogado.setSenha(senha);
+        armzUsuarios.addUsuario(usuarioLogado);
 
     }
 
     public void alteraNome(Usuario usuarioLogado, String nome) {
-
+        this.armzUsuarios.removeUsuario(usuarioLogado.getMatricula());
         usuarioLogado.setNome(nome);
+        armzUsuarios.addUsuario(usuarioLogado);
         
     }
 

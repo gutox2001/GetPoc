@@ -206,9 +206,9 @@ public class TelaUsuario{
                     System.out.println("Entre com o novo nome de usuário:");
                     nome = this.inputUser.nextLine();
                     System.out.println("Deseja realmente alterar o seu nome?" +
-                            "0 - SIM, 1  - NÃO");
+                            "1 - SIM, 0  - NÃO");
 
-                    if (!this.inputUser.nextBoolean()) {
+                    if (Integer.parseInt(this.inputUser.nextLine()) == 1) {
                         this.controle.alteraNome(usuarioAtual, nome);
                     }
                     break;
@@ -218,9 +218,9 @@ public class TelaUsuario{
                     senha = this.inputUser.nextLine();
                     System.out.println("Deseja realmente alterar a sua senha? " +
                             "Este processo não poderá ser revertido manualmente!!!\n" +
-                            "0 - SIM, 1  - NÃO");
+                            "1 - SIM, 0  - NÃO");
 
-                    if (!this.inputUser.nextBoolean()) {
+                    if (Integer.parseInt(this.inputUser.nextLine()) == 1) {
                         this.controle.alteraSenha(usuarioAtual, senha);
                     }
                     break;
@@ -344,8 +344,11 @@ public class TelaUsuario{
         int opcao;
         String nomePoc;
 
+        System.out.print("\n\n");
         System.out.println("Lista dos Pocs cadastrados no sistema:");
         telaPoc.exibeTodosOsTitulosPocs();
+        System.out.print("\n\n");
+
 
         do {
             System.out.println("=============================================");
@@ -364,7 +367,6 @@ public class TelaUsuario{
             System.out.print("-> ");
             opcao = Integer.parseInt(inputUser.nextLine());
             switch (opcao) {
-
                 case 1:
                     telaPoc.menuPesquisa();
                     break;
