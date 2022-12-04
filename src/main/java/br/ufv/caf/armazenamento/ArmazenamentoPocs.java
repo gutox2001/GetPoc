@@ -88,8 +88,7 @@ public class ArmazenamentoPocs {
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())){
 
-                Poc pocAux = null;
-                pocAux = pocAPesquisar;
+                Poc pocAux = pocAPesquisar;
                 return pocAux;
             }
         }
@@ -112,13 +111,7 @@ public class ArmazenamentoPocs {
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(tituloPocAPesquisar)){
 
-                Poc pocAux = null;
-                pocAux.setTitulo(poc.split(",")[0]);
-                pocAux.setListaAutores(poc.split(",")[1]);
-                pocAux.setNomeOrientador(poc.split(",")[2]);
-                pocAux.setNomeCoOrientador(poc.split(",")[3]);
-                pocAux.setPalavrasChave(poc.split(",")[4]);
-                pocAux.setResumo(poc.split(",")[5]);
+                Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], null);
 
                 switch (poc.split(",")[6]) {
                     case "ENGENHARIA_DE_SOFTWARE":
@@ -138,7 +131,6 @@ public class ArmazenamentoPocs {
                         break;
                 }
 
-                pocAux.setAreaDaPoc(null);
                 return pocAux;
             }
         }
