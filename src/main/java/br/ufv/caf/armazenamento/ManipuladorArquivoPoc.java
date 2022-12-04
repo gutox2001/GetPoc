@@ -76,22 +76,15 @@ public class ManipuladorArquivoPoc {
      */
 
     public boolean Write(String caminho, Poc novoPoc) {
-
         try {
             FileWriter arq = new FileWriter(caminho);
             PrintWriter gravaArq = new PrintWriter(arq);
 
-            gravaArq.print(novoPoc.getTitulo() + ","  + novoPoc.getAreaDaPoc() + ",");
-
-            for (String autoresLista : novoPoc.getListaAutores()) 
-                gravaArq.print(autoresLista + ","); 
-
-            gravaArq.print(novoPoc.getNomeOrientador() + "," + novoPoc.getNomeCoOrientador() + ",");
-
-            for (String chavesPalavra : novoPoc.getPalavrasChave())
-                gravaArq.print(chavesPalavra + ",");
-                
-            gravaArq.println(novoPoc.getResumo() + "," + String.valueOf(novoPoc.getAreaDaPoc()));
+            gravaArq.println(novoPoc.getTitulo() + ","  + novoPoc.getAreaDaPoc() + "," +
+                novoPoc.getListaAutores() + "," + novoPoc.getNomeOrientador() + "," +
+                novoPoc.getNomeCoOrientador() + "," + novoPoc.getPalavrasChave()+
+                novoPoc.getResumo() + "," + String.valueOf(novoPoc.getAreaDaPoc())
+            );
             
             gravaArq.close();
             return true;
@@ -100,7 +93,6 @@ public class ManipuladorArquivoPoc {
             System.out.println(e.getMessage());
             return false;
         }
-
     }
 
     /** Método Remove, usado para remover poc's da lista de poc's
@@ -110,7 +102,7 @@ public class ManipuladorArquivoPoc {
      * @since 02/12/2022 - 14:00
      */
 
-    public void Remove(String caminho, Poc poc) {
+    public void Remove(String caminho, String tituloPocARemover) {
 
         try {
             FileReader arq = new FileReader(caminho);
@@ -122,7 +114,7 @@ public class ManipuladorArquivoPoc {
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
-                    if (linha.split(",")[0].equals(poc.getTitulo()) == false) {
+                    if (linha.split(",")[0].equals(tituloPocARemover) == false) {
                         listaPocs.add(linha);
                         
                     }

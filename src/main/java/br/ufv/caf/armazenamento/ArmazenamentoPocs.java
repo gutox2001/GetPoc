@@ -3,7 +3,7 @@ package br.ufv.caf.armazenamento;
 import java.util.ArrayList;
 
 import br.ufv.caf.modelo.Poc;
-import br.ufv.caf.modelo.AreasPoc;
+import br.ufv.caf.modelo.Poc.Area;
 
 /** Classes que tem a finalidade de armazenar os poc's cadastrados no sistema
  * @author João Vitor Chagas Lobo - 4693
@@ -63,14 +63,14 @@ public class ArmazenamentoPocs {
     /** Método removePoc, usado para remover poc's da lista de poc's
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param tituloPocRemover Poc - Poc que deseja remover
+     * @param pocARemover Poc - Poc que deseja remover
      * @return boolean
      * @since 02/12/2022 - 14:00
      */
 
-    public void removePoc(String tituloPocRemover) {
-
-        arquivo.Remove("/src/regs/pocs.csv", tituloPocRemover);
+    public void removePoc(String tituloPocARemover) {
+        
+        arquivo.Remove("/src/regs/pocs.csv", tituloPocARemover);
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
@@ -122,15 +122,15 @@ public class ArmazenamentoPocs {
 
                 switch (poc.split(",")[6]) {
                     case "ENGENHARIA_DE_SOFTWARE":
-                        pocAux.setAreaDaPoc(AreasPoc.ENGENHARIA_DE_SOFTWARE);
+                        pocAux.setAreaDaPoc(Area.ENGENHARIA_DE_SOFTWARE);
                         
                         break;
                     case "CIENCIA_DE_DADOS":
-                    pocAux.setAreaDaPoc(AreasPoc.CIENCIA_DE_DADOS);
+                    pocAux.setAreaDaPoc(Area.CIENCIA_DE_DADOS);
                         
                         break;
                     case "INTERNET_DAS_COISAS":
-                    pocAux.setAreaDaPoc(AreasPoc.INTERNET_DAS_COISAS);
+                    pocAux.setAreaDaPoc(Area.INTERNET_DAS_COISAS);
     
                         break;
                     default:
