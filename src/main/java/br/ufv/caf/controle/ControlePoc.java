@@ -119,34 +119,17 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public boolean exibirPocs() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
-
+    public ArrayList<String> retornarPocsDoSistema() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
+        String pocSplit;
         if (armzPocs.isEmpty()){
-            System.out.println("Sistema não possui POCs cadastradas!");
-            return false;
+            return null;
 
         } else {
-            ArrayList<Poc> pocsCadastrados = armzPocs.getListaPocs();
-
-            //TODO - TELA verificar se é o ideal passar a lista de POCs para a visão
-            for (Poc poc : pocsCadastrados) {
-                poc.exibePoc();
-            }
-            return true;
+            ArrayList<String> pocsCadastrados = armzPocs.getListaPocs();
+            return pocsCadastrados;
         }
     }
 
-    /** Método getListaPocs, utilizado para conseguir editar os poc's já armazenados na lista de poc's //TODO: APAGAR FUNÇÃO!
-     * @author @Aroldo Augusto Barbosa Simões
-     * @return ArrayList<Poc>
-     * @since 21/11/2022 - 20:30
-     */
-
-    public ArrayList<Poc> getListaPocs(){ //TODO - Verificar pois getListaPocs retorna Strings
-
-        return armzPocs.getListaPocs();
-
-    }
 
     /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
      * @author
