@@ -29,8 +29,11 @@ public class ArmazenamentoUsuarios {
 
     public ArmazenamentoUsuarios() {
         arquivo = new ManipuladorArquivoUsuario();
-        listaUsuarios = new ArrayList<String>();
+        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv");
+    
     }
+
+
 
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
      * @author João Vitor Chagas Lobo - 4693
@@ -42,7 +45,7 @@ public class ArmazenamentoUsuarios {
      
     public ArrayList<String> getListaUsuarios() {
 
-        return arquivo.Read("src\\regs\\usuarios.csv");
+        return listaUsuarios;
         
     }
 
