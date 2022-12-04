@@ -39,8 +39,9 @@ public class TelaPrincipal {
         String matricula, senha;
         Usuario usuarioLogado = null;
         System.out.println("*************************************************************************");
-        System.out.println("Entre com a sua matrícula e com a sua senha:");
+        System.out.println("Entre com a sua matrícula:");
         matricula = this.telaUser.inputUser.nextLine();
+        System.out.println("Entre com a sua senha:");
         senha = this.telaUser.inputUser.nextLine();
         System.out.println("*************************************************************************");
 
