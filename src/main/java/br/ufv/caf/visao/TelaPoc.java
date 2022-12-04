@@ -152,6 +152,15 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
+    protected void exibeTodosOsTitulosPocs(){
+        String pocSplit;
+        ArrayList<String> pocsCadastrados = this.controle.retornarPocsDoSistema();
+
+        for (String pocs : pocsCadastrados) {
+            pocSplit = pocs.split(",")[0];
+            System.out.println(pocSplit);
+        }
+    }
     protected void menuCadastro(){
         boolean option = false;
 
