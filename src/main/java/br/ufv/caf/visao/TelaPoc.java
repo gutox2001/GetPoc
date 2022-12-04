@@ -39,13 +39,14 @@ public class TelaPoc {
         String titulo;
         String nomeOrientador;
         String nomeCoorientador =  "";
-        ArrayList<String> autores = new ArrayList<String>();
+        String autores = "";
         int quantidadeAutores = 0;
-        ArrayList<String> palavrasChave = new ArrayList<String>();
+        String palavrasChave = "";
         String palavra = "";
         String resumo;
         Poc.Area area;
         Poc pocTemp;
+        boolean flag = false;
 
 
         System.out.println("*************************************************************************");
@@ -61,7 +62,10 @@ public class TelaPoc {
 
         for(int i = 0; i < quantidadeAutores; i++){
             System.out.println("Nome do autor "+i+":");
-            autores.add(this.inputPoc.nextLine());
+            autores.concat(this.inputPoc.nextLine());
+            if(i != quantidadeAutores-1){
+                autores.concat("-");
+            }
         }
 
         System.out.println("   o Nome do orientador:");
@@ -73,9 +77,18 @@ public class TelaPoc {
 
         System.out.println("   o Palavras chave: (um dígito sozinho irá parar a busca por novas palavras na entrada)");
 
-        while(!palavra.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
+        while(!flag){
             palavra = this.inputPoc.nextLine();
-            palavrasChave.add(palavra);
+            if(palavra.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
+                flag = true;
+                if(palavrasChave.length() != 0){
+                    palavrasChave = palavrasChave.substring(0, palavrasChave.length()-1);
+                }
+            }
+            else{
+                palavrasChave.concat(palavra);
+                palavrasChave.concat("-");
+            }
         }
 
         System.out.println("   o Resumo em parágrafo único:");
