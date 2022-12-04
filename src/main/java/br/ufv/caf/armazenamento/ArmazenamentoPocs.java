@@ -1,6 +1,7 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.AreasPoc;
@@ -116,14 +117,16 @@ public class ArmazenamentoPocs {
 
                 //Compara a String área da Poc com a lista de Áreas disponíveis
                 for (AreasPoc area : AreasPoc.values()) {
-                    if(area.name() == poc.split(",")[6]) {
+                    if(Objects.equals(area.name(), poc.split(",")[6])) {
 
                         pocAux.setAreaDaPoc(area);
 
                     }
                 }
 
+                System.out.println(pocAux.getAreaDaPoc());
                 return pocAux;
+
             }
         }
 
