@@ -6,6 +6,7 @@ import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
+import java.rmi.ServerError;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -83,7 +84,8 @@ public class TelaPoc {
         String palavrasChave = "";
         String palavra = "";
         String resumo;
-        AreasPoc area;
+        AreasPoc area = AreasPoc.ENGENHARIA_DE_SOFTWARE;
+        int areaValor;
         Poc pocTemp;
         boolean flag = false;
 
@@ -95,7 +97,6 @@ public class TelaPoc {
         titulo = this.inputPoc.nextLine();
 
         System.out.println("   o Lista de autores do POC:");
-        System.out.println("     Quantos autores no total?");
 
         autores = preencheListaAutores();
 
@@ -113,8 +114,20 @@ public class TelaPoc {
         System.out.println("   o Resumo em parágrafo único:");
         resumo = this.inputPoc.nextLine();
 
-        System.out.println("   o Área central:");  //TODO - Leitura de dados para a área do POC
-        area = AreasPoc.CIENCIA_DE_DADOS;
+        System.out.println("   o Área central (Escolha o indice da área que deseja cadastrar):");
+        System.out.println();
+        for(AreasPoc areasDisponiveis : AreasPoc.values()){
+            System.out.println(areasDisponiveis+" "+areasDisponiveis.getValor());
+        }
+        System.out.println();
+
+        areaValor = Integer.parseInt(this.inputPoc.nextLine());
+        for(AreasPoc areasDisponiveis : AreasPoc.values()){
+            if(areasDisponiveis.getValor() == areaValor){
+                area = areasDisponiveis;
+            }
+        }
+
 
         return pocTemp = new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
                 palavrasChave, resumo, area);
@@ -207,6 +220,7 @@ public class TelaPoc {
         }while(option);
 
         //Por motivos de segurança e direitos autorais, editar autores não será possível
+        tituloPocDesatualizado = pocParaAtualizar.getTitulo();
 
         do {
 
@@ -271,7 +285,17 @@ public class TelaPoc {
                     flagEdicao = false;
                     break;
             }
+
+            try{
+                this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado);
+            }catch(ExcecaoPocNaoEncontrado notFound){
+                System.err.println("Houve um erro ao salvar o título antigo! A atualização falhou");
+            }catch(ExcecaoPocJaCadastrado alreadyOn){
+                System.err.println("Já existe um Poc com o mesmo título, não foi possível atualizar");
+            }
         }while(flagEdicao);
+
+
     }
 
     /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
