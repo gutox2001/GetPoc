@@ -40,7 +40,7 @@ public class ArmazenamentoPocs {
 
     public ArrayList<String> getListaPocs() {
 
-        return arquivo.Read("/src/regs/pocs.csv");
+        return arquivo.Read("src\\regs\\pocs.csv");
     }
 
     /** Método cadastraPoc, usado para adicionar novos poc's a lista de Poc's
@@ -54,7 +54,7 @@ public class ArmazenamentoPocs {
 
     public void addPoc(Poc novoPoc) {
 
-        if (arquivo.Write("/src/regs/pocs.csv", novoPoc))
+        if (arquivo.Write("src\\regs\\pocs.csv", novoPoc))
             System.out.println("Novo usuário adicionado");
         else 
             System.out.println("Novo usuário não adicionado");
@@ -70,7 +70,7 @@ public class ArmazenamentoPocs {
 
     public void removePoc(String tituloPocARemover) {
         
-        arquivo.Remove("/src/regs/pocs.csv", tituloPocARemover);
+        arquivo.Remove("src\\regs\\pocs.csv", tituloPocARemover);
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
@@ -83,7 +83,7 @@ public class ArmazenamentoPocs {
 
     public Poc pesquisaPoc(Poc pocAPesquisar) {
 
-        listaPocs = arquivo.Read("/src/regs/pocs.csv");
+        listaPocs = arquivo.Read("src\\regs\\pocs.csv");
 
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())){
@@ -106,29 +106,20 @@ public class ArmazenamentoPocs {
 
     public Poc pesquisaPoc(String tituloPocAPesquisar) {
 
-        listaPocs = arquivo.Read("/src/regs/pocs.csv");
+        listaPocs = arquivo.Read("src\\regs\\pocs.csv");
 
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(tituloPocAPesquisar)){
 
                 Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], null);
 
-                switch (poc.split(",")[6]) {
-                    case "ENGENHARIA_DE_SOFTWARE":
-                        pocAux.setAreaDaPoc(AreasPoc.ENGENHARIA_DE_SOFTWARE);
-                        
-                        break;
-                    case "CIENCIA_DE_DADOS":
-                        pocAux.setAreaDaPoc(AreasPoc.CIENCIA_DE_DADOS);
-                        
-                        break;
-                    case "INTERNET_DAS_COISAS":
-                        pocAux.setAreaDaPoc(AreasPoc.INTERNET_DAS_COISAS);
-    
-                        break;
-                    default:
-                    
-                        break;
+                //Compara a String área da Poc com a lista de Áreas disponíveis
+                for (AreasPoc area : AreasPoc.values()) {
+                    if(area.name() == poc.split(",")[6]) {
+
+                        pocAux.setAreaDaPoc(area);
+
+                    }
                 }
 
                 return pocAux;

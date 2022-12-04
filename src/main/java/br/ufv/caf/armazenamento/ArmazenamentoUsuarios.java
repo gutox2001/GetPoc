@@ -28,7 +28,8 @@ public class ArmazenamentoUsuarios {
      */
 
     public ArmazenamentoUsuarios() {
-
+        arquivo = new ManipuladorArquivoUsuario();
+        listaUsuarios = new ArrayList<String>();
     }
 
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
@@ -39,9 +40,9 @@ public class ArmazenamentoUsuarios {
      * @since 02/12/2022 - 12:00
      */
      
-    public ArrayList<String> getListaUsuarios(){
+    public ArrayList<String> getListaUsuarios() {
 
-        return arquivo.Read("/src/regs/usuarios.csv");
+        return arquivo.Read("src\\regs\\usuarios.csv");
         
     }
 
@@ -53,9 +54,9 @@ public class ArmazenamentoUsuarios {
      * @since 02/12/2022 - 12:00
      */
 
-    public void addUsuario(Usuario novoUsuario){
+    public void addUsuario(Usuario novoUsuario) {
 
-        if (arquivo.Write("/src/regs/usuarios.csv", novoUsuario))
+        if (arquivo.Write("src\\regs\\usuarios.csv", novoUsuario))
             System.out.println("Novo usuário adicionado");
         else 
             System.out.println("Novo usuário não adicionado");
@@ -72,7 +73,8 @@ public class ArmazenamentoUsuarios {
 
     public void removeUsuario(String matriculaUsuarioRemover) { 
 
-        arquivo.Remove("/src/regs/usuarios.csv", matriculaUsuarioRemover);
+        arquivo.Remove("src\\regs\\usuarios.csv", matriculaUsuarioRemover);
+
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado Usuário está presente na lista
@@ -86,7 +88,7 @@ public class ArmazenamentoUsuarios {
     
     public Usuario pesquisaUsuario(Usuario usuarioPesquisar) {
     
-        listaUsuarios = arquivo.Read("/src/regs/usuarios.csv");
+        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv");
     
         for (String usuarioLista : listaUsuarios) {
 
@@ -102,6 +104,7 @@ public class ArmazenamentoUsuarios {
             }
 
         return null;
+
     }
 
     /** Método pesquisaUsuarioMatricula, utilizado para verificar se um determinado Usuário está presente na lista a partir da matrícula
@@ -114,7 +117,7 @@ public class ArmazenamentoUsuarios {
 
     public Usuario pesquisaUsuario(String matriculaUsuarioPesquisar) {
 
-        listaUsuarios = arquivo.Read("/src/regs/usuarios.csv");
+        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv"); 
         
         for (String usuarioLista : listaUsuarios) {
             
@@ -145,8 +148,9 @@ public class ArmazenamentoUsuarios {
                return usuarioAux;
             }
         }
-        
+
         return null;
+        
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de Usuários está vazia 
@@ -157,6 +161,9 @@ public class ArmazenamentoUsuarios {
      */
 
     public boolean isEmpty() {
+
         return listaUsuarios.isEmpty();
+
     }
+
 }
