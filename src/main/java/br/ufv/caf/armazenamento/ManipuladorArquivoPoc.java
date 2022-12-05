@@ -80,9 +80,9 @@ public class ManipuladorArquivoPoc {
             FileWriter arq = new FileWriter(caminho, true);
             PrintWriter gravaArq = new PrintWriter(arq);
 
-            gravaArq.println(novoPoc.getTitulo() + novoPoc.getListaAutores() + "," +
+            gravaArq.println(novoPoc.getTitulo()+ "," + novoPoc.toStringAutores() + "," +
             novoPoc.getNomeOrientador() + "," + novoPoc.getNomeCoOrientador() + "," +
-            novoPoc.getPalavrasChave()+ novoPoc.getResumo() + "," +
+            novoPoc.toStringPalavrasChave() + "," + novoPoc.getResumo() + "," +
             String.valueOf(novoPoc.getAreaDaPoc()));
             
             gravaArq.close();
