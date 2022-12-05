@@ -40,8 +40,8 @@ public class TelaPoc {
         while(!flag){
             palavra = this.inputPoc.nextLine();
             if(!palavra.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
-                palavrasChave.concat(palavra);
-                palavrasChave.concat("-");
+                palavrasChave = palavrasChave.concat(palavra);
+                palavrasChave = palavrasChave.concat("-");
             }
             else{
                 flag = true;
@@ -60,8 +60,8 @@ public class TelaPoc {
         while(!flag){
             autor = this.inputPoc.nextLine();
             if(!autor.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
-                listaAutores.concat(autor);
-                listaAutores.concat("-");
+                listaAutores = listaAutores.concat(autor);
+                listaAutores = listaAutores.concat("-");
             }
             else{
                 flag = true;
@@ -285,15 +285,15 @@ public class TelaPoc {
                     flagEdicao = false;
                     break;
             }
-
-            try{
-                this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado);
-            }catch(ExcecaoPocNaoEncontrado notFound){
-                System.err.println("Houve um erro ao salvar o título antigo! A atualização falhou");
-            }catch(ExcecaoPocJaCadastrado alreadyOn){
-                System.err.println("Já existe um Poc com o mesmo título, não foi possível atualizar");
-            }
         }while(flagEdicao);
+
+        try{
+            this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado);
+        }catch(ExcecaoPocNaoEncontrado notFound){
+            System.err.println("Houve um erro ao salvar o título antigo! A atualização falhou");
+        }catch(ExcecaoPocJaCadastrado alreadyOn){
+            System.err.println("Já existe um Poc com o mesmo título, não foi possível atualizar");
+        }
 
 
     }
