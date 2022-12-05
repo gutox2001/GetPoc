@@ -38,15 +38,14 @@ public class App {
         int escolhaUsuario;
 
         while (sistemaLigado) {
-            System.out.println("\n*********GETPOC********\n");
-            System.out.println("_______________________\n");
-            System.out.println("         LOGIN         ");
-            System.out.println("_______________________\n");
+            System.out.println("\n=================   GETPOC   ================\n");
+            System.out.println("=============================================");
+            System.out.println("|                  LOGIN                    |");
+            System.out.println("=============================================");
             //telaPrincipal.exibeSistema();
             telaPrincipal.logarComoUsuario();
 
             do {
-
                 System.out.println("Deseja sair do sistema? \n'0' -> Para Continuar\n'1' -> Para Sair");
                 escolhaUsuario = input.nextInt();
                 

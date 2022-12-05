@@ -50,11 +50,11 @@ public class ControleUsuario {
 
         if (usuario.validaMatricula() && usuario.validaSenha()) {
 
-            return true;
+            return false;
 
         } else {
 
-            return false;
+            return true;
 
         }
 
