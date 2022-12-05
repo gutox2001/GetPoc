@@ -144,7 +144,7 @@ public class TelaPoc {
         boolean option = false;
 
         do{
-            System.out.println("-> Entre com o título do POC que deseja pesquisar");
+            System.out.println("-> Entre com o título do POC que deseja pesquisar: ");
             titulo = this.inputPoc.nextLine();
 
             try{
@@ -169,10 +169,13 @@ public class TelaPoc {
     protected void exibeTodosOsTitulosPocs(){
         String pocSplit;
         ArrayList<String> pocsCadastrados = this.controle.retornarPocsDoSistema();
+        int indice = 0;
 
-        for (String pocs : pocsCadastrados) {
-            pocSplit = pocs.split(",")[0];
+        for (String poc : pocsCadastrados) {
+            pocSplit = poc.split(",")[0];
+            System.out.print(indice+"- ");
             System.out.println(pocSplit);
+            indice++;
         }
     }
     protected void menuCadastro(){
