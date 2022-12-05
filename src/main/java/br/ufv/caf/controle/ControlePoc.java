@@ -144,13 +144,9 @@ public class ControlePoc {
 
     public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado,
             ExcecaoPocJaCadastrado {
-        //Retorna a posição da Poc atualizada; //TODO - conferir
 
-        if (pesquisarPoc(tituloPocDesatualizada) != null) {
-
-            removePoc(tituloPocDesatualizada);
-            cadastraPoc(pocEditada);
-        }
+        removePoc(tituloPocDesatualizada);
+        cadastraPoc(pocEditada);
 
     }
 

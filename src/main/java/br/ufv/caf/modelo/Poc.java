@@ -199,7 +199,7 @@ public class Poc {
      */
 
     public String toStringAutores(){
-        return this.listaAutores.substring(0,this.listaAutores.length()-1);
+        return this.listaAutores.substring(0,this.listaAutores.length());
     }
 
     /** Método toStringPalavrasChave, usado para retornar uma String com todos as palavras-chave da Poc
@@ -209,7 +209,7 @@ public class Poc {
      */
 
     public String toStringPalavrasChave(){
-        return this.palavrasChave.substring(0,this.palavrasChave.length()-1);
+        return this.palavrasChave.substring(0,this.palavrasChave.length());
     }
 
     /** Método toString, usado para retornar uma String com todos os dados da Poc
@@ -222,10 +222,10 @@ public class Poc {
     public String toString(){
 
         return  "TÍTULO: " + this.titulo + "\n"
-                + "- AUTORES: " + toStringAutores()
+                + "- AUTORES: " + toStringAutores() + "\n"
                 + "- NOME ORIENTADOR: " + this.nomeOrientador + "\n"
                 + "- NOME CO-ORIENTADOR: " + this.nomeCoOrientador + "\n"
-                + "- PALAVRAS CHAVE: " + toStringPalavrasChave()
+                + "- PALAVRAS CHAVE: " + toStringPalavrasChave() + "\n"
                 + "- RESUMO: " + this.resumo + "\n"
                 + "- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString();
                 
