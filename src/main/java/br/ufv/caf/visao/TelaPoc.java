@@ -7,6 +7,7 @@ import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
 import java.rmi.ServerError;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,7 +56,7 @@ public class TelaPoc {
         boolean flag = false;
         String autor;
         String listaAutores = "";
-        System.out.println("Entre com os autores do POC. " +
+        System.out.println("    Entre com os autores do POC. " +
                 "Digitar um número sozinho irá terminar o preenchimento!!");
         while(!flag){
             autor = this.inputPoc.nextLine();
@@ -90,36 +91,42 @@ public class TelaPoc {
         boolean flag = false;
 
 
-        System.out.println("*************************************************************************");
+        System.out.println("=============================================");
         System.out.println("-> Entre com as informações do POC que deseja cadastrar:");
         System.out.println("   o Título do POC:");
 
         titulo = this.inputPoc.nextLine();
 
+        System.out.println("=============================================");
         System.out.println("   o Lista de autores do POC:");
 
         autores = preencheListaAutores();
 
+        System.out.println("=============================================");
         System.out.println("   o Nome do orientador:");
 
         nomeOrientador = this.inputPoc.nextLine();
 
+        System.out.println("=============================================");
         System.out.println("   o Nome do co-orientador, se houver:");
+
         nomeCoorientador = this.inputPoc.nextLine();
+        System.out.println("=============================================");
 
         System.out.println("   o Palavras chave: (um dígito sozinho irá parar a busca por novas palavras na entrada)");
 
         palavrasChave = preenchePalavrasChaves();
 
+        System.out.println("=============================================");
         System.out.println("   o Resumo em parágrafo único:");
+
         resumo = this.inputPoc.nextLine();
+        System.out.println("=============================================");
 
         System.out.println("   o Área central (Escolha o indice da área que deseja cadastrar):");
-        System.out.println();
-        for(AreasPoc areasDisponiveis : AreasPoc.values()){
-            System.out.println(areasDisponiveis+" "+areasDisponiveis.getValor());
-        }
-        System.out.println();
+
+        this.controle.exibeAreasPocDisponiveis();
+        System.out.println("=============================================");
 
         areaValor = Integer.parseInt(this.inputPoc.nextLine());
         for(AreasPoc areasDisponiveis : AreasPoc.values()){
@@ -141,7 +148,7 @@ public class TelaPoc {
 
     protected void  menuPesquisa(){
         String titulo;
-        boolean option = false;
+        int option;
 
         do{
             System.out.println("-> Entre com o título do POC que deseja pesquisar: ");
@@ -149,15 +156,15 @@ public class TelaPoc {
 
             try{
                 System.out.println(this.controle.pesquisarPoc(titulo).toString());
-                option = false;
+                option = 0;
             }catch(ExcecaoPocNaoEncontrado notFound){
                 System.err.println("O POC procurado não foi encontrado no nosso sistema, " +
                         "deseja tentar novamente?\n" +
                         "1 - SIM, 0 - NÃO");
 
-                option = this.inputPoc.nextBoolean();
+                option = Integer.parseInt(this.inputPoc.nextLine());
             }
-        }while(option);
+        }while(option != 0);
 
     }
 
@@ -179,48 +186,52 @@ public class TelaPoc {
         }
     }
     protected void menuCadastro(){
-        boolean option = false;
+        int option;
 
         do{
             try{
                 this.controle.cadastraPoc(preenchimentoDados());
-                option = false;
+                option = 0;
             }catch(ExcecaoPocJaCadastrado alreadyOn){
                 System.err.println("O POC informado já está cadastrado no nosso sistema, d" +
                         "eseja tentar um novo cadastro?\n" +
                         "1 - SIM, 0 - NÃO");
-                option = this.inputPoc.nextBoolean();
+                option = Integer.parseInt(this.inputPoc.nextLine());
             }
-        }while(option);
+        }while(option != 0);
 
 
     }
 
-    /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema
+    /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema. POr questões de
+     * segurança e direitos autorais, a edição de autores não é permitida.
      * @author @Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 21:00
      */
 
     protected void menuEdicao(){
         String tituloPocDesatualizado;
-        boolean option = false;
+        int opcaoBusca;
+        int areaValor;
         boolean flagEdicao = true;
         int opcaoEdicao = 5;
+        AreasPoc area = AreasPoc.ENGENHARIA_DE_SOFTWARE;
+
         Poc pocParaAtualizar = null;
 
         do {
             try {
                 System.out.println("Qual é o título do POC que deseja editar?");
                 pocParaAtualizar = this.controle.pesquisarPoc(this.inputPoc.nextLine());
-                option = false;
+                opcaoBusca = 0;
             } catch (ExcecaoPocNaoEncontrado notFound) {
                 System.err.println("Poc buscado não foi encontrado no sistema, " +
                         "deseja tentar novamente?\n" +
                         "1 - SIM, 0 - NÃO");
 
-                option = this.inputPoc.nextBoolean();
+                opcaoBusca = Integer.parseInt(this.inputPoc.nextLine());
             }
-        }while(option);
+        }while(opcaoBusca != 0);
 
         //Por motivos de segurança e direitos autorais, editar autores não será possível
         tituloPocDesatualizado = pocParaAtualizar.getTitulo();
@@ -242,21 +253,22 @@ public class TelaPoc {
                 case 0:
                     String novasPalavrasChaves = this.preenchePalavrasChaves();
                     pocParaAtualizar.setPalavrasChave(novasPalavrasChaves);
+                    System.out.println("=============================================");
                     break;
                 case 1:
-                    System.out.println("Entre com o novo resumo. " +
+
+                    System.out.println("    o Entre com o novo resumo. " +
                             "Para fins de comparação, o resumo antigo será exibido:");
 
                     System.out.println(pocParaAtualizar.getResumo());
 
-                    System.out.println("=============================================");
-
                     String resumoAtualizado = this.inputPoc.nextLine();
 
                     pocParaAtualizar.setResumo(resumoAtualizado);
+                    System.out.println("=============================================");
                     break;
                 case 2:
-                    System.out.println("Entre com o novo nome do orientador. Para fins de comparação," +
+                    System.out.println("    o Entre com o novo nome do orientador. Para fins de comparação," +
                             "o orientador antigo será exibido:");
 
                     System.out.println(pocParaAtualizar.getNomeOrientador());
@@ -270,7 +282,7 @@ public class TelaPoc {
 
                     break;
                 case 3:
-                    System.out.println("Entre com o novo nome do co-orientador. Para fins de comparação," +
+                    System.out.println("    o Entre com o novo nome do co-orientador. Para fins de comparação," +
                             "o co-orientador antigo será exibido:");
 
                     System.out.println(pocParaAtualizar.getNomeCoOrientador());
@@ -282,6 +294,20 @@ public class TelaPoc {
                     pocParaAtualizar.setNomeOrientador(nomeCoOrientadorAtualizado);
                     break;
                 case 4:
+                    System.out.println("=============================================");
+                    System.out.println("               ÁREAS DISPONÍVEIS:            ");
+                    this.controle.exibeAreasPocDisponiveis();
+                    System.out.println("=============================================");
+
+                    System.out.println("    o Entre com o índice da nova área do POC:");
+                    areaValor = Integer.parseInt(this.inputPoc.nextLine());
+                    for(AreasPoc areasDisponiveis : AreasPoc.values()){
+                        if(areasDisponiveis.getValor() == areaValor){
+                            area = areasDisponiveis;
+                        }
+                    }
+                    pocParaAtualizar.setAreaDaPoc(area);
+
                     break;
                 default:
                     System.out.println("Saindo . . .");
@@ -308,21 +334,21 @@ public class TelaPoc {
 
     protected void menuRemocao(){
         String tituloPoc;
-        boolean option;
+        int option;
 
         do{
             System.out.println("-> Entre com o título do POC que deseja remover:");
             tituloPoc = this.inputPoc.nextLine();
             try{
                 this.controle.removePoc(tituloPoc);
-                option = false;
+                option = 0;
             }catch(ExcecaoPocNaoEncontrado notFound){
                 System.err.println("O título informado não está associado a nenhum POC " +
                         "cadastrado no nosso sistema, deseja tentar uma nova remoção?\n" +
                         "1 - SIM, 0 - NÃO");
-                option = this.inputPoc.nextBoolean();
+                option = Integer.parseInt(this.inputPoc.nextLine());
             }
-        }while(option);
+        }while(option != 0);
     }
 
 }
