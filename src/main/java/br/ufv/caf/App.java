@@ -34,9 +34,33 @@ public class App {
         TelaPoc telaPoc = new TelaPoc(controlePoc);
         TelaPrincipal telaPrincipal = new TelaPrincipal(telaUser, telaPoc);
 
-        System.out.println("LOGIN");
-        //telaPrincipal.exibeSistema();
-        telaPrincipal.logarComoUsuario();
+        boolean sistemaLigado = true;
+        int escolhaUsuario;
+
+        while (sistemaLigado) {
+            System.out.println("\n*********GETPOC********\n");
+            System.out.println("_______________________\n");
+            System.out.println("         LOGIN         ");
+            System.out.println("_______________________\n");
+            //telaPrincipal.exibeSistema();
+            telaPrincipal.logarComoUsuario();
+
+            do {
+
+                System.out.println("Deseja sair do sistema? \n'0' -> Para Continuar\n'1' -> Para Sair");
+                escolhaUsuario = input.nextInt();
+                
+            } while (escolhaUsuario < 0 || escolhaUsuario > 1);
+           
+
+            if(escolhaUsuario == 1) {
+
+                System.out.println(" (:     OBRIGADO!     :) ");
+                sistemaLigado = false;
+
+            }
+
+        }
 
         input.close();
 

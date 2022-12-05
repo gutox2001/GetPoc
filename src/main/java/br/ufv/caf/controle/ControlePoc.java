@@ -113,7 +113,9 @@ public class ControlePoc {
      */
 
     public int quantidadePocsArmazenadas() {
+
         return armzPocs.quantidadePocsArmazenadas();
+
     }
 
     /** Método exibirPocs, utilizado para exibir os poc's armazenados na lista de poc's
@@ -125,12 +127,14 @@ public class ControlePoc {
 
     public ArrayList<String> retornarPocsDoSistema() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
 
-        if (armzPocs.isEmpty()){
+        if (armzPocs.isEmpty()) {
+
             return null;
 
         } else {
-            ArrayList<String> pocsCadastrados = armzPocs.getListaPocs();
-            return pocsCadastrados;
+
+            return armzPocs.getListaPocs();
+
         }
 
     }
@@ -158,7 +162,7 @@ public class ControlePoc {
     public void exibeAreasPocDisponiveis() {
 
         for (AreasPoc area : AreasPoc.values()) {
-
+            System.out.print(area.getValor()+"- ");
             System.out.println(area.toString());
 
         }

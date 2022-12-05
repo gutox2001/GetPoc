@@ -1,7 +1,6 @@
 package br.ufv.caf.armazenamento;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.AreasPoc;
@@ -29,7 +28,7 @@ public class ArmazenamentoPocs {
     public ArmazenamentoPocs() {
         arquivo = new ManipuladorArquivoPoc();
         listaPocs = new ArrayList<String>();
-        listaPocs = getListaPocs();
+        listaPocs = arquivo.Read("src/regs/pocs.csv");
     }
 
     /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO!
@@ -42,7 +41,8 @@ public class ArmazenamentoPocs {
 
     public ArrayList<String> getListaPocs() {
 
-        return arquivo.Read("src/regs/pocs.csv");
+        return listaPocs;
+
     }
 
     /** Método cadastraPoc, usado para adicionar novos poc's a lista de Poc's
@@ -165,4 +165,5 @@ public class ArmazenamentoPocs {
         return listaPocs.size();
 
     }
+
 }
