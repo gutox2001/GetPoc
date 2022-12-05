@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 
+import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.controle.ControlePoc;
+import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 
 /** Classes que tem como funcionalidade fazer o teste das classes Poc e ArmazenamentoPocs
  * @author Aroldo Augusto Barbosa Simões - 4250
@@ -20,7 +23,9 @@ import br.ufv.caf.modelo.Poc;
 
 public class PocTest {
     
-    ControlePoc controlePoc = new ControlePoc();
+    ArmazenamentoPocs armazenamentoPocs = new ArmazenamentoPocs();
+
+    ControlePoc controlePoc = new ControlePoc(armazenamentoPocs);
 
     /** Método PocTest, construtor da classe PocTest
      * @author Aroldo Augusto Barbosa Simões - 4250
@@ -33,11 +38,12 @@ public class PocTest {
     /** Método iniciaTeste, responsável por inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
+     * @throws ExcecaoPocJaCadastrado
      * @since 09/11/2022 - 14:00
      */
 
     @BeforeEach
-    public void iniciaTeste() {
+    public void iniciaTeste() throws ExcecaoPocJaCadastrado {
         
         ArrayList<String> listaAutores = new ArrayList<String>();
         ArrayList<String> listaPalavrasChave = new ArrayList<String>();
@@ -52,7 +58,7 @@ public class PocTest {
         
         controlePoc.cadastraPoc(new Poc("ESOF", null, "Aroldo",
         "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
-        Poc.Area.ENGENHARIA_DE_SOFTWARE));
+        AreasPoc.ENGENHARIA_DE_SOFTWARE));
 
         System.out.println(controlePoc.quantidadePocsArmazenadas());
 
@@ -69,7 +75,7 @@ public class PocTest {
         
         controlePoc.cadastraPoc(new Poc("CD", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
-        Poc.Area.CIENCIA_DE_DADOS));
+        AreasPoc.CIENCIA_DE_DADOS));
 
         listaAutores.clear();
         listaPalavrasChave.clear();
@@ -84,7 +90,7 @@ public class PocTest {
 
         controlePoc.cadastraPoc(new Poc("IC", null, "Gabriel",
         "Joao", null, "INTERNET_DAS_COISAS", 
-        Poc.Area.INTERNET_DAS_COISAS));
+        AreasPoc.INTERNET_DAS_COISAS));
         
         listaAutores.clear();
         listaPalavrasChave.clear();
@@ -116,7 +122,7 @@ public class PocTest {
 
         Poc poc1 = new Poc("ESOF", listaAutoresTeste1, "Aroldo",
         "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
-        Poc.Area.ENGENHARIA_DE_SOFTWARE);
+        AreasPoc.ENGENHARIA_DE_SOFTWARE);
 
         assertEquals(controlePoc.getListaPocs().get(0), controlePoc.pesquisarPoc(poc1.getTitulo()));
         
@@ -158,7 +164,7 @@ public class PocTest {
 
         Poc poc2 = new Poc("CD", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
-        Poc.Area.CIENCIA_DE_DADOS);
+        AreasPoc.CIENCIA_DE_DADOS);
 
         assertEquals(controlePoc.getListaPocs().get(1), controlePoc.pesquisarPoc(poc2.getTitulo()));
 
