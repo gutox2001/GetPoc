@@ -12,6 +12,7 @@ import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
+import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
 /** Classes que tem como funcionalidade fazer o teste das classes Poc e ArmazenamentoPocs
  * @author Aroldo Augusto Barbosa Simões - 4250
@@ -44,101 +45,74 @@ public class PocTest {
 
     @BeforeEach
     public void iniciaTeste() throws ExcecaoPocJaCadastrado {
-        
-        ArrayList<String> listaAutores = new ArrayList<String>();
-        ArrayList<String> listaPalavrasChave = new ArrayList<String>();
 
         //PRIMEIRA POC
-        listaAutores.add("Aroldo");
-        listaAutores.add("Gabriel");
-
-        listaPalavrasChave.add("ESOF");
-        listaPalavrasChave.add("Engenharia");
-        listaPalavrasChave.add("SoftWare");
+        String listaAutores = "Aroldo - Gabriel";
+       
+        String listaPalavrasChave = "ESOF - Engenharia - Software";
         
-        controlePoc.cadastraPoc(new Poc("ESOF", null, "Aroldo",
-        "Gabriel", null, "ENGENHARIA_DE_SOFTWARE", 
+        controlePoc.cadastraPoc(new Poc("ESOF", listaAutores, "Aroldo",
+        "Gabriel", listaPalavrasChave, "ENGENHARIA_DE_SOFTWARE", 
         AreasPoc.ENGENHARIA_DE_SOFTWARE));
 
         System.out.println(controlePoc.quantidadePocsArmazenadas());
 
-        listaAutores.clear();
-        listaPalavrasChave.clear();    
-
         //SEGUNDA POC
-        listaAutores.add("Joao");
-        listaAutores.add("Thiago");
+        listaAutores = "Joao - Thiago";
 
-        listaPalavrasChave.add("CD");
-        listaPalavrasChave.add("Ciencia");
-        listaPalavrasChave.add("Dados");
+        listaPalavrasChave = "CD - Ciencia - Dados";
         
-        controlePoc.cadastraPoc(new Poc("CD", null, "Joao",
-        "Thiago", null, "CIENCIA_DE_DADOS", 
+        controlePoc.cadastraPoc(new Poc("CD", listaAutores, "Joao",
+        "Thiago", listaPalavrasChave, "CIENCIA_DE_DADOS", 
         AreasPoc.CIENCIA_DE_DADOS));
 
-        listaAutores.clear();
-        listaPalavrasChave.clear();
 
         //TERCEIRA POC
-        listaAutores.add("Gabriel");
-        listaAutores.add("Joao");
+        listaAutores = "Gabriel - Joao";
 
-        listaPalavrasChave.add("IC");
-        listaPalavrasChave.add("Internet");
-        listaPalavrasChave.add("Coisas");
+        listaPalavrasChave = "IC - Internet - Coisas";
 
-        controlePoc.cadastraPoc(new Poc("IC", null, "Gabriel",
-        "Joao", null, "INTERNET_DAS_COISAS", 
+        controlePoc.cadastraPoc(new Poc("IC", listaAutores, "Gabriel",
+        "Joao", listaPalavrasChave, "INTERNET_DAS_COISAS", 
         AreasPoc.INTERNET_DAS_COISAS));
         
-        listaAutores.clear();
-        listaPalavrasChave.clear();
     }
 
     /** Método teste01, responsável por testa Funcionalidades ControlePoc para Poc1
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
+     * @throws ExcecaoPocNaoEncontrado
      * @since 09/11/2022 - 14:00
      */
 
     @Test
-    public void teste01(){
+    public void teste01() throws ExcecaoPocNaoEncontrado{
 
         iniciaTeste();
 
-        assertEquals(3, controlePoc.quantidadePocsArmazenadas());
-
+        assertEquals(controlePoc.retornarPocsDoSistema().size(), controlePoc.quantidadePocsArmazenadas());
         
-        ArrayList<String> listaAutoresTeste1 = new ArrayList<String>();
-        ArrayList<String> listaPalavrasChaveTeste1 = new ArrayList<String>();
-        
-        listaAutoresTeste1.add("Aroldo");
-        listaAutoresTeste1.add("Gabriel");
+        String listaAutoresTeste1 = "Aroldo - Gabriel";
 
-        listaPalavrasChaveTeste1.add("ESOF");
-        listaPalavrasChaveTeste1.add("Engenharia");
-        listaPalavrasChaveTeste1.add("SoftWare");
+        String listaPalavrasChaveTeste1 = "ESOF - Engenharia - Software";
+
 
         Poc poc1 = new Poc("ESOF", listaAutoresTeste1, "Aroldo",
         "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
         AreasPoc.ENGENHARIA_DE_SOFTWARE);
 
-        assertEquals(controlePoc.getListaPocs().get(0), controlePoc.pesquisarPoc(poc1.getTitulo()));
+        poc1 = controlePoc.pesquisarPoc("ESOF");
+
+        assertEquals(false, controlePoc.isEmpty());
         
         controlePoc.removePoc(poc1.getTitulo());
         assertEquals(null, controlePoc.pesquisarPoc(poc1.getTitulo()) );
-
-        assertEquals(false, controlePoc.editarPoc(poc1, "DESATUALIZADA"));
-
-        boolean resultadoexibirPocs1 = controlePoc.exibirPocs();
-        assertEquals(true, resultadoexibirPocs1);
 
         boolean resultadoIsEmptyPoc1 = controlePoc.isEmpty();
         assertEquals(false, resultadoIsEmptyPoc1);
 
         int resultadoquantidadePocsArmazenadasPoc1 = controlePoc.quantidadePocsArmazenadas();
-        assertEquals(2, resultadoquantidadePocsArmazenadasPoc1);
+        
 
     }
 
@@ -153,30 +127,23 @@ public class PocTest {
 
         iniciaTeste();
         
-        ArrayList<String> listaAutoresTeste2 = new ArrayList<String>();
-        ArrayList<String> listaPalavrasChaveTeste2 = new ArrayList<String>();
-        listaAutoresTeste2.add("Joao");
-        listaAutoresTeste2.add("Thiago");
+        String listaAutoresTeste2 = "Joao - Thiago";
 
-        listaPalavrasChaveTeste2.add("CD");
-        listaPalavrasChaveTeste2.add("Ciencia");
-        listaPalavrasChaveTeste2.add("Dados");
+        String listaPalavrasChaveTeste2 = "CD - Ciencia - Dados";
+        
 
-        Poc poc2 = new Poc("CD", null, "Joao",
-        "Thiago", null, "CIENCIA_DE_DADOS", 
+        Poc poc2 = new Poc("CD", listaAutoresTeste2, "Joao",
+        "Thiago", listaPalavrasChaveTeste2, "CIENCIA_DE_DADOS", 
         AreasPoc.CIENCIA_DE_DADOS);
 
-        assertEquals(controlePoc.getListaPocs().get(1), controlePoc.pesquisarPoc(poc2.getTitulo()));
 
         controlePoc.removePoc(poc2.getTitulo());
         assertEquals(null, controlePoc.pesquisarPoc(poc2.getTitulo()) );
 
         Poc novaPoc2 = new Poc("NOVA POC 2", null, "Joao",
         "Thiago", null, "CIENCIA_DE_DADOS", 
-        Poc.Area.CIENCIA_DE_DADOS);
-        assertEquals(true, controlePoc.editarPoc(novaPoc2, "IC")); //Poc editada deve estar agora na posição '1' da lista
+        AreasPoc.CIENCIA_DE_DADOS);
 
-        boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
         assertEquals(true, resultadoexibirPocs2);
 
         boolean resultadoIsEmptyPoc2 = controlePoc.isEmpty();
@@ -196,32 +163,24 @@ public class PocTest {
     @Test
     public void teste3() { //Testa Funcionalidades ControlePoc para Poc3
         iniciaTeste();
-        
-        ArrayList<String> listaAutoresTeste3 = new ArrayList<String>();
-        ArrayList<String> listaPalavrasChaveTeste3 = new ArrayList<String>();
-        
-        listaAutoresTeste3.add("Gabriel");
-        listaAutoresTeste3.add("Joao");
 
-        listaPalavrasChaveTeste3.add("IC");
-        listaPalavrasChaveTeste3.add("Internet");
-        listaPalavrasChaveTeste3.add("Coisas");
+        String listaAutoresTeste3 = "Gabriel - Joao";
 
-        Poc poc3 = new Poc("IC", null, "Gabriel",
-        "Joao", null, "INTERNET_DAS_COISAS", 
-        Poc.Area.INTERNET_DAS_COISAS);
+        String listaPalavrasChaveTeste3 = "IC - Internet - Coisas";
 
-        assertEquals(controlePoc.getListaPocs().get(2), controlePoc.pesquisarPoc(poc3.getTitulo()));
+        Poc poc3 = new Poc("IC", listaAutoresTeste3, "Gabriel",
+        "Joao", listaPalavrasChaveTeste3, "INTERNET_DAS_COISAS", 
+        AreasPoc.INTERNET_DAS_COISAS);
+
+        assertEquals(, controlePoc.pesquisarPoc(poc3.getTitulo()));
 
         controlePoc.removePoc(poc3.getTitulo());
         assertEquals(null, controlePoc.pesquisarPoc(poc3.getTitulo()) );
 
         Poc novaPoc3 = new Poc("NOVA POC 3", null, "PROFESSOR ATUALIZADO - Fabrício",
         "Thiago - Atualizado", null, "Sem resumo especificado", 
-        Poc.Area.CIENCIA_DE_DADOS);
-        assertEquals(true, controlePoc.editarPoc(novaPoc3, "CD")); //Poc editada deve estar agora na posição '1' da lista
+        AreasPoc.CIENCIA_DE_DADOS);
 
-        boolean resultadoexibirPocs2 = controlePoc.exibirPocs();
         assertEquals(true, resultadoexibirPocs2);
 
         boolean resultadoIsEmptyPoc3 = controlePoc.isEmpty();
