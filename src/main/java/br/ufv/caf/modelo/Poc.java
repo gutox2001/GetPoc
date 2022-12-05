@@ -1,5 +1,6 @@
 package br.ufv.caf.modelo;
 
+
 /** Classes que implementa a entidade Poc
  * @author @Aroldo Augusto Barbosa Simões - 4250
  * @since 21/11/2022 - 20:00
@@ -19,23 +20,23 @@ public class Poc {
     /** Método Poc, construtor da classe Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param titulo String - Titulo do poc
-     * @param listaAutores ArrayList<String> - Autores envolvidos no poc
+     * @param listaAutoresTeste1 ArrayList<String> - Autores envolvidos no poc
      * @param nomeOrientador String - Nome do orientador do poc
      * @param nomeCoOrientador String - Nome do coorientador do poc
-     * @param palavrasChave ArrayList<String> - Palavra chave que descreve o poc
+     * @param listaPalavrasChaveTeste1 ArrayList<String> - Palavra chave que descreve o poc
      * @param resumo String - Resumo geral do que o poc se trata
      * @param areaPoc Area - Área que o poc irá aborda
      * @since 02/11/2022 - 16:00
      */
 
     public Poc(String titulo, String listaAutores, String nomeOrientador,
-               String nomeCoOrientador, String palavrasChave, String resumo, AreasPoc areaPoc) {
+               String nomeCoOrientador, String listaPalavrasChave, String resumo, AreasPoc areaPoc) {
 
         this.titulo = titulo;
         this.listaAutores = listaAutores;
         this.nomeOrientador = nomeOrientador;
         this.nomeCoOrientador = nomeCoOrientador;
-        this.palavrasChave = palavrasChave;
+        this.palavrasChave = listaPalavrasChave;
         this.resumo = resumo;
         this.areaDaPoc = areaPoc;
     }
