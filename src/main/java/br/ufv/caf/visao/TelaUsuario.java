@@ -44,13 +44,16 @@ public class TelaUsuario{
         short opcao;
         Usuario userTemp;
 
-        System.out.println("*************************************************************************");
-        System.out.println("-> Entre com o nome do usuário");
+        System.out.println("=============================================");
+        System.out.println("    o Entre com o nome do usuário:");
         nome = this.inputUser.nextLine();
-
-        System.out.println("Entre com um número válido de matrícula");
-        matricula = this.inputUser.nextLine(); //Vericicação de Usuário abaixo;
+        System.out.println("=============================================");
+        System.out.println("    o Entre com um número válido de matrícula:");
+        matricula = this.inputUser.nextLine();
+        System.out.println("=============================================");
+        System.out.println("    o Entre com a senha do perfil que deseja cadastrar:");
         senha = this.inputUser.nextLine();
+        System.out.println("=============================================");
 
         System.out.println("O usuário é um professor ou um aluno?  \n0 - PROFESSOR   1 - ALUNO");
         opcao = Short.parseShort(this.inputUser.nextLine());
@@ -59,6 +62,7 @@ public class TelaUsuario{
         } else {
             userTemp = new Aluno(nome, matricula, senha);
         }
+        System.out.println("=============================================");
 
         return userTemp;
 
@@ -72,9 +76,10 @@ public class TelaUsuario{
      */
     
     public Usuario validacaoDados(Usuario userTemp){
-        do {
+        while(!this.controle.validaUsuario(userTemp)){
+            System.err.println("Preenchimento correto de dados necessário!");
             preenchimentoDados();
-        } while (!controle.validaUsuario(userTemp));
+        }
 
         return userTemp;
     }
@@ -86,14 +91,14 @@ public class TelaUsuario{
 
     private void efetuarCadastro() {
 
-        boolean option = false;
+        int option = 0;
 
-        System.out.println("*************************************************************************");
+        System.out.println("=============================================");
 
         do {
             try {
-                this.controle.cadastraUsuario(validacaoDados(preenchimentoDados()));
-                option = false;
+                this.controle.cadastraUsuario(preenchimentoDados());
+                option = 0;
             } catch (ExcecaoDadosInvalidos invalidData) {
 
                 System.out.println("=============================================" +
@@ -102,7 +107,7 @@ public class TelaUsuario{
                 System.out.println("=============================================" +
                         "=============================================");
 
-                option = this.inputUser.nextBoolean();
+                option = Integer.parseInt(this.inputUser.nextLine());
 
 
 
@@ -115,8 +120,8 @@ public class TelaUsuario{
                         "=============================================");
             }
 
-        }while(option);
-        System.out.println("*************************************************************************");
+        }while(option != 0);
+        System.out.println("=============================================");
 
     }
 
@@ -331,7 +336,7 @@ public class TelaUsuario{
                     System.out.println("OBRIGADO!");
                     break;
             }
-        } while (opcao != 0); //Assume que opções erradas irão continuar no menu mas mostrarão a mensagem acima
+        } while (opcao != 0);
     }
 
     /** Método menuFuncionalidadesAdministrador, tem a finalidade de mostrar as opções de um administrador
@@ -345,9 +350,15 @@ public class TelaUsuario{
         String nomePoc;
 
         System.out.print("\n\n");
+        System.out.println("=============================================" +
+                "============================================" +
+                "==============================================");
         System.out.println("Lista dos Pocs cadastrados no sistema:");
         telaPoc.exibeTodosOsTitulosPocs();
         System.out.print("\n\n");
+        System.out.println("=============================================" +
+                "============================================" +
+                "==============================================");
 
 
         do {
