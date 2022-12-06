@@ -155,12 +155,11 @@ public class ManipuladorArquivoUsuario {
                 System.out.println("Erro: Não foi passível ler o aquivo");
 
             }
-
+            
         } catch (FileNotFoundException ex) {
 
             System.out.println("Erro: Arquivo Não encontrado");
             
         }  
     }
-    
 }
