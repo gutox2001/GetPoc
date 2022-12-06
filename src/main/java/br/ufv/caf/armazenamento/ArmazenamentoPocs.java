@@ -108,11 +108,11 @@ public class ArmazenamentoPocs {
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(tituloPocAPesquisar)){
 
-                Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], null);
+                Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], poc.split(",")[6],  null);
 
                 //Compara a String área da Poc com a lista de Áreas disponíveis
                 for (AreasPoc area : AreasPoc.values()) {
-                    if(area.name().equals(poc.split(",")[6])) {
+                    if(area.name().equals(poc.split(",")[7])) {
 
                         pocAux.setAreaDaPoc(area);
 
