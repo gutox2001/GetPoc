@@ -48,7 +48,7 @@ public class ControleUsuario {
 
     public boolean validaUsuario(Usuario usuario){
 
-        if (!(usuario.validaMatricula() && usuario.validaSenha())) {
+        if (usuario.validaMatricula() && usuario.validaSenha()) {
 
             return true;
 
@@ -208,7 +208,7 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public ArrayList<String> exibirTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado { //TODO - Mudar para a visao //OU NÃO
+    public ArrayList<String> retornarTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado { //TODO - Mudar para a visao //OU NÃO
         
         if (armazenamentoUsuariosVazio()) {
 

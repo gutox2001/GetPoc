@@ -2,8 +2,6 @@ package br.ufv.caf;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 
@@ -46,35 +44,56 @@ public class PocTest {
     @BeforeEach
     public void iniciaTeste() throws ExcecaoPocJaCadastrado {
 
-        //PRIMEIRA POC
-        String listaAutores = "Aroldo - Gabriel";
-       
-        String listaPalavrasChave = "ESOF - Engenharia - Software";
+        try {
+
+            //PRIMEIRA POC
+            String listaAutores = "Aroldo - Gabriel";
         
-        controlePoc.cadastraPoc(new Poc("ESOF", listaAutores, "Aroldo",
-        "Gabriel", listaPalavrasChave, "ENGENHARIA_DE_SOFTWARE", 
-        AreasPoc.ENGENHARIA_DE_SOFTWARE));
+            String listaPalavrasChave = "ESOF - Engenharia - Software";
+            
+            controlePoc.cadastraPoc(new Poc("ESOF", listaAutores, "Aroldo",
+            "Gabriel", listaPalavrasChave, "ENGENHARIA_DE_SOFTWARE", 
+            AreasPoc.ENGENHARIA_DE_SOFTWARE));
 
-        System.out.println(controlePoc.quantidadePocsArmazenadas());
+            System.out.println(controlePoc.quantidadePocsArmazenadas());
 
-        //SEGUNDA POC
-        listaAutores = "Joao - Thiago";
+        } catch (ExcecaoPocJaCadastrado e1) {
 
-        listaPalavrasChave = "CD - Ciencia - Dados";
-        
-        controlePoc.cadastraPoc(new Poc("CD", listaAutores, "Joao",
-        "Thiago", listaPalavrasChave, "CIENCIA_DE_DADOS", 
-        AreasPoc.CIENCIA_DE_DADOS));
+            throw new ExcecaoPocJaCadastrado();
+            
+        }
 
+        try {
 
-        //TERCEIRA POC
-        listaAutores = "Gabriel - Joao";
+            //SEGUNDA POC
+            String listaAutores = "Joao - Thiago";
 
-        listaPalavrasChave = "IC - Internet - Coisas";
+            String listaPalavrasChave = "CD - Ciencia - Dados";
+                
+            controlePoc.cadastraPoc(new Poc("CD", listaAutores, "Joao",
+            "Thiago", listaPalavrasChave, "CIENCIA_DE_DADOS", 
+            AreasPoc.CIENCIA_DE_DADOS));
 
-        controlePoc.cadastraPoc(new Poc("IC", listaAutores, "Gabriel",
-        "Joao", listaPalavrasChave, "INTERNET_DAS_COISAS", 
-        AreasPoc.INTERNET_DAS_COISAS));
+        } catch (ExcecaoPocJaCadastrado e1) {
+
+            throw new ExcecaoPocJaCadastrado();
+                
+        }
+
+        try {
+            //TERCEIRA POC
+            String listaAutores = "Gabriel - Joao";
+
+            String listaPalavrasChave = "IC - Internet - Coisas";
+
+            controlePoc.cadastraPoc(new Poc("IC", listaAutores, "Gabriel",
+            "Joao", listaPalavrasChave, "INTERNET_DAS_COISAS", 
+            AreasPoc.INTERNET_DAS_COISAS));
+        } catch (ExcecaoPocJaCadastrado e1) {
+
+            throw new ExcecaoPocJaCadastrado();
+                
+        }
         
     }
 
@@ -88,7 +107,22 @@ public class PocTest {
     @Test
     public void teste01() throws ExcecaoPocNaoEncontrado{
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        Poc poc1 = new Poc(null, null, null, null, null, null, null);
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoPocJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         assertEquals(controlePoc.retornarPocsDoSistema().size(), controlePoc.quantidadePocsArmazenadas());
         
@@ -96,23 +130,25 @@ public class PocTest {
 
         String listaPalavrasChaveTeste1 = "ESOF - Engenharia - Software";
 
+        try {
 
-        Poc poc1 = new Poc("ESOF", listaAutoresTeste1, "Aroldo",
-        "Gabriel", listaPalavrasChaveTeste1, "ENGENHARIA_DE_SOFTWARE", 
-        AreasPoc.ENGENHARIA_DE_SOFTWARE);
+            poc1 = controlePoc.pesquisarPoc("ESOF");
+            
+        } catch (ExcecaoPocNaoEncontrado e1) {
 
-        poc1 = controlePoc.pesquisarPoc("ESOF");
+            mensagemDaExcecao = e1.getMessage();
 
-        assertEquals(false, controlePoc.isEmpty());
+        }
+        assertEquals("", mensagemDaExcecao); //"POC buscado não foi encontrado!"
+        mensagemDaExcecao = "";
+
+        assertEquals("ESOF", poc1.getTitulo());
         
-        controlePoc.removePoc(poc1.getTitulo());
-        assertEquals(null, controlePoc.pesquisarPoc(poc1.getTitulo()) );
+        assertEquals(false,  controlePoc.isEmpty());
 
-        boolean resultadoIsEmptyPoc1 = controlePoc.isEmpty();
-        assertEquals(false, resultadoIsEmptyPoc1);
+        assertEquals(listaAutoresTeste1, poc1.getListaAutores());
 
-        int resultadoquantidadePocsArmazenadasPoc1 = controlePoc.quantidadePocsArmazenadas();
-        
+        assertEquals(listaPalavrasChaveTeste1, poc1.getPalavrasChave());
 
     }
 
@@ -125,69 +161,185 @@ public class PocTest {
     @Test
     public void teste2() {
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        Poc pocTemp = new Poc(null, null, null, null, null, null, null);
+
+        Poc poc2 = new Poc(null, null, null, null, null, null, null);
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoPocJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("POC já está cadastrado no nosso sistema. " + "Duplicatas não serão aceitas!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
         
-        String listaAutoresTeste2 = "Joao - Thiago";
+        String listaAutoresTeste2 = "ERRO - Thiago";
 
         String listaPalavrasChaveTeste2 = "CD - Ciencia - Dados";
         
 
-        Poc poc2 = new Poc("CD", listaAutoresTeste2, "Joao",
+        poc2 = new Poc("ERRO2", listaAutoresTeste2, "Joao",
         "Thiago", listaPalavrasChaveTeste2, "CIENCIA_DE_DADOS", 
         AreasPoc.CIENCIA_DE_DADOS);
 
+        try {
+            
+            pocTemp = controlePoc.pesquisarPoc("CD");
 
-        controlePoc.removePoc(poc2.getTitulo());
-        assertEquals(null, controlePoc.pesquisarPoc(poc2.getTitulo()) );
+        } catch (ExcecaoPocNaoEncontrado e2) {
 
-        Poc novaPoc2 = new Poc("NOVA POC 2", null, "Joao",
-        "Thiago", null, "CIENCIA_DE_DADOS", 
-        AreasPoc.CIENCIA_DE_DADOS);
+            mensagemDaExcecao = e2.getMessage();
 
-        assertEquals(true, resultadoexibirPocs2);
+        }
+        assertEquals("", mensagemDaExcecao);
 
-        boolean resultadoIsEmptyPoc2 = controlePoc.isEmpty();
-        assertEquals(false, resultadoIsEmptyPoc2);
+        assertEquals(false, listaAutoresTeste2.equals(pocTemp.getTitulo()));
 
-        int resultadoquantidadePocsArmazenadasPoc2 = controlePoc.quantidadePocsArmazenadas();
-        assertEquals(2, resultadoquantidadePocsArmazenadasPoc2);
+        try {
+            
+            controlePoc.pesquisarPoc(poc2.getTitulo());
+
+        } catch (ExcecaoPocNaoEncontrado e2) {
+
+            mensagemDaExcecao = e2.getMessage();
+
+        }
+        assertEquals("POC buscado não foi encontrado!", mensagemDaExcecao);
+
+        assertEquals(false, controlePoc.isEmpty());
 
     }
 
     /** Método teste3, responsável por testar Funcionalidades ControlePoc para Poc3
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
+     * @throws ExcecaoPocJaCadastrado
      * @since 09/11/2022 - 14:00
      */
     
     @Test
-    public void teste3() { //Testa Funcionalidades ControlePoc para Poc3
-        iniciaTeste();
+    public void teste3() throws ExcecaoPocJaCadastrado { //Testa Funcionalidades ControlePoc para Poc3
+        String mensagemDaExcecao = "";
+
+        Poc poc3 = new Poc(null, null, null, null, null, null, null);
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoPocJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("POC já está cadastrado no nosso sistema. " + "Duplicatas não serão aceitas!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         String listaAutoresTeste3 = "Gabriel - Joao";
 
         String listaPalavrasChaveTeste3 = "IC - Internet - Coisas";
 
-        Poc poc3 = new Poc("IC", listaAutoresTeste3, "Gabriel",
+        poc3 = new Poc("IC", listaAutoresTeste3, "Gabriel",
         "Joao", listaPalavrasChaveTeste3, "INTERNET_DAS_COISAS", 
         AreasPoc.INTERNET_DAS_COISAS);
 
-        assertEquals(, controlePoc.pesquisarPoc(poc3.getTitulo()));
-
-        controlePoc.removePoc(poc3.getTitulo());
-        assertEquals(null, controlePoc.pesquisarPoc(poc3.getTitulo()) );
-
-        Poc novaPoc3 = new Poc("NOVA POC 3", null, "PROFESSOR ATUALIZADO - Fabrício",
-        "Thiago - Atualizado", null, "Sem resumo especificado", 
+        Poc novaPoc3 = new Poc("NOVA POC 3", "TESTE3", "PROFESSOR ATUALIZADO - Fabrício",
+        "Thiago - Atualizado", "NOVA", "Sem resumo especificado", 
         AreasPoc.CIENCIA_DE_DADOS);
 
-        assertEquals(true, resultadoexibirPocs2);
+        try {
+            
+            controlePoc.editarPoc(novaPoc3, poc3.getTitulo());
 
-        boolean resultadoIsEmptyPoc3 = controlePoc.isEmpty();
-        assertEquals(false, resultadoIsEmptyPoc3);
+        } catch (ExcecaoPocNaoEncontrado e2) {
 
-        int resultadoquantidadePocsArmazenadasPoc3 = controlePoc.quantidadePocsArmazenadas();
-        assertEquals(2, resultadoquantidadePocsArmazenadasPoc3);
+            mensagemDaExcecao = e2.getMessage();
+
+        }
+        assertEquals("", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        assertEquals(false, controlePoc.isEmpty());
+
+    }
+
+    @Test
+    public void teste4() {
+
+        String mensagemDaExcecao = "";
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoPocJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("POC já está cadastrado no nosso sistema. " + "Duplicatas não serão aceitas!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+            
+            controlePoc.removePoc("TESTE REMOÇÃO POC");
+
+        } catch (ExcecaoPocNaoEncontrado e2) {
+
+            mensagemDaExcecao = e2.getMessage();
+
+        }
+
+        assertEquals("POC buscado não foi encontrado!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+            
+            controlePoc.removePoc("ESOF");
+
+        } catch (ExcecaoPocNaoEncontrado e2) {
+
+            mensagemDaExcecao = e2.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+        
+        try {
+            
+            controlePoc.removePoc("CD");
+
+        } catch (ExcecaoPocNaoEncontrado e2) {
+
+            mensagemDaExcecao = e2.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+            
+            controlePoc.removePoc("NOVA POC 3");
+
+        } catch (ExcecaoPocNaoEncontrado e2) {
+
+            mensagemDaExcecao = e2.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
     }
 

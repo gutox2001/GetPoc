@@ -59,7 +59,9 @@ public abstract class Usuario {
      */
 
     public String getMatricula() {
+
         return this.matricula;
+        
     }
 
     /** Método getSenha, usado para obter o a senha do Usuário

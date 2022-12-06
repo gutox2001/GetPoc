@@ -94,7 +94,7 @@ public class TelaPrincipal {
     public void exibeSistema() {
         ArrayList<String> todosUsuarios = null;
         try {
-            todosUsuarios = this.telaUser.controle.exibirTodosUsuarios();
+            todosUsuarios = this.telaUser.controle.retornarTodosUsuarios();
             for(String usuarios : todosUsuarios){
                 System.out.println(usuarios);
             }
