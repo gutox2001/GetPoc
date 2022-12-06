@@ -16,6 +16,9 @@ import java.util.Scanner;
  * @since 09/11/2022 - 18:30
  * @version 1.0
  */
+//TODO - Joao - melhorar legibilodade
+//TODO - Joao - faltam javadocs
+
 
 public class TelaPoc {
     protected ControlePoc controle;
@@ -40,7 +43,7 @@ public class TelaPoc {
                 "Digitar um número sozinho irá terminar o preenchimento!!");
         while(!flag){
             palavra = this.inputPoc.nextLine();
-            if(!palavra.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
+            if(!palavra.matches("\\d")){
                 palavrasChave = palavrasChave.concat(palavra);
                 palavrasChave = palavrasChave.concat("-");
             }
@@ -71,6 +74,7 @@ public class TelaPoc {
 
         return listaAutores;
     }
+
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
      * @author @Thiago Cândido Rocha - 4225
      * @return Poc
@@ -185,6 +189,7 @@ public class TelaPoc {
             indice++;
         }
     }
+
     protected void menuCadastro(){
         int option;
 

@@ -68,7 +68,6 @@ public class TelaUsuario{
 
     }
     
-    
     /** Método validacaoDados, tem a finalidade de validar os dados que serão preenchidos
      * @author @Thiago Cândido Rocha - 4225
      * @return Usuario - Dados do Usuário

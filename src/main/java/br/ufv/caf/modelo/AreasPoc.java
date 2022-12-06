@@ -8,6 +8,7 @@ package br.ufv.caf.modelo;
 
 public enum AreasPoc {
 
+    //TODO - Javadoc enum?
     ENGENHARIA_DE_SOFTWARE(1), CIENCIA_DE_DADOS(2), INTERNET_DAS_COISAS(3), APRENDIZADO_DE_MAQUINA(4), 
     OTIMIZACAO(5), METAHEURISTICAS(6), PROGRAMACAO_DE_MICROPROCESSADORES(7), BANCO_DE_DADOS(8), COMPUTACAO_MOVEL_E_UBIQUA(9),
     NANOCOMPUTACAO(10), REDES_DE_COMPUTADORES(11);
@@ -16,7 +17,7 @@ public enum AreasPoc {
 
     /** Método AreasPoc, construtor do enum AreasPoc
      * @author @Aroldo Augusto Barbosa Simões - 4250
-     * @param int valorOpcao - valor inteiro de cada opção de área
+     * @param valorOpcao valorOpcao - valor inteiro de cada opção de área
      * @since 02/11/2022 - 19:30
      */
 

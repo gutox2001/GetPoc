@@ -22,7 +22,6 @@ import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 public class PocTest {
     
     ArmazenamentoPocs armazenamentoPocs = new ArmazenamentoPocs();
-
     ControlePoc controlePoc = new ControlePoc(armazenamentoPocs);
 
     /** Método PocTest, construtor da classe PocTest

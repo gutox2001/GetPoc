@@ -1,6 +1,9 @@
 package br.ufv.caf.modelo.excecoes;
 
 public class ExcecaoPocNaoEncontrado extends Exception{
+
+    //TODO Joao - mudar
+
     /** Método getMessage, retornara uma mensagem caso ...
             * @author
      * @return String
@@ -9,6 +12,8 @@ public class ExcecaoPocNaoEncontrado extends Exception{
 
     @Override
     public String getMessage() {
+
         return "POC buscado não foi encontrado!";
+
     }
 }

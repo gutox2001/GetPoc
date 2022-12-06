@@ -37,8 +37,6 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    //TODO - Ver se vamos fazer metodos para validar a criação de POCs
-    
     public void cadastraPoc(Poc novoPoc) throws ExcecaoPocJaCadastrado {
 
         if (armzPocs.pesquisaPoc(novoPoc) == null){
@@ -139,15 +137,13 @@ public class ControlePoc {
 
     }
 
-
     /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
      * @author
      * @return int
      * @since 02/11/2022 - 18:30
      */
 
-    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado,
-            ExcecaoPocJaCadastrado {
+    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado {
 
         removePoc(tituloPocDesatualizada);
         cadastraPoc(pocEditada);
@@ -166,7 +162,6 @@ public class ControlePoc {
             System.out.println(area.toString());
 
         }
-
     }
 
 }

@@ -2,6 +2,8 @@ package br.ufv.caf.modelo.excecoes;
 
 public class ExcecaoUsuarioJaCadastrado extends Exception{
 
+    //TODO Joao - mudar
+
     /** Método getMessage, retornara uma mensagem caso ...
      * @author
      * @return String
@@ -10,6 +12,8 @@ public class ExcecaoUsuarioJaCadastrado extends Exception{
 
     @Override
     public String getMessage() {
+
         return "Usuário já está cadastrado no sistema!";
+
     }
 }

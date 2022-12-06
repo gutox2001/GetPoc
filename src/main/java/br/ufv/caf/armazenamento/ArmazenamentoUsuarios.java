@@ -33,8 +33,6 @@ public class ArmazenamentoUsuarios {
     
     }
 
-
-
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
@@ -69,7 +67,7 @@ public class ArmazenamentoUsuarios {
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
-     * @param usuarioARemover Usuario - Usuário que deseja remover
+     * @param matriculaUsuarioRemover Usuario - Usuário que deseja remover
      * @since 02/12/2022 - 12:00
      * @throws ExcecaoUsuarioNaoEncontrado;
      */

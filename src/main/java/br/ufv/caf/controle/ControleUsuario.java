@@ -48,15 +48,7 @@ public class ControleUsuario {
 
     public boolean validaUsuario(Usuario usuario){
 
-        if (usuario.validaMatricula() && usuario.validaSenha()) {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
+        return usuario.validaMatricula() && usuario.validaSenha();
 
     }
 
@@ -68,8 +60,7 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public void cadastraUsuario(Usuario novoUsuario) throws ExcecaoDadosInvalidos,
-            ExcecaoUsuarioJaCadastrado {
+    public void cadastraUsuario(Usuario novoUsuario) throws ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado {
 
         if (validaUsuario(novoUsuario)) {
 
@@ -128,6 +119,7 @@ public class ControleUsuario {
 
         Usuario uTemp;
 
+        //TODO Joao - mudar nome
         uTemp = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
         if(uTemp != null) {
@@ -154,6 +146,7 @@ public class ControleUsuario {
     public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado {
 
         Usuario uTemp;
+        //TODO Joao - mudar nome
 
         uTemp = armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
 
