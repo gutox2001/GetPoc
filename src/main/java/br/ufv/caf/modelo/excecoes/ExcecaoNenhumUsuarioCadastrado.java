@@ -8,7 +8,7 @@ package br.ufv.caf.modelo.excecoes;
 
 public class ExcecaoNenhumUsuarioCadastrado extends Exception {
 
-    /** Método getMessage, retornara uma mensagem caso ...
+    /** Método getMessage, retornará uma mensagem caso a exceção seja lançada
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String
      * @since 01/12/2022 - 20:00
@@ -20,5 +20,4 @@ public class ExcecaoNenhumUsuarioCadastrado extends Exception {
         return "Nenhum usuário está cadastrado no Sistema!";
 
     }
-    
 }

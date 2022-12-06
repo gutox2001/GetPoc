@@ -42,6 +42,7 @@ public class Poc {
         this.resumo = resumo;
         this.matriculaCadastrante = matriculaCadastrante;
         this.areaDaPoc = areaPoc;
+
     }
 
     /** Método getTitulo, usado para obter o titulo do poc já cadastrado no sistema
@@ -148,6 +149,11 @@ public class Poc {
         
     }
 
+    /** Método setPalavrasChave, usado para redefinir as palavras-chave do Poc já cadastrado no sistema
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @since 01/12/2022 - 22:00
+     */
+
     public void setPalavrasChave(String palavrasChave) {
 
         this.palavrasChave = palavrasChave;
@@ -172,7 +178,9 @@ public class Poc {
      */
 
     public void setResumo(String resumo) {
+
         this.resumo = resumo;
+
     }
 
     /** Método getAreaDaPoc, usado para retornar a área científica do Poc
@@ -192,8 +200,11 @@ public class Poc {
      * @return String - Autores da Poc
      * @since 02/21/2022 - 19:00
      */
-    public String getMatriculaCadastrante(){
+
+    public String getMatriculaCadastrante() {
+
         return this.matriculaCadastrante;
+
     }
 
     /** Método setAreaDaPoc, usado para redefinir a área científica do Poc
@@ -213,7 +224,7 @@ public class Poc {
      * @since 02/21/2022 - 19:00
      */
 
-    public String toStringAutores(){
+    public String toStringAutores() {
 
         return this.listaAutores.substring(0,this.listaAutores.length());
 
@@ -225,7 +236,7 @@ public class Poc {
      * @since 02/21/2022 - 19:00
      */
 
-    public String toStringPalavrasChave(){
+    public String toStringPalavrasChave() {
 
         return this.palavrasChave.substring(0,this.palavrasChave.length());
 
@@ -238,7 +249,7 @@ public class Poc {
      */
 
     @Override
-    public String toString(){
+    public String toString() {
 
         return  "- TÍTULO: " + this.titulo + "\n- "
                 + toStringAutores() + "\n- "
@@ -262,5 +273,4 @@ public class Poc {
         return this.getTitulo().matches("\\w{2,}");
 
     }
-
 }

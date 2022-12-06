@@ -1,14 +1,15 @@
 package br.ufv.caf.modelo.excecoes;
 
-/** Classes que tem a finalidade de trata exceção de usuários do sistema GetPoc
- * @author
- * @since xx/11/2022 - 00:00
+/** Classe que tem a finalidade de declarar exceção usuário não encontrado no sistema GetPoc
+ * @author João Vitor Chagas Lobo - 4693
+ * @author Thiago Cândido Rocha - 4225
+ * @since 06/12/2022 - 16:00
  * @version 1.0
  */
 
-public class ExcecaoUsuarioNaoEncontrado extends Exception{
+public class ExcecaoUsuarioNaoEncontrado extends Exception {
 
-    /** Método getMessage, retornara uma mensagem caso ...
+    /** Método getMessage, retornará uma mensagem caso a exceção seja lançada
      * @author 
      * @param null
      * @return String

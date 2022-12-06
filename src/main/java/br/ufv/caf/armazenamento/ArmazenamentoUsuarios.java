@@ -74,7 +74,6 @@ public class ArmazenamentoUsuarios {
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param matriculaUsuarioRemover Usuario - Usuário que deseja remover
      * @since 02/12/2022 - 12:00
-     * @throws ExcecaoUsuarioNaoEncontrado;
      */
 
     public void removeUsuario(String matriculaUsuarioRemover) { 

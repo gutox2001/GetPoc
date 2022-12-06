@@ -7,9 +7,9 @@ package br.ufv.caf.modelo.excecoes;
  * @version 1.0
  */
 
-public class ExcecaoDadosInvalidos extends Exception{
+public class ExcecaoDadosInvalidos extends Exception {
 
-    /** Método getMessage, retornara uma mensagem caso ...
+    /** Método getMessage, retornará uma mensagem caso a exceção seja lançada
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String
@@ -23,5 +23,4 @@ public class ExcecaoDadosInvalidos extends Exception{
                 "Verifique a senha e a matricula digitada";
 
     }
-
 }

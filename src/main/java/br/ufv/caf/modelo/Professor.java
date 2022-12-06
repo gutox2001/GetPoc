@@ -6,7 +6,7 @@ package br.ufv.caf.modelo;
  * @version 1.2
  */
 
-public class Professor extends Usuario{
+public class Professor extends Usuario {
 
     /** Método Professor, construtor da classe Professor que herdada funcionalidades da classe Usuario
      * @author Aroldo Augusto Barbosa Simões - 4250
@@ -42,10 +42,9 @@ public class Professor extends Usuario{
      */
 
     @Override
-    public boolean validaSenha() { //TODO - VERIFICAR FORMATO DA SENHA
+    public boolean validaSenha() {
 
         return this.getSenha().matches(".{4,}");
 
     }
-    
 }

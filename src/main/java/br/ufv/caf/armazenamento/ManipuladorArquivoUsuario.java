@@ -98,10 +98,10 @@ public class ManipuladorArquivoUsuario {
         }
     }
 
-    /** Método Remove, usado para remover usuários da lista de usuários
+    /** Método Remove, usado para remover usuários do armazenamento de usuários
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param caminho String - Caminho do arquivo
-     * @param usuario Usuario - Usuário a remover
+     * @param matriculaUsuarioRemover String - matrícula do usuário a remover
      * @since 02/12/2022 - 14:00
      */
 
