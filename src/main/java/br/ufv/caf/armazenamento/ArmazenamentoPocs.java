@@ -30,7 +30,6 @@ public class ArmazenamentoPocs {
         arquivo = new ManipuladorArquivoPoc();
         listaPocs = new ArrayList<String>();
         listaPocs = arquivo.Read("src/regs/pocs.csv");
-
     }
 
     /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO!
@@ -55,17 +54,12 @@ public class ArmazenamentoPocs {
      * @since 02/12/2022 - 14:00
      */
 
-    public void addPoc(Poc novoPoc) {
+    public void addPoc(Poc novoPoc, String matricula) {
 
-        if (arquivo.Write("src/regs/pocs.csv", novoPoc)) {
-
+        if (arquivo.Write("src/regs/pocs.csv", novoPoc, matricula))
             System.out.println("Novo POC adicionado");
-
-        } else {
-
+        else 
             System.out.println("Novo POC não adicionado");
-
-        }
     }
 
     /** Método removePoc, usado para remover poc's da lista de poc's
@@ -78,7 +72,6 @@ public class ArmazenamentoPocs {
     public void removePoc(String tituloPocARemover) {
         
         arquivo.Remove("src/regs/pocs.csv", tituloPocARemover);
-
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
@@ -94,11 +87,9 @@ public class ArmazenamentoPocs {
         listaPocs = arquivo.Read("src/regs/pocs.csv");
 
         for (String poc : listaPocs) {
-
-            if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())) {
+            if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())){
 
                 return pocAPesquisar;
-
             }
         }
 
@@ -115,14 +106,12 @@ public class ArmazenamentoPocs {
     public Poc pesquisaPoc(String tituloPocAPesquisar) {
 
         for (String poc : listaPocs) {
-
-            if(poc.split(",")[0].equals(tituloPocAPesquisar)) {
+            if(poc.split(",")[0].equals(tituloPocAPesquisar)){
 
                 Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], null);
 
                 //Compara a String área da Poc com a lista de Áreas disponíveis
                 for (AreasPoc area : AreasPoc.values()) {
-
                     if(area.name().equals(poc.split(",")[6])) {
 
                         pocAux.setAreaDaPoc(area);
@@ -130,12 +119,13 @@ public class ArmazenamentoPocs {
                     }
                 }
 
+                System.out.println(pocAux.getAreaDaPoc());
                 return pocAux;
+
             }
         }
 
         return null;
-        
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia
