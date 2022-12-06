@@ -1,5 +1,5 @@
 package br.ufv.caf.modelo;
-
+//TODO - padronizar nome do aroldo
 /** Classes que herda a classe abstrata Usuário e implementa as funcionalidades do Aluno
  * @author @Aroldo Augusto Barbosa Simões
  * @since 09/11/2022  - 22:00
@@ -29,7 +29,7 @@ public class Aluno extends Usuario {
      */
 
     @Override
-    public boolean validaMatricula() { //TODO - VERIFICAR FORMATO DA MATRICULA
+    public boolean validaMatricula() {
 
         return this.getMatricula().matches("\\d{4}");
 
@@ -42,7 +42,7 @@ public class Aluno extends Usuario {
      */
 
     @Override
-    public boolean validaSenha() { //TODO - VERIFICAR FORMATO DA SENHA
+    public boolean validaSenha() {
 
         return this.getSenha().matches(".{4,}");
 

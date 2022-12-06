@@ -490,7 +490,6 @@ public class UsuarioTest {
 
     }
 
-
     /** Método teste06, fazem o teste das classes Usuario e ArmazenamentoUsuario;
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
