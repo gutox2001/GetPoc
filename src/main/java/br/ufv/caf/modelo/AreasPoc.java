@@ -1,7 +1,7 @@
 package br.ufv.caf.modelo;
 
 /** Enum que tem a finalidade de definir e numerar as áreas de Pocs disponíveis para cadastro
- * @author @Aroldo Augusto Barbosa Simões
+ * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 02/12/2022 - 19:30
  * @version 1.0
  */
