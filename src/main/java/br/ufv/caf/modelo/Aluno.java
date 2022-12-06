@@ -47,5 +47,4 @@ public class Aluno extends Usuario {
         return this.getSenha().matches(".{4,}");
 
     }
-
 }

@@ -15,7 +15,9 @@ public abstract class Usuario {
      */
 
     public enum TipoUsuario {
+
         ALUNO, PROFESSOR, ADMINISTRADOR;
+
     }
 
     private String nome;
@@ -48,7 +50,9 @@ public abstract class Usuario {
      */
 
     public String getNome() {
+
         return nome;
+
     }
 
     /** Método getMatricula, usado para obter o Matricula do Usuário
@@ -70,7 +74,9 @@ public abstract class Usuario {
      */
 
     public String getSenha() {
+
         return senha;
+
     }
 
     //TODO - Joao - mudar
@@ -88,8 +94,8 @@ public abstract class Usuario {
 
     /** Método setNome, usado para modificar o nome do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param String nome
-     * @since 30/11/2022 - x
+     * @param String nome - nome do Usuário
+     * @since 30/11/2022 - 12:00
      */
 
     public void setNome(String nome){
@@ -139,7 +145,11 @@ public abstract class Usuario {
     
     public abstract boolean validaSenha();
 
-    //TODO - Joao - falta javadocs
+    /** Método setNome, usado para modificar o nome do Usuário
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @param String nome - nome do Usuário
+     * @since 30/11/2022 - 12:00
+     */
 
     public void setMatricula(String matricula) {
 
@@ -147,10 +157,15 @@ public abstract class Usuario {
 
     }
 
+    /** Método setNome, usado para modificar o nome do Usuário
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @param String nome - nome do Usuário
+     * @since 30/11/2022 - 12:00
+     */
+
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
 
         this.tipoUsuario = tipoUsuario;
 
     }
-
 }

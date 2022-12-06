@@ -47,5 +47,4 @@ public class Administrador extends Usuario {
         return this.getSenha().matches(".{4,}");
         
     }
-
 }

@@ -6,9 +6,9 @@ package br.ufv.caf.modelo.excecoes;
  * @version 1.0
  */
 
-public class ExcecaoCadastranteInvalido extends Exception{
+public class ExcecaoCadastranteInvalido extends Exception {
     
-    /** Método getMessage, retornara uma mensagem caso a exceção seja lançada
+    /** Método getMessage, retornará uma mensagem caso a exceção seja lançada
      * @author Thiago Cândido Rocha - 4225
      * @return String
      * @since 01/12/2022 - 20:00
