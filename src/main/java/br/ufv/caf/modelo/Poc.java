@@ -240,11 +240,11 @@ public class Poc {
     @Override
     public String toString(){
 
-        return  "- TÍTULO: " + this.titulo + "\n"
-                + toStringAutores() + "\n"
-                + this.nomeOrientador + "\n"
-                + this.nomeCoOrientador + "\n"
-                + toStringPalavrasChave() + "\n"
+        return  "- TÍTULO: " + this.titulo + "\n- "
+                + toStringAutores() + "\n- "
+                + this.nomeOrientador + "\n- "
+                + this.nomeCoOrientador + "\n- "
+                + toStringPalavrasChave() + "\n- "
                 + this.resumo + "\n"
                 + "- MATRÍCULA DO CADASTRANTE: " + this.matriculaCadastrante + "\n"
                 + "- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString();

@@ -17,8 +17,8 @@ import java.util.ArrayList;
  * Todos os usuários são identificados por suas matrículas
  * @author João Vitor Chagas Lobo - 4693
  * @author Aroldo Augusto Barbosa Simões - 4250
- * @since 01/12/2022 - 20:00
- * @version 1.2
+ * @since 06/12/2022 - 16:00
+ * @version 1.3
  */
 
 public class ControleUsuario {
@@ -32,7 +32,7 @@ public class ControleUsuario {
      * @since 14/11/2022 - 18:45
      */
 
-    public ControleUsuario(ArmazenamentoUsuarios armzUsuarios)  {
+    public ControleUsuario(ArmazenamentoUsuarios armzUsuarios) {
 
         this.armzUsuarios = armzUsuarios;
 
@@ -46,7 +46,7 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public boolean validaUsuario(Usuario usuario){
+    public boolean validaUsuario(Usuario usuario) {
 
         return usuario.validaMatricula() && usuario.validaSenha();
 
@@ -64,13 +64,11 @@ public class ControleUsuario {
 
         if (validaUsuario(novoUsuario)) {
 
-            if (armzUsuarios.pesquisaUsuario(novoUsuario.getMatricula()) == null){
+            if (armzUsuarios.pesquisaUsuario(novoUsuario.getMatricula()) == null) {
 
                     armzUsuarios.addUsuario(novoUsuario);
 
-            }
-
-            else{
+            } else {
 
                 throw new ExcecaoUsuarioJaCadastrado();
 
@@ -81,7 +79,6 @@ public class ControleUsuario {
             throw new ExcecaoDadosInvalidos();
             
         }
-
     }
 
     /** Método removeUsuario, usado para poder remover os usuários na lista de usuários do sistema
@@ -104,34 +101,31 @@ public class ControleUsuario {
             throw new ExcecaoUsuarioNaoEncontrado();
 
         }
-
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Verifica se determinado usuário está presente na lista de usuários
      * @return Usuario
-     * @since 01/12/2022 - 20:00
+     * @since 06/12/2022 - 16:00
      * @throws ExcecaoUsuarioNaoEncontrado
      */
     
     public Usuario pesquisaUsuario(Usuario usuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado {
 
-        Usuario uTemp;
+        Usuario usuarioTemp;
 
-        //TODO Joao - mudar nome
-        uTemp = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
+        usuarioTemp = armzUsuarios.pesquisaUsuario(usuarioAPesquisar);
 
-        if(uTemp != null) {
+        if(usuarioTemp != null) {
 
-            return uTemp;
+            return usuarioTemp;
 
         } else {
 
             throw new ExcecaoUsuarioNaoEncontrado();
 
         }
-
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários pelo valor de sua matricula
@@ -139,27 +133,25 @@ public class ControleUsuario {
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @param matriculaUsuarioAPesquisar "String" - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
      * @return Usuario
-     * @since 01/12/2022 - 20:00
+     * @since 06/12/2022 - 16:00
      * @throws ExcecaoUsuarioNaoEncontrado
      */
 
     public Usuario pesquisaUsuario(String matriculaUsuarioAPesquisar) throws ExcecaoUsuarioNaoEncontrado {
 
-        Usuario uTemp;
-        //TODO Joao - mudar nome
+        Usuario usuarioTemp;
 
-        uTemp = armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
+        usuarioTemp = armzUsuarios.pesquisaUsuario(matriculaUsuarioAPesquisar);
 
-        if(uTemp != null) {
+        if(usuarioTemp != null) {
 
-            return uTemp;
+            return usuarioTemp;
 
         } else {
 
             throw new ExcecaoUsuarioNaoEncontrado();
 
         }
-
     }
 
     /** Método realizarLogin, utilizado para pesquisar e retorna um usuário no armazenamento através da matricula
@@ -177,24 +169,23 @@ public class ControleUsuario {
 
         Usuario usuario = pesquisaUsuario(matricula);
 
-        if (usuario != null){
+        if (usuario != null) {
 
             if (usuario.getSenha().equals(senha)) {
 
                     return usuario;
-            }
-            else {
+
+            } else {
 
                     throw new ExcecaoDadosInvalidos();
 
             }
-
+            
         } else {
 
             throw new ExcecaoUsuarioNaoEncontrado();
 
         }
-
     }
 
     /** Método exibirTodosUsuarios, utilizado para retorna os usuário do armazenamento
@@ -204,7 +195,7 @@ public class ControleUsuario {
      * @since 01/12/2022 - 20:00
      */
 
-    public ArrayList<String> retornarTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado { //TODO - Mudar para a visao //OU NÃO
+    public ArrayList<String> retornarTodosUsuarios() throws ExcecaoNenhumUsuarioCadastrado {
         
         if (armazenamentoUsuariosVazio()) {
 
@@ -213,14 +204,12 @@ public class ControleUsuario {
         } else {
 
             ArrayList<String> usuariosCadastrados = armzUsuarios.getListaUsuarios();
-
             return usuariosCadastrados;
 
         }
-
     }
 
-    /** Método isEmpty, utilizado para verificar se o armazenamento de Usuários está vazia
+    /** Método isEmpty, utilizado para verificar se o armazenamento de Usuários está vazio
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 01/12/2022 - 20:00
@@ -232,18 +221,33 @@ public class ControleUsuario {
         
     }
 
-    public void alteraSenha(Usuario usuarioLogado, String senha) {
+    /** Método alteraSenha, utilizado para alterar a senha do usuário logado
+     * @author Thiago Cândido Rocha - 4225
+     * @param Usuario usuarioLogado - usuário que está logado no sistema
+     * @param String novaSenha - nova senha do usuário
+     * @since 06/12/2022 - 16:00
+     */
+
+    public void alteraSenha(Usuario usuarioLogado, String novaSenha) {
+
         this.armzUsuarios.removeUsuario(usuarioLogado.getMatricula());
-        usuarioLogado.setSenha(senha);
+        usuarioLogado.setSenha(novaSenha);
         armzUsuarios.addUsuario(usuarioLogado);
 
     }
 
-    public void alteraNome(Usuario usuarioLogado, String nome) {
+    /** Método alteraNome, utilizado para alterar o nome do usuário logado
+     * @author Thiago Cândido Rocha - 4225
+     * @param Usuario usuarioLogado - usuário que está logado no sistema
+     * @param String novoNome - novo nome do usuário
+     * @since 06/12/2022 - 16:00
+     */
+
+    public void alteraNome(Usuario usuarioLogado, String novoNome) {
+
         this.armzUsuarios.removeUsuario(usuarioLogado.getMatricula());
-        usuarioLogado.setNome(nome);
+        usuarioLogado.setNome(novoNome);
         armzUsuarios.addUsuario(usuarioLogado);
         
     }
-
 }

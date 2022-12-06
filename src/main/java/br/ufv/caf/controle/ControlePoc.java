@@ -8,9 +8,9 @@ import br.ufv.caf.modelo.excecoes.ExcecaoCadastranteInvalido;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
-/** Classes que tem a finalidade de fazer o controle dos poc's já cadastrados no sistema
+/** Classes que tem a finalidade de realizar o controle dos Poc's já cadastrados no sistema
  * @author Aroldo Augusto Barbosa Simões - 4250
- * @since 21/11/2022 - 19:30
+ * @since 06/12/2022 - 15:30
  * @version 1.1
  */
 
@@ -29,11 +29,10 @@ public class ControlePoc {
 
     }
 
-    /** Método cadastraPoc, usado para poder adicionar novos poc's a lista de poc's do sistema
+    /** Método cadastraPoc, usado para poder adicionar novos Poc's a lista de Poc's do sistema
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author João Vitor Chagas Lobo - 4693
      * @param novoPoc Poc - Novo Poc
-     * @return boolean
      * @since 21/11/2022 - 19:30
      */
 
@@ -50,30 +49,30 @@ public class ControlePoc {
         }
     }
 
-    /** Método removePoc, usado para remover um determinado poc da lista de poc's do sistema
+    /** Método removePoc, usado para remover um determinado Poc da lista de Poc's do sistema
      * <p>
-     * Função remove uma poc e retorna 'true' se o processo foi completo e 'false' do contrário
+     * Função remove um Poc e retorna 'true' se o processo foi completo e 'false' do contrário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param tituloPocRemover String - Titulo do poc o qual deseja remover 
+     * @param tituloPocRemover String - Titulo do Poc o qual deseja remover 
      * @since 21/11/2022 - 19:30
      */
 
-    public void removePoc(String tituloPocRemover) throws ExcecaoPocNaoEncontrado{
+    public void removePoc(String tituloPocRemover) throws ExcecaoPocNaoEncontrado {
 
-        if(armzPocs.pesquisaPoc(tituloPocRemover) != null){
+        if(armzPocs.pesquisaPoc(tituloPocRemover) != null) {
+
             armzPocs.removePoc(tituloPocRemover);
-        }
 
-        else{
+        } else {
+
             throw new ExcecaoPocNaoEncontrado();
-        }
 
+        }
     }
 
-    /** Método pesquisarPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
+    /** Método pesquisarPoc, utilizado para verificar se um determinado Poc está presente na lista de Poc's
      * <p>
-     * A função retornara a Poc, e caso não seja possível achar o poc retornara null;
-     * @author
+     * A função retornara o Poc, e caso não seja possível achar o poc retornara null;
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @param tituloPocAPesquisar String - Titulo do poc o qual deseja pesquisar 
      * @return Poc
@@ -84,29 +83,31 @@ public class ControlePoc {
 
         Poc pocPesquisado = armzPocs.pesquisaPoc(tituloPocAPesquisar);
 
-        if(pocPesquisado!=null){
+        if(pocPesquisado!=null) {
+
             return pocPesquisado;
-        }
 
-        else{
+        } else {
+
             throw new ExcecaoPocNaoEncontrado();
+
         }
-
-
     }
 
-    /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia 
-     * @author
+    /** Método isEmpty, utilizado para verificar se a lista de Poc's está vazia 
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 02/11/2022 - 18:30
      */
 
     public boolean isEmpty() {
+
         return armzPocs.isEmpty();
+
     }
 
-    /** Método quantidadePocsArmazenadas, utilizado para saber a quantidade de poc's armazenados na lista de poc's
-     * @author
+    /** Método quantidadePocsArmazenadas, utilizado para saber a quantidade de Poc's armazenados na lista de Poc's
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return int
      * @since 02/11/2022 - 18:30
      */
@@ -117,8 +118,7 @@ public class ControlePoc {
 
     }
 
-    /** Método exibirPocs, utilizado para exibir os poc's armazenados na lista de poc's
-     * @author
+    /** Método retornarPocsDoSistema, utilizado para retornar os Poc's armazenados em uma lista de Poc's
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 21/11/2022 - 19:30
@@ -135,25 +135,30 @@ public class ControlePoc {
             return armzPocs.getListaPocs();
 
         }
-
     }
 
-    /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de poc's
-     * @author
-     * @return int
+    /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de Poc's
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @param Poc pocEditado - Poc editado a ser inserido
+     * @param String matriculaLogado - matrícula do usuário que está logado no sistema
+     * @param String tituloPocDesatualizada - título do Poc desatualizado a ser substítuído pelo pocEditado
+     * @param boolean flag - 
      * @since 02/11/2022 - 18:30
      */
 
-    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada,
-                          String matriculaLogado, boolean flag) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado,
-                                                                ExcecaoCadastranteInvalido {
-        if(!(pesquisarPoc(tituloPocDesatualizada).
-                getMatriculaCadastrante().equals(matriculaLogado))){
+    public void editarPoc(Poc pocEditado, String tituloPocDesatualizada, String matriculaLogado, boolean flag) 
+                            throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado, ExcecaoCadastranteInvalido {
+
+        if(!(pesquisarPoc(tituloPocDesatualizada).getMatriculaCadastrante().equals(matriculaLogado))) {
+
             if(!flag)
+
                 throw new ExcecaoCadastranteInvalido();
+
         }
+
         removePoc(tituloPocDesatualizada);
-        cadastraPoc(pocEditada);
+        cadastraPoc(pocEditado);
 
     }
 
@@ -165,10 +170,10 @@ public class ControlePoc {
     public void exibeAreasPocDisponiveis() {
 
         for (AreasPoc area : AreasPoc.values()) {
+
             System.out.print(area.getValor()+"- ");
             System.out.println(area.toString());
 
         }
     }
-
 }

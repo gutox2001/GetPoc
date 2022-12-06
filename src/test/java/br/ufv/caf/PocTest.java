@@ -9,6 +9,7 @@ import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.excecoes.ExcecaoCadastranteInvalido;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
@@ -51,7 +52,7 @@ public class PocTest {
             
             controlePoc.cadastraPoc(new Poc("ESOF", listaAutores, "Aroldo",
             "Gabriel", listaPalavrasChave, "ENGENHARIA_DE_SOFTWARE", 
-            AreasPoc.ENGENHARIA_DE_SOFTWARE));
+            "4250", AreasPoc.ENGENHARIA_DE_SOFTWARE));
 
             System.out.println(controlePoc.quantidadePocsArmazenadas());
 
@@ -69,7 +70,7 @@ public class PocTest {
             String listaPalavrasChave = "CD - Ciencia - Dados";
                 
             controlePoc.cadastraPoc(new Poc("CD", listaAutores, "Joao",
-            "Thiago", listaPalavrasChave, "CIENCIA_DE_DADOS", 
+            "Thiago", listaPalavrasChave, "CIENCIA_DE_DADOS", "4250",
             AreasPoc.CIENCIA_DE_DADOS));
 
         } catch (ExcecaoPocJaCadastrado e1) {
@@ -85,7 +86,7 @@ public class PocTest {
             String listaPalavrasChave = "IC - Internet - Coisas";
 
             controlePoc.cadastraPoc(new Poc("IC", listaAutores, "Gabriel",
-            "Joao", listaPalavrasChave, "INTERNET_DAS_COISAS", 
+            "Joao", listaPalavrasChave, "INTERNET_DAS_COISAS", "4250", 
             AreasPoc.INTERNET_DAS_COISAS));
         } catch (ExcecaoPocJaCadastrado e1) {
 
@@ -107,15 +108,15 @@ public class PocTest {
 
         String mensagemDaExcecao = "";
 
-        Poc poc1 = new Poc(null, null, null, null, null, null, null);
+        Poc poc1 = new Poc(null, null, null, null, null, null, null, null);
 
         try {
 
             iniciaTeste();
             
-        } catch (ExcecaoPocJaCadastrado excecaoTeste) {
+        } catch (ExcecaoPocJaCadastrado e1) {
 
-            mensagemDaExcecao = excecaoTeste.getMessage();
+            mensagemDaExcecao = e1.getMessage();
 
         }
 
@@ -161,9 +162,9 @@ public class PocTest {
 
         String mensagemDaExcecao = "";
 
-        Poc pocTemp = new Poc(null, null, null, null, null, null, null);
+        Poc pocTemp = new Poc(null, null, null, null, null, null, null, null);
 
-        Poc poc2 = new Poc(null, null, null, null, null, null, null);
+        Poc poc2 = new Poc(null, null, null, null, null, null, null, null);
 
         try {
 
@@ -184,7 +185,7 @@ public class PocTest {
         
 
         poc2 = new Poc("ERRO2", listaAutoresTeste2, "Joao",
-        "Thiago", listaPalavrasChaveTeste2, "CIENCIA_DE_DADOS", 
+        "Thiago", listaPalavrasChaveTeste2, "CIENCIA_DE_DADOS", "4250",
         AreasPoc.CIENCIA_DE_DADOS);
 
         try {
@@ -219,14 +220,16 @@ public class PocTest {
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @throws ExcecaoPocJaCadastrado
+     * @throws ExcecaoCadastranteInvalido
      * @since 05/12/2022 - 22:00
      */
     
     @Test
-    public void teste3() throws ExcecaoPocJaCadastrado { //Testa Funcionalidades ControlePoc para Poc3
+    public void teste3() throws ExcecaoPocJaCadastrado, ExcecaoCadastranteInvalido { 
+
         String mensagemDaExcecao = "";
 
-        Poc poc3 = new Poc(null, null, null, null, null, null, null);
+        Poc poc3 = new Poc(null, null, null, null, null, null, null, null);
 
         try {
 
@@ -246,20 +249,24 @@ public class PocTest {
         String listaPalavrasChaveTeste3 = "IC - Internet - Coisas";
 
         poc3 = new Poc("IC", listaAutoresTeste3, "Gabriel",
-        "Joao", listaPalavrasChaveTeste3, "INTERNET_DAS_COISAS", 
+        "Joao", listaPalavrasChaveTeste3, "INTERNET_DAS_COISAS", "4250",
         AreasPoc.INTERNET_DAS_COISAS);
 
         Poc novaPoc3 = new Poc("NOVA POC 3", "TESTE3", "PROFESSOR ATUALIZADO - Fabrício",
-        "Thiago - Atualizado", "NOVA", "Sem resumo especificado", 
+        "Thiago - Atualizado", "NOVA", "Sem resumo especificado", "4250",
         AreasPoc.CIENCIA_DE_DADOS);
 
         try {
             
-            controlePoc.editarPoc(novaPoc3, poc3.getTitulo());
+            controlePoc.editarPoc(novaPoc3, poc3.getTitulo(), "4250", true);
 
         } catch (ExcecaoPocNaoEncontrado e2) {
 
             mensagemDaExcecao = e2.getMessage();
+
+        } catch (ExcecaoCadastranteInvalido e3) {
+
+            mensagemDaExcecao = e3.getMessage();
 
         }
         assertEquals("", mensagemDaExcecao);

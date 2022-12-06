@@ -59,8 +59,11 @@ public class ArmazenamentoUsuarios {
     public void addUsuario(Usuario novoUsuario) {
 
         if (arquivo.Write("src/regs/usuarios.csv", novoUsuario))
+
             System.out.println("Novo usuário adicionado");
+
         else 
+        
             System.out.println("Novo usuário não adicionado");
 
     }

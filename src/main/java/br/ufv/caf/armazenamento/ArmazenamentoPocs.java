@@ -9,8 +9,8 @@ import br.ufv.caf.modelo.AreasPoc;
  * @author João Vitor Chagas Lobo - 4693
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @author Gabriel Ryan Dos Santos Oliveira - 4688
- * @since 02/12/2022 - 14:00
- * @version 1.3
+ * @since 06/12/2022 - 16:00
+ * @version 1.4
  */
 
 public class ArmazenamentoPocs {
@@ -30,9 +30,10 @@ public class ArmazenamentoPocs {
         arquivo = new ManipuladorArquivoPoc();
         listaPocs = new ArrayList<String>();
         listaPocs = arquivo.Read("src/regs/pocs.csv");
+
     }
 
-    /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO!
+    /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO CASO NÃO SEJA UTILIZADA!
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
@@ -56,10 +57,15 @@ public class ArmazenamentoPocs {
 
     public void addPoc(Poc novoPoc) {
 
-        if (arquivo.Write("src/regs/pocs.csv", novoPoc))
+        if (arquivo.Write("src/regs/pocs.csv", novoPoc)) {
+
             System.out.println("Novo POC adicionado");
-        else 
+
+        } else {
+
             System.out.println("Novo POC não adicionado");
+
+        }
     }
 
     /** Método removePoc, usado para remover poc's da lista de poc's
@@ -72,6 +78,7 @@ public class ArmazenamentoPocs {
     public void removePoc(String tituloPocARemover) {
         
         arquivo.Remove("src/regs/pocs.csv", tituloPocARemover);
+
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
@@ -87,17 +94,20 @@ public class ArmazenamentoPocs {
         listaPocs = arquivo.Read("src/regs/pocs.csv");
 
         for (String poc : listaPocs) {
-            if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())){
+
+            if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())) {
 
                 return pocAPesquisar;
+
             }
         }
 
         return null;
+        
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
-     @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param tituloPocAPesquisar String - Titulo do Poc que deseja verificar se está presente na lista de poc's
      * @return Poc
      * @since 02/12/2022 - 14:00
@@ -106,12 +116,14 @@ public class ArmazenamentoPocs {
     public Poc pesquisaPoc(String tituloPocAPesquisar) {
 
         for (String poc : listaPocs) {
-            if(poc.split(",")[0].equals(tituloPocAPesquisar)){
+
+            if(poc.split(",")[0].equals(tituloPocAPesquisar)) {
 
                 Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], poc.split(",")[6],  null);
 
                 //Compara a String área da Poc com a lista de Áreas disponíveis
                 for (AreasPoc area : AreasPoc.values()) {
+
                     if(area.name().equals(poc.split(",")[7])) {
 
                         pocAux.setAreaDaPoc(area);
@@ -126,6 +138,7 @@ public class ArmazenamentoPocs {
         }
 
         return null;
+        
     }
 
     /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia
@@ -157,5 +170,4 @@ public class ArmazenamentoPocs {
         return listaPocs.size();
 
     }
-
 }
