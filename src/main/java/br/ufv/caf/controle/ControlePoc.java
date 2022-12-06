@@ -145,11 +145,12 @@ public class ControlePoc {
      */
 
     public void editarPoc(Poc pocEditada, String tituloPocDesatualizada,
-                          String matriculaLogado) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado,
-                                                        ExcecaoCadastranteInvalido {
+                          String matriculaLogado, boolean flag) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado,
+                                                                ExcecaoCadastranteInvalido {
         if(!(pesquisarPoc(tituloPocDesatualizada).
                 getMatriculaCadastrante().equals(matriculaLogado))){
-            throw new ExcecaoCadastranteInvalido();
+            if(!flag)
+                throw new ExcecaoCadastranteInvalido();
         }
         removePoc(tituloPocDesatualizada);
         cadastraPoc(pocEditada);
