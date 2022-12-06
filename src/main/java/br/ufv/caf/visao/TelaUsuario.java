@@ -129,20 +129,28 @@ public class TelaUsuario{
      * @since 09/11/2022 - 18:00
      */
 
-    private void efetuarRemocao() {
+    private void efetuarRemocao(String matriculaLogada) {
         boolean flag = false;
+        String matriculaRemocao;
 
         do {
             try {
                 System.out.println("Entre com a matrícula do usuário que deseja remover:");
-                this.controle.removeUsuario(this.inputUser.nextLine());
-                flag = true;
+                matriculaRemocao = this.inputUser.nextLine();
+                if(!matriculaRemocao.equals(matriculaLogada)) {
+                    this.controle.removeUsuario(matriculaRemocao);
+                    System.out.println("=============================================" +
+                            "=============================================");
+                    System.out.println("A remoção foi realizada com sucesso!");
+                    System.out.println("=============================================" +
+                            "=============================================");
+                }
 
-                System.out.println("=============================================" +
-                        "=============================================");
-                System.out.println("A remoção foi realizada com sucesso!");
-                System.out.println("=============================================" +
-                        "=============================================");
+                else{
+                    System.err.println("ERRO: Você não pode se remover do sistema!!");
+                }
+
+                flag = true;
 
             } catch (ExcecaoUsuarioNaoEncontrado notFound) {
 
@@ -158,27 +166,22 @@ public class TelaUsuario{
 
     private void menuEdicaoAdmin(){
         String matricula;
-        boolean option = false;
-
-        System.out.println("Entre com a matrícula do usuário que deseja editar:");
-        matricula = this.inputUser.nextLine();
+        int option;
         Usuario usuarioPesquisado = null;
 
         do {
             try {
+                System.out.println("Entre com a matrícula do usuário que deseja editar:");
+                matricula = this.inputUser.nextLine();
                 usuarioPesquisado = this.controle.pesquisaUsuario(matricula);
-                option = false;
+                option = 0;
             } catch (ExcecaoUsuarioNaoEncontrado notFound) {
                 System.err.println("O usuário não está cadastrado no sistema ou a " +
                         "matrícula é inválida, deseja tentar novamente?\n" +
                         "1 - SIM, 0 - NÃO");
-                option = this.inputUser.nextBoolean();
-                if(option){
-                    System.out.println("Entre novamente com a matrícula do usuário que deseja editar:");
-                    matricula = this.inputUser.nextLine();
-                }
+                option = Integer.parseInt(this.inputUser.nextLine());
             }
-        }while(option);
+        }while(option != 0);
 
         if(usuarioPesquisado!=null && usuarioPesquisado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)){
             System.err.println("Por medidas de segurança, um admin não pode alterar dados de outro admin.");
@@ -321,7 +324,7 @@ public class TelaUsuario{
                     telaPoc.menuPesquisa();
                     break;
                 case 2:
-                    telaPoc.menuCadastro();
+                    telaPoc.menuCadastro(usuarioLogado.getMatricula());
                     break;
                 case 3:
                     telaPoc.menuEdicao();
@@ -344,7 +347,8 @@ public class TelaUsuario{
      * @since 09/11/2022 - 18:00
      */
 
-    protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc) {
+    protected void menuFuncionalidadesAdministrador(TelaPoc telaPoc,
+                                                    String matriculaLogada) {
         int opcao;
         String nomePoc;
 
@@ -381,7 +385,7 @@ public class TelaUsuario{
                     telaPoc.menuPesquisa();
                     break;
                 case 2:
-                    telaPoc.menuCadastro();
+                    telaPoc.menuCadastro(matriculaLogada);
                     break;
                 case 3:
                     telaPoc.menuEdicao();
@@ -399,7 +403,7 @@ public class TelaUsuario{
                     this.menuEdicaoAdmin();
                     break;
                 case 8:
-                    this.efetuarRemocao();
+                    this.efetuarRemocao(matriculaLogada);
                     break;
 
 

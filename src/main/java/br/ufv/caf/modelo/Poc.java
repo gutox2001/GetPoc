@@ -15,6 +15,7 @@ public class Poc {
     private String nomeCoOrientador;
     private String palavrasChave;
     private String resumo;
+    private String matriculaCadastrante;
     private AreasPoc areaDaPoc;
 
     /** Método Poc, construtor da classe Poc
@@ -29,7 +30,9 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    public Poc(String titulo, String listaAutores, String nomeOrientador, String nomeCoOrientador, String listaPalavrasChave, String resumo, AreasPoc areaPoc) {
+    public Poc(String titulo, String listaAutores, String nomeOrientador, String nomeCoOrientador,
+               String listaPalavrasChave, String resumo,
+               String matriculaCadastrante, AreasPoc areaPoc) {
 
         this.titulo = titulo;
         this.listaAutores = listaAutores;
@@ -37,6 +40,7 @@ public class Poc {
         this.nomeCoOrientador = nomeCoOrientador;
         this.palavrasChave = listaPalavrasChave;
         this.resumo = resumo;
+        this.matriculaCadastrante = matriculaCadastrante;
         this.areaDaPoc = areaPoc;
     }
 
