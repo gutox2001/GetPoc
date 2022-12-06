@@ -15,9 +15,8 @@ import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 /** Classes que tem como funcionalidade fazer o teste das classes Poc e ArmazenamentoPocs
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @author Gabriel Ryan dos Santos Oliveira - 4688
-* 
- * @since 09/11/2022 - 14:00
- * @version 1.1
+ * @since 05/12/2022 - 22:00
+ * @version 1.2
  */
 
 public class PocTest {
@@ -38,7 +37,7 @@ public class PocTest {
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @throws ExcecaoPocJaCadastrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @BeforeEach
@@ -101,7 +100,7 @@ public class PocTest {
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @throws ExcecaoPocNaoEncontrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -155,7 +154,7 @@ public class PocTest {
     /** Método teste2, responsável por testar Funcionalidades ControlePoc para Poc2
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -221,7 +220,7 @@ public class PocTest {
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @throws ExcecaoPocJaCadastrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
     
     @Test
@@ -270,6 +269,12 @@ public class PocTest {
         assertEquals(false, controlePoc.isEmpty());
 
     }
+
+    /** Método teste4, responsável por testar Funcionalidades ControlePoc para Poc3
+     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author Gabriel Ryan dos Santos Oliveira - 4688 
+     * @since 05/12/2022 - 22:00
+     */
 
     @Test
     public void teste4() {

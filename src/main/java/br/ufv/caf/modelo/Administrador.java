@@ -41,7 +41,9 @@ public class Administrador extends Usuario {
 
     @Override
     public boolean validaSenha() { //TODO - VERIFICAR FORMATO DA SENHA
+
         return this.getSenha().matches(".{4,}");
+        
     }
 
 }
