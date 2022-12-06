@@ -3,6 +3,7 @@ package br.ufv.caf.visao;
 import br.ufv.caf.controle.ControlePoc;
 import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.excecoes.ExcecaoCadastranteInvalido;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
@@ -81,14 +82,14 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
-    private Poc preenchimentoDados(){
+    private Poc preenchimentoDados(String matriculaCadastro){
         String titulo;
-        String nomeOrientador;
-        String nomeCoorientador =  "";
-        String autores = "";
-        String palavrasChave = "";
+        String nomeOrientador = "ORIENTADOR: ";
+        String nomeCoorientador =  "CO-ORIENTADOR: ";
+        String autores = "AUTORES: ";
+        String palavrasChave = "PALAVRAS CHAVE:";
         String palavra = "";
-        String resumo;
+        String resumo = "RESUMO: ";
         AreasPoc area = AreasPoc.ENGENHARIA_DE_SOFTWARE;
         int areaValor;
         Poc pocTemp;
@@ -104,27 +105,27 @@ public class TelaPoc {
         System.out.println("=============================================");
         System.out.println("   o Lista de autores do POC:");
 
-        autores = preencheListaAutores();
+        autores = autores.concat(preencheListaAutores());
 
         System.out.println("=============================================");
         System.out.println("   o Nome do orientador:");
 
-        nomeOrientador = this.inputPoc.nextLine();
+        nomeOrientador = nomeOrientador.concat(this.inputPoc.nextLine());
 
         System.out.println("=============================================");
         System.out.println("   o Nome do co-orientador, se houver:");
 
-        nomeCoorientador = this.inputPoc.nextLine();
+        nomeCoorientador = nomeCoorientador.concat(this.inputPoc.nextLine());
         System.out.println("=============================================");
 
         System.out.println("   o Palavras chave: (um dígito sozinho irá parar a busca por novas palavras na entrada)");
 
-        palavrasChave = preenchePalavrasChaves();
+        palavrasChave = palavrasChave.concat(preenchePalavrasChaves());
 
         System.out.println("=============================================");
         System.out.println("   o Resumo em parágrafo único:");
 
-        resumo = this.inputPoc.nextLine();
+        resumo = resumo.concat(this.inputPoc.nextLine());
         System.out.println("=============================================");
 
         System.out.println("   o Área central (Escolha o indice da área que deseja cadastrar):");
@@ -141,7 +142,7 @@ public class TelaPoc {
 
 
         return pocTemp = new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
-                palavrasChave, resumo, area);
+                palavrasChave, resumo, matriculaCadastro, area);
     }
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
@@ -190,12 +191,11 @@ public class TelaPoc {
         }
     }
 
-    protected void menuCadastro(){
+    protected void menuCadastro(String matriculaCadastro){
         int option;
-
         do{
             try{
-                this.controle.cadastraPoc(preenchimentoDados());
+                this.controle.cadastraPoc(preenchimentoDados(matriculaCadastro));
                 option = 0;
             }catch(ExcecaoPocJaCadastrado alreadyOn){
                 System.err.println("O POC informado já está cadastrado no nosso sistema, d" +
@@ -214,7 +214,7 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
-    protected void menuEdicao(){
+    protected void menuEdicao(String matriculaLogado) {
         String tituloPocDesatualizado;
         int opcaoBusca;
         int areaValor;
@@ -236,7 +236,7 @@ public class TelaPoc {
 
                 opcaoBusca = Integer.parseInt(this.inputPoc.nextLine());
             }
-        }while(opcaoBusca != 0);
+        } while (opcaoBusca != 0);
 
         //Por motivos de segurança e direitos autorais, editar autores não será possível
         tituloPocDesatualizado = pocParaAtualizar.getTitulo();
@@ -256,7 +256,7 @@ public class TelaPoc {
             opcaoEdicao = Integer.parseInt(this.inputPoc.nextLine());
             switch (opcaoEdicao) {
                 case 0:
-                    String novasPalavrasChaves = this.preenchePalavrasChaves();
+                    String novasPalavrasChaves = "PALAVRAS CHAVE: ".concat(this.preenchePalavrasChaves());
                     pocParaAtualizar.setPalavrasChave(novasPalavrasChaves);
                     System.out.println("=============================================");
                     break;
@@ -267,7 +267,7 @@ public class TelaPoc {
 
                     System.out.println(pocParaAtualizar.getResumo());
 
-                    String resumoAtualizado = this.inputPoc.nextLine();
+                    String resumoAtualizado = "RESUMO: ".concat(this.inputPoc.nextLine());
 
                     pocParaAtualizar.setResumo(resumoAtualizado);
                     System.out.println("=============================================");
@@ -280,7 +280,7 @@ public class TelaPoc {
 
                     System.out.println("=============================================");
 
-                    String nomeOrientadorAtualizado = this.inputPoc.nextLine();
+                    String nomeOrientadorAtualizado = "ORIENTADOR: ".concat(this.inputPoc.nextLine());
 
                     pocParaAtualizar.setNomeOrientador(nomeOrientadorAtualizado);
 
@@ -294,7 +294,7 @@ public class TelaPoc {
 
                     System.out.println("=============================================");
 
-                    String nomeCoOrientadorAtualizado = this.inputPoc.nextLine();
+                    String nomeCoOrientadorAtualizado = "CO-ORIENTADOR: ".concat(this.inputPoc.nextLine());
 
                     pocParaAtualizar.setNomeOrientador(nomeCoOrientadorAtualizado);
                     break;
@@ -306,8 +306,8 @@ public class TelaPoc {
 
                     System.out.println("    o Entre com o índice da nova área do POC:");
                     areaValor = Integer.parseInt(this.inputPoc.nextLine());
-                    for(AreasPoc areasDisponiveis : AreasPoc.values()){
-                        if(areasDisponiveis.getValor() == areaValor){
+                    for (AreasPoc areasDisponiveis : AreasPoc.values()) {
+                        if (areasDisponiveis.getValor() == areaValor) {
                             area = areasDisponiveis;
                         }
                     }
@@ -319,10 +319,12 @@ public class TelaPoc {
                     flagEdicao = false;
                     break;
             }
-        }while(flagEdicao);
+        } while (flagEdicao);
 
-        try{
-            this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado);
+        try {
+            this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado, matriculaLogado);
+        }catch(ExcecaoCadastranteInvalido invalidEdition){
+            System.err.println("Você não é o usuário que cadastrou o POC e não possui permissão para o editar");
         }catch(ExcecaoPocNaoEncontrado notFound){
             System.err.println("Houve um erro ao salvar o título antigo! A atualização falhou");
         }catch(ExcecaoPocJaCadastrado alreadyOn){

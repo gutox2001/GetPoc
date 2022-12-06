@@ -24,7 +24,7 @@ public abstract class Usuario {
     private TipoUsuario tipoUsuario;
 
     /** Método Usuario, construtor da classe Usuario
-     * @author Aroldo Augusto Barbosa Simões
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param nome String - Nome do Usuário
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso

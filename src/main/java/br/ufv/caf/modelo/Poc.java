@@ -15,6 +15,7 @@ public class Poc {
     private String nomeCoOrientador;
     private String palavrasChave;
     private String resumo;
+    private String matriculaCadastrante;
     private AreasPoc areaDaPoc;
 
     /** Método Poc, construtor da classe Poc
@@ -29,7 +30,9 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    public Poc(String titulo, String listaAutores, String nomeOrientador, String nomeCoOrientador, String listaPalavrasChave, String resumo, AreasPoc areaPoc) {
+    public Poc(String titulo, String listaAutores, String nomeOrientador, String nomeCoOrientador,
+               String listaPalavrasChave, String resumo,
+               String matriculaCadastrante, AreasPoc areaPoc) {
 
         this.titulo = titulo;
         this.listaAutores = listaAutores;
@@ -37,6 +40,7 @@ public class Poc {
         this.nomeCoOrientador = nomeCoOrientador;
         this.palavrasChave = listaPalavrasChave;
         this.resumo = resumo;
+        this.matriculaCadastrante = matriculaCadastrante;
         this.areaDaPoc = areaPoc;
     }
 
@@ -183,6 +187,15 @@ public class Poc {
 
     }
 
+    /** Método getMatriculaCadastrante, usado para retornar a matricula de quem cadastrou o POC
+     * @author @Thiago Cândido Rocha - 4225
+     * @return String - Autores da Poc
+     * @since 02/21/2022 - 19:00
+     */
+    public String getMatriculaCadastrante(){
+        return this.matriculaCadastrante;
+    }
+
     /** Método setAreaDaPoc, usado para redefinir a área científica do Poc
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
@@ -227,12 +240,13 @@ public class Poc {
     @Override
     public String toString(){
 
-        return  "TÍTULO: " + this.titulo + "\n"
-                + "- AUTORES: " + toStringAutores() + "\n"
-                + "- NOME ORIENTADOR: " + this.nomeOrientador + "\n"
-                + "- NOME CO-ORIENTADOR: " + this.nomeCoOrientador + "\n"
-                + "- PALAVRAS CHAVE: " + toStringPalavrasChave() + "\n"
-                + "- RESUMO: " + this.resumo + "\n"
+        return  "- TÍTULO: " + this.titulo + "\n"
+                + toStringAutores() + "\n"
+                + this.nomeOrientador + "\n"
+                + this.nomeCoOrientador + "\n"
+                + toStringPalavrasChave() + "\n"
+                + this.resumo + "\n"
+                + "- MATRÍCULA DO CADASTRANTE: " + this.matriculaCadastrante + "\n"
                 + "- ÁREA CIENTÍFICA DA POC: " + this.areaDaPoc.toString();
                 
     }

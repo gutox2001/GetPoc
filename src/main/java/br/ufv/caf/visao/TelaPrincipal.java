@@ -65,7 +65,7 @@ public class TelaPrincipal {
         }
 
         else{
-            telaUser.menuFuncionalidadesAdministrador(this.telaPoc);
+            telaUser.menuFuncionalidadesAdministrador(this.telaPoc, usuarioLogado.getMatricula());
         }
 
     }
