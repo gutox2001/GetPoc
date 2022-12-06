@@ -44,23 +44,72 @@ public class UsuarioTest {
      * @author Gabriel Ryan dos Santos Oliveira - 4688 
      * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioJaCadastrado
+     * @throws ExcecaoUsuarioNaoEncontrado
      * @since 09/11/2022 - 14:00
      */
 
     @BeforeEach
-    void iniciaTeste() throws ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado {
-        Usuario u1 = new Administrador("AROLDO", "4250", "12345");      
-        controleUsuario.cadastraUsuario(u1);
+    void iniciaTeste() throws ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado, ExcecaoUsuarioNaoEncontrado {
 
-        Usuario u2 = new Professor("THIAGO", "4225", "54321");      
-        controleUsuario.cadastraUsuario(u2);
+        try {
 
-        Usuario u3 = new Aluno("GABRIEL", "4333", "12543");      
-        controleUsuario.cadastraUsuario(u3);
+            Usuario u1 = new Administrador("AROLDOTESTE", "8000", "12345");
+            controleUsuario.cadastraUsuario(u1);
+            
+        } catch (ExcecaoUsuarioJaCadastrado e1) {
 
-        Usuario u4 = new Aluno("JOÃO", "4555", "21354");      
-        controleUsuario.cadastraUsuario(u4);
+            throw new ExcecaoUsuarioJaCadastrado();
 
+        } catch (ExcecaoDadosInvalidos e2) {
+
+            throw new ExcecaoDadosInvalidos();
+
+        }
+        try {
+
+            Usuario u2 = new Professor("THIAGOTESTE", "8001", "54321");
+            controleUsuario.cadastraUsuario(u2);
+            
+        } catch (ExcecaoUsuarioJaCadastrado e1) {
+
+            throw new ExcecaoUsuarioJaCadastrado();
+
+        } catch (ExcecaoDadosInvalidos e2) {
+
+            throw new ExcecaoDadosInvalidos();
+
+        }
+
+        try {
+
+            Usuario u3 = new Aluno("GABRIELTESTE", "8002", "12543");
+            controleUsuario.cadastraUsuario(u3);
+            
+        } catch (ExcecaoUsuarioJaCadastrado e1) {
+
+            throw new ExcecaoUsuarioJaCadastrado();
+
+        } catch (ExcecaoDadosInvalidos e2) {
+
+            throw new ExcecaoDadosInvalidos();
+
+        }
+
+        try {
+
+            Usuario u4 = new Aluno("JOÃOTESTE", "8003", "21354");
+            controleUsuario.cadastraUsuario(u4);
+
+        } catch (ExcecaoUsuarioJaCadastrado e1) {
+
+            throw new ExcecaoUsuarioJaCadastrado();
+
+        } catch (ExcecaoDadosInvalidos e2) {
+
+            throw new ExcecaoDadosInvalidos();
+
+        }
+ 
     }
 
     /** Método teste01, fazem o teste das classes Usuario e ArmazenamentoUsuario;
@@ -75,7 +124,20 @@ public class UsuarioTest {
     @Test
     public void teste01() throws ExcecaoUsuarioNaoEncontrado, ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado { //Testa funcionalidades ControleUsuario para o u1; throws ExcecaoUsuarioNaoEncontrado
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
@@ -83,11 +145,45 @@ public class UsuarioTest {
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp1));
 
-        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp1));
+        try {
 
-        controleUsuario.removeUsuario("4250");
+            usuarioTemp1 = controleUsuario.pesquisaUsuario(usuarioTemp1);
+            
+        } catch (ExcecaoUsuarioNaoEncontrado excecao1) {
 
-        assertEquals(null, controleUsuario.pesquisaUsuario("4250"));
+            mensagemDaExcecao = excecao1.getMessage();
+
+        }
+
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+
+            usuarioTemp1 = controleUsuario.pesquisaUsuario("8000");
+            
+        } catch (ExcecaoUsuarioNaoEncontrado excecao1) {
+
+            mensagemDaExcecao = excecao1.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        controleUsuario.removeUsuario("8000");
+
+        try {
+
+            controleUsuario.pesquisaUsuario("8000");
+                
+        } catch (ExcecaoUsuarioNaoEncontrado excecao1) {
+
+            mensagemDaExcecao = excecao1.getMessage();
+
+        }
+
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
@@ -105,7 +201,20 @@ public class UsuarioTest {
     @Test
     public void teste02() throws ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado, ExcecaoUsuarioNaoEncontrado  { //Testa funcionalidades ControleUsuario para o u2; throws ExcecaoUsuarioNaoEncontrado
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("Usuário já está cadastrado no sistema!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
@@ -113,9 +222,67 @@ public class UsuarioTest {
 
         assertEquals(false, controleUsuario.validaUsuario(usuarioTemp2));
 
-        usuarioTemp2 = controleUsuario.realizarLogin("4225", "54321");
+        try {
 
-        assertEquals(usuarioTemp2, controleUsuario.pesquisaUsuario(usuarioTemp2));
+            usuarioTemp2 = controleUsuario.pesquisaUsuario(usuarioTemp2);
+            
+        } catch (ExcecaoUsuarioNaoEncontrado excecao1) {
+
+            mensagemDaExcecao = excecao1.getMessage();
+
+        }
+
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+
+            usuarioTemp2 = controleUsuario.pesquisaUsuario("8000");
+            
+        } catch (ExcecaoUsuarioNaoEncontrado excecao2) {
+
+            mensagemDaExcecao = excecao2.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            controleUsuario.removeUsuario("EF4225");
+            
+        } catch (Exception e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        }
+
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+
+            controleUsuario.pesquisaUsuario("EF4225");
+                
+        } catch (ExcecaoUsuarioNaoEncontrado excecao2) {
+
+            mensagemDaExcecao = excecao2.getMessage();
+
+        }
+
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
+
+        try {
+
+            usuarioTemp2 = controleUsuario.realizarLogin("8001", "54321");
+            
+        } catch (ExcecaoUsuarioNaoEncontrado e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        } 
+        assertEquals("", mensagemDaExcecao);
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
@@ -133,21 +300,73 @@ public class UsuarioTest {
     @Test
     public void teste03() throws ExcecaoUsuarioNaoEncontrado, ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado { //Testa funcionalidades ControleUsuario para o u3; throws ExcecaoUsuarioNaoEncontrado
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("Usuário já está cadastrado no sistema!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
-        Usuario usuarioTemp3 = new Aluno("GABRIEL", "4333", "12543");
+        Usuario usuarioTemp3 = new Aluno("GABRIELTESTE", "8002", "12543");
 
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp3));
 
-        usuarioTemp3 = controleUsuario.pesquisaUsuario(usuarioTemp3);
+        try {
 
-        assertEquals(usuarioTemp3, controleUsuario.pesquisaUsuario("4333"));
+            usuarioTemp3 = controleUsuario.pesquisaUsuario(usuarioTemp3);
+            
+        } catch (ExcecaoUsuarioNaoEncontrado excecao1) {
 
-        controleUsuario.removeUsuario(usuarioTemp3.getMatricula());
+            mensagemDaExcecao = excecao1.getMessage();
 
-        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp3));
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            usuarioTemp3 = controleUsuario.pesquisaUsuario("8002");
+            
+        } catch (ExcecaoUsuarioNaoEncontrado excecao2) {
+
+            mensagemDaExcecao = excecao2.getMessage();
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            controleUsuario.removeUsuario("8002");
+            
+        } catch (Exception e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            usuarioTemp3 = controleUsuario.realizarLogin("8002", "54321");
+            
+        } catch (ExcecaoUsuarioNaoEncontrado e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        } 
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
@@ -166,23 +385,39 @@ public class UsuarioTest {
     @Test
     public void teste04() throws ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado, ExcecaoUsuarioNaoEncontrado, ExcecaoNenhumUsuarioCadastrado { //Testa funcionalidades ControleUsuario para o u3; throws ExcecaoUsuarioNaoEncontrado
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("Usuário já está cadastrado no sistema!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         ArrayList<String> usuarios;
 
-        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
+        usuarios = controleUsuario.retornarTodosUsuarios();
 
-        Usuario usuarioTemp4 = new Aluno("JOÃO", "4555", "21354");
-
-        assertEquals(true, controleUsuario.validaUsuario(usuarioTemp4));
-
-        usuarios = controleUsuario.exibirTodosUsuarios();
+        assertEquals(false, usuarios.isEmpty());
 
         assertEquals(armazenamentoUsuarios.getListaUsuarios(), usuarios);
 
-        controleUsuario.removeUsuario(usuarioTemp4.getMatricula());
+        try {
 
-        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp4));
+            controleUsuario.realizarLogin("9999", "xxxx");
+            
+        } catch (ExcecaoUsuarioNaoEncontrado e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        } 
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
 
     }
 
@@ -198,29 +433,56 @@ public class UsuarioTest {
     @Test
     public void teste05() throws ExcecaoUsuarioNaoEncontrado, ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado { //Testa funcionalidades ControleUsuario para o usuário inválido; throws ExcecaoUsuarioNaoEncontrado
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
+
+        Usuario uTemp5 = new Aluno(null, null, null);
+
+        try {
+
+            iniciaTeste();
+            
+        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
+
+            mensagemDaExcecao = excecaoTeste.getMessage();
+
+        }
+
+        assertEquals("Usuário já está cadastrado no sistema!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
-        Usuario usuarioTemp5 = new Aluno("FABRÍCIO", "5000", "11111");
+        Usuario usuarioTemp5 = new Aluno("FABRÍCIO", "8004", "11111");
 
-        Usuario ulogin;
+        try {
+            
+            controleUsuario.cadastraUsuario(usuarioTemp5);
+            
+        } catch (ExcecaoUsuarioJaCadastrado e1) {
 
-        assertEquals(true, controleUsuario.validaUsuario(usuarioTemp5));
+            mensagemDaExcecao = e1.getMessage();
 
-        usuarioTemp5 = controleUsuario.pesquisaUsuario(usuarioTemp5);
+        } catch (ExcecaoDadosInvalidos e2) {
 
-        ulogin = controleUsuario.realizarLogin(usuarioTemp5.getMatricula(), usuarioTemp5.getSenha());
+            mensagemDaExcecao = e2.getMessage();
+        
+        }
 
-        controleUsuario.alteraSenha(ulogin, "01234");
+        assertEquals("", mensagemDaExcecao);
 
-        assertEquals("01234", controleUsuario.pesquisaUsuario("5000").getSenha());
+        try {
+            
+            uTemp5 = controleUsuario.realizarLogin("8004", "11111");
 
-        assertEquals(controleUsuario.pesquisaUsuario(ulogin), controleUsuario.pesquisaUsuario(usuarioTemp5));
+        } catch (ExcecaoUsuarioNaoEncontrado e) {
 
-        controleUsuario.removeUsuario("5000");
+            mensagemDaExcecao = e.getMessage();
 
-        assertEquals(null, controleUsuario.pesquisaUsuario(usuarioTemp5));
+        }    
+        
+        assertEquals("", mensagemDaExcecao);
+
+        assertEquals(uTemp5.getMatricula(), usuarioTemp5.getMatricula());
 
     }
 
@@ -237,25 +499,68 @@ public class UsuarioTest {
     @Test
     public void teste06() throws ExcecaoDadosInvalidos, ExcecaoUsuarioJaCadastrado, ExcecaoUsuarioNaoEncontrado {
 
-        iniciaTeste();
+        String mensagemDaExcecao = "";
 
-        Usuario usuarioTemp6 = controleUsuario.realizarLogin("4250", "12345");
+        try {
 
-        controleUsuario.alteraNome(usuarioTemp6, "GUTO");
+            iniciaTeste();
+            
+        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
 
-        assertEquals("GUTO", controleUsuario.pesquisaUsuario("4250").getNome());
+            mensagemDaExcecao = excecaoTeste.getMessage();
 
-        controleUsuario.removeUsuario("4250");
+        }
 
-        controleUsuario.removeUsuario("4225");
+        assertEquals("Usuário já está cadastrado no sistema!", mensagemDaExcecao);
+        mensagemDaExcecao = "";
 
-        controleUsuario.removeUsuario("4333");
+        try {
 
-        controleUsuario.removeUsuario("4555");
+            controleUsuario.removeUsuario("8000");
+            
+        } catch (Exception e) {
 
-       assertEquals(null, usuarioTemp6);
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
 
-        assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            controleUsuario.removeUsuario("8001");
+            
+        } catch (Exception e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            controleUsuario.removeUsuario("8003");
+            
+        } catch (Exception e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
+
+        try {
+
+            controleUsuario.removeUsuario("8004");
+            
+        } catch (Exception e) {
+
+            mensagemDaExcecao = "Usuário buscado não foi encontrado!";
+
+        }
+
+        assertEquals("", mensagemDaExcecao);
 
     }
     

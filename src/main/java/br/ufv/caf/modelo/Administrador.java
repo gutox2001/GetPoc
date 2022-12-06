@@ -28,7 +28,9 @@ public class Administrador extends Usuario {
 
     @Override
     public boolean validaMatricula() { //TODO - VERIFICAR FORMATO DA MATRICULA
+
         return this.getMatricula().matches("\\d{4}");
+        
     }
 
     /** Método validaSenha, tem a finalidade de verificar o formato da senha
