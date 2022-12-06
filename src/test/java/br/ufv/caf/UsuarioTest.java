@@ -65,6 +65,7 @@ public class UsuarioTest {
             throw new ExcecaoDadosInvalidos();
 
         }
+
         try {
 
             Usuario u2 = new Professor("THIAGOTESTE", "8001", "54321");
@@ -109,7 +110,6 @@ public class UsuarioTest {
             throw new ExcecaoDadosInvalidos();
 
         }
- 
     }
 
     /** Método teste01, fazem o teste das classes Usuario e ArmazenamentoUsuario;
@@ -146,7 +146,6 @@ public class UsuarioTest {
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp1 = new Administrador("AROLDO", "9000", "12345");
-
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp1));
 
         try {
@@ -285,9 +284,9 @@ public class UsuarioTest {
 
             mensagemDaExcecao = "Usuário buscado não foi encontrado!";
 
-        } 
-        assertEquals("", mensagemDaExcecao);
+        }
 
+        assertEquals("", mensagemDaExcecao);
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
     }
@@ -322,7 +321,6 @@ public class UsuarioTest {
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
         Usuario usuarioTemp3 = new Aluno("GABRIELTESTE", "8002", "12543");
-
         assertEquals(true, controleUsuario.validaUsuario(usuarioTemp3));
 
         try {
@@ -370,8 +368,8 @@ public class UsuarioTest {
             mensagemDaExcecao = "Usuário buscado não foi encontrado!";
 
         } 
-        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
 
+        assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
         assertEquals(false, controleUsuario.armazenamentoUsuariosVazio());
 
     }
@@ -409,7 +407,6 @@ public class UsuarioTest {
         usuarios = controleUsuario.retornarTodosUsuarios();
 
         assertEquals(false, usuarios.isEmpty());
-
         assertEquals(armazenamentoUsuarios.getListaUsuarios(), usuarios);
 
         try {
@@ -420,7 +417,8 @@ public class UsuarioTest {
 
             mensagemDaExcecao = "Usuário buscado não foi encontrado!";
 
-        } 
+        }
+
         assertEquals("Usuário buscado não foi encontrado!", mensagemDaExcecao);
 
     }
@@ -485,7 +483,6 @@ public class UsuarioTest {
         }    
         
         assertEquals("", mensagemDaExcecao);
-
         assertEquals(uTemp5.getMatricula(), usuarioTemp5.getMatricula());
 
     }
@@ -562,9 +559,8 @@ public class UsuarioTest {
             mensagemDaExcecao = "Usuário buscado não foi encontrado!";
 
         }
-
+        
         assertEquals("", mensagemDaExcecao);
 
     }
-    
 }

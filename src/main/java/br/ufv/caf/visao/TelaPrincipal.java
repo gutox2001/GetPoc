@@ -82,10 +82,11 @@ public class TelaPrincipal {
 
     /** Método verificaSistema, responsável por verificar se o sistema está vazio
      * @author Thiago Cândido Rocha - 4225
+     * @return boolean
      * @since 11/11/2022 - 19:00
      */
 
-    private boolean verificaSistema() {//TODO: Verificar necessidade
+    private boolean verificaSistema() {
 
         if(this.telaUser.controle.armazenamentoUsuariosVazio()) {
 
