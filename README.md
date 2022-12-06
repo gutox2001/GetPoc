@@ -26,7 +26,7 @@
       - Cadastro de POC;
       - Pesquisa de POC.
 
-**Execução do sistema: **
+**Execução do sistema:**
 
   - Para simplificar o primeiro acesso de um usuário, foi criado o usuário "Administrador Padrao", com Matricula: "0001" e senha "12345", após o acesso utilizando este usúário e configuração de pelo menos outro administrador, ele deverá ser deletado.
   - A execução experimental da aplicação se dá atravéz do arqiuvo GetPoc.jar contido na pasta GetPoc-Equipe 2, que contém também os arquivos .csv com os dados que devem ser previamente carregados e que podem ser editados. Para isto, execute a seguinte linha de comando em um terminal dentro da pasta "GetPoc-Equipe2": 
