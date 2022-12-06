@@ -130,6 +130,7 @@ public class ArmazenamentoUsuarios {
                 Usuario usuarioAux = new Aluno(usuarioLista.split(",")[0], usuarioLista.split(",")[1], usuarioLista.split(",")[2]);
 
                 switch (usuarioLista.split(",")[3]) {
+
                     case "ALUNO":
                         
                         usuarioAux.setTipoUsuario(TipoUsuario.ALUNO);
@@ -147,6 +148,7 @@ public class ArmazenamentoUsuarios {
 
                     default:
                         break;
+                        
                 }
 
                return usuarioAux;
@@ -170,5 +172,4 @@ public class ArmazenamentoUsuarios {
         return listaUsuarios.isEmpty();
 
     }
-
 }
