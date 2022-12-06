@@ -132,7 +132,6 @@ public class TelaUsuario{
     private void efetuarRemocao(String matriculaLogada) {
         boolean flag = false;
         String matriculaRemocao;
-
         do {
             try {
                 System.out.println("Entre com a matrícula do usuário que deseja remover:");
@@ -327,7 +326,7 @@ public class TelaUsuario{
                     telaPoc.menuCadastro(usuarioLogado.getMatricula());
                     break;
                 case 3:
-                    telaPoc.menuEdicao();
+                    telaPoc.menuEdicao(usuarioLogado.getMatricula());
                     break;
                 case 4:
                     telaPoc.menuRemocao();
@@ -388,7 +387,7 @@ public class TelaUsuario{
                     telaPoc.menuCadastro(matriculaLogada);
                     break;
                 case 3:
-                    telaPoc.menuEdicao();
+                    telaPoc.menuEdicao(matriculaLogada);
                     break;
                 case 4:
                     telaPoc.menuRemocao();
