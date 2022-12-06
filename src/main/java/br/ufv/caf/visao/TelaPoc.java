@@ -64,7 +64,7 @@ public class TelaPoc {
                 "Digitar um número sozinho irá terminar o preenchimento!!");
         while(!flag){
             autor = this.inputPoc.nextLine();
-            if(!autor.matches("\\d")){ //TODO - Verificar se essa expressão regular funciona
+            if(!autor.matches("\\d")){
                 listaAutores = listaAutores.concat(autor);
                 listaAutores = listaAutores.concat("-");
             }
@@ -73,7 +73,7 @@ public class TelaPoc {
             }
         }
 
-        return listaAutores;
+        return listaAutores.substring(0,listaAutores.length()-1);
     }
 
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
@@ -214,7 +214,7 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
-    protected void menuEdicao(String matriculaLogado) {
+    protected void menuEdicao(String matriculaLogado, boolean flag) {
         String tituloPocDesatualizado;
         int opcaoBusca;
         int areaValor;
@@ -322,7 +322,7 @@ public class TelaPoc {
         } while (flagEdicao);
 
         try {
-            this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado, matriculaLogado);
+            this.controle.editarPoc(pocParaAtualizar, tituloPocDesatualizado, matriculaLogado, flag);
         }catch(ExcecaoCadastranteInvalido invalidEdition){
             System.err.println("Você não é o usuário que cadastrou o POC e não possui permissão para o editar");
         }catch(ExcecaoPocNaoEncontrado notFound){
