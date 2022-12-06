@@ -41,7 +41,7 @@ public class ControlePoc {
 
         if (armzPocs.pesquisaPoc(novoPoc) == null){
 
-            armzPocs.addPoc(novoPoc, null);
+            armzPocs.addPoc(novoPoc);
 
         } else {
 
@@ -146,13 +146,15 @@ public class ControlePoc {
      * @since 02/11/2022 - 18:30
      */
 
-    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada, String matriculaLogado) 
-                            throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado, ExcecaoCadastranteInvalido {
+    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada,
+                          String matriculaLogado, boolean flag) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado,
+                                                                ExcecaoCadastranteInvalido {
 
         if(!(pesquisarPoc(tituloPocDesatualizada).
                 getMatriculaCadastrante().equals(matriculaLogado))) {
 
-            throw new ExcecaoCadastranteInvalido();
+            if(!flag)
+                throw new ExcecaoCadastranteInvalido();
 
         }
 
