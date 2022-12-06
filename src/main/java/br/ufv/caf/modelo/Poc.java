@@ -195,7 +195,7 @@ public class Poc {
     }
 
     /** Método getMatriculaCadastrante, usado para retornar a matricula de quem cadastrou o POC
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @return String - Autores da Poc
      * @since 02/21/2022 - 19:00
      */

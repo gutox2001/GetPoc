@@ -48,7 +48,7 @@ public class ArmazenamentoPocs {
     }
 
     /** Método addPoc, usado para adicionar novos poc's à lista de Poc's
-     * @author @João Vitor Chagas Lobo - 4693
+     * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param novoPoc Poc - Novo Poc
