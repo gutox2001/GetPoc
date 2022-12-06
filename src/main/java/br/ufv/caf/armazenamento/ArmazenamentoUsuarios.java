@@ -28,6 +28,7 @@ public class ArmazenamentoUsuarios {
      */
 
     public ArmazenamentoUsuarios() {
+
         arquivo = new ManipuladorArquivoUsuario();
         listaUsuarios = new ArrayList<String>();
         listaUsuarios = arquivo.Read("src/regs/usuarios.csv");
@@ -61,6 +62,7 @@ public class ArmazenamentoUsuarios {
             System.out.println("Novo usuário adicionado");
         else 
             System.out.println("Novo usuário não adicionado");
+
     }
 
     /** Método removeUsuario, usado para remover usuários da lista de usuários
@@ -101,6 +103,7 @@ public class ArmazenamentoUsuarios {
                Usuario usuarioAux = usuarioPesquisar;
 
                return usuarioAux;
+
                }
             }
 
@@ -147,6 +150,7 @@ public class ArmazenamentoUsuarios {
                 }
 
                return usuarioAux;
+               
             }
         }
 
