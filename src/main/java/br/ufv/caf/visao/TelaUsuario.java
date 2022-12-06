@@ -11,7 +11,7 @@ import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 import java.util.Scanner;
 
 /** Classe MenusUsuario representa um menu para que os usuários possam ser cadastrados 
- * @author @Thiago Cândido Rocha - 4225
+ * @author Thiago Cândido Rocha - 4225
  * @since 09/11/2022 - 17:00
  * @version 1.0
  */
@@ -21,7 +21,7 @@ public class TelaUsuario{
     protected Scanner inputUser;
 
     /** Método MenusUsuario, construtor da classe MenusUsuario
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @param controle ControleUsuario - Controle do Usuário
      * @since 09/11/2022 - 17:30
      */
@@ -32,7 +32,7 @@ public class TelaUsuario{
     }
     
     /** Método preenchimentoDados, tem a finalidade de preencher os dados do usuário que está sendo cadastrado
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @return Usuario - Dados do Usuário
      * @since 09/11/2022 - 17:30
      */
@@ -69,7 +69,7 @@ public class TelaUsuario{
     }
     
     /** Método validacaoDados, tem a finalidade de validar os dados que serão preenchidos
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @return Usuario - Dados do Usuário
      * @since 09/11/2022 - 17:30
      */
@@ -84,7 +84,7 @@ public class TelaUsuario{
     }
 
     /** Método efetuarCadastro, tem a finalidade de efetuar o cadastro do usuário se possível
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
      */
 
@@ -125,7 +125,7 @@ public class TelaUsuario{
     }
 
     /** Método efetuarRemocao, tem a finalidade de remover o cadastro do usuário se possível
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
      */
 
@@ -237,7 +237,7 @@ public class TelaUsuario{
     }
 
     /** Método menuPesquisa, tem a finalidade de pesquisar um Usuário (ADMIN ONLY)
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
      */
     
@@ -253,7 +253,7 @@ public class TelaUsuario{
     }
     
     /** Método menuFuncionalidadesAluno, tem a finalidade de mostrar as funcionalidades de um aluno
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 18:00
      */
 
@@ -290,7 +290,7 @@ public class TelaUsuario{
     }
 
     /** Método menuFuncionalidadesProfessor, tem a finalidade de mostrar as opções de um professor
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @param telaPoc TelaPoc - visão do POC
      * @since 09/11/2022 - 18:00
      */
@@ -339,7 +339,7 @@ public class TelaUsuario{
     }
 
     /** Método menuFuncionalidadesAdministrador, tem a finalidade de mostrar as opções de um administrador
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @param telaPoc TelaPoc - visão do POC
      * @since 09/11/2022 - 18:00
      */

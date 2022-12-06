@@ -8,7 +8,7 @@ import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 import java.util.ArrayList;
 
 /** Classes que tem como funcionalidade implementar o controle sobre os poc's
- * @author @Thiago Cândido Rocha - 4225
+ * @author Thiago Cândido Rocha - 4225
  * @since 10/11/2022 - 22:00
  * @version 1.0
  */
@@ -18,7 +18,7 @@ public class TelaPrincipal {
     private TelaPoc telaPoc;
 
     /** Método TelaControle, construtor da classe TelaControle
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @param telaUser TelaUsuario - Tela do Usuário
      * @param telaPOC TelaPoc - Tela do poc
      * @since 10/11/2022 - 22:00
@@ -30,7 +30,7 @@ public class TelaPrincipal {
     }
 
     /** Método logarComoUsuario, responsável por fazer o login do usuário
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 10/11/2022 - 22:00
      * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioNaoEncontrado
@@ -71,7 +71,7 @@ public class TelaPrincipal {
     }
 
     /** Método verificaSistema, responsável por verificar se o sistema está vazio
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 11/11/2022 - 19:00
      */
 
@@ -87,7 +87,7 @@ public class TelaPrincipal {
     }
 
     /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 11/11/2022 - 19:00
      */
     

@@ -1,7 +1,7 @@
 package br.ufv.caf.modelo;
 //TODO - padronizar nome do aroldo
 /** Classes que herda a classe abstrata Usuário e implementa as funcionalidades do Aluno
- * @author @Aroldo Augusto Barbosa Simões
+ * @author Aroldo Augusto Barbosa Simões
  * @since 09/11/2022  - 22:00
  * @version 1.2
  */
@@ -9,7 +9,7 @@ package br.ufv.caf.modelo;
 public class Aluno extends Usuario {
 
     /** Método Aluno, construtor da classe Aluno
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param nome String - Nome do Aluno
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
@@ -23,7 +23,7 @@ public class Aluno extends Usuario {
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */
@@ -36,7 +36,7 @@ public class Aluno extends Usuario {
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da senha
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */

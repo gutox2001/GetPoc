@@ -2,7 +2,7 @@ package br.ufv.caf.modelo;
 
 
 /** Classes que implementa a entidade Poc
- * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 21/11/2022 - 20:00
  * @version 1.3 
  */
@@ -18,7 +18,7 @@ public class Poc {
     private AreasPoc areaDaPoc;
 
     /** Método Poc, construtor da classe Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param titulo String - Titulo do poc
      * @param listaAutores ArrayList<String> - Autores envolvidos no poc
      * @param nomeOrientador String - Nome do orientador do poc
@@ -41,7 +41,7 @@ public class Poc {
     }
 
     /** Método getTitulo, usado para obter o titulo do poc já cadastrado no sistema
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Titulo do Poc
      * @since 02/11/2022 - 16:00
      */
@@ -53,7 +53,7 @@ public class Poc {
     }
 
     /** Método setTitulo, usado para redefinir o título do poc já cadastrado no sistema
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
      */
 
@@ -64,7 +64,7 @@ public class Poc {
     }
 
     /** Método getListaAutores, usado para retornar a lista de autores da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - lista de autores da Poc
      * @since 04/12/2022 - 17:00
      */
@@ -76,7 +76,7 @@ public class Poc {
     }
 
     /** Método setListaAutores, usado para redefinir a lista de autores da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
      */
 
@@ -87,7 +87,7 @@ public class Poc {
     }
 
     /** Método getNomeOrientador, usado para retornar o nome do Orientador do Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Nome Orientador do Poc
      * @since 01/12/2022 - 22:00
      */
@@ -99,7 +99,7 @@ public class Poc {
     }
 
     /** Método setNomeOrientador, usado para redefinir o nome do orientador do poc já cadastrado no sistema
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
      */
 
@@ -110,7 +110,7 @@ public class Poc {
     }
 
     /** Método getNomeCoOrientador, usado para retornar o nome do Co-Orientador do Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Nome Co-Orientador do Poc
      * @since 01/12/2022 - 22:00
      */
@@ -122,7 +122,7 @@ public class Poc {
     }
 
     /** Método setNomeCoOrientador, usado para redefinir o nome do co-orientador do poc já cadastrado no sistema
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
      */
 
@@ -133,7 +133,7 @@ public class Poc {
     }
 
     /** Método getPalavrasChave, usado para obter a lista de palavras-chave da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return ArrayList<String> - Palavras-chave do Poc
      * @since 21/11/2022 - 20:00
      */
@@ -151,7 +151,7 @@ public class Poc {
     }
 
     /** Método getResumo, usado para retornar o resumo do Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
      */
 
@@ -162,7 +162,7 @@ public class Poc {
     }
 
     /** Método setResumo, usado para redefinir o resumo do Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Resumo do Poc
      * @since 01/12/2022 - 22:00
      */
@@ -172,7 +172,7 @@ public class Poc {
     }
 
     /** Método getAreaDaPoc, usado para retornar a área científica do Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return Area - Área científica do Poc
      * @since 01/12/2022 - 22:00
      */
@@ -184,7 +184,7 @@ public class Poc {
     }
 
     /** Método setAreaDaPoc, usado para redefinir a área científica do Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @since 01/12/2022 - 22:00
      */
 
@@ -195,7 +195,7 @@ public class Poc {
     }
 
     /** Método toStringAutores, usado para retornar uma String com todos os autores da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Autores da Poc
      * @since 02/21/2022 - 19:00
      */
@@ -207,7 +207,7 @@ public class Poc {
     }
 
     /** Método toStringPalavrasChave, usado para retornar uma String com todos as palavras-chave da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Palavras-chave da Poc
      * @since 02/21/2022 - 19:00
      */
@@ -219,7 +219,7 @@ public class Poc {
     }
 
     /** Método toString, usado para retornar uma String com todos os dados da Poc
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Poc e seus dados
      * @since 02/21/2022 - 19:00
      */
@@ -238,7 +238,7 @@ public class Poc {
     }
 
     /** Método validaTitulo, usado para verificar o formato do titulo dos poc's
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 02/11/2022 - 16:00
      */
