@@ -7,8 +7,6 @@ import br.ufv.caf.modelo.excecoes.ExcecaoCadastranteInvalido;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
-import java.rmi.ServerError;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
