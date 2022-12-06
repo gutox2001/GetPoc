@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import br.ufv.caf.modelo.Aluno;
 import br.ufv.caf.modelo.Usuario;
 import br.ufv.caf.modelo.Usuario.TipoUsuario;
-import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 
 /** Classes com a finalidade de armazenar os usuários cadastradas no sistema
  * @author João Vitor Chagas Lobo - 4693

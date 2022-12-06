@@ -79,7 +79,6 @@ public abstract class Usuario {
 
     }
 
-    //TODO - Joao - mudar
     /** Método setSenha, usado para modificar a senha do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @param String senha

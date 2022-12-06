@@ -10,77 +10,107 @@ import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/** Classe que tem como funcionalidade apresentar a tela de controle sobre os poc's
+/** Classe que tem como funcionalidade apresentar a tela interativa de controle sobre os Poc's
  * @author Thiago Cândido Rocha - 4225
  * @since 09/11/2022 - 18:30
  * @version 1.0
  */
-//TODO - Joao - melhorar legibilodade
-//TODO - Joao - faltam javadocs
-
 
 public class TelaPoc {
+
     protected ControlePoc controle;
     private Scanner inputPoc;
 
     /** Método TelaPoc, construtor da classe TelaPoc
      * @author Thiago Cândido Rocha - 4225 
-     * @param controle ControlePoc - Controle do POC
+     * @param controle ControlePoc - Controlador do POC
      * @since 09/11/2022 - 18:30
      */
 
-    public TelaPoc(ControlePoc controle){
+    public TelaPoc(ControlePoc controle) {
+
         this.controle = controle;
         this.inputPoc = new Scanner(System.in);
+
     }
 
-    private String preenchePalavrasChaves(){
+    /** Método preenchePalavrasChaves, adiciona palavras-chave a uma instância do objeto Poc
+     * @author Thiago Cândido Rocha - 4225 
+     * @return String
+     * @since 09/11/2022 - 18:30
+     */
+
+    private String preenchePalavrasChaves() {
+
         boolean flag = false;
         String palavra;
         String palavrasChave = "";
         System.out.println("Entre com as palavras chaves do POC. " +
-                "Digitar um número sozinho irá terminar o preenchimento!!");
-        while(!flag){
+                        "Digitar um número sozinho irá terminar o preenchimento!!");
+
+        while(!flag) {
+
             palavra = this.inputPoc.nextLine();
-            if(!palavra.matches("\\d")){
+
+            if(!palavra.matches("\\d")) {
+
                 palavrasChave = palavrasChave.concat(palavra);
                 palavrasChave = palavrasChave.concat("-");
-            }
-            else{
+
+            } else {
+
                 flag = true;
+
             }
         }
 
         return palavrasChave;
+
     }
 
-    private String preencheListaAutores(){
+    /** Método preencheListaAutores, adiciona autores a uma instância do objeto Poc
+     * @author Thiago Cândido Rocha - 4225 
+     * @return String
+     * @since 09/11/2022 - 18:30
+     */
+
+    private String preencheListaAutores() {
+
         boolean flag = false;
         String autor;
         String listaAutores = "";
-        System.out.println("    Entre com os autores do POC. " +
-                "Digitar um número sozinho irá terminar o preenchimento!!");
-        while(!flag){
+        System.out.println("Entre com os autores do POC. " +
+                        "Digitar um número sozinho irá terminar o preenchimento!!");
+
+        while(!flag) {
+
             autor = this.inputPoc.nextLine();
-            if(!autor.matches("\\d")){
+
+            if(!autor.matches("\\d")) {
+
                 listaAutores = listaAutores.concat(autor);
                 listaAutores = listaAutores.concat("-");
-            }
-            else{
+
+            } else {
+
                 flag = true;
+
             }
         }
 
         return listaAutores.substring(0,listaAutores.length()-1);
+
     }
 
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
      * @author Thiago Cândido Rocha - 4225
+     * @param matriculaCadastro String - matrícula do usuário cadastrado
      * @return Poc
      * @since 09/11/2022 - 21:00
      */
 
-    private Poc preenchimentoDados(String matriculaCadastro){
+    private Poc preenchimentoDados(String matriculaCadastro) {
+
         String titulo;
         String nomeOrientador = "ORIENTADOR: ";
         String nomeCoorientador =  "CO-ORIENTADOR: ";
@@ -132,35 +162,42 @@ public class TelaPoc {
         System.out.println("=============================================");
 
         areaValor = Integer.parseInt(this.inputPoc.nextLine());
-        for(AreasPoc areasDisponiveis : AreasPoc.values()){
-            if(areasDisponiveis.getValor() == areaValor){
+
+        for(AreasPoc areasDisponiveis : AreasPoc.values()) {
+
+            if(areasDisponiveis.getValor() == areaValor) {
+
                 area = areasDisponiveis;
+
             }
         }
 
-
         return pocTemp = new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
                 palavrasChave, resumo, matriculaCadastro, area);
+
     }
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
      * @author Thiago Cândido Rocha - 4225
-     * @return int
      * @since 09/11/2022 - 21:00
      */
 
-    protected void  menuPesquisa(){
+    protected void  menuPesquisa() {
+
         String titulo;
         int option;
 
-        do{
+        do {
+
             System.out.println("-> Entre com o título do POC que deseja pesquisar: ");
             titulo = this.inputPoc.nextLine();
 
-            try{
+            try {
+
                 System.out.println(this.controle.pesquisarPoc(titulo).toString());
                 option = 0;
-            }catch(ExcecaoPocNaoEncontrado notFound) {
+
+            } catch(ExcecaoPocNaoEncontrado notFound) {
 
                 System.err.println("O POC procurado não foi encontrado no nosso sistema, " +
                         "deseja tentar novamente?\n" +
@@ -173,7 +210,7 @@ public class TelaPoc {
 
     }
 
-    /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
+    /** Método exibeTodosOsTitulosPocs, responsável por exibir os títulos das Pocs cadastradas
      * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 21:00
      */
@@ -193,6 +230,12 @@ public class TelaPoc {
 
         }
     }
+
+    /** Método menuCadastro, responsável por fazer o cadastro de uma nova Poc
+     * @author Thiago Cândido Rocha - 4225
+     * @param matriculaCadastro String - matrícula do usuário cadastrado
+     * @since 09/11/2022 - 21:00
+     */
 
     protected void menuCadastro(String matriculaCadastro) {
 
@@ -219,6 +262,8 @@ public class TelaPoc {
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema. POr questões de
      * segurança e direitos autorais, a edição de autores não é permitida.
      * @author Thiago Cândido Rocha - 4225
+     * @param matriculaLogado String - matrícula do usuário logado
+     * @param boolean flag - valida usuário para permissão de edição
      * @since 09/11/2022 - 21:00
      */
 
@@ -233,6 +278,7 @@ public class TelaPoc {
         Poc pocParaAtualizar = null;
 
         do {
+
             try {
 
                 System.out.println("Qual é o título do POC que deseja editar?");
@@ -278,7 +324,7 @@ public class TelaPoc {
                 case 1:
 
                     System.out.println("    o Entre com o novo resumo. " +
-                            "Para fins de comparação, o resumo antigo será exibido:");
+                                "Para fins de comparação, o resumo antigo será exibido:");
 
                     System.out.println(pocParaAtualizar.getResumo());
 
