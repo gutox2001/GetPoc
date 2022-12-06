@@ -10,7 +10,7 @@ import br.ufv.caf.visao.TelaPoc;
 import br.ufv.caf.visao.TelaPrincipal;
 import br.ufv.caf.visao.TelaUsuario;
 
-/** Classe App representa a classe principal do sistema que une todos os modulos e os executa de acordo com cada usuário 
+/** Classe App representa a classe principal do sistema que une todos os módulos e os executa de acordo com o usuário logado 
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 04/12/2022 - 18:00
  * @version 1.0

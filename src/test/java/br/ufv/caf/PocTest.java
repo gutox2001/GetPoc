@@ -31,7 +31,7 @@ public class PocTest {
      * @since 09/11/2022 - 14:00
      */
 
-    public PocTest(){}
+    public PocTest() {}
 
     /** Método iniciaTeste, responsável por inicializa uma lista de Poc, uma lista de autores e uma lista de palavras chaves
      * @author Aroldo Augusto Barbosa Simões - 4250
@@ -80,6 +80,7 @@ public class PocTest {
         }
 
         try {
+
             //TERCEIRA POC
             String listaAutores = "Gabriel - Joao";
 
@@ -88,12 +89,12 @@ public class PocTest {
             controlePoc.cadastraPoc(new Poc("IC", listaAutores, "Gabriel",
             "Joao", listaPalavrasChave, "INTERNET_DAS_COISAS", "4250", 
             AreasPoc.INTERNET_DAS_COISAS));
+
         } catch (ExcecaoPocJaCadastrado e1) {
 
             throw new ExcecaoPocJaCadastrado();
                 
         }
-        
     }
 
     /** Método teste01, responsável por testa Funcionalidades ControlePoc para Poc1
@@ -104,10 +105,9 @@ public class PocTest {
      */
 
     @Test
-    public void teste01() throws ExcecaoPocNaoEncontrado{
+    public void teste01() throws ExcecaoPocNaoEncontrado {
 
         String mensagemDaExcecao = "";
-
         Poc poc1 = new Poc(null, null, null, null, null, null, null, null);
 
         try {
@@ -126,7 +126,6 @@ public class PocTest {
         assertEquals(controlePoc.retornarPocsDoSistema().size(), controlePoc.quantidadePocsArmazenadas());
         
         String listaAutoresTeste1 = "Aroldo - Gabriel";
-
         String listaPalavrasChaveTeste1 = "ESOF - Engenharia - Software";
 
         try {
@@ -138,15 +137,13 @@ public class PocTest {
             mensagemDaExcecao = e1.getMessage();
 
         }
+
         assertEquals("", mensagemDaExcecao); //"POC buscado não foi encontrado!"
         mensagemDaExcecao = "";
 
         assertEquals("ESOF", poc1.getTitulo());
-        
         assertEquals(false,  controlePoc.isEmpty());
-
         assertEquals(listaAutoresTeste1, poc1.getListaAutores());
-
         assertEquals(listaPalavrasChaveTeste1, poc1.getPalavrasChave());
 
     }
@@ -161,9 +158,7 @@ public class PocTest {
     public void teste2() {
 
         String mensagemDaExcecao = "";
-
         Poc pocTemp = new Poc(null, null, null, null, null, null, null, null);
-
         Poc poc2 = new Poc(null, null, null, null, null, null, null, null);
 
         try {
@@ -180,7 +175,6 @@ public class PocTest {
         mensagemDaExcecao = "";
         
         String listaAutoresTeste2 = "ERRO - Thiago";
-
         String listaPalavrasChaveTeste2 = "CD - Ciencia - Dados";
         
 
@@ -197,8 +191,8 @@ public class PocTest {
             mensagemDaExcecao = e2.getMessage();
 
         }
-        assertEquals("", mensagemDaExcecao);
 
+        assertEquals("", mensagemDaExcecao);
         assertEquals(false, listaAutoresTeste2.equals(pocTemp.getTitulo()));
 
         try {
@@ -210,8 +204,8 @@ public class PocTest {
             mensagemDaExcecao = e2.getMessage();
 
         }
-        assertEquals("POC buscado não foi encontrado!", mensagemDaExcecao);
 
+        assertEquals("POC buscado não foi encontrado!", mensagemDaExcecao);
         assertEquals(false, controlePoc.isEmpty());
 
     }
@@ -228,7 +222,6 @@ public class PocTest {
     public void teste3() throws ExcecaoPocJaCadastrado, ExcecaoCadastranteInvalido { 
 
         String mensagemDaExcecao = "";
-
         Poc poc3 = new Poc(null, null, null, null, null, null, null, null);
 
         try {
@@ -245,7 +238,6 @@ public class PocTest {
         mensagemDaExcecao = "";
 
         String listaAutoresTeste3 = "Gabriel - Joao";
-
         String listaPalavrasChaveTeste3 = "IC - Internet - Coisas";
 
         poc3 = new Poc("IC", listaAutoresTeste3, "Gabriel",
@@ -269,9 +261,9 @@ public class PocTest {
             mensagemDaExcecao = e3.getMessage();
 
         }
+
         assertEquals("", mensagemDaExcecao);
         mensagemDaExcecao = "";
-
         assertEquals(false, controlePoc.isEmpty());
 
     }
@@ -353,5 +345,4 @@ public class PocTest {
         mensagemDaExcecao = "";
 
     }
-
 }
