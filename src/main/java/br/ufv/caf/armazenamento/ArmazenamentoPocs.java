@@ -9,8 +9,8 @@ import br.ufv.caf.modelo.AreasPoc;
  * @author João Vitor Chagas Lobo - 4693
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @author Gabriel Ryan Dos Santos Oliveira - 4688
- * @since 02/12/2022 - 14:00
- * @version 1.3
+ * @since 06/12/2022 - 16:00
+ * @version 1.4
  */
 
 public class ArmazenamentoPocs {
@@ -33,7 +33,7 @@ public class ArmazenamentoPocs {
 
     }
 
-    /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO!
+    /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO CASO NÃO SEJA UTILIZADA!
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
@@ -58,7 +58,7 @@ public class ArmazenamentoPocs {
     public void addPoc(Poc novoPoc) {
 
         if (arquivo.Write("src/regs/pocs.csv", novoPoc)) {
-            
+
             System.out.println("Novo POC adicionado");
 
         } else {
@@ -107,7 +107,7 @@ public class ArmazenamentoPocs {
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
-     @author Gabriel Ryan Dos Santos Oliveira - 4688
+     * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param tituloPocAPesquisar String - Titulo do Poc que deseja verificar se está presente na lista de poc's
      * @return Poc
      * @since 02/12/2022 - 14:00
@@ -170,5 +170,4 @@ public class ArmazenamentoPocs {
         return listaPocs.size();
 
     }
-
 }
