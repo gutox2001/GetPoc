@@ -38,7 +38,7 @@ public class App {
         int escolhaUsuario;
 
         while (sistemaLigado) {
-            System.out.println("\n=================   GETPOC   ================\n");
+            System.out.println("\n================   GETPOC   =================\n");
             System.out.println("=============================================");
             System.out.println("|                  LOGIN                    |");
             System.out.println("=============================================");
