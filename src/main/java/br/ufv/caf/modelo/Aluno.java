@@ -1,7 +1,7 @@
 package br.ufv.caf.modelo;
-//TODO - padronizar nome do aroldo
+
 /** Classes que herda a classe abstrata Usuário e implementa as funcionalidades do Aluno
- * @author Aroldo Augusto Barbosa Simões
+ * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 09/11/2022  - 22:00
  * @version 1.2
  */
