@@ -326,7 +326,7 @@ public class TelaUsuario{
                     telaPoc.menuCadastro(usuarioLogado.getMatricula());
                     break;
                 case 3:
-                    telaPoc.menuEdicao(usuarioLogado.getMatricula());
+                    telaPoc.menuEdicao(usuarioLogado.getMatricula(), false);
                     break;
                 case 4:
                     telaPoc.menuRemocao();
@@ -387,7 +387,7 @@ public class TelaUsuario{
                     telaPoc.menuCadastro(matriculaLogada);
                     break;
                 case 3:
-                    telaPoc.menuEdicao(matriculaLogada);
+                    telaPoc.menuEdicao(matriculaLogada, true);
                     break;
                 case 4:
                     telaPoc.menuRemocao();
