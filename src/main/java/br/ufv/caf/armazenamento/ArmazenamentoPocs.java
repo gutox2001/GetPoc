@@ -26,6 +26,7 @@ public class ArmazenamentoPocs {
      */
     
     public ArmazenamentoPocs() {
+
         arquivo = new ManipuladorArquivoPoc();
         listaPocs = new ArrayList<String>();
         listaPocs = arquivo.Read("src/regs/pocs.csv");
@@ -46,16 +47,16 @@ public class ArmazenamentoPocs {
     }
 
     /** Método addPoc, usado para adicionar novos poc's à lista de Poc's
-     * @author João Vitor Chagas Lobo - 4693
+     * @author @João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param novoPoc Poc - Novo Poc
      * @since 02/12/2022 - 14:00
      */
 
-    public void addPoc(Poc novoPoc) {
+    public void addPoc(Poc novoPoc, String matricula) {
 
-        if (arquivo.Write("src/regs/pocs.csv", novoPoc))
+        if (arquivo.Write("src/regs/pocs.csv", novoPoc, matricula))
             System.out.println("Novo POC adicionado");
         else 
             System.out.println("Novo POC não adicionado");
@@ -107,11 +108,11 @@ public class ArmazenamentoPocs {
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(tituloPocAPesquisar)){
 
-                Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], null);
+                Poc pocAux = new Poc(poc.split(",")[0], poc.split(",")[1], poc.split(",")[2], poc.split(",")[3], poc.split(",")[4], poc.split(",")[5], poc.split(",")[6],  null);
 
                 //Compara a String área da Poc com a lista de Áreas disponíveis
                 for (AreasPoc area : AreasPoc.values()) {
-                    if(area.name().equals(poc.split(",")[6])) {
+                    if(area.name().equals(poc.split(",")[7])) {
 
                         pocAux.setAreaDaPoc(area);
 

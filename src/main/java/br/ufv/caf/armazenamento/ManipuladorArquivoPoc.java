@@ -75,7 +75,7 @@ public class ManipuladorArquivoPoc {
      * @since 02/12/2022 - 14:00
      */
 
-    public boolean Write(String caminho, Poc novoPoc) {
+    public boolean Write(String caminho, Poc novoPoc, String matricula ) {
 
         try {
             FileWriter arq = new FileWriter(caminho, true);
@@ -83,7 +83,7 @@ public class ManipuladorArquivoPoc {
 
             gravaArq.println(novoPoc.getTitulo()+ "," + novoPoc.toStringAutores() + "," +
             novoPoc.getNomeOrientador() + "," + novoPoc.getNomeCoOrientador() + "," +
-            novoPoc.toStringPalavrasChave() + "," + novoPoc.getResumo() + "," +
+            novoPoc.toStringPalavrasChave() + "," + novoPoc.getResumo() + "," + matricula + "," +
             String.valueOf(novoPoc.getAreaDaPoc()));
             
             gravaArq.close();
