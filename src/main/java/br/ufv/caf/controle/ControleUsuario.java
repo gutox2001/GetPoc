@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * Manipulam a classe abstrata Usuario e as suas subclasses
  * <p>
  * Todos os usuários são identificados por suas matrículas
- * @author @João Vitor Chagas Lobo - 4693
- * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @author João Vitor Chagas Lobo - 4693
+ * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 01/12/2022 - 20:00
  * @version 1.2
  */
@@ -26,8 +26,8 @@ public class ControleUsuario {
     ArmazenamentoUsuarios armzUsuarios;
 
     /** Método ControleUsuario, construtor da classe ControleUsuario
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param armzUsuarios ArmazenamentoUsuarios - Classe de armazenamento de usuários que precisa ja estar instanciada
      * @since 14/11/2022 - 18:45
      */
@@ -39,8 +39,8 @@ public class ControleUsuario {
     }
 
     /** Método validaUsuario, usado informar se a matrícula e a senha do usuário estão em formatos validos
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param usuario Usuario - Usuário que será validado
      * @return boolean
      * @since 01/12/2022 - 20:00
@@ -54,8 +54,8 @@ public class ControleUsuario {
 
     /** Método cadastraUsuario, usado para cadastrar um usuário no sistema
      * Antes de cadastrar o usuário ja está cadastrado e se os seus dados são válidos
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param novoUsuario Usuario - Usuário que deseja remover
      * @since 01/12/2022 - 20:00
      */
@@ -85,8 +85,8 @@ public class ControleUsuario {
     }
 
     /** Método removeUsuario, usado para poder remover os usuários na lista de usuários do sistema
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param matriculaUsuarioARemover String - Matrícula do usuário que deseja remover
      * @return boolean
      * @since 21/11/2022 - 19:00
@@ -108,7 +108,7 @@ public class ControleUsuario {
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários e retornar o seu índice no armazenameto
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param usuarioAPesquisar Usuario - Verifica se determinado usuário está presente na lista de usuários
      * @return Usuario
      * @since 01/12/2022 - 20:00
@@ -135,8 +135,8 @@ public class ControleUsuario {
     }
 
     /** Método pesquisaUsuario, utilizado para verificar se um determinado usuário está presente na lista de usuários pelo valor de sua matricula
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param matriculaUsuarioAPesquisar "String" - Usuário que deseja verificar se determinado usuário está presente na lista de usuários
      * @return Usuario
      * @since 01/12/2022 - 20:00
@@ -163,8 +163,8 @@ public class ControleUsuario {
     }
 
     /** Método realizarLogin, utilizado para pesquisar e retorna um usuário no armazenamento através da matricula
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param matricula String - Matricula do usuário que deseja fazer login
      * @param senha String - Senha do usuário que deseja fazer login
      * @return Usuario
@@ -198,8 +198,8 @@ public class ControleUsuario {
     }
 
     /** Método exibirTodosUsuarios, utilizado para retorna os usuário do armazenamento
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 01/12/2022 - 20:00
      */
@@ -221,7 +221,7 @@ public class ControleUsuario {
     }
 
     /** Método isEmpty, utilizado para verificar se o armazenamento de Usuários está vazia
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 01/12/2022 - 20:00
      */

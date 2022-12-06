@@ -1,7 +1,7 @@
 package br.ufv.caf.modelo;
 
 /** Classe abstrata Usuário que representa os usuários base do sistema
- * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 09/11/2022 - 22:00
  * @version 1.2
  */
@@ -9,7 +9,7 @@ package br.ufv.caf.modelo;
 public abstract class Usuario {
 
     /** Método TipoUsuario, tem a finalidade de definir tipo do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return enum
      * @since 09/11/2022 - 22:00
      */
@@ -24,7 +24,7 @@ public abstract class Usuario {
     private TipoUsuario tipoUsuario;
 
     /** Método Usuario, construtor da classe Usuario
-     * @author @Aroldo Augusto Barbosa Simões
+     * @author Aroldo Augusto Barbosa Simões
      * @param nome String - Nome do Usuário
      * @param matricula int - Numero da Matricula
      * @param senha String - Senha de acesso
@@ -42,7 +42,7 @@ public abstract class Usuario {
     }
 
     /** Método getNome, usado para obter o Nome do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Nome do Usuário
      * @since 02/11/2022 - 15:30
      */
@@ -52,7 +52,7 @@ public abstract class Usuario {
     }
 
     /** Método getMatricula, usado para obter o Matricula do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return int - Numero da matricula do Usuário
      * @since 02/11/2022 - 15:30
      */
@@ -64,7 +64,7 @@ public abstract class Usuario {
     }
 
     /** Método getSenha, usado para obter o a senha do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Senha do Usuário
      * @since 02/11/2022 - 15:30
      */
@@ -75,7 +75,7 @@ public abstract class Usuario {
 
     //TODO - Joao - mudar
     /** Método setSenha, usado para modificar a senha do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param String senha
      * @since 30/11/2022 - x
      */
@@ -87,7 +87,7 @@ public abstract class Usuario {
     }
 
     /** Método setNome, usado para modificar o nome do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @param String nome
      * @since 30/11/2022 - x
      */
@@ -99,7 +99,7 @@ public abstract class Usuario {
     }
 
     /** Método getTipoUsuario, usado para obter o tipo do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return TipoUsuario - Tipo do Usuário
      * @since 02/11/2022 - 15:30
      */
@@ -111,7 +111,7 @@ public abstract class Usuario {
     }
 
     /** Método toString, usado para obter todos os dados do Usuário
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String - Nome, Matricula, Tipo do Usuário
      * @since 02/11/2022 - 15:30
      */
@@ -124,7 +124,7 @@ public abstract class Usuario {
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da senha
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */
@@ -132,7 +132,7 @@ public abstract class Usuario {
     public abstract boolean validaMatricula();
 
     /** Método validaSenha, tem a finalidade de verificar o formato da senha
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
      * @since 09/11/2022 - 22:00
      */
@@ -142,11 +142,15 @@ public abstract class Usuario {
     //TODO - Joao - falta javadocs
 
     public void setMatricula(String matricula) {
+
         this.matricula = matricula;
+
     }
 
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
+
         this.tipoUsuario = tipoUsuario;
+
     }
 
 }

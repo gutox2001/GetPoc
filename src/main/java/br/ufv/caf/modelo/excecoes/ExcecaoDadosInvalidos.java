@@ -1,8 +1,8 @@
 package br.ufv.caf.modelo.excecoes;
 
 /** Classe que tem a finalidade de declarar exceção de dados inválidos do sistema GetPoc
- * @author @João Vitor Chagas Lobo - 4693
- * @author @Aroldo Augusto Barbosa Simões - 4250
+ * @author João Vitor Chagas Lobo - 4693
+ * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 01/12/2022 - 20:00
  * @version 1.0
  */
@@ -10,8 +10,8 @@ package br.ufv.caf.modelo.excecoes;
 public class ExcecaoDadosInvalidos extends Exception{
 
     /** Método getMessage, retornara uma mensagem caso ...
-     * @author @João Vitor Chagas Lobo - 4693
-     * @author @Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
+     * @author Aroldo Augusto Barbosa Simões - 4250
      * @return String
      * @since 01/12/2022 - 20:00
      */

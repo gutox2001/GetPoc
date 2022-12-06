@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** Classe que tem como funcionalidade apresentar a tela de controle sobre os poc's
- * @author @Thiago Cândido Rocha - 4225
+ * @author Thiago Cândido Rocha - 4225
  * @since 09/11/2022 - 18:30
  * @version 1.0
  */
@@ -25,7 +25,7 @@ public class TelaPoc {
     private Scanner inputPoc;
 
     /** Método TelaPoc, construtor da classe TelaPoc
-     * @author @Thiago Cândido Rocha - 4225 
+     * @author Thiago Cândido Rocha - 4225 
      * @param controle ControlePoc - Controle do POC
      * @since 09/11/2022 - 18:30
      */
@@ -76,7 +76,7 @@ public class TelaPoc {
     }
 
     /** Método preenchimentoDados, responsável por fazer o preenchimento dos dados do poc
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @return Poc
      * @since 09/11/2022 - 21:00
      */
@@ -145,7 +145,7 @@ public class TelaPoc {
     }
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @return int
      * @since 09/11/2022 - 21:00
      */
@@ -173,7 +173,7 @@ public class TelaPoc {
     }
 
     /** Método menuCadastro, responsável por fazer o cadastro do poc no sistema
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 21:00
      */
 
@@ -210,7 +210,7 @@ public class TelaPoc {
 
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema. POr questões de
      * segurança e direitos autorais, a edição de autores não é permitida.
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 21:00
      */
 
@@ -333,7 +333,7 @@ public class TelaPoc {
     }
 
     /** Método menuRemocao, responsável por fazer a remoção de determinado poc do sistema
-     * @author @Thiago Cândido Rocha - 4225
+     * @author Thiago Cândido Rocha - 4225
      * @since 09/11/2022 - 21:00
      */
 
