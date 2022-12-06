@@ -17,16 +17,14 @@ import br.ufv.caf.modelo.Usuario;
  * @version 1.0
  */
 
-public class ManipuladorArquivoUsuario{
+public class ManipuladorArquivoUsuario {
 
     /** Método ManipuladorArquivoUsuario, construtor da classe ManipuladorArquivoUsuario
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @since 02/12/2022 - 14:00
      */
 
-    public ManipuladorArquivoUsuario() {
-
-    }
+    public ManipuladorArquivoUsuario() {}
 
     /** Método Read, usado para ler os usuários da lista de usuários
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
@@ -38,18 +36,21 @@ public class ManipuladorArquivoUsuario{
     public ArrayList<String> Read(String caminho) {
 
         try {
+
             FileReader arq = new FileReader(caminho);
             BufferedReader lerArq = new BufferedReader(arq);
             ArrayList<String> listaUsuarios = new ArrayList<>();
             String linha = null;
 
-            try{
+            try {
+
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
-                    listaUsuarios.add(linha);
 
+                    listaUsuarios.add(linha);
                     linha = lerArq.readLine();
+
                 }
 
                 arq.close();
@@ -57,13 +58,17 @@ public class ManipuladorArquivoUsuario{
                 return listaUsuarios;
 
             } catch (IOException ex) {
+
                 System.out.println("Erro: Não foi passível ler o aquivo");
                 return null;
+
             }
 
         } catch (FileNotFoundException ex) {
+
             System.out.println("Erro: Arquivo Não encontrado");
             return null;
+
         }
     }
 
@@ -76,7 +81,9 @@ public class ManipuladorArquivoUsuario{
      */
 
     public boolean Write(String caminho, Usuario novoUsuario) {
+
         try {
+
             FileWriter arq = new FileWriter(caminho, true);
             PrintWriter gravaArq = new PrintWriter(arq);
             gravaArq.println(novoUsuario.getNome() + "," + novoUsuario.getMatricula() + "," + novoUsuario.getSenha() + "," + String.valueOf(novoUsuario.getTipoUsuario()));
@@ -84,8 +91,10 @@ public class ManipuladorArquivoUsuario{
             return true;
 
         } catch (IOException e) {
+
             System.out.println(e.getMessage());
             return false;
+
         }
     }
 
@@ -99,29 +108,36 @@ public class ManipuladorArquivoUsuario{
     public void Remove(String caminho, String matriculaUsuarioRemover) {
 
         try {
+
             FileReader arq = new FileReader(caminho);
             BufferedReader lerArq = new BufferedReader(arq);
             ArrayList<String> listaUsuarios = new ArrayList<>();
             String linha = null;
 
-            try{
+            try {
+
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
+
                     if (!linha.split(",")[1].equals(matriculaUsuarioRemover)) {
                         listaUsuarios.add(linha);
                         
                     }
+
                     linha = lerArq.readLine();
+
                 }
 
                 arq.close();
 
                 try {
+
                     FileWriter arqAux = new FileWriter(caminho, false);
                     PrintWriter gravaArqAux = new PrintWriter(arqAux);
 
                     for (String usuarioLista : listaUsuarios) {
+
                         gravaArqAux.println(usuarioLista);
                         
                     }
@@ -129,15 +145,21 @@ public class ManipuladorArquivoUsuario{
                     gravaArqAux.close();
         
                 } catch (IOException e) {
+
                     System.out.println(e.getMessage());
+
                 }
 
             } catch (IOException ex) {
+
                 System.out.println("Erro: Não foi passível ler o aquivo");
+
             }
 
         } catch (FileNotFoundException ex) {
+
             System.out.println("Erro: Arquivo Não encontrado");
+            
         }  
     }
     

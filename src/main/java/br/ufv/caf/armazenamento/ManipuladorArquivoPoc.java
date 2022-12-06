@@ -24,9 +24,7 @@ public class ManipuladorArquivoPoc {
      * @since 02/12/2022 - 14:00
      */
 
-    public ManipuladorArquivoPoc() {
-
-    }
+    public ManipuladorArquivoPoc() {}
 
     /** Método Read, usado para ler os poc's da lista de poc's
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
@@ -38,18 +36,21 @@ public class ManipuladorArquivoPoc {
     public ArrayList<String> Read(String caminho) {
 
         try {
+
             FileReader arq = new FileReader(caminho);
             BufferedReader lerArq = new BufferedReader(arq);
             ArrayList<String> listaPocs = new ArrayList<>();
             String linha = null;
 
-            try{
+            try {
+
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
-                    listaPocs.add(linha);
 
+                    listaPocs.add(linha);
                     linha = lerArq.readLine();
+
                 }
 
                 arq.close();
@@ -57,13 +58,17 @@ public class ManipuladorArquivoPoc {
                 return listaPocs;
 
             } catch (IOException ex) {
+
                 System.out.println("Erro: Não foi passível ler o aquivo");
                 return null;
+
             }
 
         } catch (FileNotFoundException ex) {
+
             System.out.println("Erro: Arquivo Não encontrado");
             return null;
+
         }
     }
 
@@ -78,6 +83,7 @@ public class ManipuladorArquivoPoc {
     public boolean Write(String caminho, Poc novoPoc) {
 
         try {
+
             FileWriter arq = new FileWriter(caminho, true);
             PrintWriter gravaArq = new PrintWriter(arq);
 
@@ -90,10 +96,11 @@ public class ManipuladorArquivoPoc {
             return true;
 
         } catch (IOException e) {
+
             System.out.println(e.getMessage());
             return false;
-        }
 
+        }
     }
 
     /** Método Remove, usado para remover poc's da lista de poc's
@@ -106,30 +113,37 @@ public class ManipuladorArquivoPoc {
     public void Remove(String caminho, String tituloPocARemover) {
 
         try {
+
             FileReader arq = new FileReader(caminho);
             BufferedReader lerArq = new BufferedReader(arq);
             ArrayList<String> listaPocs = new ArrayList<>();
             String linha = null;
 
-            try{
+            try {
+
                 linha = lerArq.readLine();
                 
                 while (linha != null) {
+
                     if (!linha.split(",")[0].equals(tituloPocARemover)) {
+
                         listaPocs.add(linha);
                         
                     }
 
                     linha = lerArq.readLine();
+
                 }
 
                 arq.close();
 
                 try {
+
                     FileWriter arqAux = new FileWriter(caminho, false);
                     PrintWriter gravaArqAux = new PrintWriter(arqAux);
 
                     for (String pocLista : listaPocs) {
+
                         gravaArqAux.println(pocLista);
                         
                     }
@@ -137,15 +151,21 @@ public class ManipuladorArquivoPoc {
                     gravaArqAux.close();
         
                 } catch (IOException e) {
+
                     System.out.println(e.getMessage());
+
                 }
 
             } catch (IOException ex) {
+
                 System.out.println("Erro: Não foi passível ler o aquivo");
+                
             }
 
         } catch (FileNotFoundException ex) {
+
             System.out.println("Erro: Arquivo Não encontrado");
+
         }  
     }
 }
