@@ -17,7 +17,9 @@ public class Aluno extends Usuario {
      */
 
     public Aluno(String nome, String matricula, String senha) {
+
         super(nome, matricula, senha, TipoUsuario.ALUNO);
+        
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da matricula
@@ -28,7 +30,9 @@ public class Aluno extends Usuario {
 
     @Override
     public boolean validaMatricula() { //TODO - VERIFICAR FORMATO DA MATRICULA
+
         return this.getMatricula().matches("\\d{4}");
+
     }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da senha
@@ -39,7 +43,9 @@ public class Aluno extends Usuario {
 
     @Override
     public boolean validaSenha() { //TODO - VERIFICAR FORMATO DA SENHA
+
         return this.getSenha().matches(".{4,}");
+
     }
 
 }

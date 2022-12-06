@@ -22,8 +22,8 @@ import br.ufv.caf.modelo.excecoes.ExcecaoUsuarioNaoEncontrado;
 /** Classes que tem como funcionalidade fazer o teste das classes Uuário e ArmazenamentoUsuarios
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @author Gabriel Ryan dos Santos Oliveira - 4688
- * @since 21/11/2022 - 20:00
- * @version 1.1
+ * @since 05/12/2022 - 22:00
+ * @version 1.2
  */
 
 public class UsuarioTest {
@@ -45,7 +45,7 @@ public class UsuarioTest {
      * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioJaCadastrado
      * @throws ExcecaoUsuarioNaoEncontrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @BeforeEach
@@ -118,7 +118,7 @@ public class UsuarioTest {
      * @throws ExcecaoUsuarioNaoEncontrado
      * @throws ExcecaoUsuarioJaCadastrado
      * @throws ExcecaoDadosInvalidos
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -130,9 +130,13 @@ public class UsuarioTest {
 
             iniciaTeste();
             
-        } catch (ExcecaoUsuarioJaCadastrado excecaoTeste) {
+        } catch (ExcecaoUsuarioJaCadastrado e1) {
 
-            mensagemDaExcecao = excecaoTeste.getMessage();
+            mensagemDaExcecao = e1.getMessage();
+
+        }catch (ExcecaoDadosInvalidos e2) {
+
+            mensagemDaExcecao = e2.getMessage();
 
         }
 
@@ -195,7 +199,7 @@ public class UsuarioTest {
      * @throws ExcecaoUsuarioJaCadastrado
      * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioNaoEncontrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -294,7 +298,7 @@ public class UsuarioTest {
      * @throws ExcecaoUsuarioNaoEncontrado
      * @throws ExcecaoUsuarioJaCadastrado
      * @throws ExcecaoDadosInvalidos
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -379,7 +383,7 @@ public class UsuarioTest {
      * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioNaoEncontrado
      * @throws ExcecaoNenhumUsuarioCadastrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -427,7 +431,7 @@ public class UsuarioTest {
      * @throws ExcecaoUsuarioNaoEncontrado
      * @throws ExcecaoUsuarioJaCadastrado
      * @throws ExcecaoDadosInvalidos
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test
@@ -493,7 +497,7 @@ public class UsuarioTest {
      * @throws ExcecaoUsuarioJaCadastrado
      * @throws ExcecaoDadosInvalidos
      * @throws ExcecaoUsuarioNaoEncontrado
-     * @since 09/11/2022 - 14:00
+     * @since 05/12/2022 - 22:00
      */
 
     @Test

@@ -50,11 +50,11 @@ public class ControleUsuario {
 
         if (usuario.validaMatricula() && usuario.validaSenha()) {
 
-            return false;
+            return true;
 
         } else {
 
-            return true;
+            return false;
 
         }
 
@@ -80,8 +80,11 @@ public class ControleUsuario {
             }
 
             else{
+
                 throw new ExcecaoUsuarioJaCadastrado();
+
             }
+
         } else {
 
             throw new ExcecaoDadosInvalidos();
