@@ -124,7 +124,7 @@ public class ControlePoc {
      * @since 21/11/2022 - 19:30
      */
 
-    public ArrayList<String> retornarPocsDoSistema() { //TODO - Verificar o funcionamento pois o getLista retorna Strings
+    public ArrayList<String> retornarPocsDoSistema() {
 
         if (armzPocs.isEmpty()) {
 
@@ -139,10 +139,10 @@ public class ControlePoc {
 
     /** Método editarPoc, utilizado para conseguir editar os poc's já armazenados na lista de Poc's
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param Poc pocEditado - Poc editado a ser inserido
-     * @param String matriculaLogado - matrícula do usuário que está logado no sistema
-     * @param String tituloPocDesatualizada - título do Poc desatualizado a ser substítuído pelo pocEditado
-     * @param boolean flag - 
+     * @param pocEditado Poc - Poc editado a ser inserido
+     * @param matriculaLogado String - matrícula do usuário que está logado no sistema
+     * @param tituloPocDesatualizada String - título do Poc desatualizado a ser substítuído pelo pocEditado
+     * @param flag boolean
      * @since 02/11/2022 - 18:30
      */
 

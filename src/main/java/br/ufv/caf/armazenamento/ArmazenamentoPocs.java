@@ -33,7 +33,7 @@ public class ArmazenamentoPocs {
 
     }
 
-    /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema //TODO: APAGAR FUNÇÃO CASO NÃO SEJA UTILIZADA!
+    /** Método getListaPocs, usado para obter a lista de poc's já adicionados no sistema
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688

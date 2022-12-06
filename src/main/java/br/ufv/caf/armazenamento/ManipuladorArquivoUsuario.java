@@ -33,7 +33,7 @@ public class ManipuladorArquivoUsuario {
      * @since 02/12/2022 - 14:00
      */
     
-    public ArrayList<String> Read(String caminho) {
+    public ArrayList<String> Read (String caminho) {
 
         try {
 

@@ -79,47 +79,4 @@ public class TelaPrincipal {
         
         }
     }
-
-    /** Método verificaSistema, responsável por verificar se o sistema está vazio
-     * @author Thiago Cândido Rocha - 4225
-     * @return boolean
-     * @since 11/11/2022 - 19:00
-     */
-
-    private boolean verificaSistema() {
-
-        if(this.telaUser.controle.armazenamentoUsuariosVazio()) {
-
-            return false;
-
-        }
-
-        return true;
-
-    }
-
-    /** Método exibeSistema, responsável por exibir os usuários cadastrados no sistema
-     * @author Thiago Cândido Rocha - 4225
-     * @since 11/11/2022 - 19:00
-     */
-    
-    public void exibeSistema() {
-
-        ArrayList<String> todosUsuarios = null;
-
-        try {
-
-            todosUsuarios = this.telaUser.controle.retornarTodosUsuarios();
-
-            for(String usuarios : todosUsuarios) {
-
-                System.out.println(usuarios);
-
-            }
-        } catch(ExcecaoNenhumUsuarioCadastrado emptySystem) {
-
-            System.err.println("O sistema não possui usuários cadastrados!");
-
-        }
-    }
 }

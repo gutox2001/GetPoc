@@ -223,8 +223,8 @@ public class ControleUsuario {
 
     /** Método alteraSenha, utilizado para alterar a senha do usuário logado
      * @author Thiago Cândido Rocha - 4225
-     * @param Usuario usuarioLogado - usuário que está logado no sistema
-     * @param String novaSenha - nova senha do usuário
+     * @param usuarioLogado Usuario - usuário que está logado no sistema
+     * @param novaSenha String - nova senha do usuário
      * @since 06/12/2022 - 16:00
      */
 
@@ -238,8 +238,8 @@ public class ControleUsuario {
 
     /** Método alteraNome, utilizado para alterar o nome do usuário logado
      * @author Thiago Cândido Rocha - 4225
-     * @param Usuario usuarioLogado - usuário que está logado no sistema
-     * @param String novoNome - novo nome do usuário
+     * @param usuarioLogado Usuario - usuário que está logado no sistema
+     * @param novoNome String - novo nome do usuário
      * @since 06/12/2022 - 16:00
      */
 

@@ -216,9 +216,9 @@ public class TelaUsuario {
                 option = Integer.parseInt(this.inputUser.nextLine());
 
             }
-        } while(option != 0);
+        } while (option != 0);
 
-        if(usuarioPesquisado!=null && usuarioPesquisado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)) {
+        if (usuarioPesquisado!=null && usuarioPesquisado.getTipoUsuario().equals(Usuario.TipoUsuario.ADMINISTRADOR)) {
 
             System.err.println("Por medidas de segurança, um admin não pode alterar dados de outro admin.");
 
@@ -289,7 +289,7 @@ public class TelaUsuario {
                     break;
 
             }
-        } while(option == 0 || option == 1);
+        } while (option == 0 || option == 1);
     }
 
     /** Método menuExibeBuscaUsuario, tem a finalidade de exibir um usuário pesquisado(ADMINISTRADORES SOMENTE)
@@ -323,7 +323,6 @@ public class TelaUsuario {
     protected void menuFuncionalidadesAluno(TelaPoc telaPoc, Usuario usuarioLogado) {
 
         int opcao;
-        String nomePoc;
 
         System.out.println("Lista dos Pocs cadastrados no sistema:");
         telaPoc.exibeTodosOsTitulosPocs();
@@ -372,7 +371,6 @@ public class TelaUsuario {
     protected void menuFuncionalidadesProfessor(TelaPoc telaPoc, Usuario usuarioLogado) {
 
         int opcao;
-        String nomePoc;
 
         System.out.println("Lista dos Pocs cadastrados no sistema:");
         telaPoc.exibeTodosOsTitulosPocs();
@@ -439,7 +437,6 @@ public class TelaUsuario {
                                                     String matriculaLogada) {
 
         int opcao;
-        String nomePoc;
 
         System.out.print("\n\n");
         System.out.println("=============================================" +
@@ -519,6 +516,5 @@ public class TelaUsuario {
 
             }
         } while (opcao != 0);
-
-    }   
+    }
 }
