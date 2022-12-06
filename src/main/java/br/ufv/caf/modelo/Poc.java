@@ -20,17 +20,16 @@ public class Poc {
     /** Método Poc, construtor da classe Poc
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param titulo String - Titulo do poc
-     * @param listaAutoresTeste1 ArrayList<String> - Autores envolvidos no poc
+     * @param listaAutores ArrayList<String> - Autores envolvidos no poc
      * @param nomeOrientador String - Nome do orientador do poc
      * @param nomeCoOrientador String - Nome do coorientador do poc
-     * @param listaPalavrasChaveTeste1 ArrayList<String> - Palavra chave que descreve o poc
+     * @param listaPalavrasChave ArrayList<String> - Palavra chave que descreve o poc
      * @param resumo String - Resumo geral do que o poc se trata
      * @param areaPoc Area - Área que o poc irá aborda
      * @since 02/11/2022 - 16:00
      */
 
-    public Poc(String titulo, String listaAutores, String nomeOrientador,
-               String nomeCoOrientador, String listaPalavrasChave, String resumo, AreasPoc areaPoc) {
+    public Poc(String titulo, String listaAutores, String nomeOrientador, String nomeCoOrientador, String listaPalavrasChave, String resumo, AreasPoc areaPoc) {
 
         this.titulo = titulo;
         this.listaAutores = listaAutores;
@@ -58,7 +57,6 @@ public class Poc {
      * @since 01/12/2022 - 22:00
      */
 
-
     public void setTitulo(String titulo) {
 
         this.titulo = titulo;
@@ -72,6 +70,7 @@ public class Poc {
      */
 
     public String getListaAutores() {
+
         return listaAutores;
 
     }
@@ -82,6 +81,7 @@ public class Poc {
      */
 
     public void setListaAutores(String listaAutores) {
+
         this.listaAutores = listaAutores;
 
     }
@@ -145,6 +145,7 @@ public class Poc {
     }
 
     public void setPalavrasChave(String palavrasChave) {
+
         this.palavrasChave = palavrasChave;
 
     }
@@ -200,7 +201,9 @@ public class Poc {
      */
 
     public String toStringAutores(){
+
         return this.listaAutores.substring(0,this.listaAutores.length());
+
     }
 
     /** Método toStringPalavrasChave, usado para retornar uma String com todos as palavras-chave da Poc
@@ -210,7 +213,9 @@ public class Poc {
      */
 
     public String toStringPalavrasChave(){
+
         return this.palavrasChave.substring(0,this.palavrasChave.length());
+
     }
 
     /** Método toString, usado para retornar uma String com todos os dados da Poc
@@ -238,10 +243,6 @@ public class Poc {
      * @since 02/11/2022 - 16:00
      */
 
-    //TODO - VERIFICAR FORMATO DO TITULO
-    //TODO - Verificar se isso é necessário
-    //TODO - VALIDAÇÃO DAS outras informações da Poc;
-    //TODO - GARANTIR que todos os atributos serão preenchidos;
     public boolean validaTitulo() {
 
         return this.getTitulo().matches("\\w{2,}");

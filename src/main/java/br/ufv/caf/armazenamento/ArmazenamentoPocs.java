@@ -65,7 +65,7 @@ public class ArmazenamentoPocs {
     /** Método removePoc, usado para remover poc's da lista de poc's
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param tituloPocRemover Poc - Poc que deseja remover
+     * @param tituloPocARemover Poc - Poc que deseja remover
      * @return boolean
      * @since 02/12/2022 - 14:00
      */
@@ -98,7 +98,6 @@ public class ArmazenamentoPocs {
         return null;
     }
 
-
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
      * @author Gabriel Ryan dos 
      * @param tituloPocAPesquisar String - Titulo do Poc que deseja verificar se está presente na lista de poc's
@@ -129,7 +128,6 @@ public class ArmazenamentoPocs {
         return null;
     }
 
-
     /** Método isEmpty, utilizado para verificar se a lista de poc's está vazia
      * <p>
      * Função analisa se não há poc's armazenadas no sistema, e retorna 'true' caso isso ocorra
@@ -140,12 +138,8 @@ public class ArmazenamentoPocs {
      */
     
     public boolean isEmpty() {
-        
-        if (listaPocs.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+
+        return listaPocs.isEmpty();
 
     }
 

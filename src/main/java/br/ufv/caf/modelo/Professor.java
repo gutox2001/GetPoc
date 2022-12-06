@@ -29,7 +29,7 @@ public class Professor extends Usuario{
      */
 
     @Override
-    public boolean validaMatricula() { //TODO - VERIFICAR FORMATO DA MATRICULA
+    public boolean validaMatricula() {
 
         return this.getMatricula().matches("\\d{4}");
 

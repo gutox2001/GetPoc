@@ -33,14 +33,13 @@ public abstract class Usuario {
      */
 
     protected Usuario(String nome, String matricula, String senha, TipoUsuario tipoUsuario) {
+
         this.nome = nome;
         this.matricula = matricula;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
 
     }
-
-    //TODO ver se precisa de mais gets ou sets
 
     /** Método getNome, usado para obter o Nome do Usuário
      * @author @Aroldo Augusto Barbosa Simões - 4250
@@ -74,6 +73,7 @@ public abstract class Usuario {
         return senha;
     }
 
+    //TODO - Joao - mudar
     /** Método setSenha, usado para modificar a senha do Usuário
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param String senha
@@ -118,9 +118,10 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return " NOME USUARIO: " + this.nome + "\n- MATRICULA USUARIO: " + this.matricula + "\n- TIPO USUARIO: " + this.tipoUsuario.name();
-    }
 
+        return " NOME USUARIO: " + this.nome + "\n- MATRICULA USUARIO: " + this.matricula + "\n- TIPO USUARIO: " + this.tipoUsuario.name();
+
+    }
 
     /** Método validaMatricula, tem a finalidade de verificar o formato da senha
      * @author @Aroldo Augusto Barbosa Simões - 4250
@@ -130,7 +131,6 @@ public abstract class Usuario {
 
     public abstract boolean validaMatricula();
 
-
     /** Método validaSenha, tem a finalidade de verificar o formato da senha
      * @author @Aroldo Augusto Barbosa Simões - 4250
      * @return boolean
@@ -138,6 +138,8 @@ public abstract class Usuario {
      */
     
     public abstract boolean validaSenha();
+
+    //TODO - Joao - falta javadocs
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;

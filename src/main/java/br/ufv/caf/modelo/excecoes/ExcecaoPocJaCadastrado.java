@@ -10,6 +10,6 @@ public class ExcecaoPocJaCadastrado extends Exception{
     @Override
     public String getMessage() {
         return "POC já está cadastrado no nosso sistema. " +
-                "Duplicatas não serão aceitas!";
+                    "Duplicatas não serão aceitas!";
     }
 }
