@@ -54,9 +54,9 @@ public class ArmazenamentoPocs {
      * @since 02/12/2022 - 14:00
      */
 
-    public void addPoc(Poc novoPoc) {
+    public void addPoc(Poc novoPoc, String matricula) {
 
-        if (arquivo.Write("src/regs/pocs.csv", novoPoc))
+        if (arquivo.Write("src/regs/pocs.csv", novoPoc, matricula))
             System.out.println("Novo POC adicionado");
         else 
             System.out.println("Novo POC não adicionado");
