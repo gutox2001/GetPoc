@@ -40,7 +40,7 @@ public class ControlePoc {
 
         if (armzPocs.pesquisaPoc(novoPoc) == null){
 
-            armzPocs.addPoc(novoPoc);
+            armzPocs.addPoc(novoPoc, null);
 
         } else {
 
