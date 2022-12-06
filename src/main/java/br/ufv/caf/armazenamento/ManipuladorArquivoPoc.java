@@ -80,7 +80,7 @@ public class ManipuladorArquivoPoc {
      * @since 02/12/2022 - 14:00
      */
 
-    public boolean Write(String caminho, Poc novoPoc, String matricula ) {
+    public boolean Write(String caminho, Poc novoPoc) {
 
         try {
 
@@ -89,7 +89,7 @@ public class ManipuladorArquivoPoc {
 
             gravaArq.println(novoPoc.getTitulo()+ "," + novoPoc.toStringAutores() + "," +
             novoPoc.getNomeOrientador() + "," + novoPoc.getNomeCoOrientador() + "," +
-            novoPoc.toStringPalavrasChave() + "," + novoPoc.getResumo() + "," + matricula + "," +
+            novoPoc.toStringPalavrasChave() + "," + novoPoc.getResumo() + "," + novoPoc.getMatriculaCadastrante() + "," +
             String.valueOf(novoPoc.getAreaDaPoc()));
             
             gravaArq.close();
