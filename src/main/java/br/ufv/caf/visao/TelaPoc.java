@@ -81,7 +81,7 @@ public class TelaPoc {
      * @since 09/11/2022 - 21:00
      */
 
-    private Poc preenchimentoDados(){
+    private Poc preenchimentoDados(String matriculaCadastro){
         String titulo;
         String nomeOrientador;
         String nomeCoorientador =  "";
@@ -141,7 +141,7 @@ public class TelaPoc {
 
 
         return pocTemp = new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
-                palavrasChave, resumo, area);
+                palavrasChave, resumo, matriculaCadastro, area);
     }
 
     /** Método menuPesquisa, responsável por fazer pesquisa sobre determinado poc
@@ -190,12 +190,11 @@ public class TelaPoc {
         }
     }
 
-    protected void menuCadastro(){
+    protected void menuCadastro(String matriculaCadastro){
         int option;
-
         do{
             try{
-                this.controle.cadastraPoc(preenchimentoDados());
+                this.controle.cadastraPoc(preenchimentoDados(matriculaCadastro));
                 option = 0;
             }catch(ExcecaoPocJaCadastrado alreadyOn){
                 System.err.println("O POC informado já está cadastrado no nosso sistema, d" +
