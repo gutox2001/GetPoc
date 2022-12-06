@@ -8,9 +8,8 @@ package br.ufv.caf.modelo;
 
 public abstract class Usuario {
 
-    /** Método TipoUsuario, tem a finalidade de definir tipo do Usuário
+    /** Enum TipoUsuario, tem a finalidade de definir os tipos de Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @return enum
      * @since 09/11/2022 - 22:00
      */
 
@@ -81,8 +80,8 @@ public abstract class Usuario {
 
     /** Método setSenha, usado para modificar a senha do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param String senha
-     * @since 30/11/2022 - x
+     * @param senha String - senha do Usuário
+     * @since 30/11/2022 - 12:00
      */
 
     public void setSenha(String senha) {
@@ -93,7 +92,7 @@ public abstract class Usuario {
 
     /** Método setNome, usado para modificar o nome do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param String nome - nome do Usuário
+     * @param nome String - nome do Usuário
      * @since 30/11/2022 - 12:00
      */
 
@@ -146,7 +145,7 @@ public abstract class Usuario {
 
     /** Método setNome, usado para modificar o nome do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param String nome - nome do Usuário
+     * @param matricula String - matricula do Usuário
      * @since 30/11/2022 - 12:00
      */
 
@@ -158,7 +157,7 @@ public abstract class Usuario {
 
     /** Método setNome, usado para modificar o nome do Usuário
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @param String nome - nome do Usuário
+     * @param tipoUsuario String - tipo do Usuário
      * @since 30/11/2022 - 12:00
      */
 

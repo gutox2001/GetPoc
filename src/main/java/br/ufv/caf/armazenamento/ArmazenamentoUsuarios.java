@@ -57,14 +57,15 @@ public class ArmazenamentoUsuarios {
 
     public void addUsuario(Usuario novoUsuario) {
 
-        if (arquivo.Write("src/regs/usuarios.csv", novoUsuario))
+        if (arquivo.Write("src/regs/usuarios.csv", novoUsuario)){
 
             System.out.println("Novo usuário adicionado");
 
-        else 
-        
+        } else {
+
             System.out.println("Novo usuário não adicionado");
 
+        }
     }
 
     /** Método removeUsuario, usado para remover usuários da lista de usuários

@@ -116,12 +116,9 @@ public class TelaPoc {
         String nomeCoorientador =  "CO-ORIENTADOR: ";
         String autores = "AUTORES: ";
         String palavrasChave = "PALAVRAS CHAVE:";
-        String palavra = "";
         String resumo = "RESUMO: ";
         AreasPoc area = AreasPoc.ENGENHARIA_DE_SOFTWARE;
         int areaValor;
-        Poc pocTemp;
-        boolean flag = false;
 
 
         System.out.println("=============================================");
@@ -172,7 +169,7 @@ public class TelaPoc {
             }
         }
 
-        return pocTemp = new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
+        return new Poc(titulo, autores, nomeOrientador, nomeCoorientador,
                 palavrasChave, resumo, matriculaCadastro, area);
 
     }
@@ -256,14 +253,14 @@ public class TelaPoc {
                 option = Integer.parseInt(this.inputPoc.nextLine());
 
             }
-        } while(option != 0);
+        } while (option != 0);
     }
 
     /** Método menuEdicao, responsável por fazer a edição dos dados do poc cadastrado no sistema. POr questões de
      * segurança e direitos autorais, a edição de autores não é permitida.
      * @author Thiago Cândido Rocha - 4225
      * @param matriculaLogado String - matrícula do usuário logado
-     * @param boolean flag - valida usuário para permissão de edição
+     * @param flag boolean - valida usuário para permissão de edição
      * @since 09/11/2022 - 21:00
      */
 

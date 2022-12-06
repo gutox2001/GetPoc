@@ -49,7 +49,7 @@ public class App {
                 
             } while (escolhaUsuario < 0 || escolhaUsuario > 1);
 
-            if(escolhaUsuario == 1) {
+            if (escolhaUsuario == 1) {
 
                 System.out.println(" (:     OBRIGADO!     :) ");
                 sistemaLigado = false;

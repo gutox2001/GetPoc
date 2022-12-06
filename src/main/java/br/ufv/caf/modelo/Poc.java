@@ -1,7 +1,7 @@
 package br.ufv.caf.modelo;
 
 
-/** Classes que implementa a entidade Poc
+/** Classes que implementam a entidade Poc
  * @author Aroldo Augusto Barbosa Simões - 4250
  * @since 21/11/2022 - 20:00
  * @version 1.3 
@@ -173,7 +173,6 @@ public class Poc {
 
     /** Método setResumo, usado para redefinir o resumo do Poc
      * @author Aroldo Augusto Barbosa Simões - 4250
-     * @return String - Resumo do Poc
      * @since 01/12/2022 - 22:00
      */
 
@@ -244,6 +243,7 @@ public class Poc {
 
     /** Método toString, usado para retornar uma String com todos os dados da Poc
      * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author João Vitor Chagas Lobo - 4693
      * @return String - Poc e seus dados
      * @since 02/21/2022 - 19:00
      */
