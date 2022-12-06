@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import br.ufv.caf.armazenamento.ArmazenamentoPocs;
 import br.ufv.caf.modelo.AreasPoc;
 import br.ufv.caf.modelo.Poc;
+import br.ufv.caf.modelo.excecoes.ExcecaoCadastranteInvalido;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocJaCadastrado;
 import br.ufv.caf.modelo.excecoes.ExcecaoPocNaoEncontrado;
 
@@ -143,8 +144,13 @@ public class ControlePoc {
      * @since 02/11/2022 - 18:30
      */
 
-    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado {
-
+    public void editarPoc(Poc pocEditada, String tituloPocDesatualizada,
+                          String matriculaLogado) throws ExcecaoPocNaoEncontrado, ExcecaoPocJaCadastrado,
+                                                        ExcecaoCadastranteInvalido {
+        if(!(pesquisarPoc(tituloPocDesatualizada).
+                getMatriculaCadastrante().equals(matriculaLogado))){
+            throw new ExcecaoCadastranteInvalido();
+        }
         removePoc(tituloPocDesatualizada);
         cadastraPoc(pocEditada);
 
