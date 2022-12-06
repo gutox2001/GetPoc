@@ -45,12 +45,11 @@ public class ArmazenamentoPocs {
 
     }
 
-    /** Método cadastraPoc, usado para adicionar novos poc's a lista de Poc's
+    /** Método addPoc, usado para adicionar novos poc's à lista de Poc's
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param novoPoc Poc - Novo Poc
-     * @return boolean
      * @since 02/12/2022 - 14:00
      */
 
@@ -66,7 +65,6 @@ public class ArmazenamentoPocs {
      * @author João Vitor Chagas Lobo - 4693
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @param tituloPocARemover Poc - Poc que deseja remover
-     * @return boolean
      * @since 02/12/2022 - 14:00
      */
 
@@ -80,7 +78,7 @@ public class ArmazenamentoPocs {
      * @author Aroldo Augusto Barbosa Simões - 4250
      * @param pocAPesquisar Poc - Poc que deseja verificar se está presente na lista de poc's
      * @return Poc
-     * @since 02/12/2022 - 14:00
+     * @since 02/12/2022 - 11:00
      */
 
     public Poc pesquisaPoc(Poc pocAPesquisar) {
@@ -90,8 +88,7 @@ public class ArmazenamentoPocs {
         for (String poc : listaPocs) {
             if(poc.split(",")[0].equals(pocAPesquisar.getTitulo())){
 
-                Poc pocAux = pocAPesquisar;
-                return pocAux;
+                return pocAPesquisar;
             }
         }
 
@@ -99,7 +96,7 @@ public class ArmazenamentoPocs {
     }
 
     /** Método pesquisaPoc, utilizado para verificar se um determinado poc está presente na lista de poc's
-     * @author Gabriel Ryan dos 
+     @author Gabriel Ryan Dos Santos Oliveira - 4688
      * @param tituloPocAPesquisar String - Titulo do Poc que deseja verificar se está presente na lista de poc's
      * @return Poc
      * @since 02/12/2022 - 14:00
