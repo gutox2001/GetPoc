@@ -45,3 +45,6 @@
   - O modelo utilizado permitiu unir as funcionalidades da Visão com o Controle e providenciará uma fácil manutenção do código caso o Controle seja subdividido em dois com funcionalidades para objetos específicos.
   - O MVC também tornou possível integrar o Controle com o Modelo juntamente com o Armazenamento, pacote no qual as listas de objetos estão localizadas.
   - Com a abordagem adotada, será possível integrar o projeto com um banco de dados relacional uma vez que a estruturação do código permite adicionar funcionalidades de persistência de dados sem afetar diretamente as demais classes.
+  - Os em html da JavaDoc do projeto estão armazenados na pasta "doc".
+  - Para simplificar o primeiro acesso de um usuário, foi criado o usuário "Administrador Padrao", com Matricula: "0001" e senha "12345", após o acesso utilizando este usúário e configuração de pelo menos outro administrador, ele deverá ser deletado.
+  - A execução experimental da aplicação se dá atravéz do arqiuvo GetPoc.jar contido na pasta GetPoc-Equipe 2, que contém também os arquivos .csv com os dados que devem ser previamente carregados e que podem ser editados. Para isto, execute a seguinte linha de comando em um terminal dentro da pasta "GetPoc-Equipe2": java -jar GetPoc.jar 
