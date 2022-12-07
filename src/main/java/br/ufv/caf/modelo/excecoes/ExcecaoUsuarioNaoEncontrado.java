@@ -11,8 +11,10 @@ public class ExcecaoUsuarioNaoEncontrado extends Exception {
 
     /** Método getMessage, retornará uma mensagem caso a exceção seja lançada
      * @author 
+     * @param null
      * @return String
      * @since xx/11/2022 - 00:00
+     * @throws null
      */
 
     @Override

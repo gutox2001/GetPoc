@@ -5,28 +5,8 @@ import java.util.Objects;
 
 import br.ufv.caf.modelo.Poc;
 
-/*
-*
-*Classe que representa o armazenamento das Pocs cadastradas no sistema;
-*Métodos:
-*   public ListaPocs - construtor da classe;
-*	public void adicionar - adiciona nova Poc na ListaPocs;
-*	
-*
-*
-*@Aroldo Augusto Barbosa Simões - 4250
-*@Gabriel Ryan dos Santos Oliveira - 4688
-*@Thiago Cândido Rocha - 4225
-*@João Vitor Chagas Lobo - 4693
-*
-*/
-
 public class ListaPocs {
-    private ArrayList<Poc> listaPocs;
-    
-    public ListaPocs(){
-        listaPocs = new ArrayList<Poc>();
-    }
+    private ArrayList<Poc> listaPocs= new ArrayList<>();
 
     public ArrayList<Poc> getListaPocs(){
         return this.listaPocs;

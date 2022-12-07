@@ -7,18 +7,6 @@ package br.ufv.caf.modelo;
  * @version 1.3 
  */
 
-/*
-*
-*Classe implementa entidade Poc;
-*Métodos:
-*	public Poc - construtor da classe;
-*	
-*
-*
-*@Aroldo Augusto Barbosa Simões - 4250
-*
-*/
-
 public class Poc {
 
     private String titulo;

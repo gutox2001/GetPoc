@@ -29,8 +29,8 @@ public class ArmazenamentoUsuarios {
     public ArmazenamentoUsuarios() {
 
         arquivo = new ManipuladorArquivoUsuario();
-        listaUsuarios = arquivo.Read("src\\regs\\usuarios.csv");
-    
+        listaUsuarios = new ArrayList<String>();
+        listaUsuarios = arquivo.Read("src/regs/usuarios.csv");
     }
 
     /** Método getListaUsuarios, usado para obter a lista de usuários já adicionados no sistema
@@ -43,7 +43,7 @@ public class ArmazenamentoUsuarios {
 
     public ArrayList<String> getListaUsuarios() {
 
-        return listaUsuarios;
+        return arquivo.Read("src/regs/usuarios.csv");
         
     }
 
