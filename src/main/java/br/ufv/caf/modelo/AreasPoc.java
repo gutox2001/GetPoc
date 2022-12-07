@@ -15,7 +15,7 @@ public enum AreasPoc {
     public int valor;
 
     /** Método AreasPoc, construtor do enum AreasPoc
-     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @param valorOpcao valorOpcao - valor inteiro de cada opção de área
      * @since 02/11/2022 - 19:30
      */
@@ -27,7 +27,7 @@ public enum AreasPoc {
     }
 
     /** Método getValor, usado para retornar o valor numérico da área da Poc
-     * @author Aroldo Augusto Barbosa Simões - 4250
+     * @author @Aroldo Augusto Barbosa Simões - 4250
      * @since 02/12/2022 - 19:30
      */
 
